@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Majstri Zabavy | Svet Zabavy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <div id="mozog-transition"><div class="transition-brain">AKTIVUJEM MOZOG...</div></div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo" data-nav="home">MAJSTRI ZABAVY</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Domov</a></li>
+      <li><a href="svet-zabavy.html" data-nav="orbit-section">Svet Zabavy</a></li>
+      <li><a href="inspiracia.html" data-nav="inspiracia">Inspiracia</a></li>
+      <li><a href="rok-plny-zabavy.html" data-nav="rok">365 dn&iacute; z&aacute;bavy</a></li>
+      <li><a href="projekty.html" data-nav="projekty">Projekty MZ</a></li>
+      <li><a href="kontakt.html" data-nav="kontakt">Kontakt</a></li>
+      <li class="nav-cta-item"><a href="mozog.html" class="nav-cta" data-nav="mozog-section">Navrhni si akciu</a></li>
+    </ul>
+    <div class="nav-ham" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" data-nav="home" onclick="closeMobile()">Domov</a>
+    <a href="svet-zabavy.html" data-nav="orbit-section" onclick="closeMobile()">Svet Zabavy</a>
+    <a href="inspiracia.html" data-nav="inspiracia" onclick="closeMobile()">Inspiracia</a>
+    <a href="rok-plny-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dn&iacute; z&aacute;bavy</a>
+    <a href="projekty.html" data-nav="projekty" onclick="closeMobile()">Projekty MZ</a>
+    <a href="kontakt.html" data-nav="kontakt" onclick="closeMobile()">Kontakt</a>
+    <a href="mozog.html" class="mobile-nav-cta" data-nav="mozog-section" onclick="closeMobile()">Navrhni si akciu</a>
+  </div>
+
+  <main class="page-shell">
+    <section id="orbit-section">
+      <div class="section-header reveal">
+        <div class="section-label-orbit">// INTERAKTIVNA MAPA //</div>
+        <h2 class="section-title">SVET ZABAVY</h2>
+        <div class="section-line"></div>
+        <p style="color:var(--grey);font-size:15px;margin-top:16px;letter-spacing:1px;">Prejdi mysou na planetu a objav svoju zonu.</p>
+      </div>
+
+      <div class="orbit-container" id="orbitContainer">
+        <div class="orbit-ring orbit-ring-1"></div>
+        <div class="orbit-ring orbit-ring-2"></div>
+        <div class="orbit-ring orbit-ring-3"></div>
+        <div class="orbit-core" id="orbitCore">
+          <div class="orbit-core-glow"></div>
+          <div class="core-logo" id="coreLogo">MZ</div>
+          <div class="core-info" id="coreInfo">
+            <div class="core-desc" id="coreDesc"></div>
+            <button class="core-cta" id="coreCta" onclick="navigateTo('kontakt')">PREJST NA KONTAKT</button>
+          </div>
+          <div class="activate-btn-wrap">
+            <button class="activate-mozog-btn" id="activateMozogBtn" onclick="activateMozog()">
+              <span class="btn-brain-dot"></span>
+              AKTIVOVAT MOZOG
+            </button>
+          </div>
+        </div>
+        <div class="planets-wrapper" id="planetsWrapper"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">MAJSTRI ZABAVY</div>
+    <div class="footer-copy">© 2026 MAJSTRI ZABAVY</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Domov</a></li>
+      <li><a href="mozog.html">Mozog</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </footer>
+
+  <script src="js/orbit.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

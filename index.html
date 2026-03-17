@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Majstri Zabavy | Domov</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <div class="particle" style="width:3px;height:3px;left:10%;top:80%;animation-delay:0s;animation-duration:8s;"></div>
+  <div class="particle" style="width:2px;height:2px;left:25%;top:90%;animation-delay:1.5s;animation-duration:6s;background:var(--cyan)"></div>
+  <div class="particle" style="width:4px;height:4px;left:70%;top:85%;animation-delay:3s;animation-duration:10s;"></div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo" data-nav="home">MAJSTRI ZABAVY</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Domov</a></li>
+      <li><a href="svet-zabavy.html" data-nav="orbit-section">Svet Zabavy</a></li>
+      <li><a href="inspiracia.html" data-nav="inspiracia">Inspiracia</a></li>
+      <li><a href="rok-plny-zabavy.html" data-nav="rok">365 dn&iacute; z&aacute;bavy</a></li>
+      <li><a href="projekty.html" data-nav="projekty">Projekty MZ</a></li>
+      <li><a href="kontakt.html" data-nav="kontakt">Kontakt</a></li>
+      <li class="nav-cta-item"><a href="mozog.html" class="nav-cta" data-nav="mozog-section">Navrhni si akciu</a></li>
+    </ul>
+    <div class="nav-ham" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" data-nav="home" onclick="closeMobile()">Domov</a>
+    <a href="svet-zabavy.html" data-nav="orbit-section" onclick="closeMobile()">Svet Zabavy</a>
+    <a href="inspiracia.html" data-nav="inspiracia" onclick="closeMobile()">Inspiracia</a>
+    <a href="rok-plny-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dn&iacute; z&aacute;bavy</a>
+    <a href="projekty.html" data-nav="projekty" onclick="closeMobile()">Projekty MZ</a>
+    <a href="kontakt.html" data-nav="kontakt" onclick="closeMobile()">Kontakt</a>
+    <a href="mozog.html" class="mobile-nav-cta" data-nav="mozog-section" onclick="closeMobile()">Navrhni si akciu</a>
+  </div>
+
+  <section id="home">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        Eventy, zazitky a kreativna produkcia
+      </div>
+      <h1 class="hero-title">
+        <span class="line1">MAJSTRI</span>
+        <span class="line2">ZABAVY</span>
+      </h1>
+      <p class="hero-sub">Autorita zabavy &middot; Eventy na kluc</p>
+      <div class="hero-cta">
+        <a href="svet-zabavy.html" class="btn-primary">Otvorit Svet Zabavy</a>
+        <a href="kontakt.html" class="btn-ghost">Kontaktovat tim</a>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>Objav viac</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <div class="stats-bar reveal">
+    <div class="stat-item"><div class="stat-number">500+</div><div class="stat-label">Eventov</div></div>
+    <div class="stat-item"><div class="stat-number">6</div><div class="stat-label">Zon zabavy</div></div>
+    <div class="stat-item"><div class="stat-number">12K+</div><div class="stat-label">Ucastnikov</div></div>
+    <div class="stat-item"><div class="stat-number">365</div><div class="stat-label">Dni v roku</div></div>
+  </div>
+
+  <main class="page-shell home-shell">
+    <section class="home-proof reveal">
+      <div class="home-proof__lead">
+        <div class="home-proof__eyebrow">Predajna skrina</div>
+        <h2 class="home-proof__title">To najlepsie z Majstrov Zabavy na jednom mieste.</h2>
+        <p class="home-proof__text">Vyberte si cestu, ktora vas laka najviac. Chcete rychlo navrhnut akciu, prejst si napady na cely rok, objavit svet atrakcii alebo si pozriet realne projekty? Prave tu sa zacina.</p>
+      </div>
+      <div class="home-proof__list">
+        <a class="home-proof__item home-proof__item--mozog" href="mozog.html">
+          <div class="home-proof__value">Eventy na kluc</div>
+          <div class="home-proof__copy">Navrhni si akciu a posli nam svoju predstavu bez zdlhaveho hladania.</div>
+          <div class="home-proof__link">Otvorit Mozog &rarr;</div>
+        </a>
+        <a class="home-proof__item home-proof__item--calendar" href="rok-plny-zabavy.html">
+          <div class="home-proof__value">365 dni zabavy</div>
+          <div class="home-proof__copy">Kalendar tem, sezonnych napadov a inspiracii na cely rok.</div>
+          <div class="home-proof__link">Otvorit kalendar &rarr;</div>
+        </a>
+        <a class="home-proof__item home-proof__item--world" href="svet-zabavy.html">
+          <div class="home-proof__value">Svet Zabavy</div>
+          <div class="home-proof__copy">Ponorte sa do formatov, atrakcii, zon a moznosti, ktore vieme vytvorit.</div>
+          <div class="home-proof__link">Objavit svet &rarr;</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="home-featured reveal">
+      <div class="section-header">
+        <div class="section-label-orbit">// VYBER SI SVOJ VSTUP //</div>
+        <h2 class="section-title">NAJSILNEJSIE CASTI WEBU</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="home-featured__grid">
+        <a class="home-spotlight home-spotlight--primary" href="mozog.html">
+          <div class="home-spotlight__eyebrow">Najrychlejsi start</div>
+          <h3 class="home-spotlight__title">Navrhni si akciu a premen napad na realne zadanie.</h3>
+          <p class="home-spotlight__text">Majstrovsky Mozog je najkratsia cesta od prveho impulsu k eventu, ktory dostane jasny smer, rozsah a energiu.</p>
+          <div class="home-spotlight__link">Spustit navrh akcie &rarr;</div>
+        </a>
+
+        <a class="home-tile home-tile--cyan" href="svet-zabavy.html">
+          <div class="home-tile__kicker">Interaktivny svet</div>
+          <div class="home-tile__title">Svet Zabavy</div>
+          <div class="home-tile__copy">Objavte zony, atrakcie a zazitkove formaty, ktore dokazu rozohrat akciu od prvej minuty.</div>
+        </a>
+
+        <a class="home-tile home-tile--pink" href="rok-plny-zabavy.html">
+          <div class="home-tile__kicker">Celorocny kalendar</div>
+          <div class="home-tile__title">365 dni zabavy</div>
+          <div class="home-tile__copy">Temy, sezony, sviatky aj momenty, ked sa oplati vytiahnut novy napad a spravit z neho event.</div>
+        </a>
+
+        <a class="home-tile home-tile--violet" href="projekty.html">
+          <div class="home-tile__kicker">To, co uz vzniklo</div>
+          <div class="home-tile__title">Projekty MZ</div>
+          <div class="home-tile__copy">Pozrite si eventy, koncepty a realizacie, na ktorych je vidiet styl, tah a produkcnu silu.</div>
+        </a>
+
+        <a class="home-tile home-tile--dark" href="inspiracia.html">
+          <div class="home-tile__kicker">Obsah, ktory chyti</div>
+          <div class="home-tile__title">Inspiracia</div>
+          <div class="home-tile__copy">Video, blog, galerie a specialy pre tych, co sa chcu naladit, objavit styl a najst novy impulz.</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="home-signature reveal">
+      <div class="home-signature__content">
+        <div class="home-signature__eyebrow">Objav dalej</div>
+        <h2 class="home-signature__title">Najprv sa nadchni. Potom otvor cast webu, ktora ta potiahne najviac.</h2>
+        <p class="home-signature__text">Kazda cast webu ma vlastnu energiu. Jedna ti da dokaz, dalsia inspiraciu a dalsia ta rovno posunie ku konkretnej komunikacii s nami.</p>
+      </div>
+
+      <div class="home-signature__points">
+        <a class="home-signature__point" href="projekty.html">
+          <div class="home-signature__icon">01</div>
+          <div>
+            <div class="home-signature__point-title">Projekty MZ</div>
+            <div class="home-signature__point-copy">Realne eventy, formaty a vystupy, na ktorych uvidis vysledok, atmosferu aj rozsah.</div>
+          </div>
+        </a>
+
+        <a class="home-signature__point" href="inspiracia.html">
+          <div class="home-signature__icon">02</div>
+          <div>
+            <div class="home-signature__point-title">Inspiracia</div>
+            <div class="home-signature__point-copy">Videa, blogy, galerie a specialy pre moment, ked chces chytit naladu a nove napady.</div>
+          </div>
+        </a>
+
+        <a class="home-signature__point" href="kontakt.html">
+          <div class="home-signature__icon">03</div>
+          <div>
+            <div class="home-signature__point-title">Kontakt</div>
+            <div class="home-signature__point-copy">Ak uz mas jasnejsiu predstavu, ozvi sa a prejdeme ju spolu bez zbytocnych obchadzok.</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="home-showcase reveal">
+      <div class="section-header">
+        <div class="section-label-orbit">// OTVOR TO, CO TA VOLA //</div>
+        <h2 class="section-title">SEKCIE, KTORE SA OPLATI OTVORIT</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="home-showcase__grid">
+        <a class="home-showcase__card home-showcase__card--large home-showcase__card--calendar" href="rok-plny-zabavy.html">
+          <div class="home-showcase__label">Kalendar napadov</div>
+          <h3 class="home-showcase__title">365 dni zabavy</h3>
+          <p class="home-showcase__copy">Velka sezonna inspiracia pre firmy, znacky aj komunity, ktore nechcu riesit zabavu len raz za rok.</p>
+          <div class="home-showcase__action">Otvorit kalendar &rarr;</div>
+        </a>
+
+        <a class="home-showcase__card home-showcase__card--world" href="svet-zabavy.html">
+          <div class="home-showcase__label">Mapa zazitkov</div>
+          <h3 class="home-showcase__title">Svet Zabavy</h3>
+          <p class="home-showcase__copy">Interaktivny vstup do sveta formatov, atrakcii a zabavnych zon.</p>
+          <div class="home-showcase__action">Objavit svet &rarr;</div>
+        </a>
+
+        <a class="home-showcase__card home-showcase__card--projects" href="projekty.html">
+          <div class="home-showcase__label">Portfolio</div>
+          <h3 class="home-showcase__title">Projekty MZ</h3>
+          <p class="home-showcase__copy">Vystava realizacii, ktora ukaze, ako vyzera vasa energia v praxi.</p>
+          <div class="home-showcase__action">Pozriet portfolio &rarr;</div>
+        </a>
+
+        <a class="home-showcase__card home-showcase__card--inspiration" href="inspiracia.html">
+          <div class="home-showcase__label">Obsah</div>
+          <h3 class="home-showcase__title">Inspiracia</h3>
+          <p class="home-showcase__copy">Klikni na video, blog, galeriu alebo special a nechaj sa vtiahnut do nalady.</p>
+          <div class="home-showcase__action">Pozriet inspiraciu &rarr;</div>
+        </a>
+
+        <a class="home-showcase__card home-showcase__card--contact" href="kontakt.html">
+          <div class="home-showcase__label">Priamy kontakt</div>
+          <h3 class="home-showcase__title">Povedz nam svoju predstavu</h3>
+          <p class="home-showcase__copy">Ked uz vies, ze to s nami chces rozbehnut, prejdi rovno na kontakt a ozvi sa.</p>
+          <div class="home-showcase__action">Kontaktovat tim &rarr;</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="home-cta-band reveal">
+      <div class="home-cta-band__inner">
+        <div class="home-cta-band__eyebrow">Pripraveny kliknut?</div>
+        <h2 class="home-cta-band__title">Mas napad na akciu alebo si chces len potvrdit smer?</h2>
+        <p class="home-cta-band__text">Otvor Majstrovsky Mozog a posli nam zadanie, alebo prejdi rovno na kontakt. Odtialto uz nemusis hladat nikde inde.</p>
+        <div class="home-cta-band__actions">
+          <a href="mozog.html" class="btn-primary">Navrhni si akciu</a>
+          <a href="kontakt.html" class="btn-ghost">Kontaktovat tim</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">MAJSTRI ZABAVY</div>
+    <div class="footer-copy">&copy; 2026 MAJSTRI ZABAVY</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Domov</a></li>
+      <li><a href="mozog.html">Mozog</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

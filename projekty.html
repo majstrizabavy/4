@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Majstri Zabavy | Projekty MZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo" data-nav="home">MAJSTRI ZABAVY</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Domov</a></li>
+      <li><a href="svet-zabavy.html" data-nav="orbit-section">Svet Zabavy</a></li>
+      <li><a href="inspiracia.html" data-nav="inspiracia">Inspiracia</a></li>
+      <li><a href="rok-plny-zabavy.html" data-nav="rok">365 dn&iacute; z&aacute;bavy</a></li>
+      <li><a href="projekty.html" data-nav="projekty">Projekty MZ</a></li>
+      <li><a href="kontakt.html" data-nav="kontakt">Kontakt</a></li>
+      <li class="nav-cta-item"><a href="mozog.html" class="nav-cta" data-nav="mozog-section">Navrhni si akciu</a></li>
+    </ul>
+    <div class="nav-ham" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" data-nav="home" onclick="closeMobile()">Domov</a>
+    <a href="svet-zabavy.html" data-nav="orbit-section" onclick="closeMobile()">Svet Zabavy</a>
+    <a href="inspiracia.html" data-nav="inspiracia" onclick="closeMobile()">Inspiracia</a>
+    <a href="rok-plny-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dn&iacute; z&aacute;bavy</a>
+    <a href="projekty.html" data-nav="projekty" onclick="closeMobile()">Projekty MZ</a>
+    <a href="kontakt.html" data-nav="kontakt" onclick="closeMobile()">Kontakt</a>
+    <a href="mozog.html" class="mobile-nav-cta" data-nav="mozog-section" onclick="closeMobile()">Navrhni si akciu</a>
+  </div>
+
+  <main class="page-shell">
+    <section id="projekty">
+      <div class="section-header reveal">
+        <div class="section-label-orbit">// VLAJKOVE PROJEKTY //</div>
+        <h2 class="section-title">PROJEKTY MZ</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-grid reveal">
+        <div class="project-card featured"><div class="project-number">01</div><div class="project-visual"><div class="project-visual-inner">⚡</div><div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(123,47,255,0.1),rgba(0,212,255,0.05));"></div></div><div class="project-category">Produkcia eventov</div><div class="project-name">EVENTY NA KLUC</div><div class="project-desc">Komplexna produkcia podujati od A po Z pre firmy, mesta aj znacky.</div><div class="project-tags"><span class="tag">Korporat</span><span class="tag">Team-building</span><span class="tag">Gala</span><span class="tag">Outdoor</span></div></div>
+        <div class="project-card"><div class="project-number">02</div><div class="project-category">Sport a pohyb</div><div class="project-name">MZ MOVE</div><div class="project-desc">Aktivne programy, florbalove turnaje a pohybove eventy.</div><div class="project-tags"><span class="tag">Florbal</span><span class="tag">Sport</span></div></div>
+        <div class="project-card"><div class="project-number">03</div><div class="project-category">Socialne spojenia</div><div class="project-name">MZ LOVE</div><div class="project-desc">Speed dating a zoznamovacie podujatia s modernou atmosferou.</div><div class="project-tags"><span class="tag">Dating</span><span class="tag">Networking</span></div></div>
+        <div class="project-card"><div class="project-number">04</div><div class="project-category">Katalog atrakcii</div><div class="project-name">KATALOG ENERGIE</div><div class="project-desc">Databaza programov, atrakcii a modularnych rieseni pre kazdu prilezitost.</div><div class="project-tags"><span class="tag">Atrakcie</span><span class="tag">Programy</span></div></div>
+        <div class="project-card"><div class="project-number">05</div><div class="project-category">Zachranna brzda</div><div class="project-name">MZ AFTERPARTY</div><div class="project-desc">Rychle riesenia a afterparty produkcia, ked treba zachranit vecer.</div><div class="project-tags"><span class="tag">Afterparty</span><span class="tag">Emergency</span></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">MAJSTRI ZABAVY</div>
+    <div class="footer-copy">© 2026 MAJSTRI ZABAVY</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Domov</a></li>
+      <li><a href="svet-zabavy.html">Svet Zabavy</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Majstri Zabavy | Rok Plny Zabavy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo" data-nav="home">MAJSTRI ZABAVY</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Domov</a></li>
+      <li><a href="svet-zabavy.html" data-nav="orbit-section">Svet Zabavy</a></li>
+      <li><a href="inspiracia.html" data-nav="inspiracia">Inspiracia</a></li>
+      <li><a href="rok-plny-zabavy.html" data-nav="rok">365 dn&iacute; z&aacute;bavy</a></li>
+      <li><a href="projekty.html" data-nav="projekty">Projekty MZ</a></li>
+      <li><a href="kontakt.html" data-nav="kontakt">Kontakt</a></li>
+      <li class="nav-cta-item"><a href="mozog.html" class="nav-cta" data-nav="mozog-section">Navrhni si akciu</a></li>
+    </ul>
+    <div class="nav-ham" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" data-nav="home" onclick="closeMobile()">Domov</a>
+    <a href="svet-zabavy.html" data-nav="orbit-section" onclick="closeMobile()">Svet Zabavy</a>
+    <a href="inspiracia.html" data-nav="inspiracia" onclick="closeMobile()">Inspiracia</a>
+    <a href="rok-plny-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dn&iacute; z&aacute;bavy</a>
+    <a href="projekty.html" data-nav="projekty" onclick="closeMobile()">Projekty MZ</a>
+    <a href="kontakt.html" data-nav="kontakt" onclick="closeMobile()">Kontakt</a>
+    <a href="mozog.html" class="mobile-nav-cta" data-nav="mozog-section" onclick="closeMobile()">Navrhni si akciu</a>
+  </div>
+
+  <main class="page-shell">
+    <section id="rok">
+      <div class="section-header reveal">
+        <div class="section-label-orbit">// PLANOVAC ZABAVY //</div>
+        <h2 class="section-title">ROK PLNY ZABAVY</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="planner-grid reveal">
+        <div class="month-card"><div class="month-num">01</div><div class="month-name">Januar</div><div class="month-event"><span class="month-dot"></span>Novorocne eventy</div></div>
+        <div class="month-card"><div class="month-num">02</div><div class="month-name">Februar</div><div class="month-event"><span class="month-dot" style="background:var(--pink)"></span>MZ Love special</div></div>
+        <div class="month-card"><div class="month-num">03</div><div class="month-name">Marec</div><div class="month-event"><span class="month-dot" style="background:var(--cyan)"></span>Jarny team-building</div></div>
+        <div class="month-card"><div class="month-num">04</div><div class="month-name">April</div><div class="month-event"><span class="month-dot"></span>Outdoor florbal liga</div></div>
+        <div class="month-card"><div class="month-num">05</div><div class="month-name">Maj</div><div class="month-event"><span class="month-dot" style="background:var(--pink)"></span>Firemne pikniky</div></div>
+        <div class="month-card"><div class="month-num">06</div><div class="month-name">Jun</div><div class="month-event"><span class="month-dot" style="background:var(--cyan)"></span>Letne afterparty</div></div>
+        <div class="month-card"><div class="month-num">07</div><div class="month-name">Jul</div><div class="month-event"><span class="month-dot"></span>Festival zabavy</div></div>
+        <div class="month-card"><div class="month-num">08</div><div class="month-name">August</div><div class="month-event"><span class="month-dot" style="background:var(--cyan)"></span>Vodne eventy</div></div>
+        <div class="month-card"><div class="month-num">09</div><div class="month-name">September</div><div class="month-event"><span class="month-dot"></span>Jesenny speed dating</div></div>
+        <div class="month-card"><div class="month-num">10</div><div class="month-name">Oktober</div><div class="month-event"><span class="month-dot" style="background:var(--pink)"></span>Halloween special</div></div>
+        <div class="month-card"><div class="month-num">11</div><div class="month-name">November</div><div class="month-event"><span class="month-dot"></span>Indoor turnaje</div></div>
+        <div class="month-card"><div class="month-num">12</div><div class="month-name">December</div><div class="month-event"><span class="month-dot" style="background:var(--violet)"></span>Vianocne gala vecery</div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">MAJSTRI ZABAVY</div>
+    <div class="footer-copy">© 2026 MAJSTRI ZABAVY</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Domov</a></li>
+      <li><a href="inspiracia.html">Inspiracia</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

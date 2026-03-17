@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Majstri Zabavy | Majstrovsky Mozog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mozog.css">
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo" data-nav="home">MAJSTRI ZABAVY</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Domov</a></li>
+      <li><a href="svet-zabavy.html" data-nav="orbit-section">Svet Zabavy</a></li>
+      <li><a href="inspiracia.html" data-nav="inspiracia">Inspiracia</a></li>
+      <li><a href="rok-plny-zabavy.html" data-nav="rok">365 dn&iacute; z&aacute;bavy</a></li>
+      <li><a href="projekty.html" data-nav="projekty">Projekty MZ</a></li>
+      <li><a href="kontakt.html" data-nav="kontakt">Kontakt</a></li>
+      <li class="nav-cta-item"><a href="mozog.html" class="nav-cta" data-nav="mozog-section">Navrhni si akciu</a></li>
+    </ul>
+    <div class="nav-ham" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" data-nav="home" onclick="closeMobile()">Domov</a>
+    <a href="svet-zabavy.html" data-nav="orbit-section" onclick="closeMobile()">Svet Zabavy</a>
+    <a href="inspiracia.html" data-nav="inspiracia" onclick="closeMobile()">Inspiracia</a>
+    <a href="rok-plny-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dn&iacute; z&aacute;bavy</a>
+    <a href="projekty.html" data-nav="projekty" onclick="closeMobile()">Projekty MZ</a>
+    <a href="kontakt.html" data-nav="kontakt" onclick="closeMobile()">Kontakt</a>
+    <a href="mozog.html" class="mobile-nav-cta" data-nav="mozog-section" onclick="closeMobile()">Navrhni si akciu</a>
+  </div>
+
+  <main class="mozog-page-shell">
+    <section class="mz-section" id="mozog-section">
+      <div class="mz-toast" id="mz-toast" aria-live="polite">Plan odoslany Majstrom!</div>
+
+      <div class="mz-overlay" id="mz-overlay" aria-hidden="true">
+        <div class="mz-overlay__text">AKTIVUJEM MOZOG...</div>
+      </div>
+
+      <div class="mz-orbit-wrap">
+        <div class="mz-orbit-title">SVET ZABAVY</div>
+        <div class="mz-orbit-sub">// interaktivna mapa zon //</div>
+
+        <div class="mz-orbit" id="mz-orbit">
+          <div class="mz-ring mz-ring--1"></div>
+          <div class="mz-ring mz-ring--2"></div>
+          <div class="mz-ring mz-ring--3"></div>
+
+          <div class="mz-core" id="mz-core">
+            <div class="mz-core__glow"></div>
+            <div class="mz-core__logo" id="mz-core-logo">MZ</div>
+            <div class="mz-core__desc" id="mz-core-desc"></div>
+            <div class="mz-core__btn-wrap">
+              <button type="button" class="mz-activate-btn" id="mz-activate-btn">
+                <span class="mz-activate-btn__dot"></span>
+                AKTIVOVAT MOZOG
+              </button>
+            </div>
+          </div>
+
+          <div class="mz-planets" id="mz-planets"></div>
+        </div>
+      </div>
+
+      <div class="mz-divider">
+        <div class="mz-divider__label">majstrovsky mozog</div>
+      </div>
+
+      <div class="mz-card-wrap">
+        <div class="mz-card-badge">
+          <div class="mz-card-badge__dot"></div>
+          <span class="mz-card-badge__text">AI // Event Intelligence v2.0</span>
+        </div>
+
+        <div class="mz-card" id="mz-card">
+          <div class="mz-card__border">
+            <div class="mz-card__inner">
+              <div class="mz-card__topbar">
+                <div class="mz-card__logo-row">
+                  <svg class="mz-card__brain" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                    <path d="M20 6C13.4 6 8 11.4 8 18c0 3.5 1.4 6.7 3.7 9l-.7 5 4.5-1.5C16.9 31.5 18.4 32 20 32c6.6 0 12-5.4 12-12S26.6 6 20 6z" fill="url(#mz-bg1)" opacity="0.9"></path>
+                    <path d="M14 17c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm8 0c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z" fill="rgba(255,255,255,0.9)"></path>
+                    <path d="M15 24c1.3 1.2 3 2 5 2s3.7-.8 5-2" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" stroke-linecap="round"></path>
+                    <defs>
+                      <linearGradient id="mz-bg1" x1="8" y1="6" x2="32" y2="32">
+                        <stop offset="0%" stop-color="#b44dff"></stop>
+                        <stop offset="100%" stop-color="#4d9fff"></stop>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  <div>
+                    <div class="mz-card__name">MAJSTROVSKY MOZOG</div>
+                    <div class="mz-card__sub">Digital Event Intelligence</div>
+                  </div>
+                </div>
+
+                <div class="mz-card__status">
+                  <div class="mz-card__status-dot"></div>
+                  <span class="mz-card__status-text">ONLINE</span>
+                </div>
+              </div>
+
+              <div class="mz-card__intro">
+                <div class="mz-card__tagline">// Zverte mi vas chaos, ja vam dam plan.</div>
+                <div class="mz-card__headline">Navrhujem <span>dokonaly event</span><br>za 10 sekund.</div>
+              </div>
+
+              <div class="mz-planner" id="mz-planner">
+                <div class="mz-label-line">Smart Planner</div>
+
+                <div class="mz-form-grid">
+                  <div class="mz-form-group">
+                    <label class="mz-form-label" for="mz-event-type">Typ akcie</label>
+                    <select class="mz-select" id="mz-event-type">
+                      <option value="">Vyber typ akcie...</option>
+                      <option value="firemny">🏢 Firemny event</option>
+                      <option value="svadba">💍 Svadba / Oslava</option>
+                      <option value="narozeniny">🎂 Narodeninova party</option>
+                      <option value="teambuilding">⚡ Teambuilding</option>
+                      <option value="koncert">🎵 Koncert / Show</option>
+                      <option value="detsky">🎪 Detsky event</option>
+                      <option value="gala">✨ Galavecer</option>
+                    </select>
+                  </div>
+
+                  <div class="mz-form-group">
+                    <label class="mz-form-label" for="mz-budget-slider">Rozpocet (EUR)</label>
+                    <div class="mz-budget">
+                      <div class="mz-budget__top">
+                        <span class="mz-budget__amount" id="mz-budget-amount">500 EUR</span>
+                        <span class="mz-budget__pill zone-mid" id="mz-budget-pill">Zlaty stred</span>
+                      </div>
+                      <input type="range" class="mz-budget__slider" id="mz-budget-slider" min="0" max="3000" value="500" step="25">
+                      <div class="mz-budget__bar">
+                        <div class="mz-bz mz-bz--low">DOPLNKY</div>
+                        <div class="mz-bz mz-bz--mid mz-bz--active">NA MIERU</div>
+                        <div class="mz-bz mz-bz--high">PRODUKCIA</div>
+                      </div>
+                      <div class="mz-budget__tip" id="mz-budget-tip">Zlaty stred - program na mieru</div>
+                    </div>
+                  </div>
+
+                  <div class="mz-form-group mz-form-group--full">
+                    <label class="mz-form-label" for="mz-guest-slider">Pocet hosti</label>
+                    <div class="mz-range-wrap">
+                      <span class="mz-range-val" id="mz-guest-val">50 osob</span>
+                      <input type="range" class="mz-range" id="mz-guest-slider" min="10" max="1000" value="50" step="10">
+                      <div class="mz-range-labels">
+                        <span>10</span>
+                        <span>250</span>
+                        <span>500</span>
+                        <span>750</span>
+                        <span>1000+</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mz-form-group mz-form-group--full">
+                    <label class="mz-form-label">Priorita atmosfery</label>
+                    <div class="mz-priority-grid">
+                      <button type="button" class="mz-priority-btn" data-value="energia">
+                        <span class="mz-priority-btn__emoji">⚡</span>
+                        <span class="mz-priority-btn__label">Energia &amp; Adrenalin</span>
+                      </button>
+                      <button type="button" class="mz-priority-btn" data-value="elegancia">
+                        <span class="mz-priority-btn__emoji">💎</span>
+                        <span class="mz-priority-btn__label">Luxus &amp; Elegancia</span>
+                      </button>
+                      <button type="button" class="mz-priority-btn" data-value="pohoda">
+                        <span class="mz-priority-btn__emoji">🌿</span>
+                        <span class="mz-priority-btn__label">Rodinna Pohoda</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mz-generate-wrap">
+                  <button type="button" class="mz-generate-btn" id="mz-generate-btn">
+                    <span>GENEROVAT MOZNOSTI</span>
+                    <span class="mz-generate-btn__arrow">→</span>
+                  </button>
+                  <div class="mz-error-hint" id="mz-error-hint">Vyber typ akcie a prioritu atmosfery.</div>
+                </div>
+              </div>
+
+              <div class="mz-thinking" id="mz-thinking">
+                <div class="mz-thinking__dots">
+                  <div class="mz-thinking__dot"></div>
+                  <div class="mz-thinking__dot"></div>
+                  <div class="mz-thinking__dot"></div>
+                </div>
+                <div class="mz-thinking__label" id="mz-thinking-label">Analyzujem poziadavky...</div>
+                <div class="mz-thinking__bar"><div class="mz-thinking__fill"></div></div>
+              </div>
+
+              <div class="mz-result" id="mz-result">
+                <div class="mz-result__label">Moj navrh pre vas</div>
+                <div class="mz-result__msg" id="mz-result-msg">
+                  <span id="mz-ai-text"></span>
+                  <span class="mz-cursor" id="mz-cursor" style="display:none"></span>
+                </div>
+                <div class="mz-modules" id="mz-modules"></div>
+                <div class="mz-summary" id="mz-summary"></div>
+                <div class="mz-cta-row" id="mz-cta-row" style="display:grid">
+                  <button type="button" class="mz-cta-approve" id="mz-approve-btn">Schvalit plan a kontaktovat</button>
+                  <button type="button" class="mz-cta-reset" id="mz-reset-btn">Reset</button>
+                </div>
+              </div>
+
+              <div class="mz-card__footer">
+                <span class="mz-card__footer-l">MZ // DIGITAL EVENT INTELLIGENCE</span>
+                <div class="mz-card__footer-r">
+                  <div class="mz-card__footer-dot"></div>
+                  AI POWERED
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">MAJSTRI ZABAVY</div>
+    <div class="footer-copy">© 2026 MAJSTRI ZABAVY</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Domov</a></li>
+      <li><a href="svet-zabavy.html">Svet Zabavy</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </footer>
+
+  <script src="js/mozog.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

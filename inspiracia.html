@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Majstri Zabavy | Inspiracia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo" data-nav="home">MAJSTRI ZABAVY</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Domov</a></li>
+      <li><a href="svet-zabavy.html" data-nav="orbit-section">Svet Zabavy</a></li>
+      <li><a href="inspiracia.html" data-nav="inspiracia">Inspiracia</a></li>
+      <li><a href="rok-plny-zabavy.html" data-nav="rok">365 dn&iacute; z&aacute;bavy</a></li>
+      <li><a href="projekty.html" data-nav="projekty">Projekty MZ</a></li>
+      <li><a href="kontakt.html" data-nav="kontakt">Kontakt</a></li>
+      <li class="nav-cta-item"><a href="mozog.html" class="nav-cta" data-nav="mozog-section">Navrhni si akciu</a></li>
+    </ul>
+    <div class="nav-ham" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" data-nav="home" onclick="closeMobile()">Domov</a>
+    <a href="svet-zabavy.html" data-nav="orbit-section" onclick="closeMobile()">Svet Zabavy</a>
+    <a href="inspiracia.html" data-nav="inspiracia" onclick="closeMobile()">Inspiracia</a>
+    <a href="rok-plny-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dn&iacute; z&aacute;bavy</a>
+    <a href="projekty.html" data-nav="projekty" onclick="closeMobile()">Projekty MZ</a>
+    <a href="kontakt.html" data-nav="kontakt" onclick="closeMobile()">Kontakt</a>
+    <a href="mozog.html" class="mobile-nav-cta" data-nav="mozog-section" onclick="closeMobile()">Navrhni si akciu</a>
+  </div>
+
+  <main class="page-shell">
+    <section id="inspiracia">
+      <div class="section-header reveal">
+        <div class="section-label-orbit">// GALERIA ZAZITKOV //</div>
+        <h2 class="section-title">INSPIRACIA</h2>
+        <div class="section-line"></div>
+        <p class="inspiration-intro">Prepinaj medzi videami, blogmi, galeriou a specialmi bez odchodu zo stranky.</p>
+      </div>
+
+      <div class="inspiration-filter-bar reveal" data-inspiration-filter-group>
+        <button type="button" class="inspiration-filter active" data-inspiration-filter="all">Vsetko</button>
+        <button type="button" class="inspiration-filter" data-inspiration-filter="video">Video</button>
+        <button type="button" class="inspiration-filter" data-inspiration-filter="blog">Blog</button>
+        <button type="button" class="inspiration-filter" data-inspiration-filter="galeria">Galeria</button>
+        <button type="button" class="inspiration-filter" data-inspiration-filter="special">Specialy</button>
+      </div>
+
+      <div class="inspiration-sections reveal" id="inspirationSections">
+        <section class="inspiration-section" data-inspiration-section="video">
+          <div class="inspiration-section__head">
+            <div>
+              <div class="inspiration-section__eyebrow">Video</div>
+              <h3 class="inspiration-section__title">IG reels a vertical videa</h3>
+            </div>
+            <p class="inspiration-section__text">Presne ten typ videi, ktory funguje na mobile. Vertical format, rychly rytmus a okamzity pocit z energie akcie.</p>
+          </div>
+          <div class="reels-grid">
+            <a class="reel-card" href="kontakt.html" aria-label="Otvorit reel MZ Aftermovie">
+              <div class="reel-gradient"></div>
+              <div class="reel-noise"></div>
+              <div class="reel-topline">IG Reels</div>
+              <div class="reel-play">&#9654;</div>
+              <div class="reel-geom"></div>
+              <div class="reel-content">
+                <div class="reel-tag">#EventyNaKluc</div>
+                <div class="reel-title">MZ Aftermovie</div>
+                <div class="reel-meta">15 sek. energie, svetiel a finale momentov</div>
+              </div>
+            </a>
+
+            <a class="reel-card" href="kontakt.html" aria-label="Otvorit reel Firemny gala vecer">
+              <div class="reel-gradient"></div>
+              <div class="reel-noise"></div>
+              <div class="reel-topline">Vertical Video</div>
+              <div class="reel-play">&#9654;</div>
+              <div class="reel-geom"></div>
+              <div class="reel-content">
+                <div class="reel-tag">#GalaVecer</div>
+                <div class="reel-title">Firemny gala vecer</div>
+                <div class="reel-meta">Dress code, stage, svetla a moment otvorenia vecera</div>
+              </div>
+            </a>
+
+            <a class="reel-card" href="kontakt.html" aria-label="Otvorit reel Detsky festival">
+              <div class="reel-gradient"></div>
+              <div class="reel-noise"></div>
+              <div class="reel-topline">Social Cut</div>
+              <div class="reel-play">&#9654;</div>
+              <div class="reel-geom"></div>
+              <div class="reel-content">
+                <div class="reel-tag">#RodinnaZabava</div>
+                <div class="reel-title">Detsky festival</div>
+                <div class="reel-meta">Farby, smiech a aktivacie, ktore drzia tempo celeho dna</div>
+              </div>
+            </a>
+
+            <a class="reel-card" href="kontakt.html" aria-label="Otvorit reel MZ Love Night">
+              <div class="reel-gradient"></div>
+              <div class="reel-noise"></div>
+              <div class="reel-topline">Night Edit</div>
+              <div class="reel-play">&#9654;</div>
+              <div class="reel-geom"></div>
+              <div class="reel-content">
+                <div class="reel-tag">#MZLove</div>
+                <div class="reel-title">MZ Love Night</div>
+                <div class="reel-meta">Klubovy feeling, rychly strih a socialny format pre vecernu akciu</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="reels-cta">
+            <p class="reels-cta__text">Tato cast je spravena ako vertical feed, aby video obsah posobil prirodzenejsie a viac ako reels, ktore ludia realne pozeraju na mobile.</p>
+            <a href="kontakt.html" class="btn-ghost reels-cta__button">Chcem podobne video vystupy</a>
+          </div>
+        </section>
+
+        <section class="inspiration-section" data-inspiration-section="blog">
+          <div class="inspiration-section__head">
+            <div>
+              <div class="inspiration-section__eyebrow">Blog</div>
+              <h3 class="inspiration-section__title">Clanky a trendy</h3>
+            </div>
+            <p class="inspiration-section__text">Obsah pre klienta, ktory chce pochopit, preco nieco funguje a ako si lepsie predstavit vlastnu akciu.</p>
+          </div>
+          <div class="inspiration-section__grid">
+            <article class="inspiration-card inspiration-card--blog">
+              <div class="inspiration-card__visual">
+                <div class="inspiration-card__shine"></div>
+                <div class="inspiration-card__icon">&#10022;</div>
+              </div>
+              <div class="inspiration-card__body">
+                <div class="inspiration-card__meta">
+                  <span class="inspiration-card__pill">Blog</span>
+                  <span class="inspiration-card__label">15. januar 2026</span>
+                </div>
+                <h3 class="inspiration-card__title">5 dovodov, preco event potrebuje silny uvod</h3>
+                <p class="inspiration-card__text">Od prveho dojmu po prve minuty programu. Toto su momenty, ktore rozhoduju o celej atmosfere.</p>
+              </div>
+            </article>
+
+            <article class="inspiration-card inspiration-card--blog">
+              <div class="inspiration-card__visual">
+                <div class="inspiration-card__shine"></div>
+                <div class="inspiration-card__icon">&#9998;</div>
+              </div>
+              <div class="inspiration-card__body">
+                <div class="inspiration-card__meta">
+                  <span class="inspiration-card__pill">Blog</span>
+                  <span class="inspiration-card__label">Trend report</span>
+                </div>
+                <h3 class="inspiration-card__title">Co dnes funguje na firemnych eventoch</h3>
+                <p class="inspiration-card__text">Vyber formatov, ktore drzia ludi v pozornosti a zaroven posilnia znacku aj zazitok.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="inspiration-section" data-inspiration-section="galeria">
+          <div class="inspiration-section__head">
+            <div>
+              <div class="inspiration-section__eyebrow">Galeria</div>
+              <h3 class="inspiration-section__title">Moodboardy a sceny</h3>
+            </div>
+            <p class="inspiration-section__text">Vizualna inspiracia pre dekor, svetla, setup priestoru a celkovy mood eventu.</p>
+          </div>
+          <div class="inspiration-section__grid">
+            <article class="inspiration-card inspiration-card--gallery inspiration-card--wide">
+              <div class="inspiration-card__visual">
+                <div class="inspiration-card__shine"></div>
+                <div class="inspiration-card__icon">&#9635;</div>
+              </div>
+              <div class="inspiration-card__body">
+                <div class="inspiration-card__meta">
+                  <span class="inspiration-card__pill">Galeria</span>
+                  <span class="inspiration-card__label">Backstage momenty</span>
+                </div>
+                <h3 class="inspiration-card__title">Vizualy, svetla a setupy z realnych akcii</h3>
+                <p class="inspiration-card__text">Kolekcia scen, stolov, stageov a svetelnych setupov, ktore pomahaju klientovi rychlo si predstavit vysledok.</p>
+              </div>
+            </article>
+
+            <article class="inspiration-card inspiration-card--gallery">
+              <div class="inspiration-card__visual">
+                <div class="inspiration-card__shine"></div>
+                <div class="inspiration-card__icon">&#9723;</div>
+              </div>
+              <div class="inspiration-card__body">
+                <div class="inspiration-card__meta">
+                  <span class="inspiration-card__pill">Galeria</span>
+                  <span class="inspiration-card__label">Dekor &amp; mood</span>
+                </div>
+                <h3 class="inspiration-card__title">Moodboard pre gala vecer a luxusny vecerny event</h3>
+                <p class="inspiration-card__text">Farebnost, materialy a svetlo pokope, aby klient rychlo citil smer akcie.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="inspiration-section" data-inspiration-section="special">
+          <div class="inspiration-section__head">
+            <div>
+              <div class="inspiration-section__eyebrow">Specialy</div>
+              <h3 class="inspiration-section__title">Originalne koncepty</h3>
+            </div>
+            <p class="inspiration-section__text">Veci, ktore klient bezne nehlada, ale ked ich uvidi, velmi rychlo pochopi ich hodnotu.</p>
+          </div>
+          <div class="inspiration-section__grid">
+            <article class="inspiration-card inspiration-card--special">
+              <div class="inspiration-card__visual">
+                <div class="inspiration-card__shine"></div>
+                <div class="inspiration-card__icon">&#9889;</div>
+              </div>
+              <div class="inspiration-card__body">
+                <div class="inspiration-card__meta">
+                  <span class="inspiration-card__pill">Special</span>
+                  <span class="inspiration-card__label">Koncept</span>
+                </div>
+                <h3 class="inspiration-card__title">Fire &amp; Ice Experience</h3>
+                <p class="inspiration-card__text">Koncept pre klienta, ktory chce kontrast, wow efekt a silny vizualny finale moment.</p>
+              </div>
+            </article>
+
+            <article class="inspiration-card inspiration-card--special inspiration-card--wide">
+              <div class="inspiration-card__visual">
+                <div class="inspiration-card__shine"></div>
+                <div class="inspiration-card__icon">&#9670;</div>
+              </div>
+              <div class="inspiration-card__body">
+                <div class="inspiration-card__meta">
+                  <span class="inspiration-card__pill">Special</span>
+                  <span class="inspiration-card__label">Original MZ</span>
+                </div>
+                <h3 class="inspiration-card__title">Urban Circus Evening pre klienta, ktory nechce beznu akciu</h3>
+                <p class="inspiration-card__text">Artistika, industrialny priestor, elektronika a premysleny staging pre hosti, ktori chcu nieco odlisne.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">MAJSTRI ZABAVY</div>
+    <div class="footer-copy">© 2026 MAJSTRI ZABAVY</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Domov</a></li>
+      <li><a href="projekty.html">Projekty</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
