@@ -1486,7 +1486,15 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
   }
   .video-carousel__viewport {
     min-width: 0;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    touch-action: pan-x;
+  }
+  .video-carousel__viewport::-webkit-scrollbar {
+    display: none;
   }
   .video-carousel__arrow {
     display: none;
@@ -1518,6 +1526,10 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
     scroll-snap-align: start;
   }
   .reels-grid--video {
+    width: max-content;
+    min-width: 100%;
+    overflow: visible;
+    scroll-snap-type: none;
     grid-auto-columns: minmax(220px, 78vw);
     padding-right: 0;
   }
