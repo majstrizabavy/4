@@ -20,7 +20,7 @@
       <li><a href="rok-plny-zabavy.html" data-nav="rok">365 dn&iacute; z&aacute;bavy</a></li>
       <li><a href="projekty.html" data-nav="projekty">Projekty MZ</a></li>
       <li><a href="kontakt.html" data-nav="kontakt">Kontakt</a></li>
-      <li class="nav-cta-item"><a href="mozog.html" class="nav-cta" data-nav="mozog-section">Navrhni si akciu</a></li>
+      <li class="nav-cta-item"><a href="navrhni-si-akciu.html" class="nav-cta" data-nav="navrhni-akciu">Navrhni si akciu</a></li>
     </ul>
     <div class="nav-ham" onclick="toggleMobile()"><span></span><span></span><span></span></div>
   </nav>
@@ -32,7 +32,7 @@
     <a href="rok-plny-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dn&iacute; z&aacute;bavy</a>
     <a href="projekty.html" data-nav="projekty" onclick="closeMobile()">Projekty MZ</a>
     <a href="kontakt.html" data-nav="kontakt" onclick="closeMobile()">Kontakt</a>
-    <a href="mozog.html" class="mobile-nav-cta" data-nav="mozog-section" onclick="closeMobile()">Navrhni si akciu</a>
+    <a href="navrhni-si-akciu.html" class="mobile-nav-cta" data-nav="navrhni-akciu" onclick="closeMobile()">Navrhni si akciu</a>
   </div>
 
   <main class="page-shell">
@@ -53,75 +53,117 @@
       </div>
 
       <div class="inspiration-sections reveal" id="inspirationSections">
-        <section class="inspiration-section" data-inspiration-section="video">
+        <section class="inspiration-section inspiration-section--video" data-inspiration-section="video">
           <div class="inspiration-section__head">
             <div>
               <div class="inspiration-section__eyebrow">Video</div>
-              <h3 class="inspiration-section__title">IG reels a vertical videa</h3>
+              <h3 class="inspiration-section__title">YouTube Shorts a vertical videa</h3>
             </div>
-            <p class="inspiration-section__text">Presne ten typ videi, ktory funguje na mobile. Vertical format, rychly rytmus a okamzity pocit z energie akcie.</p>
+            <p class="inspiration-section__text">Realne YouTube Shorts priamo z vasej produkcie. Vertical format, rychly rytmus a pohodlne otvorenie videa bez odchodu zo stranky.</p>
           </div>
-          <div class="reels-grid">
-            <a class="reel-card" href="kontakt.html" aria-label="Otvorit reel MZ Aftermovie">
-              <div class="reel-gradient"></div>
-              <div class="reel-noise"></div>
-              <div class="reel-topline">IG Reels</div>
-              <div class="reel-play">&#9654;</div>
-              <div class="reel-geom"></div>
-              <div class="reel-content">
-                <div class="reel-tag">#EventyNaKluc</div>
-                <div class="reel-title">MZ Aftermovie</div>
-                <div class="reel-meta">15 sek. energie, svetiel a finale momentov</div>
-              </div>
-            </a>
+          <div class="video-carousel" data-video-carousel>
+            <button type="button" class="video-carousel__arrow video-carousel__arrow--prev" data-carousel-prev aria-label="Predchadzajuce videa">
+              <span>&larr;</span>
+            </button>
+            <div class="video-carousel__viewport">
+              <div class="reels-grid reels-grid--video">
+                <button type="button" class="reel-card reel-card--youtube" data-video-open data-youtube-id="m45HC1dDgio" data-video-url="https://www.youtube.com/shorts/m45HC1dDgio" data-video-title="Shorts Highlight 01" aria-label="Otvorit video Shorts Highlight 01">
+                  <img class="reel-thumb" src="https://i.ytimg.com/vi/m45HC1dDgio/hqdefault.jpg" alt="Nahlad videa Shorts Highlight 01" loading="lazy">
+                  <div class="reel-gradient reel-gradient--thumb"></div>
+                  <div class="reel-noise"></div>
+                  <div class="reel-topline">YouTube Shorts</div>
+                  <div class="reel-play">&#9654;</div>
+                  <div class="reel-geom"></div>
+                  <div class="reel-content">
+                    <div class="reel-tag">#MajstriZabavy</div>
+                    <div class="reel-title">Shorts Highlight 01</div>
+                    <div class="reel-meta">Realny vertical moment z akcie, otvoreny priamo cez YouTube prehravac.</div>
+                  </div>
+                </button>
 
-            <a class="reel-card" href="kontakt.html" aria-label="Otvorit reel Firemny gala vecer">
-              <div class="reel-gradient"></div>
-              <div class="reel-noise"></div>
-              <div class="reel-topline">Vertical Video</div>
-              <div class="reel-play">&#9654;</div>
-              <div class="reel-geom"></div>
-              <div class="reel-content">
-                <div class="reel-tag">#GalaVecer</div>
-                <div class="reel-title">Firemny gala vecer</div>
-                <div class="reel-meta">Dress code, stage, svetla a moment otvorenia vecera</div>
-              </div>
-            </a>
+                <button type="button" class="reel-card reel-card--youtube" data-video-open data-youtube-id="kjou3SANAHw" data-video-url="https://www.youtube.com/shorts/kjou3SANAHw" data-video-title="Shorts Highlight 02" aria-label="Otvorit video Shorts Highlight 02">
+                  <img class="reel-thumb" src="https://i.ytimg.com/vi/kjou3SANAHw/hqdefault.jpg" alt="Nahlad videa Shorts Highlight 02" loading="lazy">
+                  <div class="reel-gradient reel-gradient--thumb"></div>
+                  <div class="reel-noise"></div>
+                  <div class="reel-topline">YouTube Shorts</div>
+                  <div class="reel-play">&#9654;</div>
+                  <div class="reel-geom"></div>
+                  <div class="reel-content">
+                    <div class="reel-tag">#VerticalVideo</div>
+                    <div class="reel-title">Shorts Highlight 02</div>
+                    <div class="reel-meta">Kratsi format, ktory si navstevnik vie otvorit bez odchodu z webu.</div>
+                  </div>
+                </button>
 
-            <a class="reel-card" href="kontakt.html" aria-label="Otvorit reel Detsky festival">
-              <div class="reel-gradient"></div>
-              <div class="reel-noise"></div>
-              <div class="reel-topline">Social Cut</div>
-              <div class="reel-play">&#9654;</div>
-              <div class="reel-geom"></div>
-              <div class="reel-content">
-                <div class="reel-tag">#RodinnaZabava</div>
-                <div class="reel-title">Detsky festival</div>
-                <div class="reel-meta">Farby, smiech a aktivacie, ktore drzia tempo celeho dna</div>
-              </div>
-            </a>
+                <button type="button" class="reel-card reel-card--youtube" data-video-open data-youtube-id="1VpQbkgl2a4" data-video-url="https://www.youtube.com/shorts/1VpQbkgl2a4" data-video-title="Shorts Highlight 03" aria-label="Otvorit video Shorts Highlight 03">
+                  <img class="reel-thumb" src="https://i.ytimg.com/vi/1VpQbkgl2a4/hqdefault.jpg" alt="Nahlad videa Shorts Highlight 03" loading="lazy">
+                  <div class="reel-gradient reel-gradient--thumb"></div>
+                  <div class="reel-noise"></div>
+                  <div class="reel-topline">YouTube Shorts</div>
+                  <div class="reel-play">&#9654;</div>
+                  <div class="reel-geom"></div>
+                  <div class="reel-content">
+                    <div class="reel-tag">#ShowMoment</div>
+                    <div class="reel-title">Shorts Highlight 03</div>
+                    <div class="reel-meta">Feedovy format s realnym thumbnailom a plynulym otvorenim do modalu.</div>
+                  </div>
+                </button>
 
-            <a class="reel-card" href="kontakt.html" aria-label="Otvorit reel MZ Love Night">
-              <div class="reel-gradient"></div>
-              <div class="reel-noise"></div>
-              <div class="reel-topline">Night Edit</div>
-              <div class="reel-play">&#9654;</div>
-              <div class="reel-geom"></div>
-              <div class="reel-content">
-                <div class="reel-tag">#MZLove</div>
-                <div class="reel-title">MZ Love Night</div>
-                <div class="reel-meta">Klubovy feeling, rychly strih a socialny format pre vecernu akciu</div>
+                <button type="button" class="reel-card reel-card--youtube" data-video-open data-youtube-id="KcJ0PotlHYM" data-video-url="https://www.youtube.com/shorts/KcJ0PotlHYM" data-video-title="Shorts Highlight 04" aria-label="Otvorit video Shorts Highlight 04">
+                  <img class="reel-thumb" src="https://i.ytimg.com/vi/KcJ0PotlHYM/hqdefault.jpg" alt="Nahlad videa Shorts Highlight 04" loading="lazy">
+                  <div class="reel-gradient reel-gradient--thumb"></div>
+                  <div class="reel-noise"></div>
+                  <div class="reel-topline">YouTube Shorts</div>
+                  <div class="reel-play">&#9654;</div>
+                  <div class="reel-geom"></div>
+                  <div class="reel-content">
+                    <div class="reel-tag">#EventEnergy</div>
+                    <div class="reel-title">Shorts Highlight 04</div>
+                    <div class="reel-meta">Vhodne pre mobilny swipe aj desktop klik, bez prehltenia stranky embedmi.</div>
+                  </div>
+                </button>
+
+                <button type="button" class="reel-card reel-card--youtube" data-video-open data-youtube-id="zuPAOZUVDJc" data-video-url="https://www.youtube.com/shorts/zuPAOZUVDJc" data-video-title="Shorts Highlight 05" aria-label="Otvorit video Shorts Highlight 05">
+                  <img class="reel-thumb" src="https://i.ytimg.com/vi/zuPAOZUVDJc/hqdefault.jpg" alt="Nahlad videa Shorts Highlight 05" loading="lazy">
+                  <div class="reel-gradient reel-gradient--thumb"></div>
+                  <div class="reel-noise"></div>
+                  <div class="reel-topline">YouTube Shorts</div>
+                  <div class="reel-play">&#9654;</div>
+                  <div class="reel-geom"></div>
+                  <div class="reel-content">
+                    <div class="reel-tag">#RealneVideo</div>
+                    <div class="reel-title">Shorts Highlight 05</div>
+                    <div class="reel-meta">Pekne citatelny preview, ktory sa neskor da jednoducho vymenit za iny YouTube link.</div>
+                  </div>
+                </button>
+
+                <button type="button" class="reel-card reel-card--youtube" data-video-open data-youtube-id="B6tWpm56ViY" data-video-url="https://www.youtube.com/shorts/B6tWpm56ViY" data-video-title="Shorts Highlight 06" aria-label="Otvorit video Shorts Highlight 06">
+                  <img class="reel-thumb" src="https://i.ytimg.com/vi/B6tWpm56ViY/hqdefault.jpg" alt="Nahlad videa Shorts Highlight 06" loading="lazy">
+                  <div class="reel-gradient reel-gradient--thumb"></div>
+                  <div class="reel-noise"></div>
+                  <div class="reel-topline">YouTube Shorts</div>
+                  <div class="reel-play">&#9654;</div>
+                  <div class="reel-geom"></div>
+                  <div class="reel-content">
+                    <div class="reel-tag">#MZShorts</div>
+                    <div class="reel-title">Shorts Highlight 06</div>
+                    <div class="reel-meta">Cisty odovzdatelny setup pre programatora s jednym zdrojom pravdy: YouTube ID.</div>
+                  </div>
+                </button>
               </div>
-            </a>
+            </div>
+            <button type="button" class="video-carousel__arrow video-carousel__arrow--next" data-carousel-next aria-label="Dalsie videa">
+              <span>&rarr;</span>
+            </button>
           </div>
 
           <div class="reels-cta">
-            <p class="reels-cta__text">Tato cast je spravena ako vertical feed, aby video obsah posobil prirodzenejsie a viac ako reels, ktore ludia realne pozeraju na mobile.</p>
-            <a href="kontakt.html" class="btn-ghost reels-cta__button">Chcem podobne video vystupy</a>
+            <p class="reels-cta__text">Videa su teraz napojene na realne YouTube Shorts. Na stranke ostava cisty feed a po kliknuti sa otvori vlastny prehravac, co je lepsie pre rychlost webu aj prehladnost kodu.</p>
+            <a href="https://www.youtube.com/@christian_alex_official" target="_blank" rel="noreferrer" class="btn-ghost reels-cta__button">Pozriet YouTube kanal</a>
           </div>
         </section>
 
-        <section class="inspiration-section" data-inspiration-section="blog">
+        <section class="inspiration-section inspiration-section--blog" data-inspiration-section="blog">
           <div class="inspiration-section__head">
             <div>
               <div class="inspiration-section__eyebrow">Blog</div>
@@ -129,40 +171,67 @@
             </div>
             <p class="inspiration-section__text">Obsah pre klienta, ktory chce pochopit, preco nieco funguje a ako si lepsie predstavit vlastnu akciu.</p>
           </div>
-          <div class="inspiration-section__grid">
-            <article class="inspiration-card inspiration-card--blog">
-              <div class="inspiration-card__visual">
-                <div class="inspiration-card__shine"></div>
-                <div class="inspiration-card__icon">&#10022;</div>
+          <div class="reels-grid inspiration-feed inspiration-feed--blog">
+            <a class="reel-card feed-card" href="kontakt.html" aria-label="Otvorit clanok Silny uvod eventu">
+              <div class="reel-gradient feed-card__gradient"></div>
+              <div class="reel-noise"></div>
+              <div class="reel-topline">Blog Post</div>
+              <div class="feed-card__symbol">&#10022;</div>
+              <div class="reel-geom feed-card__geom"></div>
+              <div class="reel-content">
+                <div class="reel-tag">#EventStrategia</div>
+                <div class="reel-title">5 dovodov, preco event potrebuje silny uvod</div>
+                <div class="reel-meta">Od prveho dojmu po prve minuty programu. Toto su momenty, ktore rozhoduju o celej atmosfere.</div>
               </div>
-              <div class="inspiration-card__body">
-                <div class="inspiration-card__meta">
-                  <span class="inspiration-card__pill">Blog</span>
-                  <span class="inspiration-card__label">15. januar 2026</span>
-                </div>
-                <h3 class="inspiration-card__title">5 dovodov, preco event potrebuje silny uvod</h3>
-                <p class="inspiration-card__text">Od prveho dojmu po prve minuty programu. Toto su momenty, ktore rozhoduju o celej atmosfere.</p>
-              </div>
-            </article>
+            </a>
 
-            <article class="inspiration-card inspiration-card--blog">
-              <div class="inspiration-card__visual">
-                <div class="inspiration-card__shine"></div>
-                <div class="inspiration-card__icon">&#9998;</div>
+            <a class="reel-card feed-card" href="kontakt.html" aria-label="Otvorit clanok Trend report pre firemne eventy">
+              <div class="reel-gradient feed-card__gradient"></div>
+              <div class="reel-noise"></div>
+              <div class="reel-topline">Trend Report</div>
+              <div class="feed-card__symbol">&#9998;</div>
+              <div class="reel-geom feed-card__geom"></div>
+              <div class="reel-content">
+                <div class="reel-tag">#FiremnyEvent</div>
+                <div class="reel-title">Co dnes funguje na firemnych eventoch</div>
+                <div class="reel-meta">Vyber formatov, ktore drzia ludi v pozornosti a zaroven posilnia znacku aj zazitok.</div>
               </div>
-              <div class="inspiration-card__body">
-                <div class="inspiration-card__meta">
-                  <span class="inspiration-card__pill">Blog</span>
-                  <span class="inspiration-card__label">Trend report</span>
-                </div>
-                <h3 class="inspiration-card__title">Co dnes funguje na firemnych eventoch</h3>
-                <p class="inspiration-card__text">Vyber formatov, ktore drzia ludi v pozornosti a zaroven posilnia znacku aj zazitok.</p>
+            </a>
+
+            <a class="reel-card feed-card" href="kontakt.html" aria-label="Otvorit clanok Ako poskladat eventovy flow">
+              <div class="reel-gradient feed-card__gradient"></div>
+              <div class="reel-noise"></div>
+              <div class="reel-topline">Guide</div>
+              <div class="feed-card__symbol">&#8635;</div>
+              <div class="reel-geom feed-card__geom"></div>
+              <div class="reel-content">
+                <div class="reel-tag">#ProgramFlow</div>
+                <div class="reel-title">Ako poskladat flow, ktory nestrati tempo</div>
+                <div class="reel-meta">Rytmus vecera, timing vystupov a drobne prechody, ktore drzia energiu az do finale.</div>
               </div>
-            </article>
+            </a>
+
+            <a class="reel-card feed-card" href="kontakt.html" aria-label="Otvorit clanok O tom, co si klient vsimne najrychlejsie">
+              <div class="reel-gradient feed-card__gradient"></div>
+              <div class="reel-noise"></div>
+              <div class="reel-topline">Insight</div>
+              <div class="feed-card__symbol">&#9679;</div>
+              <div class="reel-geom feed-card__geom"></div>
+              <div class="reel-content">
+                <div class="reel-tag">#KlientskyPohlad</div>
+                <div class="reel-title">Co si host a klient vsimnu skor, nez zacne program</div>
+                <div class="reel-meta">Vstup, svetlo, zvuk a prvy kontakt s priestorom. Prave tam sa casto rodi dojem z celeho eventu.</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="reels-cta">
+            <p class="reels-cta__text">Blog sme prehodili do rovnakeho feedu ako video, aby sa obsah pozeral rychlo, prirodzene a dobre fungoval aj pri horizontalnom swipovani na mobile.</p>
+            <a href="kontakt.html" class="btn-ghost reels-cta__button">Chcem podobny obsahovy smer</a>
           </div>
         </section>
 
-        <section class="inspiration-section" data-inspiration-section="galeria">
+        <section class="inspiration-section inspiration-section--gallery" data-inspiration-section="galeria">
           <div class="inspiration-section__head">
             <div>
               <div class="inspiration-section__eyebrow">Galeria</div>
@@ -170,40 +239,67 @@
             </div>
             <p class="inspiration-section__text">Vizualna inspiracia pre dekor, svetla, setup priestoru a celkovy mood eventu.</p>
           </div>
-          <div class="inspiration-section__grid">
-            <article class="inspiration-card inspiration-card--gallery inspiration-card--wide">
-              <div class="inspiration-card__visual">
-                <div class="inspiration-card__shine"></div>
-                <div class="inspiration-card__icon">&#9635;</div>
+          <div class="reels-grid inspiration-feed inspiration-feed--gallery">
+            <a class="reel-card feed-card" href="kontakt.html" aria-label="Otvorit galeriu Backstage setupov">
+              <div class="reel-gradient feed-card__gradient"></div>
+              <div class="reel-noise"></div>
+              <div class="reel-topline">Lookbook</div>
+              <div class="feed-card__symbol">&#9635;</div>
+              <div class="reel-geom feed-card__geom"></div>
+              <div class="reel-content">
+                <div class="reel-tag">#BackstageSetup</div>
+                <div class="reel-title">Vizualy, svetla a setupy z realnych akcii</div>
+                <div class="reel-meta">Kolekcia scen, stolov, stageov a svetelnych setupov, ktore pomahaju klientovi rychlo si predstavit vysledok.</div>
               </div>
-              <div class="inspiration-card__body">
-                <div class="inspiration-card__meta">
-                  <span class="inspiration-card__pill">Galeria</span>
-                  <span class="inspiration-card__label">Backstage momenty</span>
-                </div>
-                <h3 class="inspiration-card__title">Vizualy, svetla a setupy z realnych akcii</h3>
-                <p class="inspiration-card__text">Kolekcia scen, stolov, stageov a svetelnych setupov, ktore pomahaju klientovi rychlo si predstavit vysledok.</p>
-              </div>
-            </article>
+            </a>
 
-            <article class="inspiration-card inspiration-card--gallery">
-              <div class="inspiration-card__visual">
-                <div class="inspiration-card__shine"></div>
-                <div class="inspiration-card__icon">&#9723;</div>
+            <a class="reel-card feed-card" href="kontakt.html" aria-label="Otvorit moodboard gala vecera">
+              <div class="reel-gradient feed-card__gradient"></div>
+              <div class="reel-noise"></div>
+              <div class="reel-topline">Moodboard</div>
+              <div class="feed-card__symbol">&#9723;</div>
+              <div class="reel-geom feed-card__geom"></div>
+              <div class="reel-content">
+                <div class="reel-tag">#DekorMood</div>
+                <div class="reel-title">Moodboard pre gala vecer a luxusny vecerny event</div>
+                <div class="reel-meta">Farebnost, materialy a svetlo pokope, aby klient rychlo citil smer akcie.</div>
               </div>
-              <div class="inspiration-card__body">
-                <div class="inspiration-card__meta">
-                  <span class="inspiration-card__pill">Galeria</span>
-                  <span class="inspiration-card__label">Dekor &amp; mood</span>
-                </div>
-                <h3 class="inspiration-card__title">Moodboard pre gala vecer a luxusny vecerny event</h3>
-                <p class="inspiration-card__text">Farebnost, materialy a svetlo pokope, aby klient rychlo citil smer akcie.</p>
+            </a>
+
+            <a class="reel-card feed-card" href="kontakt.html" aria-label="Otvorit galeriu farebnych kombinacii">
+              <div class="reel-gradient feed-card__gradient"></div>
+              <div class="reel-noise"></div>
+              <div class="reel-topline">Color Story</div>
+              <div class="feed-card__symbol">&#9633;</div>
+              <div class="reel-geom feed-card__geom"></div>
+              <div class="reel-content">
+                <div class="reel-tag">#FarbyASvetlo</div>
+                <div class="reel-title">Kombinacie farieb, materialov a glow prvkov</div>
+                <div class="reel-meta">Rychly prehlad stylov, ktore vieme pouzit od firemnej akcie az po vecernu show.</div>
               </div>
-            </article>
+            </a>
+
+            <a class="reel-card feed-card" href="kontakt.html" aria-label="Otvorit galeriu scenickych layoutov">
+              <div class="reel-gradient feed-card__gradient"></div>
+              <div class="reel-noise"></div>
+              <div class="reel-topline">Scene Layout</div>
+              <div class="feed-card__symbol">&#9641;</div>
+              <div class="reel-geom feed-card__geom"></div>
+              <div class="reel-content">
+                <div class="reel-tag">#PriestorovyPlan</div>
+                <div class="reel-title">Rozlozenie zon, baru, stageu a socialnych miest</div>
+                <div class="reel-meta">Vizualne layouty, ktore ukazu, ako sa host v priestore pohybuje a kde sa tvori energia.</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="reels-cta">
+            <p class="reels-cta__text">Galeria je teraz rovnako feedova ako video, len s jemne chladnejsim gradientom, aby vizualne odlisila moodboardy a scenu od ostatneho obsahu.</p>
+            <a href="kontakt.html" class="btn-ghost reels-cta__button">Chcem podobny vizualny moodboard</a>
           </div>
         </section>
 
-        <section class="inspiration-section" data-inspiration-section="special">
+        <section class="inspiration-section inspiration-section--special" data-inspiration-section="special">
           <div class="inspiration-section__head">
             <div>
               <div class="inspiration-section__eyebrow">Specialy</div>
@@ -211,41 +307,90 @@
             </div>
             <p class="inspiration-section__text">Veci, ktore klient bezne nehlada, ale ked ich uvidi, velmi rychlo pochopi ich hodnotu.</p>
           </div>
-          <div class="inspiration-section__grid">
-            <article class="inspiration-card inspiration-card--special">
-              <div class="inspiration-card__visual">
-                <div class="inspiration-card__shine"></div>
-                <div class="inspiration-card__icon">&#9889;</div>
+          <div class="reels-grid inspiration-feed inspiration-feed--special">
+            <a class="reel-card feed-card" href="kontakt.html" aria-label="Otvorit koncept Fire and Ice Experience">
+              <div class="reel-gradient feed-card__gradient"></div>
+              <div class="reel-noise"></div>
+              <div class="reel-topline">Concept Drop</div>
+              <div class="feed-card__symbol">&#9889;</div>
+              <div class="reel-geom feed-card__geom"></div>
+              <div class="reel-content">
+                <div class="reel-tag">#WowMoment</div>
+                <div class="reel-title">Fire &amp; Ice Experience</div>
+                <div class="reel-meta">Koncept pre klienta, ktory chce kontrast, wow efekt a silny vizualny finale moment.</div>
               </div>
-              <div class="inspiration-card__body">
-                <div class="inspiration-card__meta">
-                  <span class="inspiration-card__pill">Special</span>
-                  <span class="inspiration-card__label">Koncept</span>
-                </div>
-                <h3 class="inspiration-card__title">Fire &amp; Ice Experience</h3>
-                <p class="inspiration-card__text">Koncept pre klienta, ktory chce kontrast, wow efekt a silny vizualny finale moment.</p>
-              </div>
-            </article>
+            </a>
 
-            <article class="inspiration-card inspiration-card--special inspiration-card--wide">
-              <div class="inspiration-card__visual">
-                <div class="inspiration-card__shine"></div>
-                <div class="inspiration-card__icon">&#9670;</div>
+            <a class="reel-card feed-card" href="kontakt.html" aria-label="Otvorit koncept Urban Circus Evening">
+              <div class="reel-gradient feed-card__gradient"></div>
+              <div class="reel-noise"></div>
+              <div class="reel-topline">Original MZ</div>
+              <div class="feed-card__symbol">&#9670;</div>
+              <div class="reel-geom feed-card__geom"></div>
+              <div class="reel-content">
+                <div class="reel-tag">#UrbanCircus</div>
+                <div class="reel-title">Urban Circus Evening pre klienta, ktory nechce beznu akciu</div>
+                <div class="reel-meta">Artistika, industrialny priestor, elektronika a premysleny staging pre hosti, ktori chcu nieco odlisne.</div>
               </div>
-              <div class="inspiration-card__body">
-                <div class="inspiration-card__meta">
-                  <span class="inspiration-card__pill">Special</span>
-                  <span class="inspiration-card__label">Original MZ</span>
-                </div>
-                <h3 class="inspiration-card__title">Urban Circus Evening pre klienta, ktory nechce beznu akciu</h3>
-                <p class="inspiration-card__text">Artistika, industrialny priestor, elektronika a premysleny staging pre hosti, ktori chcu nieco odlisne.</p>
+            </a>
+
+            <a class="reel-card feed-card" href="kontakt.html" aria-label="Otvorit koncept Neon City Playground">
+              <div class="reel-gradient feed-card__gradient"></div>
+              <div class="reel-noise"></div>
+              <div class="reel-topline">Format</div>
+              <div class="feed-card__symbol">&#9711;</div>
+              <div class="reel-geom feed-card__geom"></div>
+              <div class="reel-content">
+                <div class="reel-tag">#NeonCity</div>
+                <div class="reel-title">Neon City Playground pre znacku, ktora chce interaktivny vecer</div>
+                <div class="reel-meta">Glow zony, game prvky a fotogenicke body, ktore drzia hosti v priestore a v socialnom deji.</div>
               </div>
-            </article>
+            </a>
+
+            <a class="reel-card feed-card" href="kontakt.html" aria-label="Otvorit koncept Midnight Garden">
+              <div class="reel-gradient feed-card__gradient"></div>
+              <div class="reel-noise"></div>
+              <div class="reel-topline">Signature</div>
+              <div class="feed-card__symbol">&#10031;</div>
+              <div class="reel-geom feed-card__geom"></div>
+              <div class="reel-content">
+                <div class="reel-tag">#MidnightGarden</div>
+                <div class="reel-title">Midnight Garden s jemnym luxusom a silnou atmosferou</div>
+                <div class="reel-meta">Nocna botanika, svetelne akcenty a elegantny pacing pre hosti, ktori chcu zazit nieco nove.</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="reels-cta">
+            <p class="reels-cta__text">Specialy dostali rovnaky feedovy rytmus ako video, ale s teplejsimi gradientmi, aby koncepty hned posobili odlisne a este viac premium.</p>
+            <a href="kontakt.html" class="btn-ghost reels-cta__button">Chcem originalny koncept na mieru</a>
           </div>
         </section>
       </div>
     </section>
   </main>
+
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-modal__backdrop" data-video-close></div>
+    <div class="video-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+      <button type="button" class="video-modal__close" data-video-close aria-label="Zavriet video">&times;</button>
+      <div class="video-modal__frame">
+        <iframe
+          id="videoModalFrame"
+          src=""
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-modal__meta">
+        <div class="video-modal__eyebrow">YouTube Shorts</div>
+        <h3 class="video-modal__title" id="videoModalTitle">Video</h3>
+        <a class="video-modal__link" id="videoModalLink" href="#" target="_blank" rel="noreferrer">Otvorit na YouTube</a>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <div class="footer-logo">MAJSTRI ZABAVY</div>

@@ -6,7 +6,7 @@ const pageRoutes = {
   inspiracia: 'inspiracia.html',
   rok: 'rok-plny-zabavy.html',
   projekty: 'projekty.html',
-  'mozog-section': 'mozog.html',
+  'navrhni-akciu': 'navrhni-si-akciu.html',
   kontakt: 'kontakt.html'
 };
 
@@ -70,30 +70,34 @@ function goTo(target) {
   window.location.href = route;
 }
 
-function activateMozog() {
+function activateNavrhAkcie() {
   closeCommand();
-  const overlay = document.getElementById('mozog-transition');
-  const mozogSection = document.getElementById('mozog-section');
+  const overlay = document.getElementById('navrhni-akciu-transition');
+  const navrhSection = document.getElementById('navrhni-akciu-section');
 
   if (!overlay) {
-    goTo('mozog-section');
+    goTo('navrhni-akciu');
     return;
   }
 
   overlay.classList.add('active');
   setTimeout(() => {
-    if (mozogSection) {
-      mozogSection.scrollIntoView({ behavior: 'smooth' });
+    if (navrhSection) {
+      navrhSection.scrollIntoView({ behavior: 'smooth' });
       setTimeout(() => overlay.classList.remove('active'), 700);
       return;
     }
 
-    window.location.href = resolveRoute('mozog-section');
+    window.location.href = resolveRoute('navrhni-akciu');
   }, 600);
 }
 
 const commandOverlay = document.getElementById('command-overlay');
 const commandInput = document.getElementById('command-input');
+const videoModal = document.getElementById('videoModal');
+const videoModalFrame = document.getElementById('videoModalFrame');
+const videoModalTitle = document.getElementById('videoModalTitle');
+const videoModalLink = document.getElementById('videoModalLink');
 
 function openCommand() {
   if (!commandOverlay || !commandInput) return;
@@ -105,6 +109,27 @@ function openCommand() {
 function closeCommand() {
   if (!commandOverlay) return;
   commandOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function openVideoModal(videoId, title, url) {
+  if (!videoModal || !videoModalFrame) return;
+
+  const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`;
+  videoModalFrame.src = embedUrl;
+  if (videoModalTitle) videoModalTitle.textContent = title || 'YouTube Shorts';
+  if (videoModalLink) videoModalLink.href = url || `https://www.youtube.com/watch?v=${videoId}`;
+  videoModal.classList.add('is-open');
+  videoModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideoModal() {
+  if (!videoModal || !videoModalFrame) return;
+
+  videoModal.classList.remove('is-open');
+  videoModal.setAttribute('aria-hidden', 'true');
+  videoModalFrame.src = '';
   document.body.style.overflow = '';
 }
 
@@ -123,6 +148,7 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
     closeCommand();
     closeMobile();
+    closeVideoModal();
   }
 });
 
@@ -158,6 +184,58 @@ document.querySelectorAll('[data-nav]').forEach((link) => {
   if (expectedPage === currentPage) {
     link.classList.add('active');
   }
+});
+
+if (videoModal) {
+  videoModal.querySelectorAll('[data-video-close]').forEach((element) => {
+    element.addEventListener('click', closeVideoModal);
+  });
+}
+
+document.querySelectorAll('[data-video-open]').forEach((card) => {
+  card.addEventListener('click', () => {
+    openVideoModal(card.dataset.youtubeId, card.dataset.videoTitle, card.dataset.videoUrl);
+  });
+});
+
+document.querySelectorAll('[data-video-carousel]').forEach((carousel) => {
+  const track = carousel.querySelector('.reels-grid--video');
+  const prevButton = carousel.querySelector('[data-carousel-prev]');
+  const nextButton = carousel.querySelector('[data-carousel-next]');
+
+  if (!track || !prevButton || !nextButton) return;
+
+  function getStep() {
+    const firstCard = track.querySelector('.reel-card');
+    if (!firstCard) return 0;
+
+    const styles = window.getComputedStyle(track);
+    const gap = Number.parseFloat(styles.columnGap || styles.gap || '0') || 0;
+    return firstCard.getBoundingClientRect().width + gap;
+  }
+
+  function updateButtons() {
+    const maxScroll = Math.max(track.scrollWidth - track.clientWidth, 0);
+    const atStart = track.scrollLeft <= 4;
+    const atEnd = track.scrollLeft >= maxScroll - 4;
+
+    prevButton.classList.toggle('is-disabled', atStart);
+    nextButton.classList.toggle('is-disabled', atEnd);
+    prevButton.disabled = atStart;
+    nextButton.disabled = atEnd;
+  }
+
+  prevButton.addEventListener('click', () => {
+    track.scrollBy({ left: -getStep(), behavior: 'smooth' });
+  });
+
+  nextButton.addEventListener('click', () => {
+    track.scrollBy({ left: getStep(), behavior: 'smooth' });
+  });
+
+  track.addEventListener('scroll', updateButtons, { passive: true });
+  window.addEventListener('resize', updateButtons);
+  updateButtons();
 });
 
 const revealElements = document.querySelectorAll('.reveal');
