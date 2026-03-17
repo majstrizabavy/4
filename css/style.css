@@ -570,6 +570,7 @@ section { position: relative; z-index: 10; }
   margin: 0 auto;
   display: grid;
   gap: 22px;
+  min-width: 0;
 }
 .inspiration-section {
   --section-glow-a: rgba(0,212,255,0.08);
@@ -581,6 +582,8 @@ section { position: relative; z-index: 10; }
     radial-gradient(circle at top right, var(--section-glow-a), transparent 24%),
     linear-gradient(180deg, var(--section-glow-b), rgba(10,10,18,0.96));
   box-shadow: 0 20px 60px rgba(0,0,0,0.22);
+  min-width: 0;
+  overflow-x: hidden;
 }
 .inspiration-section--video {
   --section-glow-a: rgba(0,212,255,0.1);
@@ -753,44 +756,10 @@ section { position: relative; z-index: 10; }
   max-width: 1200px;
   margin: 0 auto;
   align-items: start;
+  min-width: 0;
 }
 .inspiration-feed {
   margin-top: 4px;
-}
-.video-carousel {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: 14px;
-  align-items: center;
-  max-width: 100%;
-  min-width: 0;
-}
-.video-carousel__viewport {
-  min-width: 0;
-  overflow: hidden;
-}
-.video-carousel__arrow {
-  width: 44px;
-  height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  border: 1px solid rgba(123,47,255,0.24);
-  background: rgba(12,12,22,0.94);
-  color: var(--white);
-  font-size: 20px;
-  cursor: pointer;
-  transition: transform 0.2s, border-color 0.2s, background 0.2s, opacity 0.2s;
-}
-.video-carousel__arrow:hover {
-  transform: translateY(-1px);
-  border-color: rgba(0,212,255,0.34);
-  background: rgba(18,18,30,0.98);
-}
-.video-carousel__arrow.is-disabled {
-  opacity: 0.4;
-  pointer-events: none;
 }
 .reel-card {
   aspect-ratio: 9/16;
@@ -860,24 +829,34 @@ section { position: relative; z-index: 10; }
 .reel-card--youtube:hover .reel-play {
   transform: translate(-50%, -50%) scale(1.08);
 }
-/* Video cards use a horizontal carousel on larger screens and natural swipe on mobile. */
+
+/* Safe fallback layout for real YouTube video cards.
+   This keeps video thumbnails independent from the horizontal mobile feeds. */
+.video-wall {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  overflow: visible;
+}
+
+.video-wall .reel-card {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 280px;
+  margin: 0;
+}
+
+.video-wall .reel-card:nth-child(2),
+.video-wall .reel-card:nth-child(4) {
+  transform: translateY(0);
+}
 .reels-grid--video {
-  grid-template-columns: none;
-  grid-auto-flow: column;
-  grid-auto-columns: calc((100% - 54px) / 4);
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  scroll-snap-type: x proximity;
-  scrollbar-width: none;
-  touch-action: pan-x;
-}
-.reels-grid--video::-webkit-scrollbar {
-  display: none;
-}
-.reels-grid--video .reel-card {
-  scroll-snap-align: start;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 .reel-noise {
   position: absolute; inset: 0;
@@ -1452,14 +1431,12 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
   }
-  .video-carousel {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: 10px;
-  }
   .reels-grid--video {
-    grid-template-columns: none;
-    grid-auto-flow: column;
-    grid-auto-columns: calc((100% - 16px) / 2);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .video-wall {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
   }
   .reel-card:nth-child(2),
   .reel-card:nth-child(4) {
@@ -1480,16 +1457,6 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
   .inspiration-filter {
     width: calc(50% - 4px);
     justify-content: center;
-  }
-  .video-carousel {
-    display: block;
-  }
-  .video-carousel__viewport {
-    min-width: 0;
-    overflow: visible;
-  }
-  .video-carousel__arrow {
-    display: none;
   }
   .reels-grid:not(.reels-grid--video),
   .inspiration-feed {
@@ -1517,7 +1484,7 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
     margin: 0;
     scroll-snap-align: start;
   }
-  .video-carousel .reels-grid--video {
+  .reels-grid--video {
     width: 100%;
     max-width: 100%;
     display: grid;
@@ -1525,13 +1492,29 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
     grid-auto-flow: row;
     grid-auto-columns: auto;
     overflow: visible;
-    scroll-snap-type: none;
     padding-right: 0;
   }
-  .video-carousel .reels-grid--video .reel-card {
+  .video-wall {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    grid-template-columns: 1fr;
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    overflow: visible;
+    padding-right: 0;
+  }
+  .reels-grid--video .reel-card {
     width: 100%;
     max-width: 100%;
     transform: none;
+  }
+  .video-wall .reel-card {
+    width: 100%;
+    max-width: 100%;
+    min-height: 320px;
+    transform: none;
+    scroll-snap-align: none;
   }
   .video-modal {
     padding: 12px;

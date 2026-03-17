@@ -198,46 +198,6 @@ document.querySelectorAll('[data-video-open]').forEach((card) => {
   });
 });
 
-document.querySelectorAll('[data-video-carousel]').forEach((carousel) => {
-  const track = carousel.querySelector('.reels-grid--video');
-  const prevButton = carousel.querySelector('[data-carousel-prev]');
-  const nextButton = carousel.querySelector('[data-carousel-next]');
-
-  if (!track || !prevButton || !nextButton) return;
-
-  function getStep() {
-    const firstCard = track.querySelector('.reel-card');
-    if (!firstCard) return 0;
-
-    const styles = window.getComputedStyle(track);
-    const gap = Number.parseFloat(styles.columnGap || styles.gap || '0') || 0;
-    return firstCard.getBoundingClientRect().width + gap;
-  }
-
-  function updateButtons() {
-    const maxScroll = Math.max(track.scrollWidth - track.clientWidth, 0);
-    const atStart = track.scrollLeft <= 4;
-    const atEnd = track.scrollLeft >= maxScroll - 4;
-
-    prevButton.classList.toggle('is-disabled', atStart);
-    nextButton.classList.toggle('is-disabled', atEnd);
-    prevButton.disabled = atStart;
-    nextButton.disabled = atEnd;
-  }
-
-  prevButton.addEventListener('click', () => {
-    track.scrollBy({ left: -getStep(), behavior: 'smooth' });
-  });
-
-  nextButton.addEventListener('click', () => {
-    track.scrollBy({ left: getStep(), behavior: 'smooth' });
-  });
-
-  track.addEventListener('scroll', updateButtons, { passive: true });
-  window.addEventListener('resize', updateButtons);
-  updateButtons();
-});
-
 const revealElements = document.querySelectorAll('.reveal');
 if (revealElements.length) {
   const revealObserver = new IntersectionObserver((entries) => {
