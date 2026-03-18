@@ -12,12 +12,13 @@ const pageRoutes = {
 
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
+const customCursorEnabled = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 let mx = 0;
 let my = 0;
 let rx = 0;
 let ry = 0;
 
-if (cursor && ring) {
+if (cursor && ring && customCursorEnabled) {
   document.addEventListener('mousemove', (event) => {
     mx = event.clientX;
     my = event.clientY;
@@ -52,6 +53,9 @@ if (cursor && ring) {
       ring.style.borderColor = 'rgba(123,47,255,0.5)';
     });
   });
+} else if (cursor && ring) {
+  cursor.style.display = 'none';
+  ring.style.display = 'none';
 }
 
 function resolveRoute(target) {
@@ -209,6 +213,7 @@ if (revealElements.length) {
   revealElements.forEach((element) => revealObserver.observe(element));
 }
 
+// Hlavny filter medzi sekciami Video / Blog / Galeria / Specialy / Kam za zabavou.
 document.querySelectorAll('[data-inspiration-filter-group]').forEach((group) => {
   const buttons = group.querySelectorAll('[data-inspiration-filter]');
   const sections = document.querySelectorAll('[data-inspiration-section]');
@@ -223,6 +228,26 @@ document.querySelectorAll('[data-inspiration-filter-group]').forEach((group) => 
       sections.forEach((section) => {
         const matches = filter === 'all' || section.dataset.inspirationSection === filter;
         section.classList.toggle('is-hidden', !matches);
+      });
+    });
+  });
+});
+
+// Jednoduchy filter karticiek v sekcii "Kam za zabavou" podla vybraneho mesta.
+document.querySelectorAll('[data-city-filter-group]').forEach((group) => {
+  const buttons = group.querySelectorAll('[data-city-filter]');
+  const cards = document.querySelectorAll('[data-city-card]');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.cityFilter;
+
+      buttons.forEach((item) => item.classList.remove('active'));
+      button.classList.add('active');
+
+      cards.forEach((card) => {
+        const matches = filter === 'all' || card.dataset.city === filter;
+        card.classList.toggle('is-hidden', !matches);
       });
     });
   });

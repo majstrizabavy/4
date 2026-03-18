@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Majstri Zabavy | Kontakt</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
       <li><a href="index.html" data-nav="home">Domov</a></li>
       <li><a href="svet-zabavy.html" data-nav="orbit-section">Svet Zabavy</a></li>
       <li><a href="inspiracia.html" data-nav="inspiracia">Inspiracia</a></li>
-      <li><a href="rok-plny-zabavy.html" data-nav="rok">365 dn&iacute; z&aacute;bavy</a></li>
+      <li><a href="rok-plny-zabavy.html" data-nav="rok">365 dni zabavy</a></li>
       <li><a href="projekty.html" data-nav="projekty">Projekty MZ</a></li>
       <li><a href="kontakt.html" data-nav="kontakt">Kontakt</a></li>
       <li class="nav-cta-item"><a href="navrhni-si-akciu.html" class="nav-cta" data-nav="navrhni-akciu">Navrhni si akciu</a></li>
@@ -29,31 +29,84 @@
     <a href="index.html" data-nav="home" onclick="closeMobile()">Domov</a>
     <a href="svet-zabavy.html" data-nav="orbit-section" onclick="closeMobile()">Svet Zabavy</a>
     <a href="inspiracia.html" data-nav="inspiracia" onclick="closeMobile()">Inspiracia</a>
-    <a href="rok-plny-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dn&iacute; z&aacute;bavy</a>
+    <a href="rok-plny-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dni zabavy</a>
     <a href="projekty.html" data-nav="projekty" onclick="closeMobile()">Projekty MZ</a>
     <a href="kontakt.html" data-nav="kontakt" onclick="closeMobile()">Kontakt</a>
     <a href="navrhni-si-akciu.html" class="mobile-nav-cta" data-nav="navrhni-akciu" onclick="closeMobile()">Navrhni si akciu</a>
   </div>
 
   <main class="page-shell">
+    <!-- KONTAKT: hlavna rozhodovacia sekcia -->
     <section id="kontakt">
       <div class="contact-wrapper reveal">
-        <h2 class="contact-mega">PODME<br><span>TVORIT SPOLU</span></h2>
-        <p class="contact-sub">Mas projekt, viziu alebo len potrebujes konzultaciu? Ozvi sa nam a spolu pripravime event na mieru.</p>
-        <div class="contact-channels">
-          <a href="mailto:info@majstrizabavy.sk" class="contact-channel"><span class="channel-icon">@</span><span class="channel-name">Email</span></a>
-          <a href="https://instagram.com" target="_blank" class="contact-channel"><span class="channel-icon">IG</span><span class="channel-name">Instagram</span></a>
-          <a href="tel:+421900000000" class="contact-channel"><span class="channel-icon">TEL</span><span class="channel-name">Telefon</span></a>
-          <a href="#" class="contact-channel"><span class="channel-icon">FB</span><span class="channel-name">Facebook</span></a>
+        <!-- HERO: fotka + hlavne smerovanie -->
+        <div class="contact-hero-grid">
+          <div class="contact-hero-photo">
+            <div class="contact-hero-photo__frame">
+              <img src="assets/images/kontakt/kontakt-hero.png" alt="Clen timu Majstri Zabavy ukazuje smerom k hlavnemu logu webu" loading="eager">
+            </div>
+          </div>
+
+          <div class="contact-hero-copy">
+            <h2 class="contact-mega">PODME<br><span>TVORIT SPOLU</span></h2>
+            <p class="contact-sub">Najrychlejsie sa posunies dalej tak, ze si vyberies jednu z dvoch moznosti nizsie. My ti potom pomozeme s idealnou akciou od prveho napadu az po realizaciu.</p>
+
+            <!-- MIKROTEXTY DOVERY -->
+            <div class="contact-trust">
+              <span class="contact-trust__item">Odpovieme do 24 hodin</span>
+              <span class="contact-trust__item">Pomozeme ti vybrat idealnu akciu</span>
+              <span class="contact-trust__item">Bez zavazku</span>
+            </div>
+          </div>
         </div>
-        <div style="margin-top:48px"><a href="mailto:info@majstrizabavy.sk" class="btn-primary">Spustit projekt</a></div>
+
+        <!-- HLAVNE CTA MOZNOSTI -->
+        <div class="contact-choice-head">
+          <p class="contact-kicker">Vyber si, ako chces pokracovat:</p>
+        </div>
+
+        <div class="contact-choice-grid">
+          <article class="contact-choice-card contact-choice-card--program">
+            <div class="contact-choice-card__icon">01</div>
+            <h3 class="contact-choice-card__title">Chcem si objednat program</h3>
+            <p class="contact-choice-card__text">Vyber si balik a program na svoju akciu.</p>
+            <a href="svet-zabavy.html" class="contact-choice-card__btn">Prejst do Svetu zabavy</a>
+          </article>
+
+          <article class="contact-choice-card contact-choice-card--proposal">
+            <div class="contact-choice-card__icon">02</div>
+            <h3 class="contact-choice-card__title">Chcem navrh a cenu</h3>
+            <p class="contact-choice-card__text">Nechaj si vygenerovat navrh akcie a orientacnu cenu.</p>
+            <a href="navrhni-si-akciu.html" class="contact-choice-card__btn contact-choice-card__btn--primary">Ziskat navrh a cenu</a>
+          </article>
+        </div>
+
+        <!-- SOCIAL / INSTAGRAM -->
+        <div class="contact-instagram">
+          <div class="contact-instagram__copy">
+            <span class="contact-instagram__label">Instagram</span>
+            <p>Pozri si, ako vyzeraju nase akcie v realite.</p>
+          </div>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="btn-ghost">Otvorit Instagram</a>
+        </div>
+
+        <!-- SEKUNDARNE KONTAKTNE MOZNOSTI -->
+        <div class="contact-secondary">
+          <p class="contact-secondary__title">Alebo sa nam ozvi priamo</p>
+          <div class="contact-channels">
+            <a href="mailto:info@majstrizabavy.sk" class="contact-channel"><span class="channel-icon">@</span><span class="channel-name">Email</span></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="contact-channel contact-channel--instagram"><span class="channel-icon">IG</span><span class="channel-name">Instagram</span></a>
+            <a href="tel:+421900000000" class="contact-channel"><span class="channel-icon">TEL</span><span class="channel-name">Telefon</span></a>
+            <a href="#" class="contact-channel"><span class="channel-icon">FB</span><span class="channel-name">Facebook</span></a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="footer-logo">MAJSTRI ZABAVY</div>
-    <div class="footer-copy">© 2026 MAJSTRI ZABAVY</div>
+    <div class="footer-copy">&copy; 2026 MAJSTRI ZABAVY</div>
     <ul class="footer-links">
       <li><a href="index.html">Domov</a></li>
       <li><a href="navrhni-si-akciu.html">Navrhni si akciu</a></li>
