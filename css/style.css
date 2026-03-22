@@ -1224,6 +1224,123 @@ section { position: relative; z-index: 10; }
   margin-bottom: 0;
 }
 
+.year-marquee {
+  display: grid;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background:
+    radial-gradient(circle at top left, rgba(188,78,255,0.12), transparent 22%),
+    radial-gradient(circle at top right, rgba(0,212,255,0.08), transparent 22%),
+    linear-gradient(180deg, rgba(17,17,24,0.98), rgba(8,8,12,0.98));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.year-marquee__intro {
+  display: grid;
+  gap: 6px;
+}
+
+.year-marquee__eyebrow {
+  color: var(--cyan);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.year-marquee__title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.6vw, 28px);
+  line-height: 1.02;
+  color: var(--white);
+}
+
+.year-marquee__subtitle {
+  color: rgba(227,231,242,0.66);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.year-marquee__viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.03);
+}
+
+.year-marquee__viewport::before,
+.year-marquee__viewport::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 56px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.year-marquee__viewport::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(9,9,13,0.98), rgba(9,9,13,0));
+}
+
+.year-marquee__viewport::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(9,9,13,0.98), rgba(9,9,13,0));
+}
+
+.year-marquee__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  padding: 12px 0;
+  animation: yearMarqueeFlow 24s linear infinite;
+}
+
+.year-marquee__group {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  padding-right: 12px;
+}
+
+.year-marquee__pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)),
+    rgba(15,15,21,0.94);
+  color: rgba(240,243,255,0.88);
+  text-decoration: none;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: border-color 0.24s ease, color 0.24s ease, transform 0.24s ease;
+}
+
+.year-marquee__pill:hover {
+  transform: translateY(-1px);
+  border-color: rgba(123,47,255,0.28);
+  color: var(--white);
+}
+
+@keyframes yearMarqueeFlow {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 .year-mode-panel {
   display: grid;
   gap: 22px;
@@ -1433,8 +1550,7 @@ section { position: relative; z-index: 10; }
 }
 
 .event-browser__filter-shell {
-  display: grid;
-  gap: 12px;
+  display: block;
   padding: 18px;
   border-radius: 22px;
   border: 1px solid rgba(255,255,255,0.08);
@@ -1443,23 +1559,15 @@ section { position: relative; z-index: 10; }
     linear-gradient(180deg, rgba(18,18,26,0.98), rgba(8,8,12,0.98));
 }
 
-.event-browser__filter-label {
-  color: var(--violet);
-  font-family: var(--font-ui);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
 .event-browser__select-shell {
-  display: none;
+  display: block;
 }
 
 .event-browser__select {
   width: 100%;
-  min-height: 48px;
-  padding: 0 16px;
-  border-radius: 16px;
+  min-height: 52px;
+  padding: 0 48px 0 16px;
+  border-radius: 18px;
   border: 1px solid rgba(255,255,255,0.1);
   background:
     linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)),
@@ -1469,38 +1577,22 @@ section { position: relative; z-index: 10; }
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.05em;
-}
-
-.event-browser__cities {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.event-city-filter {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 38px;
-  padding: 0 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.04);
-  color: rgba(227,231,242,0.82);
-  font-family: var(--font-ui);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
-}
-
-.event-city-filter:hover,
-.event-city-filter.is-active {
-  transform: translateY(-1px);
-  border-color: rgba(123,47,255,0.34);
-  background: linear-gradient(180deg, rgba(123,47,255,0.18), rgba(123,47,255,0.08));
-  color: var(--white);
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-image:
+    linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)),
+    linear-gradient(45deg, transparent 50%, rgba(227,231,242,0.78) 50%),
+    linear-gradient(135deg, rgba(227,231,242,0.78) 50%, transparent 50%);
+  background-position:
+    0 0,
+    calc(100% - 22px) 50%,
+    calc(100% - 16px) 50%;
+  background-size:
+    auto,
+    6px 6px,
+    6px 6px;
+  background-repeat: no-repeat;
 }
 
 .event-browser__months {
@@ -3244,19 +3336,17 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
   .event-modal__dialog {
     width: min(100%, 680px);
   }
+
 }
 
 @media (max-width: 700px) {
-  .event-browser__select-shell {
-    display: block;
-  }
-
-  .event-browser__cities {
-    display: none;
-  }
-
   .event-browser__months {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .year-marquee {
+    padding: 16px;
+    border-radius: 20px;
   }
 
   .event-modal__content {
@@ -3281,6 +3371,19 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
     border-radius: 22px;
   }
 
+  .year-marquee__title {
+    font-size: 22px;
+  }
+
+  .year-marquee__subtitle {
+    font-size: 13px;
+  }
+
+  .year-marquee__viewport::before,
+  .year-marquee__viewport::after {
+    width: 28px;
+  }
+
   .public-month-card {
     min-height: 112px;
     padding: 14px;
@@ -3289,12 +3392,6 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
 
   .public-month-card__name {
     font-size: 18px;
-  }
-
-  .event-city-filter {
-    min-height: 36px;
-    padding: 0 12px;
-    font-size: 9px;
   }
 
   .event-browser__select {

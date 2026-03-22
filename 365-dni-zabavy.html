@@ -53,10 +53,28 @@
         <!-- REZIM 1: PRE TVOJU AKCIU -->
         <!-- Obsah mesiacov sa plni cez js/365-dni-zabavy.js z bloku yearPlannerData.custom -->
         <section class="year-mode-panel" data-year-mode-panel="custom">
-          <div class="year-mode-head">
-            <div>
-              <div class="year-mode-kicker">Chce&scaron; &iacute;s&#357; za z&aacute;bavou alebo ju prinies&#357; k sebe?</div>
-              <h3 class="year-mode-title">Vyber si alebo si ju nechaj pripravi&#357;.</h3>
+          <div class="year-marquee">
+            <div class="year-marquee__intro">
+              <div class="year-marquee__eyebrow">// ROBIME AJ //</div>
+              <h3 class="year-marquee__title">Z&aacute;bavu ti priprav&iacute;me po&#269;as cel&eacute;ho roka</h3>
+              <p class="year-marquee__subtitle">Okrem sez&oacute;nnych programov organizujeme aj in&eacute; typy akci&iacute;.</p>
+            </div>
+
+            <div class="year-marquee__viewport" aria-label="Typy akcii, ktore organizujeme">
+              <div class="year-marquee__track">
+                <div class="year-marquee__group">
+                  <a href="#yearGridCustom" class="year-marquee__pill">Narodeniny</a>
+                  <a href="#yearGridCustom" class="year-marquee__pill">Svadby</a>
+                  <a href="#yearGridCustom" class="year-marquee__pill">Firemn&eacute; akcie</a>
+                  <a href="#yearGridCustom" class="year-marquee__pill">Detsk&eacute; p&aacute;rty</a>
+                </div>
+                <div class="year-marquee__group" aria-hidden="true">
+                  <a href="#yearGridCustom" class="year-marquee__pill">Narodeniny</a>
+                  <a href="#yearGridCustom" class="year-marquee__pill">Svadby</a>
+                  <a href="#yearGridCustom" class="year-marquee__pill">Firemn&eacute; akcie</a>
+                  <a href="#yearGridCustom" class="year-marquee__pill">Detsk&eacute; p&aacute;rty</a>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -82,11 +100,9 @@
           <div class="event-browser">
             <div class="event-browser__controls">
               <div class="event-browser__filter-shell">
-                <div class="event-browser__filter-label">Vyber si lokalitu</div>
                 <div class="event-browser__select-shell">
                   <select class="event-browser__select" id="publicCitySelect" aria-label="Vyber si lokalitu"></select>
                 </div>
-                <div class="event-browser__cities" id="publicCityFilter"></div>
               </div>
 
               <div class="event-browser__months" id="publicMonthGrid"></div>

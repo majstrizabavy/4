@@ -1,4 +1,3 @@
-const publicCityFilter = document.getElementById('publicCityFilter');
 const publicCitySelect = document.getElementById('publicCitySelect');
 const publicMonthGrid = document.getElementById('publicMonthGrid');
 const publicEventList = document.getElementById('publicEventList');
@@ -94,22 +93,11 @@ function scrollPublicEventsIntoView() {
 }
 
 function renderPublicCities() {
-  if (publicCityFilter) {
-    publicCityFilter.innerHTML = publicEventCities.map((city) => `
-      <button
-        type="button"
-        class="event-city-filter${city.key === activePublicCity ? ' is-active' : ''}"
-        data-public-city="${city.key}"
-      >
-        ${city.name}
-      </button>
-    `).join('');
-  }
-
   if (publicCitySelect) {
-    publicCitySelect.innerHTML = publicEventCities.map((city) => `
-      <option value="${city.key}"${city.key === activePublicCity ? ' selected' : ''}>${city.name}</option>
-    `).join('');
+    publicCitySelect.innerHTML = publicEventCities.map((city) => {
+      const optionLabel = city.key === 'all' ? 'Lokalita - Vsetky mesta' : city.name;
+      return `<option value="${city.key}"${city.key === activePublicCity ? ' selected' : ''}>${optionLabel}</option>`;
+    }).join('');
   }
 }
 
@@ -313,7 +301,7 @@ async function sharePublicEvent(eventId) {
 }
 
 function initPublicEventBrowser() {
-  if (!publicMonthGrid || !publicEventList || !publicCityFilter || !publicCitySelect) return;
+  if (!publicMonthGrid || !publicEventList || !publicCitySelect) return;
 
   const requestedParams = new URLSearchParams(window.location.search);
   const requestedEventId = requestedParams.get('event');
@@ -330,14 +318,6 @@ function initPublicEventBrowser() {
   }
 
   renderPublicEventBrowser();
-
-  publicCityFilter.addEventListener('click', (event) => {
-    const cityButton = event.target.closest('[data-public-city]');
-    if (!cityButton) return;
-
-    closeEventModal({ syncUrl: false });
-    setActivePublicCity(cityButton.dataset.publicCity);
-  });
 
   publicCitySelect.addEventListener('change', () => {
     closeEventModal({ syncUrl: false });
