@@ -17,7 +17,7 @@
       <li><a href="index.html" data-nav="home">Domov</a></li>
       <li><a href="svet-zabavy.html" data-nav="orbit-section">Svet Zabavy</a></li>
       <li><a href="inspiracia.html" data-nav="inspiracia">Inspiracia</a></li>
-      <li><a href="rok-plny-zabavy.html" data-nav="rok">365 dn&iacute; z&aacute;bavy</a></li>
+      <li><a href="365-dni-zabavy.html" data-nav="rok">365 dn&iacute; z&aacute;bavy</a></li>
       <li><a href="projekty.html" data-nav="projekty">Projekty MZ</a></li>
       <li><a href="kontakt.html" data-nav="kontakt">Kontakt</a></li>
       <li class="nav-cta-item"><a href="navrhni-si-akciu.html" class="nav-cta" data-nav="navrhni-akciu">Navrhni si akciu</a></li>
@@ -29,7 +29,7 @@
     <a href="index.html" data-nav="home" onclick="closeMobile()">Domov</a>
     <a href="svet-zabavy.html" data-nav="orbit-section" onclick="closeMobile()">Svet Zabavy</a>
     <a href="inspiracia.html" data-nav="inspiracia" onclick="closeMobile()">Inspiracia</a>
-    <a href="rok-plny-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dn&iacute; z&aacute;bavy</a>
+    <a href="365-dni-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dn&iacute; z&aacute;bavy</a>
     <a href="projekty.html" data-nav="projekty" onclick="closeMobile()">Projekty MZ</a>
     <a href="kontakt.html" data-nav="kontakt" onclick="closeMobile()">Kontakt</a>
     <a href="navrhni-si-akciu.html" class="mobile-nav-cta" data-nav="navrhni-akciu" onclick="closeMobile()">Navrhni si akciu</a>
@@ -51,7 +51,7 @@
         <button type="button" class="inspiration-filter" data-inspiration-filter="blog">Blog</button>
         <button type="button" class="inspiration-filter" data-inspiration-filter="galeria">Galeria</button>
         <button type="button" class="inspiration-filter" data-inspiration-filter="special">Specialy</button>
-        <button type="button" class="inspiration-filter" data-inspiration-filter="zabava">Kam za zabavou</button>
+        <a href="365-dni-zabavy.html?mode=public#rok" class="inspiration-filter">Kam za zabavou</a>
       </div>
 
       <div class="inspiration-sections reveal" id="inspirationSections">
@@ -359,88 +359,6 @@
           </div>
         </section>
 
-        <!-- KAM ZA ZABAVOU: grid akcii podla krajskeho mesta -->
-        <section class="inspiration-section inspiration-section--entertainment" data-inspiration-section="zabava">
-          <div class="inspiration-section__head">
-            <div>
-              <div class="inspiration-section__eyebrow">&#128293; Kam za zabavou</div>
-              <h3 class="inspiration-section__title">Vyber si krajske mesto a pozri top akcie</h3>
-            </div>
-          </div>
-
-          <!-- FILTER MIEST: pridajte alebo odoberte mesta podla potreby -->
-          <div class="event-city-toolbar">
-            <div class="inspiration-filter-bar inspiration-filter-bar--city" data-city-filter-group>
-              <button type="button" class="inspiration-filter active" data-city-filter="all">Vsetky mesta</button>
-              <button type="button" class="inspiration-filter" data-city-filter="bratislava">Bratislava</button>
-              <button type="button" class="inspiration-filter" data-city-filter="trnava">Trnava</button>
-              <button type="button" class="inspiration-filter" data-city-filter="nitra">Nitra</button>
-              <button type="button" class="inspiration-filter" data-city-filter="trencin">Trencin</button>
-              <button type="button" class="inspiration-filter" data-city-filter="zilina">Zilina</button>
-              <button type="button" class="inspiration-filter" data-city-filter="banska-bystrica">Banska Bystrica</button>
-              <button type="button" class="inspiration-filter" data-city-filter="presov">Presov</button>
-              <button type="button" class="inspiration-filter" data-city-filter="kosice">Kosice</button>
-            </div>
-            <div class="event-city-toolbar__side">
-              <a href="rok-plny-zabavy.html" class="btn-ghost reels-cta__button">Zobrazit vsetky akcie v kalendari</a>
-            </div>
-          </div>
-
-          <!-- AKCIE: zjednoduseny grid v style 365 dni zabavy -->
-          <div class="planner-grid inspiration-events-grid">
-            <div class="month-card" data-city-card data-city="bratislava"><div class="month-num">04 APR</div><div class="month-name">Neon River Night</div><div class="month-event"><span class="month-dot"></span>Bratislava</div></div>
-            <div class="month-card" data-city-card data-city="bratislava"><div class="month-num">11 APR</div><div class="month-name">Old Town Beat Market</div><div class="month-event"><span class="month-dot" style="background:var(--cyan)"></span>Bratislava</div></div>
-            <div class="month-card" data-city-card data-city="bratislava"><div class="month-num">18 APR</div><div class="month-name">Skyline Sunset Session</div><div class="month-event"><span class="month-dot" style="background:var(--pink)"></span>Bratislava</div></div>
-            <div class="month-card" data-city-card data-city="bratislava"><div class="month-num">25 APR</div><div class="month-name">Midnight Tram Party</div><div class="month-event"><span class="month-dot"></span>Bratislava</div></div>
-            <div class="month-card" data-city-card data-city="bratislava"><div class="month-num">02 MAY</div><div class="month-name">Glow Courtyard Weekend</div><div class="month-event"><span class="month-dot" style="background:var(--cyan)"></span>Bratislava</div></div>
-
-            <div class="month-card" data-city-card data-city="trnava"><div class="month-num">03 APR</div><div class="month-name">Walls &amp; Beats</div><div class="month-event"><span class="month-dot"></span>Trnava</div></div>
-            <div class="month-card" data-city-card data-city="trnava"><div class="month-num">10 APR</div><div class="month-name">Vinyl Garden Social</div><div class="month-event"><span class="month-dot" style="background:var(--pink)"></span>Trnava</div></div>
-            <div class="month-card" data-city-card data-city="trnava"><div class="month-num">17 APR</div><div class="month-name">City Courtyard Jam</div><div class="month-event"><span class="month-dot" style="background:var(--cyan)"></span>Trnava</div></div>
-            <div class="month-card" data-city-card data-city="trnava"><div class="month-num">24 APR</div><div class="month-name">Night Picnic Festival</div><div class="month-event"><span class="month-dot"></span>Trnava</div></div>
-            <div class="month-card" data-city-card data-city="trnava"><div class="month-num">01 MAY</div><div class="month-name">Silent Square Party</div><div class="month-event"><span class="month-dot" style="background:var(--pink)"></span>Trnava</div></div>
-
-            <div class="month-card" data-city-card data-city="nitra"><div class="month-num">04 APR</div><div class="month-name">Castle Lights Evening</div><div class="month-event"><span class="month-dot"></span>Nitra</div></div>
-            <div class="month-card" data-city-card data-city="nitra"><div class="month-num">12 APR</div><div class="month-name">Rooftop Pulse Market</div><div class="month-event"><span class="month-dot" style="background:var(--cyan)"></span>Nitra</div></div>
-            <div class="month-card" data-city-card data-city="nitra"><div class="month-num">19 APR</div><div class="month-name">Afterwork Panorama</div><div class="month-event"><span class="month-dot" style="background:var(--pink)"></span>Nitra</div></div>
-            <div class="month-card" data-city-card data-city="nitra"><div class="month-num">26 APR</div><div class="month-name">Moonlight Terrace Club</div><div class="month-event"><span class="month-dot"></span>Nitra</div></div>
-            <div class="month-card" data-city-card data-city="nitra"><div class="month-num">03 MAY</div><div class="month-name">City Groove Picnic</div><div class="month-event"><span class="month-dot" style="background:var(--cyan)"></span>Nitra</div></div>
-
-            <div class="month-card" data-city-card data-city="trencin"><div class="month-num">05 APR</div><div class="month-name">Fortress Sound Night</div><div class="month-event"><span class="month-dot"></span>Trencin</div></div>
-            <div class="month-card" data-city-card data-city="trencin"><div class="month-num">13 APR</div><div class="month-name">Square Bass Social</div><div class="month-event"><span class="month-dot" style="background:var(--pink)"></span>Trencin</div></div>
-            <div class="month-card" data-city-card data-city="trencin"><div class="month-num">20 APR</div><div class="month-name">Riverfront Vibes</div><div class="month-event"><span class="month-dot" style="background:var(--cyan)"></span>Trencin</div></div>
-            <div class="month-card" data-city-card data-city="trencin"><div class="month-num">27 APR</div><div class="month-name">Glow Alley Session</div><div class="month-event"><span class="month-dot"></span>Trencin</div></div>
-            <div class="month-card" data-city-card data-city="trencin"><div class="month-num">04 MAY</div><div class="month-name">Night Ride Fest</div><div class="month-event"><span class="month-dot" style="background:var(--pink)"></span>Trencin</div></div>
-
-            <div class="month-card" data-city-card data-city="zilina"><div class="month-num">05 APR</div><div class="month-name">Station Beats Weekend</div><div class="month-event"><span class="month-dot"></span>Zilina</div></div>
-            <div class="month-card" data-city-card data-city="zilina"><div class="month-num">12 APR</div><div class="month-name">Boulevard Afterdark</div><div class="month-event"><span class="month-dot" style="background:var(--cyan)"></span>Zilina</div></div>
-            <div class="month-card" data-city-card data-city="zilina"><div class="month-num">19 APR</div><div class="month-name">Indie Yard Sessions</div><div class="month-event"><span class="month-dot" style="background:var(--pink)"></span>Zilina</div></div>
-            <div class="month-card" data-city-card data-city="zilina"><div class="month-num">26 APR</div><div class="month-name">Glow Plaza Night</div><div class="month-event"><span class="month-dot"></span>Zilina</div></div>
-            <div class="month-card" data-city-card data-city="zilina"><div class="month-num">03 MAY</div><div class="month-name">Sunday Groove District</div><div class="month-event"><span class="month-dot" style="background:var(--cyan)"></span>Zilina</div></div>
-
-            <div class="month-card" data-city-card data-city="banska-bystrica"><div class="month-num">04 APR</div><div class="month-name">Square Pulse Festival</div><div class="month-event"><span class="month-dot"></span>Banska Bystrica</div></div>
-            <div class="month-card" data-city-card data-city="banska-bystrica"><div class="month-num">11 APR</div><div class="month-name">Lantern City Ride</div><div class="month-event"><span class="month-dot" style="background:var(--pink)"></span>Banska Bystrica</div></div>
-            <div class="month-card" data-city-card data-city="banska-bystrica"><div class="month-num">18 APR</div><div class="month-name">Bass Courtyard Social</div><div class="month-event"><span class="month-dot" style="background:var(--cyan)"></span>Banska Bystrica</div></div>
-            <div class="month-card" data-city-card data-city="banska-bystrica"><div class="month-num">25 APR</div><div class="month-name">Midnight Square Run</div><div class="month-event"><span class="month-dot"></span>Banska Bystrica</div></div>
-            <div class="month-card" data-city-card data-city="banska-bystrica"><div class="month-num">02 MAY</div><div class="month-name">Urban Picnic Stage</div><div class="month-event"><span class="month-dot" style="background:var(--pink)"></span>Banska Bystrica</div></div>
-
-            <div class="month-card" data-city-card data-city="presov"><div class="month-num">03 APR</div><div class="month-name">Main Street Glow</div><div class="month-event"><span class="month-dot"></span>Presov</div></div>
-            <div class="month-card" data-city-card data-city="presov"><div class="month-num">10 APR</div><div class="month-name">Afterwork Stereo Social</div><div class="month-event"><span class="month-dot" style="background:var(--cyan)"></span>Presov</div></div>
-            <div class="month-card" data-city-card data-city="presov"><div class="month-num">17 APR</div><div class="month-name">Retro Disco Revival</div><div class="month-event"><span class="month-dot" style="background:var(--pink)"></span>Presov</div></div>
-            <div class="month-card" data-city-card data-city="presov"><div class="month-num">24 APR</div><div class="month-name">Night Market Social</div><div class="month-event"><span class="month-dot"></span>Presov</div></div>
-            <div class="month-card" data-city-card data-city="presov"><div class="month-num">01 MAY</div><div class="month-name">City Lights Weekend</div><div class="month-event"><span class="month-dot" style="background:var(--cyan)"></span>Presov</div></div>
-
-            <div class="month-card" data-city-card data-city="kosice"><div class="month-num">04 APR</div><div class="month-name">Electric Avenue Night</div><div class="month-event"><span class="month-dot"></span>Kosice</div></div>
-            <div class="month-card" data-city-card data-city="kosice"><div class="month-num">11 APR</div><div class="month-name">Hlavna Street Social</div><div class="month-event"><span class="month-dot" style="background:var(--pink)"></span>Kosice</div></div>
-            <div class="month-card" data-city-card data-city="kosice"><div class="month-num">18 APR</div><div class="month-name">Midnight Courtyard Club</div><div class="month-event"><span class="month-dot" style="background:var(--cyan)"></span>Kosice</div></div>
-            <div class="month-card" data-city-card data-city="kosice"><div class="month-num">25 APR</div><div class="month-name">Glow Tram Social</div><div class="month-event"><span class="month-dot"></span>Kosice</div></div>
-            <div class="month-card" data-city-card data-city="kosice"><div class="month-num">02 MAY</div><div class="month-name">Sunday Rooftop Bloom</div><div class="month-event"><span class="month-dot" style="background:var(--pink)"></span>Kosice</div></div>
-          </div>
-
-          <div class="reels-cta">
-            <a href="rok-plny-zabavy.html" class="btn-ghost reels-cta__button">Zobrazit vsetky akcie v kalendari</a>
-          </div>
-        </section>
       </div>
     </section>
   </main>
@@ -481,4 +399,3 @@
   <script src="js/main.js"></script>
 </body>
 </html>
-

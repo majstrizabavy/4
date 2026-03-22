@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Majstri Zabavy | MZ LOVE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/projekty.css">
+</head>
+<body class="project-page project-page--love">
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo" data-nav="home">MAJSTRI ZABAVY</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Domov</a></li>
+      <li><a href="svet-zabavy.html" data-nav="orbit-section">Svet Zabavy</a></li>
+      <li><a href="inspiracia.html" data-nav="inspiracia">Inspiracia</a></li>
+      <li><a href="365-dni-zabavy.html" data-nav="rok">365 dni zabavy</a></li>
+      <li><a href="projekty.html" data-nav="projekty">Projekty MZ</a></li>
+      <li><a href="kontakt.html" data-nav="kontakt">Kontakt</a></li>
+      <li class="nav-cta-item"><a href="navrhni-si-akciu.html" class="nav-cta" data-nav="navrhni-akciu">Navrhni si akciu</a></li>
+    </ul>
+    <div class="nav-ham" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" data-nav="home" onclick="closeMobile()">Domov</a>
+    <a href="svet-zabavy.html" data-nav="orbit-section" onclick="closeMobile()">Svet Zabavy</a>
+    <a href="inspiracia.html" data-nav="inspiracia" onclick="closeMobile()">Inspiracia</a>
+    <a href="365-dni-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dni zabavy</a>
+    <a href="projekty.html" data-nav="projekty" onclick="closeMobile()">Projekty MZ</a>
+    <a href="kontakt.html" data-nav="kontakt" onclick="closeMobile()">Kontakt</a>
+    <a href="navrhni-si-akciu.html" class="mobile-nav-cta" data-nav="navrhni-akciu" onclick="closeMobile()">Navrhni si akciu</a>
+  </div>
+
+  <main class="page-shell">
+    <a href="projekty.html" class="project-back-link">&larr; Spat na Projekty MZ</a>
+
+    <!-- HERO SEKCIA -->
+    <section class="project-detail-hero">
+      <div class="project-detail-hero__grid">
+        <div class="project-detail-hero__copy">
+          <div class="project-detail-badge">Pripravujeme</div>
+          <div class="project-detail-kicker">Original MZ projekt</div>
+          <h1 class="project-detail-title">MZ LOVE</h1>
+          <p class="project-detail-headline">Zoznamka nazivo - ludia, emocia a atmosfera pod vedenim MZ.</p>
+          <p class="project-detail-copy">MZ LOVE je pripravovany format, ktory chce spojit ludi v realnom priestore, s prirodzenou energiou, prijemnym vedenim a atmosferou, v ktorej sa dobre citi kazdy, kto pride.</p>
+          <div class="project-detail-actions">
+            <a href="kontakt.html" class="btn-primary">Zistit viac</a>
+            <a href="navrhni-si-akciu.html" class="btn-ghost">Navrhnut spolupracu</a>
+          </div>
+        </div>
+        <div class="project-detail-visual">
+          <div class="project-detail-visual__icon">💜</div>
+          <div>
+            <div class="project-detail-visual__label">Ludia. Emocia. Atmosfera.</div>
+            <p class="project-detail-visual__meta">Priestor na buduci teaser, promo video, foto a hlavne komunikaicne materialy projektu.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="project-sections">
+      <!-- O PROJEKTE -->
+      <section class="project-section">
+        <div class="project-section__eyebrow">O projekte</div>
+        <h2 class="project-section__title">Co je MZ LOVE</h2>
+        <p class="project-section__copy">MZ LOVE je projekt postaveny na osobnom zazitku a na tom, ze skutocna atmosfera sa tvori medzi ludmi. Nejde len o stretnutie, ale o citlivo vedenu zabavu, v ktorej ma kazdy sancu byt sam sebou a zazit prijemny vecer.</p>
+      </section>
+
+      <!-- PRE KOHO JE PROJEKT -->
+      <section class="project-section">
+        <div class="project-section__eyebrow">Pre koho je projekt</div>
+        <h2 class="project-section__title">Komu je MZ LOVE urceny</h2>
+        <div class="project-section__grid">
+          <article class="project-info-card">
+            <div class="project-info-card__label">Jednotlivci</div>
+            <h3 class="project-info-card__title">Pre ludi, co sa chcu zoznamit nazivo</h3>
+            <p class="project-info-card__copy">Format pre tych, ktori chcu realny kontakt, nie len online priestor.</p>
+          </article>
+          <article class="project-info-card">
+            <div class="project-info-card__label">Zazitok</div>
+            <h3 class="project-info-card__title">Pre tych, co hladaju atmosferu</h3>
+            <p class="project-info-card__copy">Dolezita je energia vecera, prijemne vedenie a bezpecny pocit pre hosti.</p>
+          </article>
+          <article class="project-info-card">
+            <div class="project-info-card__label">Partneri</div>
+            <h3 class="project-info-card__title">Pre buduce spoluprace</h3>
+            <p class="project-info-card__copy">Projekt je pripraveny na rozvoj, partnerov a buduce eventove prepojenia.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- CO PROJEKT PONUKA -->
+      <section class="project-section">
+        <div class="project-section__eyebrow">Co projekt ponuka</div>
+        <h2 class="project-section__title">Vyhody, obsah a format</h2>
+        <div class="project-feature-list">
+          <article class="project-feature">
+            <div class="project-feature__index">01</div>
+            <h3 class="project-feature__title">Moderovany priebeh</h3>
+            <p class="project-feature__copy">Atmosfera nevznika nahodou. Projekt ma mat jasne vedenie a prirodzenu dynamiku.</p>
+          </article>
+          <article class="project-feature">
+            <div class="project-feature__index">02</div>
+            <h3 class="project-feature__title">Silny emotional vibe</h3>
+            <p class="project-feature__copy">Dolezity je pocit, emocia a prijemny flow vecera od zaciatku az po koniec.</p>
+          </article>
+          <article class="project-feature">
+            <div class="project-feature__index">03</div>
+            <h3 class="project-feature__title">Format s potencialom rastu</h3>
+            <p class="project-feature__copy">Pripraveny na rozsirenie o dalsie mesta, terminy, partnerov aj komunikaciu.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- GALERIA / VIZUAL -->
+      <section class="project-section">
+        <div class="project-section__eyebrow">Galeria a vizual</div>
+        <h2 class="project-section__title">Priestor na teaser, foto a promo komunikaciu</h2>
+        <div class="project-visual-grid">
+          <article class="project-visual-card project-visual-card--wide">
+            <div class="project-visual-card__label">Hero vizual</div>
+            <h3 class="project-visual-card__title">Hlavny teaser projektu</h3>
+            <p class="project-visual-card__copy">Priestor na buduci key visual, promo video alebo hlavnu galerijnu fotografiu projektu.</p>
+          </article>
+          <article class="project-visual-card">
+            <div class="project-visual-card__label">Atmosfera</div>
+            <h3 class="project-visual-card__title">Ludia a emocia</h3>
+            <p class="project-visual-card__copy">Miesto pre vizualy, ktore ukazu atmosferu a charakter projektu.</p>
+          </article>
+          <article class="project-visual-card">
+            <div class="project-visual-card__label">Promo obsah</div>
+            <h3 class="project-visual-card__title">Social a video</h3>
+            <p class="project-visual-card__copy">Priestor na reels, promo obrazky a dalsie vystupy do komunikacie.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- STAV PROJEKTU / DOSTUPNOST -->
+      <section class="project-section">
+        <div class="project-section__eyebrow">Stav a dostupnost</div>
+        <h2 class="project-section__title">Aktualny stav projektu</h2>
+        <div class="project-status-grid">
+          <article class="project-status-card">
+            <div class="project-status-card__badge">Pripravujeme</div>
+            <h3 class="project-status-card__title">Projekt je vo vyvoji</h3>
+            <p class="project-status-card__copy">Format sa aktualne pripravuje a bude sa doplnat o dalsie detaily, terminy a spustenie.</p>
+          </article>
+          <article class="project-status-card">
+            <h3 class="project-status-card__title">Terminy</h3>
+            <p class="project-status-card__copy">Sekcia pripravena na buduce mesta, datumy, kapacity a registracne info.</p>
+          </article>
+          <article class="project-status-card">
+            <h3 class="project-status-card__title">Spoluprace</h3>
+            <p class="project-status-card__copy">Priestor na partnerov, media a buduce komunikacne prepojenia projektu.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- CTA SEKCIA -->
+    <section class="project-cta-band">
+      <div class="project-cta-band__copy">
+        <h3>Chcete vediet, ked sa MZ LOVE spusti?</h3>
+        <p>Napiste nam a radi vas informujeme o novinkach, stave projektu alebo moznostiach buducej spoluprace.</p>
+      </div>
+      <div class="project-cta-band__actions">
+        <a href="kontakt.html" class="btn-primary">Kontaktovat nas</a>
+        <a href="projekty.html" class="btn-ghost">Spat na projekty</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">MAJSTRI ZABAVY</div>
+    <div class="footer-copy">&copy; 2026 MAJSTRI ZABAVY</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Domov</a></li>
+      <li><a href="projekty.html">Projekty MZ</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Majstri Zabavy | MZ AKADEMIA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/projekty.css">
+</head>
+<body class="project-page project-page--akademia">
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo" data-nav="home">MAJSTRI ZABAVY</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Domov</a></li>
+      <li><a href="svet-zabavy.html" data-nav="orbit-section">Svet Zabavy</a></li>
+      <li><a href="inspiracia.html" data-nav="inspiracia">Inspiracia</a></li>
+      <li><a href="365-dni-zabavy.html" data-nav="rok">365 dni zabavy</a></li>
+      <li><a href="projekty.html" data-nav="projekty">Projekty MZ</a></li>
+      <li><a href="kontakt.html" data-nav="kontakt">Kontakt</a></li>
+      <li class="nav-cta-item"><a href="navrhni-si-akciu.html" class="nav-cta" data-nav="navrhni-akciu">Navrhni si akciu</a></li>
+    </ul>
+    <div class="nav-ham" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" data-nav="home" onclick="closeMobile()">Domov</a>
+    <a href="svet-zabavy.html" data-nav="orbit-section" onclick="closeMobile()">Svet Zabavy</a>
+    <a href="inspiracia.html" data-nav="inspiracia" onclick="closeMobile()">Inspiracia</a>
+    <a href="365-dni-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dni zabavy</a>
+    <a href="projekty.html" data-nav="projekty" onclick="closeMobile()">Projekty MZ</a>
+    <a href="kontakt.html" data-nav="kontakt" onclick="closeMobile()">Kontakt</a>
+    <a href="navrhni-si-akciu.html" class="mobile-nav-cta" data-nav="navrhni-akciu" onclick="closeMobile()">Navrhni si akciu</a>
+  </div>
+
+  <main class="page-shell">
+    <a href="projekty.html" class="project-back-link">&larr; Spat na Projekty MZ</a>
+
+    <!-- HERO SEKCIA -->
+    <section class="project-detail-hero">
+      <div class="project-detail-hero__grid">
+        <div class="project-detail-hero__copy">
+          <div class="project-detail-kicker">Vzdelavaci MZ projekt</div>
+          <h1 class="project-detail-title">MZ AKADEMIA</h1>
+          <p class="project-detail-headline">Skolenia animatorov a ludi, ktori chcu tvorit zabavu.</p>
+          <p class="project-detail-copy">MZ AKADEMIA je priestor pre rozvoj ludi, ktori sa chcu ucit, ako tvorit zazitok, viest skupinu a pracovat so zabavou profesionalne aj srdcom. Projekt je pripraveny ako dlhodobo rastuci vzdelavaci format.</p>
+          <div class="project-detail-actions">
+            <a href="kontakt.html" class="btn-primary">Zistit viac</a>
+            <a href="navrhni-si-akciu.html" class="btn-ghost">Navrhnut spolupracu</a>
+          </div>
+        </div>
+        <div class="project-detail-visual">
+          <div class="project-detail-visual__icon">🎓</div>
+          <div>
+            <div class="project-detail-visual__label">Know-how. Ludia. Rast.</div>
+            <p class="project-detail-visual__meta">Priestor na buduci key visual akademie, ukazky skoleni a promo materialy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="project-sections">
+      <!-- O PROJEKTE -->
+      <section class="project-section">
+        <div class="project-section__eyebrow">O projekte</div>
+        <h2 class="project-section__title">Co je MZ AKADEMIA</h2>
+        <p class="project-section__copy">MZ AKADEMIA je projekt, ktory ma prepajat prakticke skusenosti, vedenie ludi a tvorbu zazitku do jedneho uceleneho vzdelavacieho formatu. Je to miesto, kde sa ma profesionalita stretavat s realnou eventovou praxou.</p>
+      </section>
+
+      <!-- PRE KOHO JE PROJEKT -->
+      <section class="project-section">
+        <div class="project-section__eyebrow">Pre koho je projekt</div>
+        <h2 class="project-section__title">Komu je urceny</h2>
+        <div class="project-section__grid">
+          <article class="project-info-card">
+            <div class="project-info-card__label">Animatori</div>
+            <h3 class="project-info-card__title">Pre ludi, co chcu rast v praxi</h3>
+            <p class="project-info-card__copy">Projekt je urceny tym, ktori sa chcu naucit tvorit zabavu profesionalne a sebavedomo.</p>
+          </article>
+          <article class="project-info-card">
+            <div class="project-info-card__label">Eventovi ludia</div>
+            <h3 class="project-info-card__title">Pre tych, co chcu vediet viac</h3>
+            <p class="project-info-card__copy">Obsah sa da smerovat na vedenie programu, pracu s ludmi a eventovu prax.</p>
+          </article>
+          <article class="project-info-card">
+            <div class="project-info-card__label">Znacky a partneri</div>
+            <h3 class="project-info-card__title">Pre buduce vzdelavacie prepojenia</h3>
+            <p class="project-info-card__copy">Priestor na certifikacne, partnerske alebo interne firemne formaty.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- CO PROJEKT PONUKA -->
+      <section class="project-section">
+        <div class="project-section__eyebrow">Co projekt ponuka</div>
+        <h2 class="project-section__title">Obsah, benefity a format</h2>
+        <div class="project-feature-list">
+          <article class="project-feature">
+            <div class="project-feature__index">01</div>
+            <h3 class="project-feature__title">Prakticke skolenia</h3>
+            <p class="project-feature__copy">Obsah pripravovany tak, aby sa dal vyuzit v realnej praxi a nie len v teorii.</p>
+          </article>
+          <article class="project-feature">
+            <div class="project-feature__index">02</div>
+            <h3 class="project-feature__title">Vedenie ludi</h3>
+            <p class="project-feature__copy">Dolezity bude aj rozvoj komunikacie, prirodzeneho vedenia a eventoveho mindsetu.</p>
+          </article>
+          <article class="project-feature">
+            <div class="project-feature__index">03</div>
+            <h3 class="project-feature__title">Rastuci format</h3>
+            <p class="project-feature__copy">Priestor na buduce workshopy, seria modulov, certifikacie aj dalsie obsahove vetvy.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- GALERIA / VIZUAL -->
+      <section class="project-section">
+        <div class="project-section__eyebrow">Galeria a vizual</div>
+        <h2 class="project-section__title">Priestor na vizualy zo skoleni a promo materialy</h2>
+        <div class="project-visual-grid">
+          <article class="project-visual-card project-visual-card--wide">
+            <div class="project-visual-card__label">Hlavny vizual</div>
+            <h3 class="project-visual-card__title">Skolenie, workshop alebo teaser</h3>
+            <p class="project-visual-card__copy">Miesto pre buduce video, foto z treningov alebo hlavny komunikacny vizual.</p>
+          </article>
+          <article class="project-visual-card">
+            <div class="project-visual-card__label">Obsah</div>
+            <h3 class="project-visual-card__title">Moduly a temy</h3>
+            <p class="project-visual-card__copy">Priestor na ukazky tem, materialov a obsahu projektu.</p>
+          </article>
+          <article class="project-visual-card">
+            <div class="project-visual-card__label">Ludia</div>
+            <h3 class="project-visual-card__title">Tim a ucastnici</h3>
+            <p class="project-visual-card__copy">Vizualy, ktore ukazu energiu skoleni a ludi, ktori za projektom stoja.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- STAV PROJEKTU / DOSTUPNOST -->
+      <section class="project-section">
+        <div class="project-section__eyebrow">Stav a dostupnost</div>
+        <h2 class="project-section__title">Priestor na terminy a moduly</h2>
+        <div class="project-status-grid">
+          <article class="project-status-card">
+            <h3 class="project-status-card__title">Moduly</h3>
+            <p class="project-status-card__copy">Pripraveny priestor na buduce vypisanie skoleni, modulov a rozsahu obsahu.</p>
+          </article>
+          <article class="project-status-card">
+            <h3 class="project-status-card__title">Terminy</h3>
+            <p class="project-status-card__copy">Sekcia pripravena na datumy, kapacity a registracne info.</p>
+          </article>
+          <article class="project-status-card">
+            <h3 class="project-status-card__title">Dostupnost</h3>
+            <p class="project-status-card__copy">Priestor na buduce info o otvorenych kurzoch alebo internych skoleniach.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- CTA SEKCIA -->
+    <section class="project-cta-band">
+      <div class="project-cta-band__copy">
+        <h3>Chcete vediet viac o MZ AKADEMII?</h3>
+        <p>Ozvite sa nam a pripravime vam viac informacii o smere projektu, obsahu alebo moznostiach spoluprace.</p>
+      </div>
+      <div class="project-cta-band__actions">
+        <a href="kontakt.html" class="btn-primary">Kontaktovat nas</a>
+        <a href="projekty.html" class="btn-ghost">Spat na projekty</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">MAJSTRI ZABAVY</div>
+    <div class="footer-copy">&copy; 2026 MAJSTRI ZABAVY</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Domov</a></li>
+      <li><a href="projekty.html">Projekty MZ</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

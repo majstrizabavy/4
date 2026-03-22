@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Majstri Zabavy | Rok Plny Zabavy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo" data-nav="home">MAJSTRI ZABAVY</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Domov</a></li>
+      <li><a href="svet-zabavy.html" data-nav="orbit-section">Svet Zabavy</a></li>
+      <li><a href="inspiracia.html" data-nav="inspiracia">Inspiracia</a></li>
+      <li><a href="365-dni-zabavy.html" data-nav="rok">365 dn&iacute; z&aacute;bavy</a></li>
+      <li><a href="projekty.html" data-nav="projekty">Projekty MZ</a></li>
+      <li><a href="kontakt.html" data-nav="kontakt">Kontakt</a></li>
+      <li class="nav-cta-item"><a href="navrhni-si-akciu.html" class="nav-cta" data-nav="navrhni-akciu">Navrhni si akciu</a></li>
+    </ul>
+    <div class="nav-ham" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" data-nav="home" onclick="closeMobile()">Domov</a>
+    <a href="svet-zabavy.html" data-nav="orbit-section" onclick="closeMobile()">Svet Zabavy</a>
+    <a href="inspiracia.html" data-nav="inspiracia" onclick="closeMobile()">Inspiracia</a>
+    <a href="365-dni-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dn&iacute; z&aacute;bavy</a>
+    <a href="projekty.html" data-nav="projekty" onclick="closeMobile()">Projekty MZ</a>
+    <a href="kontakt.html" data-nav="kontakt" onclick="closeMobile()">Kontakt</a>
+    <a href="navrhni-si-akciu.html" class="mobile-nav-cta" data-nav="navrhni-akciu" onclick="closeMobile()">Navrhni si akciu</a>
+  </div>
+
+  <main class="page-shell">
+    <section id="rok">
+      <div class="section-header reveal">
+        <div class="section-label-orbit">// PLANOVAC ZABAVY //</div>
+        <h2 class="section-title">ROK PLNY ZABAVY</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="year-planner reveal">
+        <!-- PREPINAC REZIMOV KALENDARA -->
+        <div class="inspiration-filter-bar year-planner__switch" data-year-mode-group>
+          <button type="button" class="inspiration-filter active" data-year-mode="custom">Napl&aacute;nuj si akciu</button>
+          <button type="button" class="inspiration-filter" data-year-mode="public">Kam za zabavou</button>
+        </div>
+
+        <!-- REZIM 1: PRE TVOJU AKCIU -->
+        <!-- Obsah mesiacov sa plni cez js/365-dni-zabavy.js z bloku yearPlannerData.custom -->
+        <section class="year-mode-panel" data-year-mode-panel="custom">
+          <div class="year-mode-head">
+            <div>
+              <div class="year-mode-kicker">Chce&scaron; &iacute;s&#357; za z&aacute;bavou alebo ju prinies&#357; k sebe?</div>
+              <h3 class="year-mode-title">Vyber si alebo si ju nechaj pripravi&#357;.</h3>
+            </div>
+          </div>
+
+          <!-- GRID MESIACOV PRE TVOJU AKCIU -->
+          <div class="planner-grid" id="yearGridCustom"></div>
+
+          <div class="year-mode-cta" id="yearPlannerContact">
+            <a href="svet-zabavy.html" class="btn-ghost">Otvorit Svet Zabavy</a>
+            <a href="kontakt.html" class="btn-primary">Nezavazne objednat</a>
+          </div>
+        </section>
+
+        <!-- REZIM 2: KAM ZA ZABAVOU -->
+        <!-- Verejne akcie su oddelene v samostatnych suboroch js/kam-za-zabavou-data.js a js/kam-za-zabavou.js -->
+        <section class="year-mode-panel is-hidden" data-year-mode-panel="public">
+          <div class="year-mode-head">
+            <div>
+              <div class="year-mode-kicker">Vyber si mesiac a otvor konkretne akcie</div>
+              <h3 class="year-mode-title">Najprv mesiac, potom akcia a nakoniec detail s plagatom.</h3>
+              <p class="year-mode-text">Kazda akcia ma vlastny detail s nazvom, miestom, datumom, priestorom pre plagat a moznostou zdielania.</p>
+            </div>
+            <div class="year-mode-note">Tento rezim je orientovany na verejnost a na aktualne akcie.</div>
+          </div>
+
+          <div class="event-browser">
+            <div class="event-browser__controls">
+              <div class="event-browser__filter-shell">
+                <div class="event-browser__filter-label">Filtruj podla mesta</div>
+                <div class="event-browser__cities" id="publicCityFilter"></div>
+              </div>
+
+              <div class="event-browser__months" id="publicMonthGrid"></div>
+            </div>
+
+            <div class="event-browser__list-shell">
+              <div class="event-browser__summary">
+                <div class="event-browser__eyebrow" id="publicEventMonthLabel">Mesiac</div>
+                <h4 class="event-browser__title" id="publicEventListTitle">Akcie</h4>
+              </div>
+              <div class="event-browser__list" id="publicEventList"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">MAJSTRI ZABAVY</div>
+    <div class="footer-copy">&copy; 2026 MAJSTRI ZABAVY</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Domov</a></li>
+      <li><a href="inspiracia.html">Inspiracia</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </footer>
+
+  <div class="event-modal" id="eventModal" aria-hidden="true">
+    <div class="event-modal__backdrop" data-event-close></div>
+    <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="eventModalTitle">
+      <button type="button" class="event-modal__close" data-event-close aria-label="Zavriet detail akcie">&times;</button>
+      <div class="event-modal__content">
+        <h3 class="event-modal__title" id="eventModalTitle">Akcia</h3>
+        <p class="event-modal__meta" id="eventModalMeta">Datum a miesto</p>
+
+        <div class="event-modal__info-block">
+          <div class="event-modal__label">Viac info</div>
+          <a class="event-modal__poster is-placeholder" id="eventModalPoster" href="#" target="_blank" rel="noreferrer">
+            <img id="eventModalPosterImage" alt="" hidden>
+            <div class="event-modal__poster-fallback" id="eventModalPosterFallback">Sem neskor doplnis oficialny plagat akcie.</div>
+          </a>
+        </div>
+
+        <div class="event-modal__actions">
+          <a class="event-modal__action" id="eventModalMoreInfo" href="#" target="_blank" rel="noreferrer">Viac info</a>
+          <button type="button" class="event-modal__action event-modal__action--primary" id="eventModalShare">Zdielat</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/365-dni-zabavy.js"></script>
+  <script src="js/kam-za-zabavou-data.js"></script>
+  <script src="js/kam-za-zabavou.js"></script>
+</body>
+</html>

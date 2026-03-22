@@ -4,7 +4,7 @@ const pageRoutes = {
   home: 'index.html',
   'orbit-section': 'svet-zabavy.html',
   inspiracia: 'inspiracia.html',
-  rok: 'rok-plny-zabavy.html',
+  rok: '365-dni-zabavy.html',
   projekty: 'projekty.html',
   'navrhni-akciu': 'navrhni-si-akciu.html',
   kontakt: 'kontakt.html'
@@ -228,26 +228,6 @@ document.querySelectorAll('[data-inspiration-filter-group]').forEach((group) => 
       sections.forEach((section) => {
         const matches = filter === 'all' || section.dataset.inspirationSection === filter;
         section.classList.toggle('is-hidden', !matches);
-      });
-    });
-  });
-});
-
-// Jednoduchy filter karticiek v sekcii "Kam za zabavou" podla vybraneho mesta.
-document.querySelectorAll('[data-city-filter-group]').forEach((group) => {
-  const buttons = group.querySelectorAll('[data-city-filter]');
-  const cards = document.querySelectorAll('[data-city-card]');
-
-  buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const filter = button.dataset.cityFilter;
-
-      buttons.forEach((item) => item.classList.remove('active'));
-      button.classList.add('active');
-
-      cards.forEach((card) => {
-        const matches = filter === 'all' || card.dataset.city === filter;
-        card.classList.toggle('is-hidden', !matches);
       });
     });
   });
