@@ -1,4 +1,5 @@
 const publicCityFilter = document.getElementById('publicCityFilter');
+const publicCitySelect = document.getElementById('publicCitySelect');
 const publicMonthGrid = document.getElementById('publicMonthGrid');
 const publicEventList = document.getElementById('publicEventList');
 const publicEventListShell = document.querySelector('.event-browser__list-shell');
@@ -93,17 +94,23 @@ function scrollPublicEventsIntoView() {
 }
 
 function renderPublicCities() {
-  if (!publicCityFilter) return;
+  if (publicCityFilter) {
+    publicCityFilter.innerHTML = publicEventCities.map((city) => `
+      <button
+        type="button"
+        class="event-city-filter${city.key === activePublicCity ? ' is-active' : ''}"
+        data-public-city="${city.key}"
+      >
+        ${city.name}
+      </button>
+    `).join('');
+  }
 
-  publicCityFilter.innerHTML = publicEventCities.map((city) => `
-    <button
-      type="button"
-      class="event-city-filter${city.key === activePublicCity ? ' is-active' : ''}"
-      data-public-city="${city.key}"
-    >
-      ${city.name}
-    </button>
-  `).join('');
+  if (publicCitySelect) {
+    publicCitySelect.innerHTML = publicEventCities.map((city) => `
+      <option value="${city.key}"${city.key === activePublicCity ? ' selected' : ''}>${city.name}</option>
+    `).join('');
+  }
 }
 
 function renderPublicMonths() {
@@ -306,7 +313,7 @@ async function sharePublicEvent(eventId) {
 }
 
 function initPublicEventBrowser() {
-  if (!publicMonthGrid || !publicEventList || !publicCityFilter) return;
+  if (!publicMonthGrid || !publicEventList || !publicCityFilter || !publicCitySelect) return;
 
   const requestedParams = new URLSearchParams(window.location.search);
   const requestedEventId = requestedParams.get('event');
@@ -330,6 +337,11 @@ function initPublicEventBrowser() {
 
     closeEventModal({ syncUrl: false });
     setActivePublicCity(cityButton.dataset.publicCity);
+  });
+
+  publicCitySelect.addEventListener('change', () => {
+    closeEventModal({ syncUrl: false });
+    setActivePublicCity(publicCitySelect.value);
   });
 
   publicMonthGrid.addEventListener('click', (event) => {

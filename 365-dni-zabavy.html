@@ -76,15 +76,16 @@
             <div>
               <div class="year-mode-kicker">Vyber si mesiac a otvor konkretne akcie</div>
               <h3 class="year-mode-title">Najprv mesiac, potom akcia a nakoniec detail s plagatom.</h3>
-              <p class="year-mode-text">Kazda akcia ma vlastny detail s nazvom, miestom, datumom, priestorom pre plagat a moznostou zdielania.</p>
             </div>
-            <div class="year-mode-note">Tento rezim je orientovany na verejnost a na aktualne akcie.</div>
           </div>
 
           <div class="event-browser">
             <div class="event-browser__controls">
               <div class="event-browser__filter-shell">
-                <div class="event-browser__filter-label">Filtruj podla mesta</div>
+                <div class="event-browser__filter-label">Vyber si lokalitu</div>
+                <div class="event-browser__select-shell">
+                  <select class="event-browser__select" id="publicCitySelect" aria-label="Vyber si lokalitu"></select>
+                </div>
                 <div class="event-browser__cities" id="publicCityFilter"></div>
               </div>
 
