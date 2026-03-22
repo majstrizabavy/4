@@ -61,6 +61,36 @@
     </div>
   </section>
 
+  <section id="orbit-section">
+    <div class="section-header reveal">
+      <div class="section-label-orbit">// MZ GALAXIA //</div>
+      <h2 class="section-title">Objav svet Majstrov Zabavy</h2>
+      <div class="section-line"></div>
+      <p class="orbit-section__intro">Vyber si, kam sa chces ponorit.</p>
+    </div>
+
+    <div class="orbit-container" id="orbitContainer">
+      <div class="orbit-ring orbit-ring-1"></div>
+      <div class="orbit-ring orbit-ring-2"></div>
+      <div class="orbit-ring orbit-ring-3"></div>
+      <div class="orbit-core" id="orbitCore">
+        <div class="orbit-core-glow"></div>
+        <div class="core-logo" id="coreLogo">MZ</div>
+        <div class="core-info" id="coreInfo">
+          <div class="core-desc" id="coreDesc"></div>
+          <button class="core-cta" id="coreCta" onclick="navigateTo('kontakt')">OTVORIT SEKCIU</button>
+        </div>
+        <div class="activate-btn-wrap">
+          <button class="activate-navrh-btn" id="activateNavrhBtn" onclick="activateNavrhAkcie()">
+            <span class="btn-brain-dot"></span>
+            NAVRHNI SI AKCIU
+          </button>
+        </div>
+      </div>
+      <div class="planets-wrapper" id="planetsWrapper"></div>
+    </div>
+  </section>
+
   <div class="stats-bar reveal">
     <div class="stat-item"><div class="stat-number">&infin;</div><div class="stat-label">Nekompromisna zabava</div></div>
     <div class="stat-item"><div class="stat-number">1</div><div class="stat-label">Prva volba, ked sa nieco chysta</div></div>
@@ -237,6 +267,7 @@
     </ul>
   </footer>
 
+  <script src="js/orbit.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

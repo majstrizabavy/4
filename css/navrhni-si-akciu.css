@@ -1664,17 +1664,17 @@
 }
 
 .mz-core__btn-wrap {
-  bottom: -28px;
+  bottom: -40px;
 }
 
 .mz-activate-btn {
   gap: 10px;
-  padding: 12px 22px;
+  padding: 10px 18px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(123, 77, 255, 0.34);
   border-radius: 999px;
   font-family: 'Manrope', sans-serif;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: #ffffff;

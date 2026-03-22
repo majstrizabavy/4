@@ -36,34 +36,110 @@
     <a href="navrhni-si-akciu.html" class="mobile-nav-cta" data-nav="navrhni-akciu" onclick="closeMobile()">Navrhni si akciu</a>
   </div>
 
-  <main class="page-shell">
-    <section id="orbit-section">
-      <div class="section-header reveal">
-        <div class="section-label-orbit">// INTERAKTIVNA MAPA //</div>
+  <main class="page-shell world-shell">
+    <section class="world-intro reveal">
+      <div class="section-header world-intro__header">
+        <div class="section-label-orbit">// CO SI VIES OBJEDNAT //</div>
         <h2 class="section-title">SVET ZABAVY</h2>
         <div class="section-line"></div>
-        <p style="color:var(--grey);font-size:15px;margin-top:16px;letter-spacing:1px;">Prejdi mysou na planetu a objav svoju zonu.</p>
       </div>
 
-      <div class="orbit-container" id="orbitContainer">
-        <div class="orbit-ring orbit-ring-1"></div>
-        <div class="orbit-ring orbit-ring-2"></div>
-        <div class="orbit-ring orbit-ring-3"></div>
-        <div class="orbit-core" id="orbitCore">
-          <div class="orbit-core-glow"></div>
-          <div class="core-logo" id="coreLogo">MZ</div>
-          <div class="core-info" id="coreInfo">
-            <div class="core-desc" id="coreDesc"></div>
-            <button class="core-cta" id="coreCta" onclick="navigateTo('kontakt')">PREJST NA KONTAKT</button>
+      <div class="world-intro__grid">
+        <div class="world-intro__copy">
+          <h3 class="world-intro__title">Programy, atrakcie a eventove formaty, ktore vieme priniest priamo na tvoju akciu.</h3>
+          <p class="world-intro__text">Na tomto mieste postupne ukazeme, co vsetko si vies objednat pod znackou Majstri Zabavy. Zatial sme pripravili zakladne smery, aby stranka neostala prazdna a vedela hned ukazat rozsah ponuky.</p>
+
+          <div class="world-intro__chips">
+            <span class="world-chip">Moderovanie</span>
+            <span class="world-chip">Animatori</span>
+            <span class="world-chip">Sutaze</span>
+            <span class="world-chip">Hudba a show</span>
+            <span class="world-chip">Rodinne zony</span>
+            <span class="world-chip">Kompletna produkcia</span>
           </div>
-          <div class="activate-btn-wrap">
-            <button class="activate-navrh-btn" id="activateNavrhBtn" onclick="activateNavrhAkcie()">
-              <span class="btn-brain-dot"></span>
-              NAVRHNI SI AKCIU
-            </button>
+
+          <div class="world-intro__actions">
+            <a href="navrhni-si-akciu.html" class="btn-primary">Navrhni si akciu</a>
+            <a href="kontakt.html" class="btn-ghost">Ozvi sa nam</a>
           </div>
         </div>
-        <div class="planets-wrapper" id="planetsWrapper"></div>
+
+        <div class="world-intro__panel">
+          <div class="world-panel__eyebrow">Najcastejsie objednavky</div>
+          <div class="world-panel__headline">Od malej rodinnej oslavy az po vacsi stage program.</div>
+          <div class="world-panel__list">
+            <div class="world-panel__item">
+              <div class="world-panel__item-title">Program na mieru</div>
+              <div class="world-panel__item-copy">Vyskladame ti program podla veku, typu akcie a energie publika.</div>
+            </div>
+            <div class="world-panel__item">
+              <div class="world-panel__item-title">Technika aj ludia</div>
+              <div class="world-panel__item-copy">Moderatori, animatori, stage support aj produkcne myslenie na jednom mieste.</div>
+            </div>
+            <div class="world-panel__item">
+              <div class="world-panel__item-title">Jednoduchy start</div>
+              <div class="world-panel__item-copy">Ked mas len napad, staci ho poslat a spolu z neho spravime realny event.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="world-offers reveal">
+      <div class="section-header world-offers__header">
+        <div class="section-label-orbit">// PONUKY A FORMATY //</div>
+        <h2 class="section-title">CO MOZEME PRINIEST NA AKCIU</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="world-offers__grid">
+        <article class="world-card world-card--violet">
+          <div class="world-card__eyebrow">Pre rodiny a deti</div>
+          <h3 class="world-card__title">Detske a rodinne akcie</h3>
+          <p class="world-card__text">Animatori, sutaze, mini show, diskoteka, rodinna atmosfera a program, ktory udrzi energiu pocas celeho dna.</p>
+        </article>
+
+        <article class="world-card world-card--cyan">
+          <div class="world-card__eyebrow">Pre firmy</div>
+          <h3 class="world-card__title">Firemne eventy</h3>
+          <p class="world-card__text">Moderovanie, teamova energia, vecerny program, aktivacie aj spolocna zazitkova cast pre hosti a tim.</p>
+        </article>
+
+        <article class="world-card world-card--pink">
+          <div class="world-card__eyebrow">Pre mesta a obce</div>
+          <h3 class="world-card__title">Obecne dni a podujatia</h3>
+          <p class="world-card__text">Dni obci, jarmoky, rodinne zony, stage program a sprievodne atrakcie, ktore vedia rozhybat priestor aj publikum.</p>
+        </article>
+
+        <article class="world-card world-card--dark">
+          <div class="world-card__eyebrow">Pre specialne terminy</div>
+          <h3 class="world-card__title">Tematicke eventy</h3>
+          <p class="world-card__text">Mikulas, Halloween, Vitaj leto, rozlucka s letom, sezonne koncepty a programy naladene na konkretny moment v roku.</p>
+        </article>
+
+        <article class="world-card world-card--violet-soft">
+          <div class="world-card__eyebrow">Pre sukromne oslavy</div>
+          <h3 class="world-card__title">Narodeniny a oslavy</h3>
+          <p class="world-card__text">Komorne aj vacsie oslavy s moderovanim, hudbou, zapojenim hosti a dramaturgiou, aby akcia mala spad aj plynulost.</p>
+        </article>
+
+        <article class="world-card world-card--cyan-soft">
+          <div class="world-card__eyebrow">Pre kompletne riesenie</div>
+          <h3 class="world-card__title">Program na kluc</h3>
+          <p class="world-card__text">Ak nechces skladat viac dodavatelov, vieme pripravit kompletne riesenie od napadu az po finalny zazitok na mieste.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-cta-band reveal">
+      <div class="home-cta-band__inner">
+        <div class="home-cta-band__eyebrow">Chces vediet viac?</div>
+        <h2 class="home-cta-band__title">Ak mas v hlave typ akcie, posli nam ho a doplnime k nemu spravny program.</h2>
+        <p class="home-cta-band__text">Tuto sekciu este budeme postupne rozsirovat o konkretnejsie ponuky, ale uz teraz mozes prejst rovno na navrh akcie alebo sa nam ozvat.</p>
+        <div class="home-cta-band__actions">
+          <a href="navrhni-si-akciu.html" class="btn-primary">Navrhni si akciu</a>
+          <a href="kontakt.html" class="btn-ghost">Kontaktovat tim</a>
+        </div>
       </div>
     </section>
   </main>
@@ -78,7 +154,6 @@
     </ul>
   </footer>
 
-  <script src="js/orbit.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
