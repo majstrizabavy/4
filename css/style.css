@@ -2621,6 +2621,39 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
     padding: 18px;
   }
   .orbit-container { width: 300px; height: 300px; }
+  .orbit-core {
+    width: 108px;
+    height: 108px;
+  }
+  .orbit-core-glow {
+    inset: -14px;
+  }
+  .core-logo {
+    font-size: 28px;
+  }
+  .orbit-container.planet-active .orbit-core {
+    width: 144px;
+    height: 144px;
+  }
+  .orbit-container.planet-active .core-logo {
+    font-size: 16px;
+  }
+  .activate-btn-wrap {
+    bottom: -50px;
+  }
+  .activate-navrh-btn {
+    gap: 6px;
+    padding: 7px 14px;
+    font-size: 8px;
+    letter-spacing: 1.7px;
+  }
+  .activate-navrh-btn::before {
+    inset: -3px;
+  }
+  .btn-brain-dot {
+    width: 6px;
+    height: 6px;
+  }
   .planner-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-bar { gap: 32px; flex-wrap: wrap; }
   #inspiracia, #projekty, #rok, #kontakt { padding: 60px 20px; }
