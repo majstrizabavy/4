@@ -2102,7 +2102,7 @@
 }
 
 .mz-thinking {
-  padding: 34px 28px;
+  padding: 20px 0 0;
 }
 
 .mz-thinking__dot {
@@ -2128,7 +2128,7 @@
 }
 
 .mz-result {
-  padding: 0 28px 28px;
+  padding: 20px 0 0;
 }
 
 .mz-result__label {

@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/navrhni-si-akciu.css">
+  <link rel="stylesheet" href="css/navrhni-si-akciu-v2.css">
 </head>
 <body>
   <div id="cursor"></div>
@@ -216,6 +217,127 @@
         </div>
       </div>
     </section>
+
+    <section class="mzv2-section">
+      <div class="mzv2-shell">
+        <div class="mzv2-head">
+          <div class="section-label-orbit">// NOVY NAVRH KALKULACKY //</div>
+          <h2 class="mzv2-title">Jednoduchsi vyber, 3 rychle ponuky</h2>
+        </div>
+
+        <div class="mzv2-card" id="mzv2-calculator">
+          <div class="mzv2-card__intro">
+            <div class="mzv2-card__title">Vyber, co chces riesit</div>
+          </div>
+
+          <div class="mzv2-flow">
+            <div class="mzv2-group">
+              <label class="mzv2-label">1. Co chces riesit?</label>
+              <div class="mzv2-intent-grid" id="mzv2-intent-grid">
+                <button type="button" class="mzv2-intent" data-intent="full">
+                  <span class="mzv2-intent__title">Kompletnu akciu</span>
+                  <span class="mzv2-intent__desc">Navrh + realizacia</span>
+                </button>
+                <button type="button" class="mzv2-intent" data-intent="program">
+                  <span class="mzv2-intent__title">Program na akciu</span>
+                  <span class="mzv2-intent__desc">Den deti, svadba, karneval</span>
+                </button>
+                <button type="button" class="mzv2-intent" data-intent="addons">
+                  <span class="mzv2-intent__title">Doplnky na akciu</span>
+                  <span class="mzv2-intent__desc">Maskoti, atrakcie, sladky kutik</span>
+                </button>
+                <button type="button" class="mzv2-intent" data-intent="custom">
+                  <span class="mzv2-intent__title">Mam vlastnu predstavu</span>
+                  <span class="mzv2-intent__desc">Napis svoj plan</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="mzv2-grid">
+              <div class="mzv2-field">
+                <label class="mzv2-label" for="mzv2-type">2. Upresni zadanie</label>
+                <select id="mzv2-type" class="mzv2-select">
+                  <option value="">Najprv vyber, co chces riesit</option>
+                </select>
+              </div>
+
+              <div class="mzv2-field">
+                <label class="mzv2-label" for="mzv2-location">Lokalita</label>
+                <select id="mzv2-location" class="mzv2-select">
+                  <option value="">Vyber kraj alebo region</option>
+                  <option value="ba">Bratislavsky kraj</option>
+                  <option value="tt">Trnavsky kraj</option>
+                  <option value="tn">Trenciansky kraj</option>
+                  <option value="nr">Nitriansky kraj</option>
+                  <option value="za">Zilinsky kraj</option>
+                  <option value="bb">Banskobystricky kraj</option>
+                  <option value="po">Presovsky kraj</option>
+                  <option value="ke">Kosicky kraj</option>
+                </select>
+              </div>
+
+              <div class="mzv2-field mzv2-field--full" id="mzv2-custom-wrap" hidden>
+                <label class="mzv2-label" for="mzv2-custom">Tvoj plan alebo predstava</label>
+                <textarea id="mzv2-custom" class="mzv2-textarea" rows="4" placeholder="Napis nam kratko, co chces pripravit a co je pre teba dolezite."></textarea>
+              </div>
+
+              <div class="mzv2-field">
+                <label class="mzv2-label" for="mzv2-guests">Pocet hosti</label>
+                <div class="mzv2-range-wrap">
+                  <div class="mzv2-range-top"><span id="mzv2-guests-value">50 osob</span></div>
+                  <input id="mzv2-guests" class="mzv2-range" type="range" min="10" max="3000" step="10" value="50">
+                </div>
+              </div>
+
+              <div class="mzv2-field">
+                <label class="mzv2-label" for="mzv2-budget">Orientacny rozpocet</label>
+                <div class="mzv2-range-wrap">
+                  <div class="mzv2-range-top">
+                    <span id="mzv2-budget-value">500 EUR</span>
+                    <span class="mzv2-range-pill" id="mzv2-budget-pill">Start</span>
+                  </div>
+                  <input id="mzv2-budget" class="mzv2-range" type="range" min="100" max="5000" step="50" value="500">
+                </div>
+              </div>
+
+              <div class="mzv2-field mzv2-field--full">
+                <label class="mzv2-label">Co od akcie ocakavas?</label>
+                <div class="mzv2-expect-grid" id="mzv2-expect-grid">
+                  <button type="button" class="mzv2-expect" data-expectation="practical">
+                    <span class="mzv2-expect__title">Prakticke riesenie</span>
+                    <span class="mzv2-expect__desc">Funkcne a rozumne</span>
+                  </button>
+                  <button type="button" class="mzv2-expect" data-expectation="balanced">
+                    <span class="mzv2-expect__title">Silny program</span>
+                    <span class="mzv2-expect__desc">Dobry dojem a energia</span>
+                  </button>
+                  <button type="button" class="mzv2-expect" data-expectation="wow">
+                    <span class="mzv2-expect__title">Wow efekt</span>
+                    <span class="mzv2-expect__desc">Vyrazna akcia bez kompromisov</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="mzv2-actions">
+              <button type="button" class="mzv2-generate" id="mzv2-generate">Ukaz 3 orientacne ponuky</button>
+              <div class="mzv2-error" id="mzv2-error">Vyber, co chces riesit, upresni zadanie a lokalitu.</div>
+            </div>
+
+            <div class="mzv2-result" id="mzv2-result" hidden>
+              <div class="mzv2-result__top">
+                <div>
+                  <div class="mzv2-result__eyebrow">3 odporucene smery</div>
+                  <h3 class="mzv2-result__title">3 orientacne ponuky</h3>
+                </div>
+                <div class="mzv2-result__summary" id="mzv2-summary"></div>
+              </div>
+              <div class="mzv2-offers" id="mzv2-offers"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -229,6 +351,7 @@
   </footer>
 
   <script src="js/navrhni-si-akciu.js"></script>
+  <script src="js/navrhni-si-akciu-v2.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
