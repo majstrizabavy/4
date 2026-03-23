@@ -1644,14 +1644,26 @@
   font-size: 30px;
 }
 
+.mz-core__meta {
+  margin-top: 3px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b9c5ff;
+  line-height: 1;
+}
+
 .mz-core__desc {
   display: block;
   opacity: 1;
   font-size: 10px;
   line-height: 1.45;
   letter-spacing: 0;
-  color: var(--mz-muted);
+  color: #ffffff;
   text-transform: none;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
 }
 
 .mz-orbit.mz-orbit--active .mz-core {
@@ -1661,6 +1673,10 @@
 
 .mz-orbit.mz-orbit--active .mz-core__logo {
   font-size: 16px;
+}
+
+.mz-orbit.mz-orbit--active .mz-core__meta {
+  font-size: 8px;
 }
 
 .mz-core__btn-wrap {
@@ -1699,19 +1715,26 @@
 }
 
 .mz-planet {
-  background: linear-gradient(180deg, rgba(18, 21, 30, 0.98), rgba(10, 12, 18, 0.96));
-  border: 1px solid rgba(123, 77, 255, 0.18);
-  box-shadow: 0 14px 28px rgba(5, 7, 13, 0.35);
+  background:
+    radial-gradient(circle at 30% 24%, rgba(255, 255, 255, 0.12), transparent 34%),
+    linear-gradient(180deg, color-mix(in srgb, var(--planet-color, #7b4dff) 18%, rgba(18, 21, 30, 0.98)), rgba(10, 12, 18, 0.96));
+  border: 1px solid color-mix(in srgb, var(--planet-color, #7b4dff) 42%, rgba(255, 255, 255, 0.08));
+  box-shadow:
+    0 14px 28px rgba(5, 7, 13, 0.35),
+    inset 0 0 22px color-mix(in srgb, var(--planet-color, #7b4dff) 16%, transparent);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .mz-planet__label {
   font-family: 'Manrope', sans-serif;
-  font-weight: 700;
-  color: #cfd5e4;
-  line-height: 1.25;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
   letter-spacing: 0;
   text-transform: none;
+  padding: 0 5px;
+  max-width: 100%;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
 }
 
 .mz-divider {

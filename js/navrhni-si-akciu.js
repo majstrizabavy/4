@@ -41,12 +41,12 @@
   if (!required) return;
 
   const orbitPlanets = [
-    { icon: '⚡', label: 'Eventy\nna kluc', desc: 'Kompletna produkcia podujati od A po Z.', color: '#7b4dff' },
-    { icon: '●', label: 'Program\nna mieru', desc: 'Atrakcie, show a program vyskladany pre vas.', color: '#4c8dff' },
-    { icon: '▲', label: 'Aktivne\nformaty', desc: 'Sport, pohyb a interaktivne zazitky pre hosti.', color: '#8e67ff' },
-    { icon: '♥', label: 'Socialne\nakcie', desc: 'Formaty, ktore spajaju ludi a tvoria atmosferu.', color: '#6d78ff' },
-    { icon: '✦', label: 'Afterparty\nriesenia', desc: 'Silny zaver eventu, ked chcete pridat energiu navyse.', color: '#9b7dff' },
-    { icon: '■', label: '365 dni\nzabavy', desc: 'Planovanie eventov a inspiracie pocas celeho roka.', color: '#5c8fff' }
+    { label: 'MZ\nKalendar', desc: 'Tvoja akcia moze byt sucastou nasho kalendara a ziskat pozornost este pred zaciatkom.', color: '#7b4dff' },
+    { label: 'Reels\npromo', desc: 'Po akcii vytvorime kratke video, ktore ukaze atmosferu a oslovi dalsich ludi.', color: '#4c8dff' },
+    { label: 'Video\npozvanka', desc: 'Pripravime putave video, ktore pritiahne ludi na tvoju akciu.', color: '#8e67ff' },
+    { label: 'Socialne\nsiete', desc: 'Tvoja akcia moze ziskat priestor na nasich kanaloch - Facebook, Instagram, TikTok aj YouTube.', color: '#6d78ff' },
+    { label: 'MZ\npodpora', desc: 'Pomahame ti s priebehom, komunikaciou aj celkovym dojmom, aby vsetko fungovalo.', color: '#9b7dff' },
+    { label: 'Garancia\nkvality', desc: 'Za vysledkom si stojime. Ked je akcia pod nasou taktovkou, musi dopadnut dobre.', color: '#5c8fff' }
   ];
 
   const state = {
@@ -503,8 +503,7 @@
     orbitGroup.innerHTML = '';
     const radius = isMobile() ? 105 : (isMedium() ? 148 : 193);
     const planetSize = isMobile() ? 52 : (isMedium() ? 60 : 68);
-    const iconSize = isMobile() ? '16px' : '20px';
-    const labelSize = isMobile() ? '5.5px' : '6.5px';
+    const labelSize = isMobile() ? '7px' : (isMedium() ? '7.6px' : '8.4px');
     let keyframes = '';
 
     orbitPlanets.forEach((planetData, index) => {
@@ -521,11 +520,8 @@
 
       const planet = document.createElement('div');
       planet.className = 'mz-planet';
-      planet.style.cssText = `width:${planetSize}px;height:${planetSize}px;`;
-      planet.innerHTML = [
-        `<div class="mz-planet__icon" style="font-size:${iconSize}">${planetData.icon}</div>`,
-        `<div class="mz-planet__label" style="font-size:${labelSize}">${planetData.label.split('\n').join('<br>')}</div>`
-      ].join('');
+      planet.style.cssText = `width:${planetSize}px;height:${planetSize}px;--planet-color:${planetData.color};`;
+      planet.innerHTML = `<div class="mz-planet__label" style="font-size:${labelSize}">${planetData.label.split('\n').join('<br>')}</div>`;
 
       const onPlanet = () => {
         orbitGroup.querySelectorAll('.mz-orbit-track').forEach((item) => {
@@ -538,7 +534,7 @@
         planet.style.zIndex = '30';
         elements.orbit.classList.add('mz-orbit--active');
         elements.coreDesc.textContent = planetData.desc;
-        elements.coreLogo.textContent = planetData.icon;
+        elements.coreLogo.textContent = 'MZ';
       };
 
       const offPlanet = () => {
