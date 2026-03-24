@@ -4,7 +4,7 @@
 
 const planets = [
   {
-    icon: 'MZ',
+    icon: '',
     core: 'MZ',
     label: 'SVET\nZABAVY',
     desc: 'Objednaj si akcie, atrakcie a sluzby pod jednou strechou.',
@@ -13,7 +13,7 @@ const planets = [
     color: '#7b2fff'
   },
   {
-    icon: 'MZ',
+    icon: '',
     core: 'MZ',
     label: 'INSPIRACIA',
     desc: 'Inspiruj sa trendmi, videami, galeriou a napadmi na nove akcie.',
@@ -22,7 +22,7 @@ const planets = [
     color: '#00d4ff'
   },
   {
-    icon: 'MZ',
+    icon: '',
     core: '365',
     label: '365 DNI',
     desc: 'Pozri si kalendar podujati a sezonnych napadov pocas celeho roka.',
@@ -31,7 +31,7 @@ const planets = [
     color: '#57b8ff'
   },
   {
-    icon: 'MZ',
+    icon: '',
     core: 'MZ',
     label: 'PROJEKTY',
     desc: 'Jedinecne formaty a vlastne projekty, ktore vznikaju pod nasou znackou.',
@@ -40,7 +40,7 @@ const planets = [
     color: '#bf7fff'
   },
   {
-    icon: 'MZ',
+    icon: '',
     core: '@',
     label: 'KONTAKT',
     desc: 'Ked mas predstavu, ozvi sa a prejdeme ju spolu bez zbytocnych obchadzok.',
@@ -49,7 +49,7 @@ const planets = [
     color: '#ff6bb5'
   },
   {
-    icon: 'MZ',
+    icon: '',
     core: '+',
     label: 'NAVRH\nAKCIE',
     desc: 'Ziskaj rychly navrh programu a cenu na mieru pre svoju akciu.',
@@ -165,8 +165,12 @@ function buildOrbit() {
       transform: translate(-50%, -50%);
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
     `;
+    const iconMarkup = planet.icon
+      ? `<div class="planet-icon" style="font-size:${iconSize}">${planet.icon}</div>`
+      : '';
+
     planetDiv.innerHTML = `
-      <div class="planet-icon" style="font-size:${iconSize}">${planet.icon}</div>
+      ${iconMarkup}
       <div class="planet-label" style="font-size:${labelSize}">${planet.label.replace('\n', '<br>')}</div>
     `;
 

@@ -41,11 +41,11 @@
   if (!required) return;
 
   const orbitPlanets = [
-    { label: 'MZ\nKalendar', desc: 'Tvoja akcia moze byt sucastou nasho kalendara a ziskat pozornost este pred zaciatkom.', color: '#7b4dff' },
+    { label: 'Kalendar', desc: 'Tvoja akcia moze byt sucastou nasho kalendara a ziskat pozornost este pred zaciatkom.', color: '#7b4dff' },
     { label: 'Reels\npromo', desc: 'Po akcii vytvorime kratke video, ktore ukaze atmosferu a oslovi dalsich ludi.', color: '#4c8dff' },
     { label: 'Video\npozvanka', desc: 'Pripravime putave video, ktore pritiahne ludi na tvoju akciu.', color: '#8e67ff' },
     { label: 'Socialne\nsiete', desc: 'Tvoja akcia moze ziskat priestor na nasich kanaloch - Facebook, Instagram, TikTok aj YouTube.', color: '#6d78ff' },
-    { label: 'MZ\npodpora', desc: 'Pomahame ti s priebehom, komunikaciou aj celkovym dojmom, aby vsetko fungovalo.', color: '#9b7dff' },
+    { label: 'Podpora', desc: 'Pomahame ti s priebehom, komunikaciou aj celkovym dojmom, aby vsetko fungovalo.', color: '#9b7dff' },
     { label: 'Garancia\nkvality', desc: 'Za vysledkom si stojime. Ked je akcia pod nasou taktovkou, musi dopadnut dobre.', color: '#5c8fff' }
   ];
 
