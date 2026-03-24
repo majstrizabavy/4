@@ -180,6 +180,7 @@ const plannerOfferData = {
 
 function createCustomMonthCard(item) {
   const hasPilotEvents = Array.isArray(item.pilotEvents) && item.pilotEvents.length;
+  const patternMarkup = hasPilotEvents ? '' : `<div class="month-card__pattern">${item.title}</div>`;
   const pilotEventsMarkup = hasPilotEvents
     ? `
       <div class="month-card__offer-label">Klikni na akciu:</div>
@@ -190,6 +191,7 @@ function createCustomMonthCard(item) {
           </button>
         `).join('')}
       </div>
+      <a href="navrhni-si-akciu.html" class="month-card__alt-link">Ina akcia</a>
     `
     : `
       <div class="month-card__offer-label">MZ odporucaju:</div>
@@ -201,7 +203,7 @@ function createCustomMonthCard(item) {
     <article class="month-card month-card--custom${hasPilotEvents ? ' month-card--pilot' : ''}">
       <div class="month-num">${item.number}</div>
       <div class="month-name">${item.name}</div>
-      <div class="month-card__pattern">${item.title}</div>
+      ${patternMarkup}
       <div class="month-card__divider" aria-hidden="true"></div>
       ${pilotEventsMarkup}
     </article>
