@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Majstri Zabavy | Navrhni si akciu</title>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/navrhni-si-akciu.css">
-  <link rel="stylesheet" href="css/navrhni-si-akciu-v2.css">
+  <link rel="stylesheet" href="css/style.css?v=20260324-jun-pilot-4">
+  <link rel="stylesheet" href="css/navrhni-si-akciu.css?v=20260324-jun-pilot-4">
+  <link rel="stylesheet" href="css/navrhni-si-akciu-v2.css?v=20260324-jun-pilot-4">
 </head>
 <body>
   <div id="cursor"></div>
@@ -339,6 +339,98 @@
         </div>
       </div>
     </section>
+
+    <section class="mz-followup-section" id="pilot-form">
+      <div class="mz-followup-shell">
+        <div class="mz-followup-head">
+          <div class="section-label-orbit">// DOPLN POSLEDNE DETAILY //</div>
+          <h2 class="mz-followup-title">Vybral si si program? Dokoncime finalnu ponuku na mieru.</h2>
+          <p class="mz-followup-text">Ak prichadzas z junskeho kalendara, tvoju volbu si zapamatame. Ty len doplnis posledne udaje a Majster Zabavy pripravi finalnu ponuku do 24 hodin.</p>
+        </div>
+
+        <div class="mz-followup-card">
+          <div class="mz-followup-summary" id="mz-followup-summary">
+            <div class="mz-followup-summary__visual" id="mz-followup-visual">
+              <img class="mz-followup-summary__image" id="mz-followup-image" alt="" hidden>
+            </div>
+            <div class="mz-followup-summary__eyebrow">Vybrany program</div>
+            <h3 class="mz-followup-summary__title" id="mz-followup-title">Zatial si si nic nevybral</h3>
+            <p class="mz-followup-summary__text" id="mz-followup-description">Pri kliknuti na program v junskom kalendari sem prenesieme nazov akcie, variant a orientacnu cenu.</p>
+            <div class="mz-followup-summary__chips" id="mz-followup-chips">
+              <span class="mz-followup-chip">JUN pilot</span>
+            </div>
+          </div>
+
+          <form class="mz-followup-form" id="mz-followup-form">
+            <div class="mz-followup-grid">
+              <div class="mz-followup-field">
+                <label class="mz-followup-label" for="mz-followup-date">Datum akcie</label>
+                <input class="mz-followup-input" id="mz-followup-date" name="event_date" type="date">
+              </div>
+
+              <div class="mz-followup-field">
+                <label class="mz-followup-label" for="mz-followup-address">Adresa akcie</label>
+                <input class="mz-followup-input" id="mz-followup-address" name="event_address" type="text" placeholder="Mesto, obec alebo presna adresa">
+              </div>
+
+              <div class="mz-followup-field">
+                <label class="mz-followup-label" for="mz-followup-guests">Pocet ludi cca</label>
+                <input class="mz-followup-input" id="mz-followup-guests" name="guest_count" type="number" min="1" placeholder="Napr. 80">
+              </div>
+
+              <div class="mz-followup-field">
+                <label class="mz-followup-label" for="mz-followup-audience">Pre koho je akcia</label>
+                <select class="mz-followup-select" id="mz-followup-audience" name="audience">
+                  <option value="">Vyber si moznost</option>
+                  <option value="rodina">Rodina / sukromna akcia</option>
+                  <option value="firma">Firma / firemny klient</option>
+                  <option value="obec">Mesto / obec / komunita</option>
+                  <option value="skola">Skola / skolkar / centrum</option>
+                  <option value="ine">Ine</option>
+                </select>
+              </div>
+
+              <div class="mz-followup-field mz-followup-field--full">
+                <label class="mz-followup-label">Vyber si styl energie</label>
+                <div class="mz-followup-energy" id="mz-followup-energy">
+                  <button type="button" class="mz-followup-energy__btn" data-energy="pokoj">Pohoda</button>
+                  <button type="button" class="mz-followup-energy__btn" data-energy="zabava">Zabava</button>
+                  <button type="button" class="mz-followup-energy__btn" data-energy="show">Show a energia</button>
+                </div>
+              </div>
+
+              <div class="mz-followup-field">
+                <label class="mz-followup-label" for="mz-followup-name">Tvoje meno</label>
+                <input class="mz-followup-input" id="mz-followup-name" name="contact_name" type="text" placeholder="Ako sa volas?">
+              </div>
+
+              <div class="mz-followup-field">
+                <label class="mz-followup-label" for="mz-followup-contact">Email alebo telefon</label>
+                <input class="mz-followup-input" id="mz-followup-contact" name="contact" type="text" placeholder="Email alebo telefon">
+              </div>
+
+              <div class="mz-followup-field mz-followup-field--full">
+                <label class="mz-followup-label" for="mz-followup-note">Poznamka pre Majstra Zabavy</label>
+                <textarea class="mz-followup-textarea" id="mz-followup-note" name="note" rows="4" placeholder="Ak chces, dopln sem kratku predstavu alebo dolezity detail."></textarea>
+              </div>
+            </div>
+
+            <input type="hidden" id="mz-followup-hidden-event" name="selected_event">
+            <input type="hidden" id="mz-followup-hidden-variant" name="selected_variant">
+            <input type="hidden" id="mz-followup-hidden-price" name="selected_price">
+            <input type="hidden" id="mz-followup-hidden-energy" name="selected_energy">
+
+            <div class="mz-followup-actions">
+              <button type="submit" class="btn-primary mz-followup-submit">Poslat podklady pre finalnu ponuku</button>
+            </div>
+
+            <div class="mz-followup-success" id="mz-followup-success" hidden>
+              Dakujeme za doveru. Finalnu ponuku pre teba pripravi Majster Zabavy na mieru a ozveme sa ti do 24 hodin.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -351,8 +443,8 @@
     </ul>
   </footer>
 
-  <script src="js/navrhni-si-akciu.js"></script>
-  <script src="js/navrhni-si-akciu-v2.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/navrhni-si-akciu.js?v=20260324-jun-pilot-4"></script>
+  <script src="js/navrhni-si-akciu-v2.js?v=20260324-jun-pilot-4"></script>
+  <script src="js/main.js?v=20260324-jun-pilot-4"></script>
 </body>
 </html>

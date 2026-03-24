@@ -2158,8 +2158,17 @@ section { position: relative; z-index: 10; }
   background:
     linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01)),
     radial-gradient(circle at top left, rgba(0,212,255,0.12), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(255,45,138,0.12), transparent 26%),
-    linear-gradient(180deg, rgba(28,28,42,0.98), rgba(9,9,12,0.98));
+      radial-gradient(circle at bottom right, rgba(255,45,138,0.12), transparent 26%),
+      linear-gradient(180deg, rgba(28,28,42,0.98), rgba(9,9,12,0.98));
+}
+
+.planner-offer-card__media {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(6, 8, 16, 0.96);
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
 .planner-offer-card__image {
@@ -2167,6 +2176,7 @@ section { position: relative; z-index: 10; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
 }
 
 .planner-offer-card__poster-copy {

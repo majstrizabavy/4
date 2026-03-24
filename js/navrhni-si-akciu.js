@@ -601,5 +601,76 @@
     buildOrbit();
     sizeOrbit();
   });
+
+  (function initJunePilotFollowup() {
+    const followup = document.getElementById('mz-followup-form');
+    const followupSection = document.getElementById('pilot-form');
+    const title = document.getElementById('mz-followup-title');
+    const description = document.getElementById('mz-followup-description');
+    const chips = document.getElementById('mz-followup-chips');
+    const image = document.getElementById('mz-followup-image');
+    const hiddenEvent = document.getElementById('mz-followup-hidden-event');
+    const hiddenVariant = document.getElementById('mz-followup-hidden-variant');
+    const hiddenPrice = document.getElementById('mz-followup-hidden-price');
+    const hiddenEnergy = document.getElementById('mz-followup-hidden-energy');
+    const success = document.getElementById('mz-followup-success');
+    const energyButtons = Array.from(document.querySelectorAll('.mz-followup-energy__btn'));
+    const params = new URLSearchParams(window.location.search);
+
+    if (!followup || !followupSection || !title || !description || !chips || !image || !hiddenEvent || !hiddenVariant || !hiddenPrice || !hiddenEnergy || !success) return;
+
+    const selected = {
+      source: params.get('source') || '',
+      event: params.get('event') || '',
+      variant: params.get('variant') || '',
+      price: params.get('price') || '',
+      poster: params.get('poster') || ''
+    };
+
+    if (selected.source === 'jun-pilot' && selected.event) {
+      title.textContent = selected.variant ? `${selected.event} / ${selected.variant}` : selected.event;
+      description.textContent = selected.price
+        ? `Z junskeho kalendara sme preniesli tvoju volbu aj orientacnu cenu ${selected.price}. Dopln posledne udaje a pripravime finalnu ponuku na mieru.`
+        : 'Z junskeho kalendara sme preniesli tvoju volbu. Dopln posledne udaje a pripravime finalnu ponuku na mieru.';
+      chips.innerHTML = [
+        `<span class="mz-followup-chip">${selected.event}</span>`,
+        selected.variant ? `<span class="mz-followup-chip">${selected.variant}</span>` : '',
+        selected.price ? `<span class="mz-followup-chip">${selected.price}</span>` : ''
+      ].join('');
+      hiddenEvent.value = selected.event;
+      hiddenVariant.value = selected.variant;
+      hiddenPrice.value = selected.price;
+      if (selected.poster) {
+        image.src = selected.poster;
+        image.alt = title.textContent;
+        image.hidden = false;
+      }
+
+      requestAnimationFrame(() => {
+        if (window.location.hash === '#pilot-form') {
+          followupSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
+
+    let selectedEnergy = '';
+
+    energyButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        energyButtons.forEach((item) => item.classList.remove('is-active'));
+        button.classList.add('is-active');
+        selectedEnergy = button.dataset.energy;
+        hiddenEnergy.value = selectedEnergy;
+      });
+    });
+
+    followup.addEventListener('submit', (event) => {
+      event.preventDefault();
+      success.hidden = false;
+      success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      showToast('Dakujeme, finalnu ponuku pripravime do 24 hodin.');
+      hiddenEnergy.value = selectedEnergy || '';
+    });
+  })();
 })();
 

@@ -52,31 +52,34 @@ const plannerOfferData = {
     eyebrow: 'JUN PILOT',
     title: 'Den deti',
     subtitle: '3 odporucane varianty od Majstrov Zabavy',
-    customHref: 'navrhni-si-akciu.html?preset=den-deti',
+    customHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Den%20deti#pilot-form',
     offers: [
       {
         name: 'Mini',
         lead: 'Zakladny program pre mensiu akciu',
         price: 'od 800 EUR',
+        posterSrc: 'assets/images/365-dni-zabavy/ponuky/06-jun/den-deti/mini.png',
         posterLabel: 'Sem doplnis plagat Mini',
         bullets: ['animator a sutaze', 'zakladny flow programu', 'rychly start bez komplikacii'],
-        orderHref: 'kontakt.html?program=den-deti-mini'
+        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Den%20deti&variant=Mini&price=od%20800%20EUR&poster=assets%2Fimages%2F365-dni-zabavy%2Fponuky%2F06-jun%2Fden-deti%2Fmini.png#pilot-form'
       },
       {
         name: 'Optimal',
         lead: 'Najcastejsia volba s atrakciami a animaciou',
         price: 'od 1 500 EUR',
+        posterSrc: 'assets/images/365-dni-zabavy/ponuky/06-jun/den-deti/optimal.png',
         posterLabel: 'Sem doplnis plagat Optimal',
         bullets: ['vyvazeny program pre deti', 'atrakcia alebo wow prvok', 'energia, ktoru citit pocas celej akcie'],
-        orderHref: 'kontakt.html?program=den-deti-optimal'
+        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Den%20deti&variant=Optimal&price=od%201500%20EUR&poster=assets%2Fimages%2F365-dni-zabavy%2Fponuky%2F06-jun%2Fden-deti%2Foptimal.png#pilot-form'
       },
       {
         name: 'Maxi',
         lead: 'Silny celodenny koncept pre vacsi termin',
         price: 'od 3 000 EUR',
+        posterSrc: 'assets/images/365-dni-zabavy/ponuky/06-jun/den-deti/maxi.png',
         posterLabel: 'Sem doplnis plagat Maxi',
         bullets: ['vacsi rozsah a viac stanovist', 'silny vizual aj atmosfera', 'riesenie pre akciu, na ktorej zalezi'],
-        orderHref: 'kontakt.html?program=den-deti-maxi'
+        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Den%20deti&variant=Maxi&price=od%203000%20EUR&poster=assets%2Fimages%2F365-dni-zabavy%2Fponuky%2F06-jun%2Fden-deti%2Fmaxi.png#pilot-form'
       }
     ]
   },
@@ -84,7 +87,7 @@ const plannerOfferData = {
     eyebrow: 'JUN PILOT',
     title: 'Skolske akcie',
     subtitle: 'Pilotna ukazka 3 odporucanych variantov',
-    customHref: 'navrhni-si-akciu.html?preset=skolske-akcie',
+    customHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Skolske%20akcie#pilot-form',
     offers: [
       {
         name: 'Start',
@@ -92,7 +95,7 @@ const plannerOfferData = {
         price: 'od 700 EUR',
         posterLabel: 'Sem doplnis plagat Start',
         bullets: ['moderovany blok', 'sutaze a aktivacia', 'rychla organizacia'],
-        orderHref: 'kontakt.html?program=skolske-akcie-start'
+        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Skolske%20akcie&variant=Start&price=od%20700%20EUR#pilot-form'
       },
       {
         name: 'Plus',
@@ -100,7 +103,7 @@ const plannerOfferData = {
         price: 'od 1 300 EUR',
         posterLabel: 'Sem doplnis plagat Plus',
         bullets: ['program s vacsou energiou', 'interaktivne vstupy', 'silnejsi wow efekt'],
-        orderHref: 'kontakt.html?program=skolske-akcie-plus'
+        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Skolske%20akcie&variant=Plus&price=od%201300%20EUR#pilot-form'
       },
       {
         name: 'Stage',
@@ -108,7 +111,7 @@ const plannerOfferData = {
         price: 'od 2 400 EUR',
         posterLabel: 'Sem doplnis plagat Stage',
         bullets: ['viac casti programu', 'vacsi rozsah a rezia', 'vhodne pre vacsie podujatie'],
-        orderHref: 'kontakt.html?program=skolske-akcie-stage'
+        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Skolske%20akcie&variant=Stage&price=od%202400%20EUR#pilot-form'
       }
     ]
   },
@@ -116,7 +119,7 @@ const plannerOfferData = {
     eyebrow: 'JUN PILOT',
     title: 'Rozlucky so skolou',
     subtitle: 'Pilotna ukazka 3 odporucanych variantov',
-    customHref: 'navrhni-si-akciu.html?preset=rozlucky-so-skolou',
+    customHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Rozlucky%20so%20skolou#pilot-form',
     offers: [
       {
         name: 'Easy',
@@ -124,7 +127,7 @@ const plannerOfferData = {
         price: 'od 600 EUR',
         posterLabel: 'Sem doplnis plagat Easy',
         bullets: ['uvesi atmosferu', 'moderovanie a zabava', 'jednoduchy format'],
-        orderHref: 'kontakt.html?program=rozlucky-easy'
+        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Rozlucky%20so%20skolou&variant=Easy&price=od%20600%20EUR#pilot-form'
       },
       {
         name: 'Party',
@@ -132,7 +135,7 @@ const plannerOfferData = {
         price: 'od 1 200 EUR',
         posterLabel: 'Sem doplnis plagat Party',
         bullets: ['hudba a aktivacie', 'sutaze a zapojenie', 'vacsia eventova nalada'],
-        orderHref: 'kontakt.html?program=rozlucky-party'
+        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Rozlucky%20so%20skolou&variant=Party&price=od%201200%20EUR#pilot-form'
       },
       {
         name: 'Finale',
@@ -140,7 +143,7 @@ const plannerOfferData = {
         price: 'od 2 100 EUR',
         posterLabel: 'Sem doplnis plagat Finale',
         bullets: ['vacsi efekt a dramaturgia', 'viacero vstupov', 'program pre vacsi priestor'],
-        orderHref: 'kontakt.html?program=rozlucky-finale'
+        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Rozlucky%20so%20skolou&variant=Finale&price=od%202100%20EUR#pilot-form'
       }
     ]
   },
@@ -148,7 +151,7 @@ const plannerOfferData = {
     eyebrow: 'JUN PILOT',
     title: 'Vitaj leto',
     subtitle: 'Pilotna ukazka 3 odporucanych variantov',
-    customHref: 'navrhni-si-akciu.html?preset=vitaj-leto',
+    customHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Vitaj%20leto#pilot-form',
     offers: [
       {
         name: 'Warm Up',
@@ -156,7 +159,7 @@ const plannerOfferData = {
         price: 'od 750 EUR',
         posterLabel: 'Sem doplnis plagat Warm Up',
         bullets: ['letna energia', 'lahky programovy vstup', 'rychle oivenie akcie'],
-        orderHref: 'kontakt.html?program=vitaj-leto-warm-up'
+        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Vitaj%20leto&variant=Warm%20Up&price=od%20750%20EUR#pilot-form'
       },
       {
         name: 'Open Air',
@@ -164,7 +167,7 @@ const plannerOfferData = {
         price: 'od 1 400 EUR',
         posterLabel: 'Sem doplnis plagat Open Air',
         bullets: ['vyvazeny outdoor koncept', 'zabava aj pohyb', 'cititelny eventovy efekt'],
-        orderHref: 'kontakt.html?program=vitaj-leto-open-air'
+        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Vitaj%20leto&variant=Open%20Air&price=od%201400%20EUR#pilot-form'
       },
       {
         name: 'Summer Show',
@@ -172,7 +175,7 @@ const plannerOfferData = {
         price: 'od 2 600 EUR',
         posterLabel: 'Sem doplnis plagat Summer Show',
         bullets: ['vacsi rozsah programu', 'vizualny efekt a tah', 'vhodne pre silny letny termin'],
-        orderHref: 'kontakt.html?program=vitaj-leto-summer-show'
+        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Vitaj%20leto&variant=Summer%20Show&price=od%202600%20EUR#pilot-form'
       }
     ]
   }
@@ -270,7 +273,11 @@ function initYearPlannerModes() {
 function createPlannerOfferCard(offer) {
   const bullets = offer.bullets.map((item) => `<li>${item}</li>`).join('');
   const poster = offer.posterSrc
-    ? `<img src="${offer.posterSrc}" alt="${offer.name}" class="planner-offer-card__image">`
+    ? `
+      <div class="planner-offer-card__media">
+        <img src="${offer.posterSrc}" alt="${offer.name}" class="planner-offer-card__image">
+      </div>
+    `
     : `<div class="planner-offer-card__poster-copy">${offer.posterLabel}</div>`;
 
   return `
