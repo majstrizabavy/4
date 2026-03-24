@@ -1448,6 +1448,10 @@ section { position: relative; z-index: 10; }
   flex-direction: column;
 }
 
+.month-card--pilot {
+  min-height: 276px;
+}
+
 .month-card--custom .month-num {
   margin-bottom: 4px;
   color: rgba(183,152,255,0.78);
@@ -1499,6 +1503,47 @@ section { position: relative; z-index: 10; }
   color: rgba(227,231,242,0.74);
   font-size: 11px;
   line-height: 1.42;
+}
+
+.month-card__events {
+  display: grid;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.month-card__event-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
+}
+
+.month-card__event-btn::after {
+  content: '+';
+  flex: 0 0 auto;
+  color: rgba(0,212,255,0.92);
+  font-family: var(--font-display);
+  font-size: 14px;
+}
+
+.month-card__event-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0,212,255,0.28);
+  background: rgba(0,212,255,0.08);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.18);
 }
 
 .month-card__cta {
@@ -1972,6 +2017,196 @@ section { position: relative; z-index: 10; }
 .event-modal__action[aria-disabled="true"] {
   pointer-events: none;
   opacity: 0.48;
+}
+
+.planner-offer-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 6550;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.planner-offer-modal.is-open {
+  display: flex;
+}
+
+.planner-offer-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(18px);
+}
+
+.planner-offer-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1120px);
+  max-height: calc(100vh - 36px);
+  border-radius: 34px;
+  overflow: hidden;
+  border: 1px solid rgba(123,47,255,0.24);
+  background:
+    radial-gradient(circle at top right, rgba(0,212,255,0.12), transparent 22%),
+    radial-gradient(circle at top left, rgba(255,45,138,0.12), transparent 24%),
+    linear-gradient(180deg, rgba(18,18,26,0.98), rgba(7,7,10,0.98));
+  box-shadow: 0 36px 120px rgba(0,0,0,0.56), 0 0 44px rgba(123,47,255,0.14);
+}
+
+.planner-offer-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(9,9,12,0.56);
+  color: var(--white);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.planner-offer-modal__content {
+  display: grid;
+  gap: 18px;
+  padding: 34px 28px 28px;
+  overflow-y: auto;
+  max-height: calc(100vh - 36px);
+}
+
+.planner-offer-modal__eyebrow {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  text-align: center;
+}
+
+.planner-offer-modal__title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.04;
+  text-align: center;
+  color: var(--white);
+}
+
+.planner-offer-modal__sub {
+  color: rgba(227,231,242,0.76);
+  font-size: clamp(15px, 2vw, 18px);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.planner-offer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.planner-offer-card {
+  display: grid;
+  gap: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)),
+    rgba(9,9,12,0.82);
+  box-shadow: 0 20px 44px rgba(0,0,0,0.22);
+}
+
+.planner-offer-card__poster {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  padding: 20px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01)),
+    radial-gradient(circle at top left, rgba(0,212,255,0.12), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255,45,138,0.12), transparent 26%),
+    linear-gradient(180deg, rgba(28,28,42,0.98), rgba(9,9,12,0.98));
+}
+
+.planner-offer-card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.planner-offer-card__poster-copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 220px;
+  border-radius: 20px;
+  border: 1px dashed rgba(255,255,255,0.18);
+  color: rgba(227,231,242,0.76);
+  font-family: var(--font-display);
+  font-size: 20px;
+  text-align: center;
+  line-height: 1.35;
+  padding: 18px;
+}
+
+.planner-offer-card__body {
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+}
+
+.planner-offer-card__name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--white);
+}
+
+.planner-offer-card__lead {
+  color: rgba(227,231,242,0.74);
+  line-height: 1.6;
+}
+
+.planner-offer-card__price {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--cyan);
+}
+
+.planner-offer-card__list {
+  display: grid;
+  gap: 8px;
+  padding-left: 18px;
+  color: rgba(227,231,242,0.82);
+  line-height: 1.55;
+}
+
+.planner-offer-card__list li::marker {
+  color: var(--pink);
+}
+
+.planner-offer-card__cta {
+  width: 100%;
+  justify-content: center;
+  min-height: 52px;
+}
+
+.planner-offer-modal__actions {
+  display: flex;
+  justify-content: center;
+}
+
+.planner-offer-modal__custom {
+  min-width: 280px;
+  justify-content: center;
 }
 
 
@@ -3628,6 +3863,7 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
   .world-showcase__card--featured {
     grid-row: auto;
   }
+
 }
 
 @media (max-width: 600px) {
@@ -3663,6 +3899,10 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
     min-height: 182px;
   }
 
+  .month-card--pilot {
+    min-height: 0;
+  }
+
   .month-card--custom .month-name {
     font-size: 19px;
   }
@@ -3683,6 +3923,11 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
     padding: 6px 10px;
   }
 
+  .month-card__event-btn {
+    font-size: 10px;
+    padding: 8px 10px;
+  }
+
   .month-card__meta {
     min-height: 0;
     font-size: 12px;
@@ -3696,6 +3941,10 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
   .year-mode-cta .btn-ghost {
     width: 100%;
     justify-content: center;
+  }
+
+  .planner-offer-grid {
+    grid-template-columns: 1fr;
   }
 
   .home-proof,
@@ -3778,6 +4027,10 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
     width: min(100%, 680px);
   }
 
+  .planner-offer-modal__dialog {
+    width: min(100%, 900px);
+  }
+
 }
 
 @media (max-width: 700px) {
@@ -3787,6 +4040,14 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
 
   .event-modal__content {
     padding: 38px 18px 12px;
+  }
+
+  .planner-offer-modal {
+    padding: 14px;
+  }
+
+  .planner-offer-modal__content {
+    padding: 28px 18px 20px;
   }
 
   .event-modal__actions {
@@ -3840,9 +4101,17 @@ footer { padding: 32px 40px; border-top: 1px solid rgba(123,47,255,0.15); displa
     border-radius: 24px;
   }
 
+  .planner-offer-modal__dialog {
+    border-radius: 26px;
+  }
+
   .event-modal__poster {
     max-height: min(58vh, 560px);
     border-radius: 20px;
+  }
+
+  .planner-offer-card__poster {
+    min-height: 220px;
   }
 
   .event-modal__poster img {

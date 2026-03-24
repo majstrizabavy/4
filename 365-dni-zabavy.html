@@ -12,7 +12,7 @@
   <meta name="twitter:title" content="Majstri Zabavy | 365 dni zabavy">
   <meta name="twitter:description" content="Naplanuj si akciu alebo si pozri aktualne podujatia po celom Slovensku.">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20260324-jun-pilot-1">
 </head>
 <body>
   <div id="cursor"></div>
@@ -137,9 +137,27 @@
     </div>
   </div>
 
-  <script src="js/main.js"></script>
-  <script src="js/365-dni-zabavy.js"></script>
-  <script src="js/kam-za-zabavou-data.js"></script>
-  <script src="js/kam-za-zabavou.js"></script>
+  <div class="planner-offer-modal" id="plannerOfferModal" aria-hidden="true">
+    <div class="planner-offer-modal__backdrop" data-planner-offer-close></div>
+    <div class="planner-offer-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="plannerOfferTitle">
+      <button type="button" class="planner-offer-modal__close" data-planner-offer-close aria-label="Zavriet ponuku">&times;</button>
+      <div class="planner-offer-modal__content">
+        <div class="planner-offer-modal__eyebrow" id="plannerOfferEyebrow">JUN PILOT</div>
+        <h3 class="planner-offer-modal__title" id="plannerOfferTitle">Den deti</h3>
+        <p class="planner-offer-modal__sub" id="plannerOfferSubtitle">3 odporucane varianty od Majstrov Zabavy</p>
+
+        <div class="planner-offer-grid" id="plannerOfferGrid"></div>
+
+        <div class="planner-offer-modal__actions">
+          <a href="navrhni-si-akciu.html" class="btn-ghost planner-offer-modal__custom" id="plannerOfferCustomLink">Mam inu predstavu</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js?v=20260324-jun-pilot-1"></script>
+  <script src="js/365-dni-zabavy.js?v=20260324-jun-pilot-1"></script>
+  <script src="js/kam-za-zabavou-data.js?v=20260324-jun-pilot-1"></script>
+  <script src="js/kam-za-zabavou.js?v=20260324-jun-pilot-1"></script>
 </body>
 </html>
