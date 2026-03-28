@@ -8,15 +8,15 @@ const planets = [
     core: 'MZ',
     label: 'SVET\nZABAVY',
     desc: 'Objednaj si akcie, atrakcie a sluzby pod jednou strechou.',
-    cta: 'SI PRAVE TU',
-    target: null,
+    cta: 'OTVORIŤ SVET ZÁBAVY',
+    target: 'svet-zabavy.html',
     color: '#7b2fff'
   },
   {
     icon: '',
     core: 'MZ',
     label: 'INSPIRACIA',
-    desc: 'Inspiruj sa trendmi, videami, galeriou a napadmi na nove akcie.',
+    desc: 'Hľadáš nápad na akciu? Nechaj sa inšpirovať tým najlepším zo sveta zábavy.',
     cta: 'OTVORIT INSPIRACIU',
     target: 'inspiracia',
     color: '#00d4ff'
@@ -25,7 +25,7 @@ const planets = [
     icon: '',
     core: '365',
     label: '365 DNI',
-    desc: 'Pozri si kalendar podujati a sezonnych napadov pocas celeho roka.',
+    desc: 'Zábava nikdy nekončí. Objav, kam ísť dnes, tento víkend alebo celý rok.',
     cta: 'OTVORIT KALENDAR',
     target: 'rok',
     color: '#57b8ff'
@@ -34,25 +34,25 @@ const planets = [
     icon: '',
     core: 'MZ',
     label: 'PROJEKTY',
-    desc: 'Jedinecne formaty a vlastne projekty, ktore vznikaju pod nasou znackou.',
+    desc: 'Pozri si, čo všetko vzniká pod značkou Majstri Zábavy.',
     cta: 'OTVORIT PROJEKTY',
     target: 'projekty',
     color: '#bf7fff'
   },
   {
     icon: '',
-    core: '@',
+    core: 'MZ',
     label: 'KONTAKT',
-    desc: 'Ked mas predstavu, ozvi sa a prejdeme ju spolu bez zbytocnych obchadzok.',
+    desc: 'Začni svoju akciu ešte dnes. Stačí sa ozvať a my sa postaráme o zvyšok.',
     cta: 'PREJST NA KONTAKT',
     target: 'kontakt',
     color: '#ff6bb5'
   },
   {
     icon: '',
-    core: '+',
-    label: 'NAVRH\nAKCIE',
-    desc: 'Ziskaj rychly navrh programu a cenu na mieru pre svoju akciu.',
+    core: 'MZ',
+    label: 'TVOJA\nAKCIA',
+    desc: 'Navrhni si akciu na mieru a zisti, ako môže vyzerať tvoja ideálna zábava.',
     cta: 'NAVRHNI SI AKCIU',
     target: 'navrhni-akciu',
     color: '#8dc8ff'
@@ -73,7 +73,6 @@ const coreLogo = document.getElementById('coreLogo');
 const planetsWrapper = document.getElementById('planetsWrapper');
 const isMobile = () => window.innerWidth < 700;
 let activePlanetDiv = null;
-let activeTrackDiv = null;
 
 const orbitGroup = document.createElement('div');
 orbitGroup.id = 'orbitGroup';
@@ -87,7 +86,6 @@ function setCoreState(planet) {
     coreDesc.textContent = '';
     coreCta.textContent = 'OTVORIT SEKCIU';
     coreCta.onclick = () => navigateTo('kontakt');
-    coreCta.classList.remove('is-disabled');
     coreCta.disabled = false;
     return;
   }
@@ -96,17 +94,8 @@ function setCoreState(planet) {
   coreLogo.textContent = planet.core || planet.icon;
   coreDesc.textContent = planet.desc;
   coreCta.textContent = planet.cta;
-
-  if (planet.target) {
-    coreCta.classList.remove('is-disabled');
-    coreCta.disabled = false;
-    coreCta.onclick = () => navigateTo(planet.target);
-    return;
-  }
-
-  coreCta.classList.add('is-disabled');
-  coreCta.disabled = true;
-  coreCta.onclick = (event) => event.preventDefault();
+  coreCta.disabled = false;
+  coreCta.onclick = () => navigateTo(planet.target);
 }
 
 function clearActivePlanet() {
@@ -123,7 +112,6 @@ function clearActivePlanet() {
   }
 
   activePlanetDiv = null;
-  activeTrackDiv = null;
   setCoreState(null);
 }
 
@@ -193,7 +181,6 @@ function buildOrbit() {
       planetDiv.style.transform = 'translate(-50%, -50%) scale(1.3)';
       planetDiv.style.zIndex = '30';
       activePlanetDiv = planetDiv;
-      activeTrackDiv = orbitTrack;
       setCoreState(planet);
     }
 
