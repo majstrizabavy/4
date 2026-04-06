@@ -118,10 +118,10 @@ function clearActivePlanet() {
 function buildOrbit() {
   orbitGroup.innerHTML = '';
 
-  const radius = isMobile() ? 115 : 210;
-  const size = isMobile() ? 56 : 72;
-  const iconSize = isMobile() ? '11px' : '12px';
-  const labelSize = isMobile() ? '6px' : '7px';
+  const radius = isMobile() ? 118 : 220;
+  const size = isMobile() ? 60 : 80;
+  const iconSize = isMobile() ? '11.5px' : '13px';
+  const labelSize = isMobile() ? '7.4px' : '9px';
   let keyframes = '';
 
   planets.forEach((planet, index) => {

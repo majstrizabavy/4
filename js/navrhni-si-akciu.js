@@ -691,18 +691,49 @@
   orbitGroup.id = 'mz-orbit-group';
   orbitGroup.style.cssText = 'position:absolute;top:50%;left:50%;transform-origin:0 0;width:0;height:0;';
   elements.planets.parentElement.insertBefore(orbitGroup, elements.planets);
+  let activePlanet = null;
 
   function sizeOrbit() {
-    const size = isMobile() ? '300px' : (isMedium() ? '380px' : '540px');
+    const size = isMobile() ? '300px' : (isMedium() ? '340px' : '600px');
     elements.orbit.style.width = size;
     elements.orbit.style.height = size;
   }
 
+  function setOrbitCoreState(planetData) {
+    if (!planetData) {
+      elements.orbit.classList.remove('mz-orbit--active');
+      elements.coreLogo.textContent = 'MZ';
+      elements.coreDesc.textContent = '';
+      return;
+    }
+
+    elements.orbit.classList.add('mz-orbit--active');
+    elements.coreLogo.textContent = 'MZ';
+    elements.coreDesc.textContent = planetData.desc;
+  }
+
+  function clearActiveOrbitPlanet() {
+    orbitGroup.querySelectorAll('.mz-orbit-track').forEach((item) => {
+      item.style.animationPlayState = 'running';
+    });
+
+    if (activePlanet) {
+      activePlanet.style.borderColor = '';
+      activePlanet.style.background = '';
+      activePlanet.style.boxShadow = '';
+      activePlanet.style.transform = 'translate(-50%,-50%) scale(1)';
+      activePlanet.style.zIndex = '';
+    }
+
+    activePlanet = null;
+    setOrbitCoreState(null);
+  }
+
   function buildOrbit() {
     orbitGroup.innerHTML = '';
-    const radius = isMobile() ? 105 : (isMedium() ? 148 : 193);
-    const planetSize = isMobile() ? 52 : (isMedium() ? 60 : 68);
-    const labelSize = isMobile() ? '7px' : (isMedium() ? '7.6px' : '8.4px');
+    const radius = isMobile() ? 118 : (isMedium() ? 152 : 220);
+    const planetSize = isMobile() ? 60 : (isMedium() ? 66 : 80);
+    const labelSize = isMobile() ? '7.8px' : (isMedium() ? '8.6px' : '9.6px');
     let keyframes = '';
 
     orbitPlanets.forEach((planetData, index) => {
@@ -722,7 +753,15 @@
       planet.style.cssText = `width:${planetSize}px;height:${planetSize}px;--planet-color:${planetData.color};`;
       planet.innerHTML = `<div class="mz-planet__label" style="font-size:${labelSize}">${planetData.label.split('\n').join('<br>')}</div>`;
 
-      const onPlanet = () => {
+      const activatePlanet = () => {
+        if (activePlanet && activePlanet !== planet) {
+          activePlanet.style.borderColor = '';
+          activePlanet.style.background = '';
+          activePlanet.style.boxShadow = '';
+          activePlanet.style.transform = 'translate(-50%,-50%) scale(1)';
+          activePlanet.style.zIndex = '';
+        }
+
         orbitGroup.querySelectorAll('.mz-orbit-track').forEach((item) => {
           item.style.animationPlayState = 'paused';
         });
@@ -731,32 +770,16 @@
         planet.style.boxShadow = `0 0 26px ${planetData.color},0 0 55px ${planetData.color}44`;
         planet.style.transform = 'translate(-50%,-50%) scale(1.3)';
         planet.style.zIndex = '30';
-        elements.orbit.classList.add('mz-orbit--active');
-        elements.coreDesc.textContent = planetData.desc;
-        elements.coreLogo.textContent = 'MZ';
+        activePlanet = planet;
+        setOrbitCoreState(planetData);
       };
 
-      const offPlanet = () => {
-        orbitGroup.querySelectorAll('.mz-orbit-track').forEach((item) => {
-          item.style.animationPlayState = 'running';
-        });
-        planet.style.borderColor = '';
-        planet.style.background = '';
-        planet.style.boxShadow = '';
-        planet.style.transform = 'translate(-50%,-50%) scale(1)';
-        planet.style.zIndex = '';
-        elements.orbit.classList.remove('mz-orbit--active');
-        elements.coreLogo.textContent = 'MZ';
-        elements.coreDesc.textContent = '';
-      };
-
-      planet.addEventListener('mouseenter', onPlanet);
-      planet.addEventListener('mouseleave', offPlanet);
+      planet.addEventListener('mouseenter', activatePlanet);
+      planet.addEventListener('click', activatePlanet);
       planet.addEventListener('touchstart', (event) => {
         event.preventDefault();
-        onPlanet();
+        activatePlanet();
       }, { passive: false });
-      planet.addEventListener('touchend', offPlanet);
 
       track.appendChild(planet);
       orbitGroup.appendChild(track);
@@ -834,9 +857,17 @@
   updateBudget();
   updateGuests();
 
+  elements.orbit.addEventListener('mouseleave', clearActiveOrbitPlanet);
+  document.addEventListener('touchstart', (event) => {
+    if (!elements.orbit.contains(event.target)) {
+      clearActiveOrbitPlanet();
+    }
+  }, { passive: true });
+
   window.addEventListener('resize', () => {
     buildOrbit();
     sizeOrbit();
+    clearActiveOrbitPlanet();
   });
 
   (function initPlannerFollowup() {

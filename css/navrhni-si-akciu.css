@@ -1828,6 +1828,15 @@ body.mz-overlay-open {
     0 14px 28px rgba(5, 7, 13, 0.35),
     inset 0 0 22px color-mix(in srgb, var(--planet-color, #7b4dff) 16%, transparent);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mz-planet::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
 }
 
 .mz-planet__label {
@@ -1835,11 +1844,11 @@ body.mz-overlay-open {
   font-weight: 800;
   color: #ffffff;
   line-height: 1.15;
-  letter-spacing: 0;
+  letter-spacing: 0.01em;
   text-transform: none;
-  padding: 0 5px;
+  padding: 0 6px;
   max-width: 100%;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
 }
 
 .mz-divider {
