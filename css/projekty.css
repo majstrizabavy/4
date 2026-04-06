@@ -309,7 +309,7 @@
   --project-accent-soft: rgba(111, 182, 255, 0.14);
 }
 
-.project-page--camp {
+.project-page--leto {
   --project-accent: #7be3b1;
   --project-accent-soft: rgba(123, 227, 177, 0.14);
 }
@@ -317,6 +317,11 @@
 .project-page--akademia {
   --project-accent: #ffd36b;
   --project-accent-soft: rgba(255, 211, 107, 0.14);
+}
+
+.project-page--starcrew {
+  --project-accent: #ffd15a;
+  --project-accent-soft: rgba(255, 209, 90, 0.15);
 }
 
 .project-back-link {
@@ -515,6 +520,44 @@
   color: var(--grey-light);
 }
 
+.project-highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.project-highlight-item {
+  min-height: 140px;
+  padding: 18px;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at top left, var(--project-accent-soft), transparent 34%),
+    rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.project-highlight-item__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  background: var(--project-accent-soft);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.project-highlight-item__copy {
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
 .project-section__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -643,6 +686,75 @@
   margin-top: 22px;
 }
 
+.project-story-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.project-founder-card,
+.project-founder-photo {
+  min-height: 320px;
+  padding: 24px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle at top left, var(--project-accent-soft), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(10, 10, 18, 0.94));
+}
+
+.project-founder-card__label,
+.project-founder-photo__eyebrow {
+  margin-bottom: 12px;
+  color: var(--project-accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.project-founder-card__title,
+.project-founder-photo__title {
+  font-size: 28px;
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.project-founder-card__copy,
+.project-founder-photo__copy {
+  color: var(--grey-light);
+  line-height: 1.8;
+}
+
+.project-founder-photo {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.project-founder-photo--founder {
+  background:
+    linear-gradient(180deg, rgba(7, 7, 10, 0.22) 0%, rgba(7, 7, 10, 0.86) 100%),
+    url('../assets/images/projekty/starcrew-founder.jpg') center / cover no-repeat,
+    radial-gradient(circle at top left, var(--project-accent-soft), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(10, 10, 18, 0.94));
+}
+
+.project-founder-photo--placeholder::before {
+  content: 'CA';
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-family: var(--font-display);
+  font-size: clamp(62px, 10vw, 110px);
+  line-height: 0.82;
+  color: rgba(255, 255, 255, 0.08);
+}
+
 .project-status-card__title {
   font-size: 19px;
   font-weight: 800;
@@ -728,9 +840,11 @@
 
   .project-detail-hero__grid,
   .project-section__grid,
+  .project-highlight-grid,
   .project-feature-list,
   .project-visual-grid,
-  .project-status-grid {
+  .project-status-grid,
+  .project-story-grid {
     grid-template-columns: 1fr;
   }
 

@@ -6,12 +6,20 @@
   <title>Majstri Zabavy | Navrhni si akciu</title>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=20260324-orbit-labels-1">
-  <link rel="stylesheet" href="css/navrhni-si-akciu.css?v=20260324-orbit-labels-1">
-  <link rel="stylesheet" href="css/navrhni-si-akciu-v2.css?v=20260324-orbit-labels-1">
+  <link rel="stylesheet" href="css/navrhni-si-akciu.css?v=20260405-unified-result-1">
+  <link rel="stylesheet" href="css/navrhni-si-akciu-followup.css?v=20260406-followup-cleanup-1">
 </head>
 <body>
   <div id="cursor"></div>
   <div id="cursor-ring"></div>
+
+  <div class="mz-overlay" id="mz-overlay" aria-hidden="true">
+    <div class="mz-overlay__panel">
+      <div class="mz-overlay__brand" id="mz-overlay-title">MAJSTRI ZÁBAVY</div>
+      <div class="mz-overlay__text" id="mz-overlay-text">Pripravujeme ponuku...</div>
+      <div class="mz-overlay__pulse" aria-hidden="true"></div>
+    </div>
+  </div>
 
   <nav id="navbar">
     <a href="index.html" class="nav-logo" data-nav="home">MAJSTRI ZABAVY</a>
@@ -40,10 +48,6 @@
   <main class="navrh-page-shell">
     <section class="mz-section" id="navrhni-akciu-section">
       <div class="mz-toast" id="mz-toast" aria-live="polite">Dakujeme, ozveme sa vam co najskor.</div>
-
-      <div class="mz-overlay" id="mz-overlay" aria-hidden="true">
-        <div class="mz-overlay__text">Pripravujeme navrh...</div>
-      </div>
 
       <!-- HERO + ORBIT -->
       <div class="mz-orbit-wrap">
@@ -112,6 +116,15 @@
                 <div class="mz-label-line">Zakladne info o akcii</div>
 
                 <div class="mz-form-grid">
+                  <div class="mz-form-group mz-form-group--full">
+                    <label class="mz-form-label">Co chces riesit?</label>
+                    <div class="mz-need-grid" id="mz-need-grid">
+                      <button type="button" class="mz-need-btn" data-value="program">Program</button>
+                      <button type="button" class="mz-need-btn" data-value="atrakcie">Atrakcie</button>
+                      <button type="button" class="mz-need-btn" data-value="komplet">Komplet akcia</button>
+                    </div>
+                  </div>
+
                   <div class="mz-form-group">
                     <label class="mz-form-label" for="mz-event-type">Typ akcie</label>
                     <select class="mz-select" id="mz-event-type">
@@ -136,8 +149,8 @@
                       <input type="range" class="mz-budget__slider" id="mz-budget-slider" min="0" max="3000" value="500" step="25">
                       <div class="mz-budget__bar">
                         <div class="mz-bz mz-bz--low">DOPLNKY</div>
-                        <div class="mz-bz mz-bz--mid mz-bz--active">NA MIERU</div>
-                        <div class="mz-bz mz-bz--high">PRODUKCIA</div>
+                        <div class="mz-bz mz-bz--mid mz-bz--active">PROGRAM</div>
+                        <div class="mz-bz mz-bz--high">KOMPLET AKCIA</div>
                       </div>
                       <div class="mz-budget__tip" id="mz-budget-tip">Zlaty stred - program na mieru</div>
                     </div>
@@ -205,9 +218,31 @@
                   <span id="mz-ai-text"></span>
                   <span class="mz-cursor" id="mz-cursor" style="display:none"></span>
                 </div>
-                <div class="mz-modules" id="mz-modules"></div>
-                <div class="mz-summary" id="mz-summary"></div>
-                <div class="mz-cta-row" id="mz-cta-row" style="display:grid">
+
+                <section class="mz-followup-offer mz-quick-offer" id="mz-quick-offer" hidden aria-live="polite">
+                  <div class="mz-followup-offer__eyebrow">Tvoja predbezna ponuka</div>
+
+                  <div class="mz-followup-offer__top">
+                    <div class="mz-followup-offer__intro">
+                      <h3 class="mz-followup-offer__title" id="mz-quick-selection">Program / Detsky event</h3>
+                      <p class="mz-followup-offer__description" id="mz-quick-description">Vyber si variant, ktory je najblizsie tvojej predstave a rozpoctu.</p>
+                    </div>
+                  </div>
+
+                  <div class="mz-followup-offer__context mz-quick-offer__context" id="mz-quick-context"></div>
+                  <div class="mz-quick-offer__cards" id="mz-quick-cards"></div>
+
+                  <p class="mz-followup-offer__note" id="mz-quick-note">Ak ti tento smer sedi, dopln posledne detaily a pripravime presnejsiu ponuku pre tvoju akciu.</p>
+
+                  <div class="mz-followup-offer__actions">
+                    <button type="button" class="btn-ghost mz-followup-offer__action" id="mz-quick-edit">Upravit zadanie</button>
+                    <a href="kontakt.html#kontakt" class="btn-ghost mz-followup-offer__action" id="mz-quick-contact">Spoj sa s nami</a>
+                  </div>
+                </section>
+
+                <div class="mz-modules" id="mz-modules" hidden></div>
+                <div class="mz-summary" id="mz-summary" hidden></div>
+                <div class="mz-cta-row" id="mz-cta-row" style="display:none" hidden>
                   <button type="button" class="mz-cta-approve" id="mz-approve-btn">Poslat dopyt a dohodnut sa</button>
                   <button type="button" class="mz-cta-reset" id="mz-reset-btn">Upravit zadanie</button>
                 </div>
@@ -219,133 +254,11 @@
       </div>
     </section>
 
-    <section class="mzv2-section">
-      <div class="mzv2-shell">
-        <div class="mzv2-head">
-          <div class="section-label-orbit">// NOVY NAVRH KALKULACKY //</div>
-          <h2 class="mzv2-title">Jednoduchsi vyber, 3 rychle ponuky</h2>
-        </div>
-
-        <div class="mzv2-card" id="mzv2-calculator">
-          <div class="mzv2-card__intro">
-            <div class="mzv2-card__title">Vyber, co chces riesit</div>
-          </div>
-
-          <div class="mzv2-flow">
-            <div class="mzv2-group">
-              <label class="mzv2-label">1. Co chces riesit?</label>
-              <div class="mzv2-intent-grid" id="mzv2-intent-grid">
-                <button type="button" class="mzv2-intent" data-intent="full">
-                  <span class="mzv2-intent__title">Kompletnu akciu</span>
-                  <span class="mzv2-intent__desc">Navrh + realizacia</span>
-                </button>
-                <button type="button" class="mzv2-intent" data-intent="program">
-                  <span class="mzv2-intent__title">Program na akciu</span>
-                  <span class="mzv2-intent__desc">Den deti, svadba, karneval</span>
-                </button>
-                <button type="button" class="mzv2-intent" data-intent="addons">
-                  <span class="mzv2-intent__title">Doplnky na akciu</span>
-                  <span class="mzv2-intent__desc">Maskoti, atrakcie, sladky kutik</span>
-                </button>
-                <button type="button" class="mzv2-intent" data-intent="custom">
-                  <span class="mzv2-intent__title">Mam vlastnu predstavu</span>
-                  <span class="mzv2-intent__desc">Napis svoj plan</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="mzv2-grid">
-              <div class="mzv2-field">
-                <label class="mzv2-label" for="mzv2-type">2. Upresni zadanie</label>
-                <select id="mzv2-type" class="mzv2-select">
-                  <option value="">Najprv vyber, co chces riesit</option>
-                </select>
-              </div>
-
-              <div class="mzv2-field">
-                <label class="mzv2-label" for="mzv2-location">Lokalita</label>
-                <select id="mzv2-location" class="mzv2-select">
-                  <option value="">Vyber kraj alebo region</option>
-                  <option value="ba">Bratislavsky kraj</option>
-                  <option value="tt">Trnavsky kraj</option>
-                  <option value="tn">Trenciansky kraj</option>
-                  <option value="nr">Nitriansky kraj</option>
-                  <option value="za">Zilinsky kraj</option>
-                  <option value="bb">Banskobystricky kraj</option>
-                  <option value="po">Presovsky kraj</option>
-                  <option value="ke">Kosicky kraj</option>
-                </select>
-              </div>
-
-              <div class="mzv2-field mzv2-field--full" id="mzv2-custom-wrap" hidden>
-                <label class="mzv2-label" for="mzv2-custom">Tvoj plan alebo predstava</label>
-                <textarea id="mzv2-custom" class="mzv2-textarea" rows="4" placeholder="Napis nam kratko, co chces pripravit a co je pre teba dolezite."></textarea>
-              </div>
-
-              <div class="mzv2-field">
-                <label class="mzv2-label" for="mzv2-guests">Pocet hosti</label>
-                <div class="mzv2-range-wrap">
-                  <div class="mzv2-range-top"><span id="mzv2-guests-value">50 osob</span></div>
-                  <input id="mzv2-guests" class="mzv2-range" type="range" min="10" max="3000" step="10" value="50">
-                </div>
-              </div>
-
-              <div class="mzv2-field">
-                <label class="mzv2-label" for="mzv2-budget">Orientacny rozpocet</label>
-                <div class="mzv2-range-wrap">
-                  <div class="mzv2-range-top">
-                    <span id="mzv2-budget-value">500 EUR</span>
-                    <span class="mzv2-range-pill" id="mzv2-budget-pill">Start</span>
-                  </div>
-                  <input id="mzv2-budget" class="mzv2-range" type="range" min="100" max="5000" step="50" value="500">
-                </div>
-              </div>
-
-              <div class="mzv2-field mzv2-field--full">
-                <label class="mzv2-label">Co od akcie ocakavas?</label>
-                <div class="mzv2-expect-grid" id="mzv2-expect-grid">
-                  <button type="button" class="mzv2-expect" data-expectation="practical">
-                    <span class="mzv2-expect__title">Prakticke riesenie</span>
-                    <span class="mzv2-expect__desc">Funkcne a rozumne</span>
-                  </button>
-                  <button type="button" class="mzv2-expect" data-expectation="balanced">
-                    <span class="mzv2-expect__title">Silny program</span>
-                    <span class="mzv2-expect__desc">Dobry dojem a energia</span>
-                  </button>
-                  <button type="button" class="mzv2-expect" data-expectation="wow">
-                    <span class="mzv2-expect__title">Wow efekt</span>
-                    <span class="mzv2-expect__desc">Vyrazna akcia bez kompromisov</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="mzv2-actions">
-              <button type="button" class="mzv2-generate" id="mzv2-generate">Ukaz 3 orientacne ponuky</button>
-              <div class="mzv2-error" id="mzv2-error">Vyber, co chces riesit, upresni zadanie a lokalitu.</div>
-            </div>
-
-            <div class="mzv2-result" id="mzv2-result" hidden>
-              <div class="mzv2-result__top">
-                <div>
-                  <div class="mzv2-result__eyebrow">3 odporucene smery</div>
-                  <h3 class="mzv2-result__title">3 orientacne ponuky</h3>
-                </div>
-                <div class="mzv2-result__summary" id="mzv2-summary"></div>
-              </div>
-              <div class="mzv2-offers" id="mzv2-offers"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="mz-followup-section" id="pilot-form">
+    <section class="mz-followup-section" id="planner-form">
       <div class="mz-followup-shell">
         <div class="mz-followup-head">
           <div class="section-label-orbit">// DOPLN POSLEDNE DETAILY //</div>
           <h2 class="mz-followup-title">Vybral si si program? Dokoncime finalnu ponuku na mieru.</h2>
-          <p class="mz-followup-text">Ak prichadzas z junskeho kalendara, tvoju volbu si zapamatame. Ty len doplnis posledne udaje a Majster Zabavy pripravi finalnu ponuku do 24 hodin.</p>
         </div>
 
         <div class="mz-followup-card">
@@ -357,7 +270,7 @@
             <h3 class="mz-followup-summary__title" id="mz-followup-title">Zatial si si nic nevybral</h3>
             <p class="mz-followup-summary__text" id="mz-followup-description">Pri kliknuti na program v junskom kalendari sem prenesieme nazov akcie, variant a orientacnu cenu.</p>
             <div class="mz-followup-summary__chips" id="mz-followup-chips">
-              <span class="mz-followup-chip">JUN pilot</span>
+              <a href="365-dni-zabavy.html" class="mz-followup-summary__backlink">Vybrat akciu v 365 dni zabavy</a>
             </div>
           </div>
 
@@ -365,27 +278,27 @@
             <div class="mz-followup-grid">
               <div class="mz-followup-field">
                 <label class="mz-followup-label" for="mz-followup-date">Datum akcie</label>
-                <input class="mz-followup-input" id="mz-followup-date" name="event_date" type="date">
+                <input class="mz-followup-input" id="mz-followup-date" name="event_date" type="date" required>
               </div>
 
               <div class="mz-followup-field">
                 <label class="mz-followup-label" for="mz-followup-address">Adresa akcie</label>
-                <input class="mz-followup-input" id="mz-followup-address" name="event_address" type="text" placeholder="Mesto, obec alebo presna adresa">
+                <input class="mz-followup-input" id="mz-followup-address" name="event_address" type="text" placeholder="Mesto, obec alebo presna adresa" required>
               </div>
 
               <div class="mz-followup-field">
                 <label class="mz-followup-label" for="mz-followup-guests">Pocet ludi cca</label>
-                <input class="mz-followup-input" id="mz-followup-guests" name="guest_count" type="number" min="1" placeholder="Napr. 80">
+                <input class="mz-followup-input" id="mz-followup-guests" name="guest_count" type="number" min="1" placeholder="Napr. 80" required>
               </div>
 
               <div class="mz-followup-field">
                 <label class="mz-followup-label" for="mz-followup-audience">Pre koho je akcia</label>
-                <select class="mz-followup-select" id="mz-followup-audience" name="audience">
+                <select class="mz-followup-select" id="mz-followup-audience" name="audience" required>
                   <option value="">Vyber si moznost</option>
-                  <option value="rodina">Rodina / sukromna akcia</option>
-                  <option value="firma">Firma / firemny klient</option>
-                  <option value="obec">Mesto / obec / komunita</option>
-                  <option value="skola">Skola / skolkar / centrum</option>
+                  <option value="rodina">Rodiny / verejnost</option>
+                  <option value="skola">Skoly / centra</option>
+                  <option value="obec">Mesta / obce</option>
+                  <option value="firma">Firmy / hotely</option>
                   <option value="ine">Ine</option>
                 </select>
               </div>
@@ -401,17 +314,17 @@
 
               <div class="mz-followup-field">
                 <label class="mz-followup-label" for="mz-followup-name">Tvoje meno</label>
-                <input class="mz-followup-input" id="mz-followup-name" name="contact_name" type="text" placeholder="Ako sa volas?">
+                <input class="mz-followup-input" id="mz-followup-name" name="contact_name" type="text" placeholder="Ako sa volas?" required>
               </div>
 
               <div class="mz-followup-field">
                 <label class="mz-followup-label" for="mz-followup-contact">Email alebo telefon</label>
-                <input class="mz-followup-input" id="mz-followup-contact" name="contact" type="text" placeholder="Email alebo telefon">
+                <input class="mz-followup-input" id="mz-followup-contact" name="contact" type="text" placeholder="Email alebo telefon" required>
               </div>
 
               <div class="mz-followup-field mz-followup-field--full">
-                <label class="mz-followup-label" for="mz-followup-note">Poznamka pre Majstra Zabavy</label>
-                <textarea class="mz-followup-textarea" id="mz-followup-note" name="note" rows="4" placeholder="Ak chces, dopln sem kratku predstavu alebo dolezity detail."></textarea>
+                  <label class="mz-followup-label" for="mz-followup-note">Poznámka pre Majstrov Zábavy</label>
+                  <textarea class="mz-followup-textarea" id="mz-followup-note" name="note" rows="2" placeholder="Ak chces, dopln sem kratku predstavu alebo dolezity detail."></textarea>
               </div>
             </div>
 
@@ -421,13 +334,50 @@
             <input type="hidden" id="mz-followup-hidden-energy" name="selected_energy">
 
             <div class="mz-followup-actions">
-              <button type="submit" class="btn-primary mz-followup-submit">Poslat podklady pre finalnu ponuku</button>
+              <button type="submit" class="btn-primary mz-followup-submit">ZOBRAZIŤ MOJU PONUKU</button>
+            </div>
+
+          </form>
+
+          <section class="mz-followup-offer" id="mz-followup-offer" hidden aria-live="polite">
+            <div class="mz-followup-offer__eyebrow">Vasa predbezna ponuka</div>
+
+            <div class="mz-followup-offer__top">
+              <div class="mz-followup-offer__intro">
+                <h3 class="mz-followup-offer__title" id="mz-offer-selection">Den deti / Program / MZ Show</h3>
+                <p class="mz-followup-offer__description" id="mz-offer-description">Ponuku sme pripravili podla tvojho vyberu a zadanych udajov.</p>
+              </div>
+
+              <div class="mz-followup-offer__pricebox">
+                <div class="mz-followup-offer__price-label">Predbezna cena</div>
+                <div class="mz-followup-offer__price" id="mz-offer-price">od 980 EUR</div>
+              </div>
+            </div>
+
+            <div class="mz-followup-offer__grid">
+              <div class="mz-followup-offer__block">
+                <div class="mz-followup-offer__label">Co je v cene</div>
+                <ul class="mz-followup-offer__list" id="mz-offer-includes"></ul>
+              </div>
+
+              <div class="mz-followup-offer__block">
+                <div class="mz-followup-offer__label">Cena zohladnuje</div>
+                <div class="mz-followup-offer__context" id="mz-offer-context"></div>
+              </div>
+            </div>
+
+            <p class="mz-followup-offer__note" id="mz-offer-note">Akciu si mozes objednat, alebo sa s nami spoj pre vysvetlenie detailov.</p>
+
+            <div class="mz-followup-offer__actions">
+              <a href="mailto:info@majstrizabavy.sk" class="btn-primary mz-followup-offer__action" id="mz-offer-order">Objednat</a>
+              <button type="button" class="btn-ghost mz-followup-offer__action" id="mz-offer-edit">Upravit zadanie</button>
+              <a href="kontakt.html#kontakt" class="btn-ghost mz-followup-offer__action" id="mz-offer-contact">Spoj sa s nami</a>
             </div>
 
             <div class="mz-followup-success" id="mz-followup-success" hidden>
-              Dakujeme za doveru. Finalnu ponuku pre teba pripravi Majster Zabavy na mieru a ozveme sa ti do 24 hodin.
+              Otvarame predvyplneny email s ponukou. Ak sa neotvori, pouzi tlacidlo Spoj sa s nami.
             </div>
-          </form>
+          </section>
         </div>
       </div>
     </section>
@@ -443,8 +393,8 @@
     </ul>
   </footer>
 
-  <script src="js/navrhni-si-akciu.js?v=20260324-orbit-labels-1"></script>
-  <script src="js/navrhni-si-akciu-v2.js?v=20260324-orbit-labels-1"></script>
+  <script src="js/mz-cennik.js?v=20260405-komplet-discount-1"></script>
+  <script src="js/navrhni-si-akciu.js?v=20260406-planner-cleanup-1"></script>
   <script src="js/main.js?v=20260324-orbit-labels-1"></script>
 </body>
 </html>

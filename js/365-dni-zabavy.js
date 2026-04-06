@@ -1,194 +1,18 @@
 /* 365 dni zabavy
-   Tento subor drzi len stabilny planner pre rezim "Naplanuj si akciu".
+   Tento subor drzi len stabilnu logiku plannera pre rezim "Naplanuj si akciu".
    Verejne akcie pre "Kam za zabavou" maju oddelene data aj logiku.
 */
 
-const yearPlannerData = {
-  custom: {
-    gridId: 'yearGridCustom',
-    months: [
-      // JANUAR
-      { number: '01', name: 'JANUAR', title: 'novoro&#269;n&eacute; oslavy, karnevaly, plesy, firemn&eacute; ve&#269;ierky', hint: 'Moderovanie &bull; Program &bull; Maskoti &bull; Animatori', accent: 'var(--violet)' },
-      // FEBRUAR
-      { number: '02', name: 'FEBRUAR', title: 'karnevaly, valent&iacute;nske eventy, plesy, firemn&eacute; eventy', hint: 'Maskoti &bull; Animatori &bull; Hudobny program &bull; Sutaze', accent: 'var(--pink)' },
-      // MAREC
-      { number: '03', name: 'MAREC', title: 'MD&#381;, de&#328; u&#269;ite&#318;ov, DOD', hint: 'Sutaze &bull; Moderovanie &bull; Sportove aktivity &bull; Program pre rodiny', accent: 'var(--cyan)' },
-      // APRIL
-      { number: '04', name: 'APRIL', title: 'DOD pre skoly, materske skolky, firemne akcie', hint: 'Tvorive dielne &bull; Rodinne zony &bull; Sprievodny program &bull; Animatori', accent: 'var(--violet)' },
-      // MAJ
-      { number: '05', name: 'MAJ', title: '1.m&aacute;j, De&#328; matiek, De&#328; rodiny, rodinn&eacute; dni, svadby, maj&aacute;lesy', hint: 'Stage program &bull; Family day &bull; Chill zony &bull; Moderovanie', accent: 'var(--pink)' },
-      // JUN
-      {
-        number: '06',
-        name: 'JUN',
-        title: 'De&#328; det&iacute;, &scaron;kolsk&eacute; akcie, rozl&uacute;&#269;ky so &scaron;kolou, Vitaj leto, firemn&eacute; dni',
-        hint: 'Atrakcie &bull; Animatori &bull; Detske vystupenia &bull; Moderovanie',
-        accent: 'var(--cyan)',
-        pilotEvents: [
-          { id: 'den-deti', label: 'Den deti' },
-          { id: 'skolske-akcie', label: 'Skolske akcie' },
-          { id: 'rozlucky-so-skolou', label: 'Rozlucky so skolou' },
-          { id: 'vitaj-leto', label: 'Vitaj leto' }
-        ]
-      },
-      // JUL
-      { number: '07', name: 'JUL', title: 'letn&eacute; t&aacute;bory, festivaly, &scaron;portov&eacute; dni, jarmoky', hint: 'Stage show &bull; Turnaje &bull; Vecerny program &bull; Moderovanie', accent: 'var(--violet)' },
-      // AUGUST
-      { number: '08', name: 'AUGUST', title: 'letne tabory, letn&eacute; eventy, dni obc&iacute; a miest, rozl&uacute;&#269;ka s letom, outdoor programy', hint: 'Hudba &bull; Gastro zony &bull; Zazitkove aktivity &bull; Program na podium', accent: 'var(--cyan)' },
-      // SEPTEMBER
-      { number: '09', name: 'SEPTEMBER', title: 'n&aacute;vrat do &scaron;koly, DOD, dni obc&iacute; a miest, vinobrania, vyst&uacute;penia', hint: 'Folklor &bull; Moderovanie &bull; Komunitny program &bull; Rodinne zony', accent: 'var(--violet)' },
-      // OKTOBER
-      { number: '10', name: 'OKTOBER', title: 'Halloween programy, stra&scaron;ideln&eacute; eventy, jesenn&eacute; podujatia', hint: 'Dekor &bull; Show &bull; Hostesky &bull; Game zony', accent: 'var(--pink)' },
-      // NOVEMBER
-      { number: '11', name: 'NOVEMBER', title: 'husacie hody, firemn&eacute; eventy, teambuildingy', hint: 'Quizy &bull; Turnaje &bull; Firemny program &bull; Moderovanie', accent: 'var(--violet)' },
-      // DECEMBER
-      { number: '12', name: 'DECEMBER', title: 'Mikul&aacute;&scaron;, viano&#269;n&eacute; show, detsk&eacute; diskot&eacute;ky, viano&#269;n&eacute; ve&#269;ierky, Silvester', hint: 'Mikulas &bull; Gala vecer &bull; Vianocny program &bull; Animatori', accent: 'var(--violet)' }
-    ]
-  }
-};
-
-const plannerOfferData = {
-  'den-deti': {
-    eyebrow: 'JUN PILOT',
-    title: 'Den deti',
-    subtitle: '3 odporucane varianty od Majstrov Zabavy',
-    customHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Den%20deti#pilot-form',
-    offers: [
-      {
-        name: 'Mini',
-        lead: 'Zakladny program pre mensiu akciu',
-        price: 'od 800 EUR',
-        posterSrc: 'assets/images/365-dni-zabavy/ponuky/06-jun/den-deti/mini.png',
-        posterLabel: 'Sem doplnis plagat Mini',
-        bullets: ['animator a sutaze', 'zakladny flow programu', 'rychly start bez komplikacii'],
-        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Den%20deti&variant=Mini&price=od%20800%20EUR&poster=assets%2Fimages%2F365-dni-zabavy%2Fponuky%2F06-jun%2Fden-deti%2Fmini.png#pilot-form'
-      },
-      {
-        name: 'Optimal',
-        lead: 'Najcastejsia volba s atrakciami a animaciou',
-        price: 'od 1 500 EUR',
-        posterSrc: 'assets/images/365-dni-zabavy/ponuky/06-jun/den-deti/optimal.png',
-        posterLabel: 'Sem doplnis plagat Optimal',
-        bullets: ['vyvazeny program pre deti', 'atrakcia alebo wow prvok', 'energia, ktoru citit pocas celej akcie'],
-        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Den%20deti&variant=Optimal&price=od%201500%20EUR&poster=assets%2Fimages%2F365-dni-zabavy%2Fponuky%2F06-jun%2Fden-deti%2Foptimal.png#pilot-form'
-      },
-      {
-        name: 'Maxi',
-        lead: 'Silny celodenny koncept pre vacsi termin',
-        price: 'od 3 000 EUR',
-        posterSrc: 'assets/images/365-dni-zabavy/ponuky/06-jun/den-deti/maxi.png',
-        posterLabel: 'Sem doplnis plagat Maxi',
-        bullets: ['vacsi rozsah a viac stanovist', 'silny vizual aj atmosfera', 'riesenie pre akciu, na ktorej zalezi'],
-        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Den%20deti&variant=Maxi&price=od%203000%20EUR&poster=assets%2Fimages%2F365-dni-zabavy%2Fponuky%2F06-jun%2Fden-deti%2Fmaxi.png#pilot-form'
-      }
-    ]
-  },
-  'skolske-akcie': {
-    eyebrow: 'JUN PILOT',
-    title: 'Skolske akcie',
-    subtitle: 'Pilotna ukazka 3 odporucanych variantov',
-    customHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Skolske%20akcie#pilot-form',
-    offers: [
-      {
-        name: 'Start',
-        lead: 'Jednoduchy program pre skolsky den',
-        price: 'od 700 EUR',
-        posterLabel: 'Sem doplnis plagat Start',
-        bullets: ['moderovany blok', 'sutaze a aktivacia', 'rychla organizacia'],
-        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Skolske%20akcie&variant=Start&price=od%20700%20EUR#pilot-form'
-      },
-      {
-        name: 'Plus',
-        lead: 'Vyvazeny skolsky program s tahom',
-        price: 'od 1 300 EUR',
-        posterLabel: 'Sem doplnis plagat Plus',
-        bullets: ['program s vacsou energiou', 'interaktivne vstupy', 'silnejsi wow efekt'],
-        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Skolske%20akcie&variant=Plus&price=od%201300%20EUR#pilot-form'
-      },
-      {
-        name: 'Stage',
-        lead: 'Vacsi skolsky koncept s podium energiu',
-        price: 'od 2 400 EUR',
-        posterLabel: 'Sem doplnis plagat Stage',
-        bullets: ['viac casti programu', 'vacsi rozsah a rezia', 'vhodne pre vacsie podujatie'],
-        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Skolske%20akcie&variant=Stage&price=od%202400%20EUR#pilot-form'
-      }
-    ]
-  },
-  'rozlucky-so-skolou': {
-    eyebrow: 'JUN PILOT',
-    title: 'Rozlucky so skolou',
-    subtitle: 'Pilotna ukazka 3 odporucanych variantov',
-    customHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Rozlucky%20so%20skolou#pilot-form',
-    offers: [
-      {
-        name: 'Easy',
-        lead: 'Kratsi zabavny blok na uzavretie roka',
-        price: 'od 600 EUR',
-        posterLabel: 'Sem doplnis plagat Easy',
-        bullets: ['uvesi atmosferu', 'moderovanie a zabava', 'jednoduchy format'],
-        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Rozlucky%20so%20skolou&variant=Easy&price=od%20600%20EUR#pilot-form'
-      },
-      {
-        name: 'Party',
-        lead: 'Rozlucka s vacsou energiou a tempom',
-        price: 'od 1 200 EUR',
-        posterLabel: 'Sem doplnis plagat Party',
-        bullets: ['hudba a aktivacie', 'sutaze a zapojenie', 'vacsia eventova nalada'],
-        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Rozlucky%20so%20skolou&variant=Party&price=od%201200%20EUR#pilot-form'
-      },
-      {
-        name: 'Finale',
-        lead: 'Silny zaver skolskeho roka',
-        price: 'od 2 100 EUR',
-        posterLabel: 'Sem doplnis plagat Finale',
-        bullets: ['vacsi efekt a dramaturgia', 'viacero vstupov', 'program pre vacsi priestor'],
-        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Rozlucky%20so%20skolou&variant=Finale&price=od%202100%20EUR#pilot-form'
-      }
-    ]
-  },
-  'vitaj-leto': {
-    eyebrow: 'JUN PILOT',
-    title: 'Vitaj leto',
-    subtitle: 'Pilotna ukazka 3 odporucanych variantov',
-    customHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Vitaj%20leto#pilot-form',
-    offers: [
-      {
-        name: 'Warm Up',
-        lead: 'Jednoduchy uvod do letnej atmosfery',
-        price: 'od 750 EUR',
-        posterLabel: 'Sem doplnis plagat Warm Up',
-        bullets: ['letna energia', 'lahky programovy vstup', 'rychle oivenie akcie'],
-        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Vitaj%20leto&variant=Warm%20Up&price=od%20750%20EUR#pilot-form'
-      },
-      {
-        name: 'Open Air',
-        lead: 'Vyraznejsi letny blok pre publikum',
-        price: 'od 1 400 EUR',
-        posterLabel: 'Sem doplnis plagat Open Air',
-        bullets: ['vyvazeny outdoor koncept', 'zabava aj pohyb', 'cititelny eventovy efekt'],
-        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Vitaj%20leto&variant=Open%20Air&price=od%201400%20EUR#pilot-form'
-      },
-      {
-        name: 'Summer Show',
-        lead: 'Silne letne otvorenie s wow efektom',
-        price: 'od 2 600 EUR',
-        posterLabel: 'Sem doplnis plagat Summer Show',
-        bullets: ['vacsi rozsah programu', 'vizualny efekt a tah', 'vhodne pre silny letny termin'],
-        orderHref: 'navrhni-si-akciu.html?source=jun-pilot&event=Vitaj%20leto&variant=Summer%20Show&price=od%202600%20EUR#pilot-form'
-      }
-    ]
-  }
-};
-
+const yearPlannerData = window.yearPlannerData;
+const plannerOfferData = window.plannerOfferData;
 function createCustomMonthCard(item) {
-  const hasPilotEvents = Array.isArray(item.pilotEvents) && item.pilotEvents.length;
-  const patternMarkup = hasPilotEvents ? '' : `<div class="month-card__pattern">${item.title}</div>`;
-  const pilotEventsMarkup = hasPilotEvents
+  const hasPlannerEvents = Array.isArray(item.plannerEvents) && item.plannerEvents.length;
+  const patternMarkup = hasPlannerEvents ? '' : `<div class="month-card__pattern">${item.title}</div>`;
+  const plannerEventsMarkup = hasPlannerEvents
     ? `
       <div class="month-card__offer-label">Klikni na akciu:</div>
       <div class="month-card__events">
-        ${item.pilotEvents.map((eventItem) => `
+        ${item.plannerEvents.map((eventItem) => `
           <button type="button" class="month-card__event-btn" data-planner-event="${eventItem.id}">
             <span>${eventItem.label}</span>
           </button>
@@ -203,12 +27,12 @@ function createCustomMonthCard(item) {
     `;
 
   return `
-    <article class="month-card month-card--custom${hasPilotEvents ? ' month-card--pilot' : ''}">
+    <article class="month-card month-card--custom${hasPlannerEvents ? ' month-card--planner' : ''}">
       <div class="month-num">${item.number}</div>
       <div class="month-name">${item.name}</div>
       ${patternMarkup}
       <div class="month-card__divider" aria-hidden="true"></div>
-      ${pilotEventsMarkup}
+      ${plannerEventsMarkup}
     </article>
   `;
 }
@@ -270,15 +94,56 @@ function initYearPlannerModes() {
   });
 }
 
-function createPlannerOfferCard(offer) {
+function createPlannerOfferPreview(offer, offerGroup) {
+  const theme = offer.previewTheme || offerGroup.previewTheme || 'default';
+  const posterTag = offer.previewTag || offerGroup.previewTag || 'MZ';
+  const posterKicker = offer.previewKicker || offerGroup.previewKicker || 'Naplanuj si akciu';
+  const posterNote = offer.posterNote || offer.posterLabel || 'Vizualny nahlad bez fotky';
+
+  return `
+    <div class="planner-offer-card__poster-art planner-offer-card__poster-art--${theme}">
+      <div class="planner-offer-card__poster-top">
+        <span class="planner-offer-card__poster-chip">${posterTag}</span>
+        <span class="planner-offer-card__poster-chip planner-offer-card__poster-chip--ghost">${offerGroup.eyebrow}</span>
+      </div>
+      <div class="planner-offer-card__poster-main">
+        <div class="planner-offer-card__poster-kicker">${posterKicker}</div>
+        <div class="planner-offer-card__poster-event">${offerGroup.title}</div>
+        <div class="planner-offer-card__poster-package">${offer.name}</div>
+      </div>
+      <div class="planner-offer-card__poster-bottom">
+        <span class="planner-offer-card__poster-price">${offer.price}</span>
+        <span class="planner-offer-card__poster-note">${posterNote}</span>
+      </div>
+    </div>
+  `;
+}
+
+function buildPlannerOfferHref(offer, offerGroup) {
+  if (!offer.orderHref) return '#';
+
+  const [rawBase, rawHash = ''] = offer.orderHref.split('#');
+  const [pathname, rawQuery = ''] = rawBase.split('?');
+  const params = new URLSearchParams(rawQuery);
+
+  params.set('scopeLabel', offerGroup.label || '');
+  params.set('package', offer.name || '');
+  params.set('lead', offer.lead || '');
+  params.set('bullets', (offer.bullets || []).join('||'));
+
+  return `${pathname}?${params.toString()}${rawHash ? `#${rawHash}` : ''}`;
+}
+
+function createPlannerOfferCard(offer, offerGroup) {
   const bullets = offer.bullets.map((item) => `<li>${item}</li>`).join('');
+  const orderHref = buildPlannerOfferHref(offer, offerGroup);
   const poster = offer.posterSrc
     ? `
       <div class="planner-offer-card__media">
-        <img src="${offer.posterSrc}" alt="${offer.name}" class="planner-offer-card__image">
+        <img src="${offer.posterSrc}" alt="${offer.name}" class="planner-offer-card__image" loading="lazy" decoding="async">
       </div>
     `
-    : `<div class="planner-offer-card__poster-copy">${offer.posterLabel}</div>`;
+    : createPlannerOfferPreview(offer, offerGroup);
 
   return `
     <article class="planner-offer-card">
@@ -288,28 +153,74 @@ function createPlannerOfferCard(offer) {
         <div class="planner-offer-card__lead">${offer.lead}</div>
         <div class="planner-offer-card__price">${offer.price}</div>
         <ul class="planner-offer-card__list">${bullets}</ul>
-        <a href="${offer.orderHref}" class="btn-primary planner-offer-card__cta">Objednat tento program</a>
+        <a href="${orderHref}" class="btn-primary planner-offer-card__cta">${offer.ctaLabel || offerGroup.ctaLabel || 'Mám záujem'}</a>
       </div>
     </article>
   `;
 }
 
-function openPlannerOfferModal(eventKey) {
+function getPlannerOfferActiveKey(data, preferredKey) {
+  if (!data || !data.offerFilters) return '';
+  if (preferredKey && data.offerFilters[preferredKey]) return preferredKey;
+  if (data.defaultFilter && data.offerFilters[data.defaultFilter]) return data.defaultFilter;
+  return Object.keys(data.offerFilters)[0] || '';
+}
+
+function renderPlannerOfferModal(eventKey, preferredFilterKey = '') {
   const data = plannerOfferData[eventKey];
   const modal = document.getElementById('plannerOfferModal');
   const eyebrow = document.getElementById('plannerOfferEyebrow');
   const title = document.getElementById('plannerOfferTitle');
   const subtitle = document.getElementById('plannerOfferSubtitle');
+  const filters = document.getElementById('plannerOfferFilters');
+  const note = document.getElementById('plannerOfferNote');
   const grid = document.getElementById('plannerOfferGrid');
   const customLink = document.getElementById('plannerOfferCustomLink');
 
-  if (!data || !modal || !eyebrow || !title || !subtitle || !grid || !customLink) return;
+  if (!data || !modal || !eyebrow || !title || !subtitle || !filters || !note || !grid || !customLink) return;
+
+  const activeKey = getPlannerOfferActiveKey(data, preferredFilterKey);
+  const activeGroup = activeKey ? data.offerFilters[activeKey] : data;
+  const renderGroup = { ...data, ...activeGroup };
+  const noteText = activeGroup.note || data.note || '';
+  const offers = activeGroup.offers || data.offers || [];
 
   eyebrow.textContent = data.eyebrow;
   title.textContent = data.title;
-  subtitle.textContent = data.subtitle;
-  grid.innerHTML = data.offers.map((offer) => createPlannerOfferCard(offer)).join('');
-  customLink.href = data.customHref;
+  subtitle.textContent = activeGroup.subtitle || data.subtitle || '';
+
+  if (data.offerFilters) {
+    filters.hidden = false;
+    filters.innerHTML = Object.entries(data.offerFilters).map(([key, group]) => `
+      <button type="button" class="planner-offer-modal__filter${key === activeKey ? ' is-active' : ''}" data-planner-filter="${key}">
+        ${group.label}
+      </button>
+    `).join('');
+  } else {
+    filters.hidden = true;
+    filters.innerHTML = '';
+  }
+
+  note.hidden = !noteText;
+  note.textContent = noteText;
+
+  grid.innerHTML = offers.map((offer) => createPlannerOfferCard(offer, renderGroup)).join('');
+  customLink.href = activeGroup.customHref || data.customHref || 'navrhni-si-akciu.html';
+  customLink.textContent = activeGroup.customLabel || data.customLabel || 'Mám inú predstavu';
+
+  modal.dataset.plannerEvent = eventKey;
+  if (activeKey) {
+    modal.dataset.plannerFilter = activeKey;
+  } else {
+    delete modal.dataset.plannerFilter;
+  }
+}
+
+function openPlannerOfferModal(eventKey, preferredFilterKey = '') {
+  const modal = document.getElementById('plannerOfferModal');
+  if (!modal) return;
+
+  renderPlannerOfferModal(eventKey, preferredFilterKey);
 
   modal.classList.add('is-open');
   modal.setAttribute('aria-hidden', 'false');
@@ -323,11 +234,14 @@ function closePlannerOfferModal() {
   modal.classList.remove('is-open');
   modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+  delete modal.dataset.plannerEvent;
+  delete modal.dataset.plannerFilter;
 }
 
-function initPlannerOfferPilot() {
+function initPlannerOfferModal() {
   const grid = document.getElementById('yearGridCustom');
   const modal = document.getElementById('plannerOfferModal');
+  const closeTriggers = modal ? Array.from(modal.querySelectorAll('[data-planner-offer-close]')) : [];
 
   if (!grid || !modal) return;
 
@@ -338,9 +252,22 @@ function initPlannerOfferPilot() {
     openPlannerOfferModal(trigger.dataset.plannerEvent);
   });
 
-  modal.addEventListener('click', (event) => {
-    if (event.target.closest('[data-planner-offer-close]') || event.target.classList.contains('planner-offer-modal__backdrop')) {
+  closeTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
       closePlannerOfferModal();
+    });
+  });
+
+  modal.addEventListener('click', (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    if (!target) return;
+
+    const filterTrigger = target.closest('[data-planner-filter]');
+    if (filterTrigger) {
+      renderPlannerOfferModal(modal.dataset.plannerEvent, filterTrigger.dataset.plannerFilter);
+      return;
     }
   });
 
@@ -353,9 +280,21 @@ function initPlannerOfferPilot() {
 
 renderYearPlannerMode('custom');
 initYearPlannerModes();
-initPlannerOfferPilot();
+initPlannerOfferModal();
 
 const requestedMode = new URLSearchParams(window.location.search).get('mode');
 if (requestedMode === 'public' || requestedMode === 'custom') {
   setYearPlannerMode(requestedMode, { syncUrl: false });
 }
+
+
+
+
+
+
+
+
+
+
+
+

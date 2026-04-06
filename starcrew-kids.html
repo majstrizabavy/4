@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Majstri Zabavy | STARCREW Kids</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/projekty.css">
+</head>
+<body class="project-page project-page--starcrew">
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo" data-nav="home">MAJSTRI ZABAVY</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Domov</a></li>
+      <li><a href="svet-zabavy.html" data-nav="orbit-section">Svet Zabavy</a></li>
+      <li><a href="inspiracia.html" data-nav="inspiracia">Inspiracia</a></li>
+      <li><a href="365-dni-zabavy.html" data-nav="rok">365 dni zabavy</a></li>
+      <li><a href="projekty.html" data-nav="projekty">Projekty MZ</a></li>
+      <li><a href="kontakt.html" data-nav="kontakt">Kontakt</a></li>
+      <li class="nav-cta-item"><a href="navrhni-si-akciu.html" class="nav-cta" data-nav="navrhni-akciu">Navrhni si akciu</a></li>
+    </ul>
+    <div class="nav-ham" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" data-nav="home" onclick="closeMobile()">Domov</a>
+    <a href="svet-zabavy.html" data-nav="orbit-section" onclick="closeMobile()">Svet Zabavy</a>
+    <a href="inspiracia.html" data-nav="inspiracia" onclick="closeMobile()">Inspiracia</a>
+    <a href="365-dni-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dni zabavy</a>
+    <a href="projekty.html" data-nav="projekty" onclick="closeMobile()">Projekty MZ</a>
+    <a href="kontakt.html" data-nav="kontakt" onclick="closeMobile()">Kontakt</a>
+    <a href="navrhni-si-akciu.html" class="mobile-nav-cta" data-nav="navrhni-akciu" onclick="closeMobile()">Navrhni si akciu</a>
+  </div>
+
+  <main class="page-shell">
+    <a href="projekty.html" class="project-back-link">&larr; Spat na Projekty MZ</a>
+
+    <section class="project-detail-hero">
+        <div class="project-detail-hero__grid">
+          <div class="project-detail-hero__copy">
+            <div class="project-detail-kicker">Projekt od Majstrov Zabavy</div>
+            <h1 class="project-detail-title">STARCREW Kids</h1>
+            <p class="project-detail-headline">Priestor pre deti, ktore chcu spievat, tancovat, vystupovat a byt sucastou skutocneho timu.</p>
+            <p class="project-detail-copy">STARCREW Kids je novy talentovy projekt z dielne Majstrov Zabavy. Nie je to len klasicky kruzok, ale zazitok postaveny na treningu, tvorbe obsahu a realnych vystupeniach na eventoch.</p>
+            <div class="project-detail-actions">
+              <a href="kontakt.html" class="btn-primary">Prihlasit dieta</a>
+              <a href="navrhni-si-akciu.html" class="btn-ghost">Spojit projekt s eventom</a>
+            </div>
+          </div>
+        <div class="project-detail-visual project-detail-visual--photo">
+          <img src="assets/images/projekty/starcrewkids.svg" alt="STARCREW Kids hlavny vizual" class="project-detail-visual__image">
+          <div class="project-detail-visual__copy">
+            <div class="project-detail-visual__label">Spev. Tanec. Tim.</div>
+            <p class="project-detail-visual__meta">Silny detsky format, ktory spaja talent, zazitok a realne podium.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="project-sections">
+      <section class="project-section">
+        <div class="project-section__eyebrow">O projekte</div>
+        <h2 class="project-section__title">Co je STARCREW Kids</h2>
+        <p class="project-section__copy">STARCREW Kids sa sustredi na rozvoj detskeho talentu v oblasti spevu, tanca a vystupovania. Cielom je vytvorit podporne a profesionalne prostredie, kde deti rastu, tvoria a ziskavaju skusenosti, ktore presahuju bezny kruzok.</p>
+      </section>
+
+      <section class="project-section">
+        <div class="project-section__eyebrow">Pre koho je projekt</div>
+        <h2 class="project-section__title">Deti, ktore chcu viac nez len trening</h2>
+        <div class="project-section__grid">
+          <article class="project-info-card">
+            <div class="project-info-card__label">Spev</div>
+            <h3 class="project-info-card__title">Pre deti, ktore chcu rozvijat hlas</h3>
+            <p class="project-info-card__copy">Priestor pre deti, ktore maju vztah k hudbe a chcu pracovat na prejave aj istote na podiu.</p>
+          </article>
+          <article class="project-info-card">
+            <div class="project-info-card__label">Tanec</div>
+            <h3 class="project-info-card__title">Pre deti, ktore miluju pohyb</h3>
+            <p class="project-info-card__copy">Projekt prepaja choreografie, rytmus a energiu timu do jednej spolocnej vystupovej identity.</p>
+          </article>
+          <article class="project-info-card">
+            <div class="project-info-card__label">Vystupovanie</div>
+            <h3 class="project-info-card__title">Pre zaciatocnikov aj sikovne talenty</h3>
+            <p class="project-info-card__copy">Rozhoduje chut, nadsenie a otvorenost rastu. Projekt je pripraveny pre rozne urovene deti.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="project-section">
+        <div class="project-section__eyebrow">Co deti ziskaju</div>
+        <h2 class="project-section__title">Kratko, silno a zazitkovo</h2>
+        <div class="project-highlight-grid">
+          <article class="project-highlight-item">
+            <div class="project-highlight-item__label">01</div>
+            <p class="project-highlight-item__copy">Pravidelne treningy a vedenie</p>
+          </article>
+          <article class="project-highlight-item">
+            <div class="project-highlight-item__label">02</div>
+            <p class="project-highlight-item__copy">Skusenost s publikom a vystupenim</p>
+          </article>
+          <article class="project-highlight-item">
+            <div class="project-highlight-item__label">03</div>
+            <p class="project-highlight-item__copy">Natacanie videi pre socialne siete</p>
+          </article>
+          <article class="project-highlight-item">
+            <div class="project-highlight-item__label">04</div>
+            <p class="project-highlight-item__copy">Moznost vystupovat na eventoch MZ</p>
+          </article>
+          <article class="project-highlight-item">
+            <div class="project-highlight-item__label">05</div>
+            <p class="project-highlight-item__copy">Timovy zazitok a nove kamaratstva</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="project-section">
+        <div class="project-section__eyebrow">Ako to funguje</div>
+        <h2 class="project-section__title">Mensi tim, pravidelna praca, realny vystup</h2>
+        <div class="project-feature-list">
+          <article class="project-feature">
+            <div class="project-feature__index">01</div>
+            <h3 class="project-feature__title">Vyber mensieho timu</h3>
+            <p class="project-feature__copy">Do projektu sa sklada mensia skupina deti, s ktorou sa pracuje pravidelne a cielene.</p>
+          </article>
+          <article class="project-feature">
+            <div class="project-feature__index">02</div>
+            <h3 class="project-feature__title">Trening a tvorba</h3>
+            <p class="project-feature__copy">Stretnutia su hrave, rozvojove a vedu k tomu, aby deti tvorili choreografie aj kratke vystupy.</p>
+          </article>
+          <article class="project-feature">
+            <div class="project-feature__index">03</div>
+            <h3 class="project-feature__title">Online aj nazivo</h3>
+            <p class="project-feature__copy">Obsah projektu sa prenasa do socialnych sieti aj na skutocne eventy, kde deti ziskavaju prax.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="project-section">
+        <div class="project-section__eyebrow">Kto stoji za projektom</div>
+        <h2 class="project-section__title">Zakladatel a prirodzene pokracovanie MZ sveta</h2>
+        <div class="project-story-grid">
+          <article class="project-founder-card">
+            <div class="project-founder-card__label">Christian Alex</div>
+            <h3 class="project-founder-card__title">Zakladatel projektov majstrizabavy.sk a christianalex.sk</h3>
+            <p class="project-founder-card__copy">STARCREW Kids vznika ako prirodzene rozsirenie dlhodobej prace Christiana Alexa v oblasti detskych eventov, zabavy a vystupeni. Projekt je vedeny s dorazom na profesionalitu, bezpecnost a pozitivny pristup k detom.</p>
+            <p class="project-founder-card__copy">Viziu tvori prostredie, v ktorom deti rastu po talentovej aj ludskej stranke, citia sa dobre a ziskavaju prve skutocne skusenosti s podiom a publikom.</p>
+          </article>
+          <article class="project-founder-photo project-founder-photo--founder project-founder-photo--placeholder">
+            <div class="project-founder-photo__eyebrow">Miesto na fotku zakladatela</div>
+            <div class="project-founder-photo__title">Pridame sem tvoju portretnu fotku alebo silny backstage zaber.</div>
+            <p class="project-founder-photo__copy">Odporucam pridat obrazok do priecinka <strong>assets/images/projekty/</strong> pod nazvom <strong>starcrew-founder.jpg</strong>. Tento blok je uz pripraveny tak, ze po nahrati suboru sa fotka zobrazi automaticky.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="project-section">
+        <div class="project-section__eyebrow">Vizia projektu</div>
+        <h2 class="project-section__title">Budovat komunitu detskych talentov</h2>
+        <div class="project-status-grid">
+          <article class="project-status-card">
+            <div class="project-status-card__badge">Dlhodoby smer</div>
+            <h3 class="project-status-card__title">Sebavedomie a prve podium</h3>
+            <p class="project-status-card__copy">Projekt ma detom dat priestor na prve vacsie kroky pred publikom a budovat istotu v tom, co robia.</p>
+          </article>
+          <article class="project-status-card">
+            <h3 class="project-status-card__title">Komunita</h3>
+            <p class="project-status-card__copy">Ambiciou je vytvorit tim a komunitu, kde sa spaja tvorba, zabava, disciplina a vzajomna podpora.</p>
+          </article>
+          <article class="project-status-card">
+            <h3 class="project-status-card__title">Realne vystupy</h3>
+            <p class="project-status-card__copy">Online videa, kratke vystupenia a eventove prepojenia maju z projektu urobit zazitok, nie len slub.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <section class="project-cta-band">
+      <div class="project-cta-band__copy">
+        <h3>Ma tvoje dieta talent a chce zazit nieco viac?</h3>
+        <p>Prihlaste sa do STARCREW Kids a vstupte do timu, kde sa talent meni na realny zazitok, vystupenie a sebavedomie.</p>
+      </div>
+      <div class="project-cta-band__actions">
+        <a href="kontakt.html" class="btn-primary">Prihlasit dieta</a>
+        <a href="projekty.html" class="btn-ghost">Spat na projekty</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">MAJSTRI ZABAVY</div>
+    <div class="footer-copy">&copy; 2026 MAJSTRI ZABAVY</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Domov</a></li>
+      <li><a href="projekty.html">Projekty MZ</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

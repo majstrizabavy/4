@@ -1,0 +1,68 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="196" y1="132" x2="1394" y2="872" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101425"/>
+      <stop offset="0.48" stop-color="#111A2F"/>
+      <stop offset="1" stop-color="#090B14"/>
+    </linearGradient>
+    <radialGradient id="goldGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(394 232) rotate(34.715) scale(420.159 281.013)">
+      <stop stop-color="#FFD45D" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#FFD45D" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cyanGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1228 252) rotate(145.367) scale(472.914 294.659)">
+      <stop stop-color="#00D4FF" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="#00D4FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="band" x1="274" y1="690" x2="1338" y2="690" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD45D"/>
+      <stop offset="1" stop-color="#00D4FF"/>
+    </linearGradient>
+    <linearGradient id="crew" x1="454" y1="328" x2="1122" y2="612" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="white" stop-opacity="0.04"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1000" rx="48" fill="url(#bg)"/>
+  <rect width="1600" height="1000" rx="48" fill="url(#goldGlow)"/>
+  <rect width="1600" height="1000" rx="48" fill="url(#cyanGlow)"/>
+
+  <g opacity="0.7">
+    <circle cx="1294" cy="132" r="4" fill="white"/>
+    <circle cx="1362" cy="194" r="2.5" fill="white"/>
+    <circle cx="1184" cy="164" r="3" fill="white"/>
+    <circle cx="322" cy="142" r="3.5" fill="white"/>
+    <circle cx="252" cy="222" r="2" fill="white"/>
+  </g>
+
+  <rect x="260" y="132" width="232" height="42" rx="21" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.14"/>
+  <text x="292" y="160" fill="#FFD45D" font-family="Manrope, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3">PROJECT BY MZ</text>
+
+  <text x="256" y="332" fill="white" font-family="Orbitron, Arial, sans-serif" font-size="164" font-weight="900" letter-spacing="-6">STARCREW</text>
+  <text x="266" y="452" fill="#F6F8FF" font-family="Orbitron, Arial, sans-serif" font-size="118" font-weight="800" letter-spacing="-2">KIDS</text>
+
+  <text x="264" y="540" fill="#D6DDF0" font-family="Manrope, Arial, sans-serif" font-size="42" font-weight="600">Spev, tanec, vystupovanie a realny timovy zazitok.</text>
+  <text x="264" y="594" fill="#AAB4CE" font-family="Manrope, Arial, sans-serif" font-size="28" font-weight="500">Projekt pre deti, ktore chcu trenovat, tvorit a byt na podiu.</text>
+
+  <path d="M274 684H1326" stroke="url(#band)" stroke-width="10" stroke-linecap="round"/>
+
+  <g opacity="0.95">
+    <path d="M958 626C934 602 916 572 916 534C916 462 973 410 1050 410C1127 410 1186 462 1186 534C1186 572 1168 602 1144 626H958Z" fill="url(#crew)"/>
+    <circle cx="1050" cy="356" r="86" fill="url(#crew)"/>
+
+    <path d="M690 682C658 650 634 608 634 554C634 454 714 384 820 384C926 384 1006 454 1006 554C1006 608 982 650 950 682H690Z" fill="url(#crew)"/>
+    <circle cx="820" cy="302" r="118" fill="url(#crew)"/>
+
+    <path d="M1112 688C1082 658 1060 620 1060 572C1060 482 1130 418 1222 418C1314 418 1384 482 1384 572C1384 620 1362 658 1332 688H1112Z" fill="url(#crew)"/>
+    <circle cx="1222" cy="328" r="102" fill="url(#crew)"/>
+  </g>
+
+  <rect x="264" y="746" width="280" height="72" rx="36" fill="#111827" fill-opacity="0.82" stroke="#FFD45D" stroke-opacity="0.32"/>
+  <text x="322" y="792" fill="#FFF4C6" font-family="Manrope, Arial, sans-serif" font-size="28" font-weight="700">Vystupenia na eventoch</text>
+
+  <rect x="566" y="746" width="250" height="72" rx="36" fill="#111827" fill-opacity="0.82" stroke="#00D4FF" stroke-opacity="0.26"/>
+  <text x="638" y="792" fill="#C8F7FF" font-family="Manrope, Arial, sans-serif" font-size="28" font-weight="700">Video content</text>
+
+  <rect x="840" y="746" width="252" height="72" rx="36" fill="#111827" fill-opacity="0.82" stroke="white" stroke-opacity="0.16"/>
+  <text x="914" y="792" fill="#F5F7FF" font-family="Manrope, Arial, sans-serif" font-size="28" font-weight="700">Talentovy tim</text>
+</svg>
