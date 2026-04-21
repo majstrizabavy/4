@@ -1,12 +1,42 @@
 ﻿.mz-followup-section {
-  padding: 0 20px 72px;
+  position: relative;
+  padding: 64px 20px 72px;
   background:
     radial-gradient(circle at 14% 18%, rgba(236,255,131,  0.1), transparent 28%),
     radial-gradient(circle at 86% 8%, rgba(var(--accent-deep-rgb),  0.08), transparent 30%),
     #050508;
+  overflow: hidden;
+}
+
+.mz-followup-section::before,
+.mz-followup-section::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  pointer-events: none;
+}
+
+.mz-followup-section::before {
+  top: 0;
+  width: 2px;
+  height: 58px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, transparent, rgba(var(--accent-rgb), 0.88), rgba(var(--accent-rgb), 0.08));
+  box-shadow: 0 0 22px rgba(var(--accent-rgb), 0.22);
+}
+
+.mz-followup-section::after {
+  top: 42px;
+  width: min(520px, calc(100vw - 48px));
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), 0.42), rgba(236,255,131, 0.62), rgba(var(--accent-rgb), 0.42), transparent);
+  box-shadow: 0 0 26px rgba(var(--accent-rgb), 0.12);
 }
 
 .mz-followup-shell {
+  position: relative;
+  z-index: 1;
   width: min(1180px, 100%);
   margin: 0 auto;
   display: grid;
@@ -164,6 +194,10 @@
   flex-direction: column;
 }
 
+.mz-followup-field.is-transferred {
+  display: none;
+}
+
 .mz-followup-field--full {
   grid-column: 1 / -1;
 }
@@ -260,8 +294,10 @@
 
 /* Navrhni si akciu followup refresh */
 .mz-followup-section {
+  padding-top: 68px;
   background:
     radial-gradient(circle at 14% 18%, rgba(var(--accent-rgb), 0.05), transparent 28%),
+    radial-gradient(ellipse at 50% 0%, rgba(var(--accent-rgb), 0.12), transparent 34%),
     radial-gradient(circle at 86% 8%, rgba(var(--accent-deep-rgb), 0.04), transparent 30%),
     #050505;
 }
@@ -549,7 +585,16 @@
   }
 
   .mz-followup-section {
-    padding: 0 12px 48px;
+    padding: 48px 12px 48px;
+  }
+
+  .mz-followup-section::before {
+    height: 42px;
+  }
+
+  .mz-followup-section::after {
+    top: 32px;
+    width: min(320px, calc(100vw - 40px));
   }
 
   .mz-followup-grid,

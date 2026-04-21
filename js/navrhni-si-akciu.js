@@ -395,6 +395,7 @@
     choiceButtons.forEach((button) => button.classList.remove('is-active'));
     updateBudgetValue();
     showWizardStep(0);
+    elements.wizard.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
   elements.offers.addEventListener('click', (event) => {
@@ -409,12 +410,17 @@
 
     if (typeof window.MZApplyFollowupSelection === 'function') {
       window.MZApplyFollowupSelection({
-        event: wizardState.audience || 'Akcia na mieru',
+        event: 'Akcia na mieru',
         scope: wizardState.need,
         scopeLabel: wizardState.need,
         packageName,
         variant: packageName,
         price,
+        audience: wizardState.audience,
+        guests: wizardState.guests,
+        energy: wizardState.vibe,
+        budget: formatEuro(wizardState.budget),
+        promo: wizardState.promo,
         lead: `Vybral si ${packageName} pre ${wizardState.audience || 'akciu na mieru'}.`,
         bullets
       });
@@ -453,6 +459,10 @@
     const hiddenVariant = document.getElementById('mz-followup-hidden-variant');
     const hiddenPrice = document.getElementById('mz-followup-hidden-price');
     const hiddenEnergy = document.getElementById('mz-followup-hidden-energy');
+    const hiddenAudience = document.getElementById('mz-followup-hidden-audience');
+    const hiddenGuests = document.getElementById('mz-followup-hidden-guests');
+    const hiddenBudget = document.getElementById('mz-followup-hidden-budget');
+    const hiddenPromo = document.getElementById('mz-followup-hidden-promo');
     const success = document.getElementById('mz-followup-success');
     const energyButtons = Array.from(document.querySelectorAll('.mz-followup-energy__btn'));
     const offerBox = document.getElementById('mz-followup-offer');
@@ -472,9 +482,14 @@
     const nameField = document.getElementById('mz-followup-name');
     const contactField = document.getElementById('mz-followup-contact');
     const noteField = document.getElementById('mz-followup-note');
+    const transferredFields = {
+      guests: followup ? followup.querySelector('[data-followup-field="guests"]') : null,
+      audience: followup ? followup.querySelector('[data-followup-field="audience"]') : null,
+      energy: followup ? followup.querySelector('[data-followup-field="energy"]') : null
+    };
     const params = new URLSearchParams(window.location.search);
 
-    if (!followup || !followupSection || !title || !description || !chips || !image || !hiddenEvent || !hiddenVariant || !hiddenPrice || !hiddenEnergy || !success || !offerBox || !offerSelection || !offerDescription || !offerPrice || !offerIncludes || !offerContext || !offerNote || !orderLink || !editButton || !contactLink || !dateField || !addressField || !guestsField || !audienceField || !nameField || !contactField || !noteField) return;
+    if (!followup || !followupSection || !title || !description || !chips || !image || !hiddenEvent || !hiddenVariant || !hiddenPrice || !hiddenEnergy || !hiddenAudience || !hiddenGuests || !hiddenBudget || !hiddenPromo || !success || !offerBox || !offerSelection || !offerDescription || !offerPrice || !offerIncludes || !offerContext || !offerNote || !orderLink || !editButton || !contactLink || !dateField || !addressField || !guestsField || !audienceField || !nameField || !contactField || !noteField) return;
 
     const selected = {
       source: params.get('source') || '',
@@ -486,6 +501,11 @@
       price: params.get('price') || '',
       lead: params.get('lead') || '',
       poster: params.get('poster') || '',
+      audience: params.get('audience') || '',
+      guests: params.get('guests') || '',
+      energy: params.get('energy') || '',
+      budget: params.get('budget') || '',
+      promo: params.get('promo') || '',
       bullets: (params.get('bullets') || '').split('||').filter(Boolean)
     };
 
@@ -495,13 +515,66 @@
       komplet: ['program aj atrakcie v jednom', 'zakladna organizacia akcie', 'doladenie detailov podla lokality a terminu']
     };
 
+    function mapAudienceToFieldValue(value) {
+      const normalized = (value || '').toLowerCase();
+      if (normalized.includes('firma') || normalized.includes('hotel')) return 'firma';
+      if (normalized.includes('obec') || normalized.includes('mesto')) return 'obec';
+      if (normalized.includes('skola') || normalized.includes('škola') || normalized.includes('centrum')) return 'skola';
+      if (normalized.includes('rodin') || normalized.includes('verej')) return 'rodina';
+      return '';
+    }
+
+    function mapEnergyToFieldValue(value) {
+      const normalized = (value || '').toLowerCase();
+      if (normalized.includes('show') || normalized.includes('veľk') || normalized.includes('velk')) return 'show';
+      if (normalized.includes('zabav') || normalized.includes('zábav')) return 'zabava';
+      if (normalized.includes('pohod')) return 'pokoj';
+      return '';
+    }
+
+    function setTransferredField(name, isTransferred) {
+      if (!transferredFields[name]) return;
+      transferredFields[name].classList.toggle('is-transferred', Boolean(isTransferred));
+    }
+
+    function getPricingGuests(value) {
+      const numbers = String(value || '').match(/\d+/g);
+      if (!numbers || !numbers.length) return value;
+      return Math.max(...numbers.map((item) => Number(item)));
+    }
+
+    function normalizePlannerScope(value) {
+      const raw = String(value || '').toLowerCase().trim();
+      if (raw.includes('komplet')) return 'komplet';
+      if (raw.includes('program') && raw.includes('atrak')) return 'komplet';
+      if (raw.includes('atrak')) return 'atrakcie';
+      if (raw.includes('program')) return 'program';
+      return value || '';
+    }
+
+    function formatScopeParam(value) {
+      const normalized = normalizePlannerScope(value);
+      const labels = {
+        program: 'Program',
+        atrakcie: 'Atrakcie',
+        komplet: 'Kompletná akcia'
+      };
+      return labels[normalized] || value || '';
+    }
+
+    function getScopeDisplayLabel() {
+      return selected.scopeLabel || formatScopeParam(selected.scope);
+    }
+
     function getScopeKey() {
-      return (selected.scope || selected.scopeLabel || '').toLowerCase().trim();
+      return getScopeDisplayLabel().toLowerCase().trim();
     }
 
     function getSelectionLabel() {
-      return [selected.event, selected.scopeLabel, selected.packageName || selected.variant].filter(Boolean).join(' / ') || 'Akcia na mieru';
+      return [selected.event, getScopeDisplayLabel(), selected.packageName || selected.variant].filter(Boolean).join(' / ') || 'Akcia na mieru';
     }
+
+    let selectedEnergy = '';
 
     function applySelection(nextSelected, options = {}) {
       Object.assign(selected, {
@@ -514,20 +587,68 @@
         price: '',
         lead: '',
         poster: '',
+        audience: '',
+        guests: '',
+        energy: '',
+        budget: '',
+        promo: '',
         bullets: []
       }, nextSelected || {});
 
       title.textContent = getSelectionLabel();
-      description.textContent = 'Ešte pár detailov a tvoja ponuka je pripravená.';
+      description.textContent = selected.source === 'quick-calc'
+        ? 'Výber z kalkulačky máme uložený. Doplň už len posledné detaily.'
+        : 'Ešte pár detailov a tvoja ponuka je pripravená.';
       chips.innerHTML = [
         selected.event ? `<span class="mz-followup-chip">${selected.event}</span>` : '',
-        selected.scopeLabel ? `<span class="mz-followup-chip">${selected.scopeLabel}</span>` : '',
+        getScopeDisplayLabel() ? `<span class="mz-followup-chip">${getScopeDisplayLabel()}</span>` : '',
         selected.packageName ? `<span class="mz-followup-chip">${selected.packageName}</span>` : (selected.variant ? `<span class="mz-followup-chip">${selected.variant}</span>` : ''),
-        selected.price ? `<span class="mz-followup-chip">${selected.price}</span>` : ''
+        selected.price ? `<span class="mz-followup-chip">${selected.price}</span>` : '',
+        selected.audience ? `<span class="mz-followup-chip">${selected.audience}</span>` : '',
+        selected.guests ? `<span class="mz-followup-chip">${selected.guests} ľudí</span>` : '',
+        selected.energy ? `<span class="mz-followup-chip">${selected.energy}</span>` : '',
+        selected.budget ? `<span class="mz-followup-chip">rozpočet ${selected.budget}</span>` : '',
+        selected.promo ? `<span class="mz-followup-chip">promo: ${selected.promo}</span>` : ''
       ].join('');
       hiddenEvent.value = selected.event;
       hiddenVariant.value = selected.packageName || selected.variant;
       hiddenPrice.value = selected.price;
+      hiddenAudience.value = selected.audience;
+      hiddenGuests.value = selected.guests;
+      hiddenBudget.value = selected.budget;
+      hiddenPromo.value = selected.promo;
+
+      if (selected.audience) {
+        audienceField.value = mapAudienceToFieldValue(selected.audience);
+        audienceField.required = false;
+        setTransferredField('audience', true);
+      } else {
+        audienceField.required = true;
+        setTransferredField('audience', false);
+      }
+
+      if (selected.guests) {
+        guestsField.value = '';
+        guestsField.required = false;
+        setTransferredField('guests', true);
+      } else {
+        guestsField.required = true;
+        setTransferredField('guests', false);
+      }
+
+      if (selected.energy) {
+        selectedEnergy = mapEnergyToFieldValue(selected.energy);
+        hiddenEnergy.value = selected.energy;
+        energyButtons.forEach((button) => {
+          button.classList.toggle('is-active', button.dataset.energy === selectedEnergy);
+        });
+        setTransferredField('energy', true);
+      } else {
+        selectedEnergy = '';
+        hiddenEnergy.value = '';
+        energyButtons.forEach((button) => button.classList.remove('is-active'));
+        setTransferredField('energy', false);
+      }
 
       if (selected.poster) {
         image.src = selected.poster;
@@ -548,9 +669,9 @@
     function getOfferBullets() {
       if (selected.bullets.length) return selected.bullets;
       const scopeKey = getScopeKey();
+      if ((scopeKey.includes('program') && scopeKey.includes('atrak')) || scopeKey.includes('komplet')) return fallbackBullets.komplet;
       if (scopeKey.includes('program')) return fallbackBullets.program;
       if (scopeKey.includes('atrak')) return fallbackBullets.atrakcie;
-      if (scopeKey.includes('komplet')) return fallbackBullets.komplet;
       return fallbackBullets.komplet;
     }
 
@@ -563,7 +684,7 @@
         ine: 'individualne zadanie'
       };
 
-      return audienceMap[value] || '';
+      return audienceMap[value] || value || '';
     }
 
     function formatEnergy(value) {
@@ -573,7 +694,7 @@
         show: 'styl: show a energia'
       };
 
-      return energyMap[value] || '';
+      return energyMap[value] || value || '';
     }
 
     function formatDate(value) {
@@ -587,19 +708,21 @@
       });
     }
 
-    function buildOfferContext(formData, selectedEnergy) {
+    function buildOfferContext(formData) {
       const items = [];
 
-      if (formData.guests) items.push(`${formData.guests} hosti`);
+      if (formData.guests) items.push(`${formData.guests} ľudí`);
       if (formData.address) items.push(formData.address);
       if (formData.audience) items.push(formatAudience(formData.audience));
-      if (selectedEnergy) items.push(formatEnergy(selectedEnergy));
+      if (formData.energy) items.push(formatEnergy(formData.energy));
+      if (formData.budget) items.push(`rozpočet ${formData.budget}`);
+      if (formData.promo) items.push(`promo: ${formData.promo}`);
       if (formData.date) items.push(`termin ${formatDate(formData.date)}`);
 
       return items.filter(Boolean);
     }
 
-    function createMailtoHref(offerData, formData, selectedEnergy) {
+    function createMailtoHref(offerData, formData) {
       const subject = `Objednavka / ${offerData.selection}`;
       const bodyLines = [
         'Dobry den,',
@@ -613,7 +736,9 @@
         formData.address ? `Miesto akcie: ${formData.address}` : '',
         formData.guests ? `Pocet ludi: ${formData.guests}` : '',
         formData.audience ? `Pre koho je akcia: ${formatAudience(formData.audience)}` : '',
-        selectedEnergy ? `Styl energie: ${formatEnergy(selectedEnergy).replace('styl: ', '')}` : '',
+        formData.energy ? `Styl energie: ${formatEnergy(formData.energy).replace('styl: ', '')}` : '',
+        formData.budget ? `Rozpocet: ${formData.budget}` : '',
+        formData.promo ? `Promo: ${formData.promo}` : '',
         formData.name ? `Meno: ${formData.name}` : '',
         formData.contact ? `Kontakt: ${formData.contact}` : '',
         formData.note ? `Poznamka: ${formData.note}` : '',
@@ -637,8 +762,6 @@
       applySelection(selected, { scroll: window.location.hash === '#planner-form' });
     }
 
-    let selectedEnergy = '';
-
     function autoResizeTextarea(field) {
       if (!field) return;
       field.style.height = 'auto';
@@ -649,8 +772,11 @@
       const formData = {
         date: dateField.value,
         address: addressField.value.trim(),
-        guests: guestsField.value.trim(),
-        audience: audienceField.value,
+        guests: selected.guests || guestsField.value.trim(),
+        audience: selected.audience || audienceField.value,
+        energy: selected.energy || selectedEnergy,
+        budget: selected.budget,
+        promo: selected.promo,
         name: nameField.value.trim(),
         contact: contactField.value.trim(),
         note: noteField.value.trim()
@@ -659,17 +785,18 @@
       const selection = getSelectionLabel();
       const pricing = pricingApi
         ? pricingApi.calculateOffer({
-            scope: selected.scopeLabel || selected.scope,
+            scope: normalizePlannerScope(selected.scopeLabel || selected.scope),
             eventName: selected.event,
             audience: formData.audience,
-            guests: formData.guests,
+            guests: getPricingGuests(formData.guests),
+            budget: formData.budget,
             packageName: selected.packageName || selected.variant,
             price: selected.price
           })
         : null;
       const price = pricing ? pricing.priceText : (selected.price || 'Cena na vyziadanie');
       const bullets = getOfferBullets();
-      const contextItems = buildOfferContext(formData, selectedEnergy).concat(
+      const contextItems = buildOfferContext(formData).concat(
         pricing ? pricing.reasons.slice(0, 3) : [],
         ...getKompletSavingsContext(pricing)
       );
@@ -686,7 +813,7 @@
       offerNote.textContent = pricing && pricing.scope === 'komplet' && pricing.discountAmount
         ? `Komplet akcia je cenovo zvyhodnena oproti samostatnemu objednaniu sluzieb. Samostatne by ta tato kombinacia vysla na ${pricing.listPriceText}, teraz ju vidis za ${pricing.exactPriceText}. Ak ti vyhovuje, mozes pokracovat v objednavke alebo s nami doladit posledne detaily.`
         : 'Ponuka bola pripravena podla vybraneho variantu a zadanych udajov. Ak ti vyhovuje, mozes pokracovat v objednavke alebo s nami doladit posledne detaily.';
-      orderLink.href = createMailtoHref({ selection, price }, formData, selectedEnergy);
+      orderLink.href = createMailtoHref({ selection, price }, formData);
       success.hidden = true;
       offerBox.hidden = false;
 
@@ -713,7 +840,7 @@
         showToast('Dopln prosim vsetky dolezite udaje.');
         return;
       }
-      hiddenEnergy.value = selectedEnergy || '';
+      hiddenEnergy.value = selected.energy || selectedEnergy || '';
       showOverlay('MAJSTRI ZÁBAVY', 'Pripravujeme vašu ponuku...');
       window.setTimeout(() => {
         hideOverlay();

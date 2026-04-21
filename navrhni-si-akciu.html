@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Majstri zábavy | Navrhni si akciu</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260421-planner-cleanup-1">
-  <link rel="stylesheet" href="css/navrhni-si-akciu.css?v=20260421-wizard-1">
-  <link rel="stylesheet" href="css/navrhni-si-akciu-followup.css?v=20260421-dark-1">
+  <link rel="stylesheet" href="css/style.css?v=20260421-footer-upgrade-1">
+  <link rel="stylesheet" href="css/navrhni-si-akciu.css?v=20260421-wizard-title-1">
+  <link rel="stylesheet" href="css/navrhni-si-akciu-followup.css?v=20260421-energy-transition-1">
 </head>
 <body>
   <div id="cursor"></div>
@@ -75,6 +75,11 @@
         </div>
       </div>
 
+      <div class="mz-budget-signature" aria-label="Rozpočet tvorí energiu">
+        <div class="mz-budget-signature__ghost" aria-hidden="true">ROZPOČET</div>
+        <div class="mz-budget-signature__line">ROZPOČET TVORÍ ENERGIU</div>
+      </div>
+
       <div class="mz-divider">
         <div class="mz-divider__label">rýchly návrh</div>
       </div>
@@ -82,7 +87,7 @@
       <!-- KROKOVA KALKULACKA -->
       <div class="mz-wizard" id="mz-wizard">
         <div class="mz-wizard__head">
-          <h2 class="mz-wizard__title">NAVRHNI SI AKCIU</h2>
+          <h2 class="mz-wizard__title"><span>NAVRHNI SI</span> AKCIU</h2>
           <p class="mz-wizard__sub">5 klikov → 3 ponuky na mieru</p>
         </div>
 
@@ -99,25 +104,21 @@
           <div class="mz-wizard__panel is-active" data-wizard-step="0">
             <h3 class="mz-wizard__question">Pre koho je akcia?</h3>
             <div class="mz-choice-grid mz-choice-grid--audience">
-              <button type="button" class="mz-choice" data-field="audience" data-value="Rodiny / verejnosť">
-                <span class="mz-choice__icon">👨‍👩‍👧</span>
-                <span class="mz-choice__label">Rodiny / verejnosť</span>
-              </button>
-              <button type="button" class="mz-choice" data-field="audience" data-value="Školy / deti">
-                <span class="mz-choice__icon">🎓</span>
-                <span class="mz-choice__label">Školy / deti</span>
-              </button>
-              <button type="button" class="mz-choice" data-field="audience" data-value="Mesto / obec">
-                <span class="mz-choice__icon">🏛️</span>
-                <span class="mz-choice__label">Mesto / obec</span>
-              </button>
               <button type="button" class="mz-choice" data-field="audience" data-value="Firma / hotel">
                 <span class="mz-choice__icon">🏢</span>
                 <span class="mz-choice__label">Firma / hotel</span>
               </button>
-              <button type="button" class="mz-choice" data-field="audience" data-value="Iné">
-                <span class="mz-choice__icon">✨</span>
-                <span class="mz-choice__label">Iné</span>
+              <button type="button" class="mz-choice" data-field="audience" data-value="Obec / mesto">
+                <span class="mz-choice__icon">🏛️</span>
+                <span class="mz-choice__label">Obec / mesto</span>
+              </button>
+              <button type="button" class="mz-choice" data-field="audience" data-value="Škola / centrum">
+                <span class="mz-choice__icon">🎓</span>
+                <span class="mz-choice__label">Škola / centrum</span>
+              </button>
+              <button type="button" class="mz-choice" data-field="audience" data-value="Rodiny / verejnosť">
+                <span class="mz-choice__icon">👨‍👩‍👧</span>
+                <span class="mz-choice__label">Rodiny / verejnosť</span>
               </button>
             </div>
           </div>
@@ -151,33 +152,42 @@
               <button type="button" class="mz-choice" data-field="guests" data-value="do 50">
                 <span class="mz-choice__label">do 50</span>
               </button>
-              <button type="button" class="mz-choice" data-field="guests" data-value="50 – 100">
-                <span class="mz-choice__label">50 – 100</span>
+              <button type="button" class="mz-choice" data-field="guests" data-value="50 – 150">
+                <span class="mz-choice__label">50 – 150</span>
               </button>
-              <button type="button" class="mz-choice" data-field="guests" data-value="100 – 200">
-                <span class="mz-choice__label">100 – 200</span>
+              <button type="button" class="mz-choice" data-field="guests" data-value="150 – 300">
+                <span class="mz-choice__label">150 – 300</span>
               </button>
-              <button type="button" class="mz-choice" data-field="guests" data-value="200+">
-                <span class="mz-choice__label">200+</span>
+              <button type="button" class="mz-choice" data-field="guests" data-value="300 – 600">
+                <span class="mz-choice__label">300 – 600</span>
               </button>
             </div>
             <button type="button" class="mz-wizard__back" data-wizard-back>← Späť</button>
           </div>
 
           <div class="mz-wizard__panel" data-wizard-step="3">
-            <h3 class="mz-wizard__question">Aký vibe chceš?</h3>
+            <h3 class="mz-wizard__question">Ako veľmi to chceš rozbehnúť?</h3>
             <div class="mz-choice-list">
-              <button type="button" class="mz-choice mz-choice--row" data-field="vibe" data-value="Pohoda">
-                <span class="mz-choice__icon">🌿</span>
-                <span class="mz-choice__text"><span class="mz-choice__label">Pohoda</span></span>
+              <button type="button" class="mz-choice mz-choice--row" data-field="vibe" data-value="Pohodová akcia">
+                <span class="mz-choice__signal mz-choice__signal--green" aria-hidden="true"></span>
+                <span class="mz-choice__text">
+                  <span class="mz-choice__label">Pohodová akcia</span>
+                  <span class="mz-choice__sub">pre menej náročných</span>
+                </span>
               </button>
-              <button type="button" class="mz-choice mz-choice--row" data-field="vibe" data-value="Zábava">
-                <span class="mz-choice__icon">🎉</span>
-                <span class="mz-choice__text"><span class="mz-choice__label">Zábava</span></span>
+              <button type="button" class="mz-choice mz-choice--row" data-field="vibe" data-value="Plná zábavy">
+                <span class="mz-choice__signal mz-choice__signal--yellow" aria-hidden="true"></span>
+                <span class="mz-choice__text">
+                  <span class="mz-choice__label">Plná zábavy</span>
+                  <span class="mz-choice__sub">pre náročných</span>
+                </span>
               </button>
-              <button type="button" class="mz-choice mz-choice--row" data-field="vibe" data-value="Show">
-                <span class="mz-choice__icon">🔥</span>
-                <span class="mz-choice__text"><span class="mz-choice__label">Show</span></span>
+              <button type="button" class="mz-choice mz-choice--row" data-field="vibe" data-value="Veľká show">
+                <span class="mz-choice__signal mz-choice__signal--red" aria-hidden="true"></span>
+                <span class="mz-choice__text">
+                  <span class="mz-choice__label">Veľká show</span>
+                  <span class="mz-choice__sub">premium</span>
+                </span>
               </button>
             </div>
             <button type="button" class="mz-wizard__back" data-wizard-back>← Späť</button>
@@ -200,14 +210,14 @@
           </div>
 
           <div class="mz-wizard__panel" data-wizard-step="5">
-            <h3 class="mz-wizard__question">Chceš aj promo a prilákať ľudí?</h3>
+            <h3 class="mz-wizard__question">Chceš aj promo k akcii?</h3>
             <div class="mz-choice-grid mz-choice-grid--promo">
               <button type="button" class="mz-choice" data-field="promo" data-value="Áno">
-                <span class="mz-choice__icon">📣</span>
+                <span class="mz-choice__status mz-choice__status--yes">✓</span>
                 <span class="mz-choice__label">Áno</span>
               </button>
               <button type="button" class="mz-choice" data-field="promo" data-value="Nie">
-                <span class="mz-choice__icon">✓</span>
+                <span class="mz-choice__status mz-choice__status--no">×</span>
                 <span class="mz-choice__label">Nie</span>
               </button>
             </div>
@@ -234,7 +244,6 @@
     <section class="mz-followup-section" id="planner-form">
       <div class="mz-followup-shell">
         <div class="mz-followup-head">
-          <div class="section-label-orbit">// DOPLN POSLEDNE DETAILY //</div>
           <h2 class="mz-followup-title">Vybral si si program? Dokoncime finalnu ponuku na mieru.</h2>
         </div>
 
@@ -263,12 +272,12 @@
                 <input class="mz-followup-input" id="mz-followup-address" name="event_address" type="text" placeholder="Mesto, obec alebo presna adresa" required>
               </div>
 
-              <div class="mz-followup-field">
+              <div class="mz-followup-field" data-followup-field="guests">
                 <label class="mz-followup-label" for="mz-followup-guests">Pocet ludi cca</label>
                 <input class="mz-followup-input" id="mz-followup-guests" name="guest_count" type="number" min="1" placeholder="Napr. 80" required>
               </div>
 
-              <div class="mz-followup-field">
+              <div class="mz-followup-field" data-followup-field="audience">
                 <label class="mz-followup-label" for="mz-followup-audience">Pre koho je akcia</label>
                 <select class="mz-followup-select" id="mz-followup-audience" name="audience" required>
                   <option value="">Vyber si moznost</option>
@@ -280,7 +289,7 @@
                 </select>
               </div>
 
-              <div class="mz-followup-field mz-followup-field--full">
+              <div class="mz-followup-field mz-followup-field--full" data-followup-field="energy">
                 <label class="mz-followup-label">Vyber si styl energie</label>
                 <div class="mz-followup-energy" id="mz-followup-energy">
                   <button type="button" class="mz-followup-energy__btn" data-energy="pokoj">Pohoda</button>
@@ -309,6 +318,10 @@
             <input type="hidden" id="mz-followup-hidden-variant" name="selected_variant">
             <input type="hidden" id="mz-followup-hidden-price" name="selected_price">
             <input type="hidden" id="mz-followup-hidden-energy" name="selected_energy">
+            <input type="hidden" id="mz-followup-hidden-audience" name="selected_audience">
+            <input type="hidden" id="mz-followup-hidden-guests" name="selected_guests">
+            <input type="hidden" id="mz-followup-hidden-budget" name="selected_budget">
+            <input type="hidden" id="mz-followup-hidden-promo" name="selected_promo">
 
             <div class="mz-followup-actions">
               <button type="submit" class="btn-primary mz-followup-submit">ZOBRAZIŤ MOJU PONUKU</button>
@@ -361,21 +374,37 @@
   </main>
 
   <footer>
-    <div class="footer-logo">MAJSTRI ZÁBAVY</div>
-    <div class="footer-copy">&copy; 2026 MAJSTRI ZÁBAVY</div>
-    <ul class="footer-links">
-      <li><a href="index.html">Domov</a></li>
-      <li><a href="svet-zabavy.html">Svet zábavy</a></li>
-      <li><a href="365-dni-zabavy.html">365 dní zábavy</a></li>
-      <li><a href="inspiracia.html">Inšpirácia</a></li>
-      <li><a href="projekty.html">Projekty</a></li>
-      <li><a href="kontakt.html">Kontakt</a></li>
-      <li><a href="navrhni-si-akciu.html">Navrhni si akciu</a></li>
-    </ul>
+    <div class="footer-brand">
+      <div class="footer-logo">MAJSTRI ZÁBAVY</div>
+      <p class="footer-statement">Zábava, ktorá má energiu.</p>
+      <a href="navrhni-si-akciu.html" class="footer-cta">Navrhni si akciu</a>
+    </div>
+
+    <div class="footer-social">
+      <p class="footer-social__title">Pozri si našu energiu v praxi</p>
+      <div class="footer-social__links">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><span>IG</span>Instagram</a>
+        <a href="#" aria-label="Facebook Majstri zábavy"><span>FB</span>Facebook</a>
+        <a href="https://www.youtube.com/@christian_alex_official" target="_blank" rel="noopener noreferrer"><span>YT</span>YouTube</a>
+        <a href="#" aria-label="TikTok Majstri zábavy"><span>TT</span>TikTok</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Majstri zábavy</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Domov</a></li>
+        <li><a href="svet-zabavy.html">Svet zábavy</a></li>
+        <li><a href="365-dni-zabavy.html">365 dní zábavy</a></li>
+        <li><a href="inspiracia.html">Inšpirácia</a></li>
+        <li><a href="projekty.html">Projekty</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </div>
   </footer>
 
   <script src="js/mz-cennik.js?v=20260405-komplet-discount-1"></script>
-  <script src="js/navrhni-si-akciu.js?v=20260421-wizard-2"></script>
+  <script src="js/navrhni-si-akciu.js?v=20260421-smart-followup-2"></script>
   <script src="js/main.js?v=20260324-orbit-labels-1"></script>
 </body>
 </html>
