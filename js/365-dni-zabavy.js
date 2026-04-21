@@ -1,4 +1,4 @@
-/* 365 dni zabavy
+﻿/* 365 dni zabavy
    Tento subor drzi len stabilnu logiku plannera pre rezim "Naplanuj si akciu".
    Verejne akcie pre "Kam za zabavou" maju oddelene data aj logiku.
 */
@@ -286,6 +286,7 @@ const requestedMode = new URLSearchParams(window.location.search).get('mode');
 if (requestedMode === 'public' || requestedMode === 'custom') {
   setYearPlannerMode(requestedMode, { syncUrl: false });
 }
+
 
 
 

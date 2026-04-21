@@ -7,64 +7,57 @@ const planets = [
     icon: '',
     core: 'MZ',
     label: 'SVET\nZABAVY',
-    desc: 'Objednaj si akcie, atrakcie a sluzby pod jednou strechou.',
-    cta: 'OTVORIŤ SVET ZÁBAVY',
+    desc: 'Objednaj si program, atrakcie a služby od Majstrov Zábavy.',
+    cta: 'Objaviť svet',
     target: 'svet-zabavy.html',
-    color: '#7b2fff'
+    color: '#c7ff2e'
   },
   {
     icon: '',
     core: 'MZ',
     label: 'INSPIRACIA',
-    desc: 'Hľadáš nápad na akciu? Nechaj sa inšpirovať tým najlepším zo sveta zábavy.',
-    cta: 'OTVORIT INSPIRACIU',
+    desc: 'Hľadáš nápad na akciu? Inšpiruj sa.',
+    cta: 'Pozrieť inšpiráciu',
     target: 'inspiracia',
-    color: '#00d4ff'
+    color: '#9edb1f'
   },
   {
     icon: '',
     core: '365',
     label: '365 DNI',
-    desc: 'Zábava nikdy nekončí. Objav, kam ísť dnes, tento víkend alebo celý rok.',
-    cta: 'OTVORIT KALENDAR',
+    desc: 'Hľadáš zábavu? Objav ju tu.',
+    cta: 'Objaviť 365 dní',
     target: 'rok',
-    color: '#57b8ff'
+    color: '#d8ff5a'
   },
   {
     icon: '',
     core: 'MZ',
     label: 'PROJEKTY',
-    desc: 'Pozri si, čo všetko vzniká pod značkou Majstri Zábavy.',
-    cta: 'OTVORIT PROJEKTY',
+    desc: 'Pozri si, čo všetko vzniká pod značkou Majstri zábavy.',
+    cta: 'Pozrieť projekty',
     target: 'projekty',
-    color: '#bf7fff'
+    color: '#efff97'
   },
   {
     icon: '',
     core: 'MZ',
     label: 'KONTAKT',
-    desc: 'Začni svoju akciu ešte dnes. Stačí sa ozvať a my sa postaráme o zvyšok.',
-    cta: 'PREJST NA KONTAKT',
+    desc: 'Sme pripravení poradiť vám.',
+    cta: 'Prejsť na kontakt',
     target: 'kontakt',
-    color: '#ff6bb5'
+    color: '#c7ff2e'
   },
   {
     icon: '',
     core: 'MZ',
     label: 'TVOJA\nAKCIA',
-    desc: 'Navrhni si akciu na mieru a zisti, ako môže vyzerať tvoja ideálna zábava.',
-    cta: 'NAVRHNI SI AKCIU',
+    desc: 'Navrhni si svoju akciu.',
+    cta: 'Navrhnúť akciu',
     target: 'navrhni-akciu',
-    color: '#8dc8ff'
+    color: '#efff97'
   }
 ];
-
-function hexToRgb(hex) {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  return `${r},${g},${b}`;
-}
 
 const container = document.getElementById('orbitContainer');
 const coreDesc = document.getElementById('coreDesc');
@@ -82,15 +75,17 @@ planetsWrapper.parentElement.insertBefore(orbitGroup, planetsWrapper);
 function setCoreState(planet) {
   if (!planet) {
     container.classList.remove('planet-active');
+    container.classList.add('orbit-idle');
     coreLogo.textContent = 'MZ';
-    coreDesc.textContent = '';
-    coreCta.textContent = 'OTVORIT SEKCIU';
+    coreDesc.textContent = 'Vyber si planétu';
+    coreCta.textContent = 'Otvoriť sekciu';
     coreCta.onclick = () => navigateTo('kontakt');
     coreCta.disabled = false;
     return;
   }
 
   container.classList.add('planet-active');
+  container.classList.remove('orbit-idle');
   coreLogo.textContent = planet.core || planet.icon;
   coreDesc.textContent = planet.desc;
   coreCta.textContent = planet.cta;
@@ -104,9 +99,7 @@ function clearActivePlanet() {
   });
 
   if (activePlanetDiv) {
-    activePlanetDiv.style.borderColor = '';
-    activePlanetDiv.style.background = '';
-    activePlanetDiv.style.boxShadow = '';
+    activePlanetDiv.classList.remove('is-active');
     activePlanetDiv.style.transform = 'translate(-50%, -50%) scale(1)';
     activePlanetDiv.style.zIndex = '';
   }
@@ -118,10 +111,10 @@ function clearActivePlanet() {
 function buildOrbit() {
   orbitGroup.innerHTML = '';
 
-  const radius = isMobile() ? 118 : 220;
-  const size = isMobile() ? 60 : 80;
+  const radius = isMobile() ? 118 : 198;
+  const size = isMobile() ? 60 : 74;
   const iconSize = isMobile() ? '11.5px' : '13px';
-  const labelSize = isMobile() ? '7.4px' : '9px';
+  const labelSize = isMobile() ? '7.4px' : '8.5px';
   let keyframes = '';
 
   planets.forEach((planet, index) => {
@@ -147,12 +140,14 @@ function buildOrbit() {
     const planetDiv = document.createElement('div');
     planetDiv.className = 'planet';
     planetDiv.style.cssText = `
+      --planet-color: ${planet.color};
       position: absolute;
       width: ${size}px;
       height: ${size}px;
       transform: translate(-50%, -50%);
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
     `;
+
     const iconMarkup = planet.icon
       ? `<div class="planet-icon" style="font-size:${iconSize}">${planet.icon}</div>`
       : '';
@@ -164,9 +159,7 @@ function buildOrbit() {
 
     function activatePlanet() {
       if (activePlanetDiv && activePlanetDiv !== planetDiv) {
-        activePlanetDiv.style.borderColor = '';
-        activePlanetDiv.style.background = '';
-        activePlanetDiv.style.boxShadow = '';
+        activePlanetDiv.classList.remove('is-active');
         activePlanetDiv.style.transform = 'translate(-50%, -50%) scale(1)';
         activePlanetDiv.style.zIndex = '';
       }
@@ -175,10 +168,8 @@ function buildOrbit() {
         track.style.animationPlayState = 'paused';
       });
 
-      planetDiv.style.borderColor = planet.color;
-      planetDiv.style.background = `rgba(${hexToRgb(planet.color)}, 0.15)`;
-      planetDiv.style.boxShadow = `0 0 28px ${planet.color}, 0 0 60px ${planet.color}44, inset 0 0 20px ${planet.color}22`;
-      planetDiv.style.transform = 'translate(-50%, -50%) scale(1.3)';
+      planetDiv.classList.add('is-active');
+      planetDiv.style.transform = 'translate(-50%, -50%) scale(1.24)';
       planetDiv.style.zIndex = '30';
       activePlanetDiv = planetDiv;
       setCoreState(planet);
@@ -212,8 +203,8 @@ function sizeOrbit() {
     orbitContainer.style.width = '340px';
     orbitContainer.style.height = '340px';
   } else {
-    orbitContainer.style.width = '600px';
-    orbitContainer.style.height = '600px';
+    orbitContainer.style.width = '540px';
+    orbitContainer.style.height = '540px';
   }
 }
 

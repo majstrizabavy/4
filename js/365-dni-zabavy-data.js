@@ -1,4 +1,4 @@
-/* 365 dni zabavy data
+﻿/* 365 dni zabavy data
    Tento subor drzi iba mesiace pre rezim "Naplanuj si akciu".
 */
 window.yearPlannerData = {
@@ -11,7 +11,7 @@ window.yearPlannerData = {
         name: 'JANUAR',
         title: 'karnevaly, novoro&#269;n&eacute; akcie, zimn&eacute; programy, firemn&eacute; ve&#269;ierky',
         hint: 'Moderovanie &bull; Program &bull; Maskoti &bull; Animatori',
-        accent: 'var(--violet)',
+        accent: 'var(--brand-primary)',
         plannerEvents: [
           { id: 'karnevaly', label: 'Karnevaly' },
           { id: 'novorocne-akcie', label: 'Novoročné akcie' },
@@ -25,7 +25,7 @@ window.yearPlannerData = {
         name: 'FEBRUAR',
         title: 'karnevaly, valent&iacute;nske akcie, plesy, firemn&eacute; eventy',
         hint: 'Maskoti &bull; Animatori &bull; Hudobny program &bull; Sutaze',
-        accent: 'var(--pink)',
+        accent: 'var(--brand-tint)',
         plannerEvents: [
           { id: 'karnevaly', label: 'Karnevaly' },
           { id: 'valentinske-akcie', label: 'Valentínske akcie' },
@@ -39,7 +39,7 @@ window.yearPlannerData = {
         name: 'MAREC',
         title: 'dni otvoren&yacute;ch dver&iacute;, De&#328; &#382;ien, ve&#318;kono&#269;n&eacute; programy, ve&#318;kono&#269;n&eacute; trhy',
         hint: 'Moderovanie &bull; Program &bull; Rodinne zony &bull; Tematicke akcie',
-        accent: 'var(--cyan)',
+        accent: 'var(--brand-secondary)',
         plannerEvents: [
           { id: 'dni-otvorenych-dveri', label: 'Dni otvorených dverí' },
           { id: 'den-zien', label: 'Deň žien' },
@@ -53,7 +53,7 @@ window.yearPlannerData = {
         name: 'APRIL',
         title: 'dni otvoren&yacute;ch dver&iacute;, z&aacute;pisy do M&Scaron; a Z&Scaron;, ve&#318;kono&#269;n&eacute; akcie, firemn&eacute; akcie',
         hint: 'Tvorive dielne &bull; Program &bull; Rodinne zony &bull; Animatori',
-        accent: 'var(--violet)',
+        accent: 'var(--brand-primary)',
         plannerEvents: [
           { id: 'dni-otvorenych-dveri-april', label: 'Dni otvorených dverí' },
           { id: 'zapisy-ms-zs', label: 'Zápisy do MŠ a ZŠ' },
@@ -67,7 +67,7 @@ window.yearPlannerData = {
         name: 'MAJ',
         title: '1. m&aacute;j / m&aacute;jov&eacute; oslavy, De&#328; matiek, maj&aacute;lesy, family day',
         hint: 'Stage program &bull; Family day &bull; Chill zony &bull; Moderovanie',
-        accent: 'var(--pink)',
+        accent: 'var(--brand-tint)',
         plannerEvents: [
           { id: 'majove-oslavy', label: '1. máj / Májové oslavy' },
           { id: 'den-matiek', label: 'Deň matiek' },
@@ -81,7 +81,7 @@ window.yearPlannerData = {
         name: 'JUN',
         title: 'De&#328; det&iacute;, &scaron;kolsk&eacute; akcie, rozl&uacute;&#269;ky so &scaron;kolou, Vitaj leto',
         hint: 'Atrakcie &bull; Animatori &bull; Detske vystupenia &bull; Moderovanie',
-        accent: 'var(--cyan)',
+        accent: 'var(--brand-secondary)',
         plannerEvents: [
           { id: 'den-deti', label: 'Den deti' },
           { id: 'skolske-akcie', label: 'Skolske akcie' },
@@ -95,7 +95,7 @@ window.yearPlannerData = {
         name: 'JUL',
         title: 'letn&eacute; t&aacute;bory, festivaly, &scaron;portov&eacute; dni, jarmoky',
         hint: 'Stage show &bull; Turnaje &bull; Vecerny program &bull; Moderovanie',
-        accent: 'var(--violet)',
+        accent: 'var(--brand-primary)',
         plannerEvents: [
           { id: 'letne-tabory', label: 'Letné tábory' },
           { id: 'festivaly-jul', label: 'Festivaly' },
@@ -109,7 +109,7 @@ window.yearPlannerData = {
         name: 'AUGUST',
         title: 'dni obc&iacute; a miest, family day, festivaly, rozl&uacute;&#269;ka s letom',
         hint: 'Hudba &bull; Gastro zony &bull; Zazitkove aktivity &bull; Program na podium',
-        accent: 'var(--cyan)',
+        accent: 'var(--brand-secondary)',
         plannerEvents: [
           { id: 'dni-obci-a-miest', label: 'Dni obcí a miest' },
           { id: 'family-day-august', label: 'Family day' },
@@ -123,7 +123,7 @@ window.yearPlannerData = {
         name: 'SEPTEMBER',
         title: 'otvorenie &scaron;kolsk&eacute;ho roka, &scaron;kolsk&eacute; akcie, dni obc&iacute; a miest, firemn&eacute; akcie',
         hint: 'Moderovanie &bull; Program &bull; Rodinne zony &bull; Eventovy support',
-        accent: 'var(--violet)',
+        accent: 'var(--brand-primary)',
         plannerEvents: [
           { id: 'otvorenie-skolskeho-roka', label: 'Otvorenie školského roka' },
           { id: 'skolske-akcie-september', label: 'Školské akcie' },
@@ -137,7 +137,7 @@ window.yearPlannerData = {
         name: 'OKTOBER',
         title: 'Halloween programy, stra&scaron;ideln&eacute; eventy, teambuildingy, firemn&eacute; eventy',
         hint: 'Dekor &bull; Show &bull; Hostesky &bull; Game zony',
-        accent: 'var(--pink)',
+        accent: 'var(--brand-tint)',
         plannerEvents: [
           { id: 'halloween-programy', label: 'Halloween programy' },
           { id: 'strasidelne-eventy', label: 'Strašidelné eventy' },
@@ -151,7 +151,7 @@ window.yearPlannerData = {
         name: 'NOVEMBER',
         title: 'firemn&eacute; eventy, teambuildingy, husacie hody, predviano&#269;n&eacute; ve&#269;ierky',
         hint: 'Quizy &bull; Turnaje &bull; Firemny program &bull; Moderovanie',
-        accent: 'var(--violet)',
+        accent: 'var(--brand-primary)',
         plannerEvents: [
           { id: 'firemne-eventy-november', label: 'Firemné eventy' },
           { id: 'teambuildingy-november', label: 'Teambuildingy' },
@@ -165,7 +165,7 @@ window.yearPlannerData = {
         name: 'DECEMBER',
         title: 'mikul&aacute;&scaron;ske akcie, viano&#269;n&eacute; ve&#269;ierky, viano&#269;n&eacute; trhy, silvestrovsk&eacute; akcie',
         hint: 'Mikulas &bull; Gala vecer &bull; Vianocny program &bull; Animatori',
-        accent: 'var(--violet)',
+        accent: 'var(--brand-primary)',
         plannerEvents: [
           { id: 'mikulasske-akcie', label: 'Mikulášske akcie' },
           { id: 'vianocne-vecierky', label: 'Vianočné večierky' },
@@ -176,4 +176,6 @@ window.yearPlannerData = {
     ]
   }
 };
+
+
 

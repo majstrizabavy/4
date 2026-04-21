@@ -1,4 +1,4 @@
-/* ===== PROJEKTY MZ: overview + detail pages ===== */
+﻿/* ===== PROJEKTY MZ: overview + detail pages ===== */
 
 .projects-hero {
   position: relative;
@@ -10,8 +10,8 @@
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background:
-    radial-gradient(circle at top left, rgba(123, 47, 255, 0.12), transparent 28%),
-    radial-gradient(circle at top right, rgba(0, 212, 255, 0.1), transparent 24%),
+    radial-gradient(circle at top left, rgba(var(--accent-rgb),  0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(var(--accent-deep-rgb),  0.1), transparent 24%),
     linear-gradient(180deg, rgba(6, 6, 10, 0.94), rgba(3, 3, 6, 0.98));
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
 }
@@ -21,8 +21,8 @@
   position: absolute;
   inset: -20%;
   background:
-    radial-gradient(circle at 20% 20%, rgba(123, 47, 255, 0.16), transparent 20%),
-    radial-gradient(circle at 80% 28%, rgba(0, 212, 255, 0.12), transparent 18%);
+    radial-gradient(circle at 20% 20%, rgba(var(--accent-rgb),  0.16), transparent 20%),
+    radial-gradient(circle at 80% 28%, rgba(var(--accent-deep-rgb),  0.12), transparent 18%);
   animation: projectsHeroGlow 18s ease-in-out infinite alternate;
   pointer-events: none;
 }
@@ -61,7 +61,7 @@
 }
 
 .projects-hero__label {
-  color: var(--cyan);
+  color: var(--brand-secondary);
   font-family: var(--font-ui);
   font-size: 11px;
   font-weight: 700;
@@ -74,7 +74,7 @@
   font-size: clamp(38px, 5vw, 72px);
   line-height: 0.95;
   color: var(--white);
-  text-shadow: 0 0 24px rgba(123, 47, 255, 0.24);
+  text-shadow: 0 0 24px rgba(var(--accent-rgb),  0.24);
 }
 
 .projects-hero__subtitle {
@@ -114,7 +114,7 @@
   padding: 28px;
   border-radius: 20px;
   background:
-    radial-gradient(circle at top right, rgba(0, 212, 255, 0.06), transparent 34%),
+    radial-gradient(circle at top right, rgba(var(--accent-deep-rgb),  0.06), transparent 34%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.02));
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
@@ -125,8 +125,8 @@
 
 .projects-showcase__card:hover {
   transform: translateY(-4px);
-  border-color: rgba(123, 47, 255, 0.26);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.3), 0 0 36px rgba(123, 47, 255, 0.08);
+  border-color: rgba(var(--accent-rgb),  0.26);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.3), 0 0 36px rgba(var(--accent-rgb),  0.08);
 }
 
 .projects-showcase__card--featured {
@@ -137,10 +137,10 @@
   justify-content: flex-end;
   grid-row: span 2;
   background:
-    radial-gradient(circle at top right, rgba(123, 47, 255, 0.18), transparent 34%),
-    radial-gradient(circle at bottom left, rgba(0, 212, 255, 0.08), transparent 28%),
-    linear-gradient(180deg, rgba(123, 47, 255, 0.08), rgba(255, 255, 255, 0.025));
-  border-color: rgba(123, 47, 255, 0.22);
+    radial-gradient(circle at top right, rgba(var(--accent-rgb),  0.18), transparent 34%),
+    radial-gradient(circle at bottom left, rgba(var(--accent-deep-rgb),  0.08), transparent 28%),
+    linear-gradient(180deg, rgba(var(--accent-rgb),  0.08), rgba(255, 255, 255, 0.025));
+  border-color: rgba(var(--accent-rgb),  0.22);
 }
 
 .projects-showcase__card--featured::after {
@@ -182,7 +182,7 @@
 }
 
 .projects-showcase__card--featured .projects-showcase__meta {
-  color: #f0cfff;
+  color: var(--brand-highlight);
 }
 
 .projects-showcase__card--featured .projects-showcase__title {
@@ -191,11 +191,11 @@
 
 .projects-showcase__card--featured .projects-showcase__text {
   max-width: 420px;
-  color: rgba(240, 243, 255, 0.88);
+  color: rgba(245, 245, 239, 0.88);
 }
 
 .projects-showcase__card--featured .projects-showcase__link {
-  color: #aee9ff;
+  color: var(--brand-primary-bright);
 }
 
 .projects-showcase__top {
@@ -212,9 +212,9 @@
   justify-content: center;
   padding: 8px 12px;
   border-radius: 999px;
-  background: rgba(123, 47, 255, 0.14);
-  border: 1px solid rgba(123, 47, 255, 0.25);
-  color: #ece3ff;
+  background: rgba(var(--accent-rgb),  0.14);
+  border: 1px solid rgba(var(--accent-rgb),  0.25);
+  color: var(--grey-light);
   font-family: var(--font-body);
   font-size: 11px;
   font-weight: 700;
@@ -228,7 +228,7 @@
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--violet);
+  color: var(--brand-primary);
 }
 
 .projects-showcase__title {
@@ -275,7 +275,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--cyan);
+  color: var(--brand-secondary);
 }
 
 @keyframes projectsHeroGlow {
@@ -290,13 +290,13 @@
 }
 
 .project-page {
-  --project-accent: var(--violet);
-  --project-accent-soft: rgba(123, 47, 255, 0.14);
+  --project-accent: var(--brand-primary);
+  --project-accent-soft: rgba(var(--accent-rgb),  0.14);
 }
 
 .project-page--love {
-  --project-accent: #cc79ff;
-  --project-accent-soft: rgba(204, 121, 255, 0.16);
+  --project-accent: #efff97;
+  --project-accent-soft: rgba(243, 255, 179, 0.16);
 }
 
 .project-page--afterparty {
@@ -305,8 +305,8 @@
 }
 
 .project-page--championship {
-  --project-accent: #6fb6ff;
-  --project-accent-soft: rgba(111, 182, 255, 0.14);
+  --project-accent: #d8ff5a;
+  --project-accent-soft: rgba(216, 255, 90, 0.14);
 }
 
 .project-page--leto {
@@ -317,6 +317,92 @@
 .project-page--akademia {
   --project-accent: #ffd36b;
   --project-accent-soft: rgba(255, 211, 107, 0.14);
+}
+
+/* Projekty MZ refresh */
+.projects-hero {
+  border-color: rgba(255, 255, 255, 0.07);
+  background:
+    radial-gradient(circle at top left, rgba(var(--accent-rgb), 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(10, 10, 9, 0.96), rgba(5, 5, 5, 0.98));
+  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.34);
+}
+
+.projects-hero::before {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(var(--accent-rgb), 0.08), transparent 20%),
+    radial-gradient(circle at 80% 28%, rgba(var(--accent-deep-rgb), 0.06), transparent 18%);
+}
+
+.projects-hero__bg {
+  opacity: 0.46;
+}
+
+.projects-hero__bg::after {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.84)),
+    linear-gradient(90deg, rgba(6, 6, 6, 0.88), rgba(6, 6, 6, 0.32) 48%, rgba(6, 6, 6, 0.74));
+}
+
+.projects-hero__bg img {
+  filter: blur(1px) saturate(0.98) contrast(1.02);
+}
+
+.projects-hero__label {
+  color: var(--brand-secondary);
+}
+
+.projects-hero__title {
+  text-shadow: none;
+}
+
+.projects-hero__subtitle {
+  color: rgba(240, 242, 238, 0.82);
+}
+
+.projects-showcase__card {
+  background:
+    radial-gradient(circle at top right, rgba(var(--accent-rgb), 0.04), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.24);
+}
+
+.projects-showcase__card:hover {
+  border-color: rgba(var(--accent-rgb), 0.16);
+  box-shadow: 0 26px 62px rgba(0, 0, 0, 0.28);
+}
+
+.projects-showcase__card--featured {
+  background:
+    radial-gradient(circle at top right, rgba(var(--accent-rgb), 0.1), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+  border-color: rgba(var(--accent-rgb), 0.14);
+}
+
+.projects-showcase__card--featured::after {
+  background:
+    linear-gradient(180deg, rgba(7, 7, 7, 0.18) 0%, rgba(7, 7, 7, 0.38) 40%, rgba(7, 7, 7, 0.92) 100%),
+    linear-gradient(90deg, rgba(7, 7, 7, 0.5) 0%, rgba(7, 7, 7, 0.14) 45%, rgba(7, 7, 7, 0.58) 100%);
+}
+
+.projects-showcase__badge {
+  background: rgba(var(--accent-rgb), 0.1);
+  border-color: rgba(var(--accent-rgb), 0.16);
+  color: rgba(245, 247, 242, 0.86);
+}
+
+.projects-showcase__meta {
+  color: var(--brand-secondary);
+}
+
+.projects-showcase__text {
+  color: rgba(238, 241, 236, 0.72);
+}
+
+.projects-showcase__media {
+  border-color: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .project-page--starcrew {
@@ -492,7 +578,7 @@
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background:
-    radial-gradient(circle at top right, rgba(123, 47, 255, 0.06), transparent 34%),
+    radial-gradient(circle at top right, rgba(var(--accent-rgb),  0.06), transparent 34%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(10, 10, 18, 0.95));
 }
 
@@ -938,3 +1024,7 @@
     justify-content: center;
   }
 }
+
+
+
+

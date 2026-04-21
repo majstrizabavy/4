@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="sk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Majstri Zabavy | Navrhni si akciu</title>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260324-orbit-labels-1">
-  <link rel="stylesheet" href="css/navrhni-si-akciu.css?v=20260406-orbit-readability-1">
-  <link rel="stylesheet" href="css/navrhni-si-akciu-followup.css?v=20260406-followup-cleanup-1">
+  <title>Majstri zábavy | Navrhni si akciu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=20260419-type-1">
+  <link rel="stylesheet" href="css/navrhni-si-akciu.css?v=20260421-orbit-1">
+  <link rel="stylesheet" href="css/navrhni-si-akciu-followup.css?v=20260421-dark-1">
 </head>
 <body>
   <div id="cursor"></div>
@@ -22,7 +22,7 @@
   </div>
 
   <nav id="navbar">
-    <a href="index.html" class="nav-logo" data-nav="home">MAJSTRI ZABAVY</a>
+    <a href="index.html" class="nav-logo" data-nav="home"><span class="nav-logo__main">MAJSTRI</span> <span class="nav-logo__accent">ZÁBAVY</span></a>
     <ul class="nav-links">
       <li><a href="index.html" data-nav="home">Domov</a></li>
       <li><a href="svet-zabavy.html" data-nav="orbit-section">Svet Zabavy</a></li>
@@ -51,12 +51,15 @@
 
       <!-- HERO + ORBIT -->
       <div class="mz-orbit-wrap">
-        <div class="section-label-orbit">// NAVRHNI SI AKCIU //</div>
-        <div class="mz-orbit-title">Co ziskavas navyse s Majstrami Zabavy</div>
+        <div class="section-label-orbit">Výhody spolupráce</div>
+        <div class="mz-orbit-title">Čo získavaš navyše s Majstrami zábavy</div>
         <div class="section-line mz-section-line"></div>
-        <div class="mz-orbit-sub">Nejde len o program na akciu. Pozri sa, ake extra vyhody vieme pripojit k tvojej spolupraci s Majstrami Zabavy.</div>
+        <div class="mz-orbit-sub">Nejde len o program na akciu. Pozri sa, aké extra výhody vieme pripojiť k tvojej spolupráci s Majstrami zábavy.</div>
 
-        <div class="mz-orbit" id="mz-orbit">
+        <div class="mz-orbit-stage">
+          <div class="mz-orbit-sideword mz-orbit-sideword--left" aria-hidden="true">MAJSTRI</div>
+          <div class="mz-orbit-sideword mz-orbit-sideword--right" aria-hidden="true">ZÁBAVY</div>
+          <div class="mz-orbit" id="mz-orbit">
           <div class="mz-ring mz-ring--1"></div>
           <div class="mz-ring mz-ring--2"></div>
           <div class="mz-ring mz-ring--3"></div>
@@ -75,11 +78,12 @@
           </div>
 
           <div class="mz-planets" id="mz-planets"></div>
+          </div>
         </div>
       </div>
 
       <div class="mz-divider">
-        <div class="mz-divider__label">rychly navrh</div>
+        <div class="mz-divider__label">rýchly návrh</div>
       </div>
 
       <!-- FORMULAR NAVRHU -->
@@ -102,7 +106,7 @@
                   </svg>
 
                   <div>
-                    <div class="mz-card__name">MAJSTRI ZABAVY</div>
+                    <div class="mz-card__name">MAJSTRI ZÁBAVY</div>
                     <div class="mz-card__sub">Navrh akcie na mieru</div>
                   </div>
                 </div>
@@ -384,17 +388,24 @@
   </main>
 
   <footer>
-    <div class="footer-logo">MAJSTRI ZABAVY</div>
-    <div class="footer-copy">&copy; 2026 MAJSTRI ZABAVY</div>
+    <div class="footer-logo">MAJSTRI ZÁBAVY</div>
+    <div class="footer-copy">&copy; 2026 MAJSTRI ZÁBAVY</div>
     <ul class="footer-links">
       <li><a href="index.html">Domov</a></li>
-      <li><a href="svet-zabavy.html">Svet Zabavy</a></li>
+      <li><a href="svet-zabavy.html">Svet zábavy</a></li>
+      <li><a href="365-dni-zabavy.html">365 dní zábavy</a></li>
+      <li><a href="inspiracia.html">Inšpirácia</a></li>
+      <li><a href="projekty.html">Projekty</a></li>
       <li><a href="kontakt.html">Kontakt</a></li>
+      <li><a href="navrhni-si-akciu.html">Navrhni si akciu</a></li>
     </ul>
   </footer>
 
   <script src="js/mz-cennik.js?v=20260405-komplet-discount-1"></script>
-  <script src="js/navrhni-si-akciu.js?v=20260406-orbit-readability-1"></script>
+  <script src="js/navrhni-si-akciu.js?v=20260419-encoding-fix-2"></script>
   <script src="js/main.js?v=20260324-orbit-labels-1"></script>
 </body>
 </html>
+
+
+

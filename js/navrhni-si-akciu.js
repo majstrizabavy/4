@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   'use strict';
 
   const root = document.getElementById('navrhni-akciu-section');
@@ -121,106 +121,106 @@
   const planDb = {
     firemny: {
       energia: [
-        { icon: 'âšˇ', name: 'MZ Move', desc: 'Dynamicka zona so zivou hudbou a pohybovymi aktivitami pre cely tim', badge: 'BESTSELLER' },
-        { icon: 'đźŽ™ď¸Ź', name: 'Moderator Pro', desc: 'Charizmaticky moderator s interaktivnymi hrami a live kvizmi', badge: 'ODPORUCAM' },
-        { icon: 'đźŽ†', name: 'Afterparty Show', desc: 'Ohnostroj a DJ set do rana - zaver, na ktory nezabudnu', badge: 'PREMIUM' }
+        { icon: '⚡', name: 'MZ Move', desc: 'Dynamicka zona so zivou hudbou a pohybovymi aktivitami pre cely tim', badge: 'BESTSELLER' },
+        { icon: '🎙️', name: 'Moderator Pro', desc: 'Charizmaticky moderator s interaktivnymi hrami a live kvizmi', badge: 'ODPORUCAM' },
+        { icon: '🎆', name: 'Afterparty Show', desc: 'Ohnostroj a DJ set do rana - zaver, na ktory nezabudnu', badge: 'PREMIUM' }
       ],
       elegancia: [
-        { icon: 'đźŤ·', name: 'Gala Vecer', desc: 'Elegantne aranazovane stoly, ziva kapela a black tie atmosfera', badge: 'LUXUS' },
-        { icon: 'đźŽ­', name: 'Artisticke Sou', desc: 'Profesionalni artisti: zongleri, akrobati a iluzionisti', badge: 'WOW EFEKT' },
-        { icon: 'đź“¸', name: 'Premium Foto Zona', desc: 'Profesionalna 360 foto kabinka s tlacou a logom firmy', badge: 'BRAND' }
+        { icon: '🍷', name: 'Gala Vecer', desc: 'Elegantne aranazovane stoly, ziva kapela a black tie atmosfera', badge: 'LUXUS' },
+        { icon: '🎭', name: 'Artisticke Sou', desc: 'Profesionalni artisti: zongleri, akrobati a iluzionisti', badge: 'WOW EFEKT' },
+        { icon: '📸', name: 'Premium Foto Zona', desc: 'Profesionalna 360 foto kabinka s tlacou a logom firmy', badge: 'BRAND' }
       ],
       pohoda: [
-        { icon: 'đźŽ‰', name: 'Team Fun Zone', desc: 'Spolocenske hry, kvizy a priatelska sutaz pre cely tim', badge: 'OBLUBENE' },
-        { icon: 'đźŤ•', name: 'Food Lounge', desc: 'Neformalne stolovanie, street food catering a live cooking', badge: 'KOMFORT' },
-        { icon: 'đźŽµ', name: 'Live Akustika', desc: 'Zivy akusticky set - teplo a ludskost', badge: 'SRDCOVKA' }
+        { icon: '🎉', name: 'Team Fun Zone', desc: 'Spolocenske hry, kvizy a priatelska sutaz pre cely tim', badge: 'OBLUBENE' },
+        { icon: '🍕', name: 'Food Lounge', desc: 'Neformalne stolovanie, street food catering a live cooking', badge: 'KOMFORT' },
+        { icon: '🎵', name: 'Live Akustika', desc: 'Zivy akusticky set - teplo a ludskost', badge: 'SRDCOVKA' }
       ]
     },
     svadba: {
       energia: [
-        { icon: 'đź’', name: 'Dance Floor VIP', desc: 'DJ, svetelna sou a tanecna plocha s efektmi', badge: 'TANCOVACKA' },
-        { icon: 'đźŽŠ', name: 'Konfeti Kanon', desc: 'Prvy tanec s konfetami a blikajucimi svetlami', badge: 'WOW MOMENT' },
-        { icon: 'đźŽ¤', name: 'Live Band', desc: 'Svadobna kapela od prveho tanca az po ranne hodiny', badge: 'KLASIKA' }
+        { icon: '💃', name: 'Dance Floor VIP', desc: 'DJ, svetelna sou a tanecna plocha s efektmi', badge: 'TANCOVACKA' },
+        { icon: '🎊', name: 'Konfeti Kanon', desc: 'Prvy tanec s konfetami a blikajucimi svetlami', badge: 'WOW MOMENT' },
+        { icon: '🎤', name: 'Live Band', desc: 'Svadobna kapela od prveho tanca az po ranne hodiny', badge: 'KLASIKA' }
       ],
       elegancia: [
-        { icon: 'đźŚą', name: 'Luxury Decor', desc: 'Premium vyzdoba s kvetmi, svieckami a elegantnym priestretim', badge: 'LUXUS' },
-        { icon: 'đźŤľ', name: 'Champagne Tower', desc: 'Sampanska veza pre nezabudnutelny moment', badge: 'ICONIC' },
-        { icon: 'đźŽ»', name: 'Slacikove Kvarteto', desc: 'Klasicka hudba pocas svadobnej hostiny', badge: 'PREMIOVE' }
+        { icon: '🌹', name: 'Luxury Decor', desc: 'Premium vyzdoba s kvetmi, svieckami a elegantnym priestretim', badge: 'LUXUS' },
+        { icon: '🍾', name: 'Champagne Tower', desc: 'Sampanska veza pre nezabudnutelny moment', badge: 'ICONIC' },
+        { icon: '🎻', name: 'Slacikove Kvarteto', desc: 'Klasicka hudba pocas svadobnej hostiny', badge: 'PREMIOVE' }
       ],
       pohoda: [
-        { icon: 'đźŚż', name: 'Zahradna Svadoba', desc: 'Vonkajsie posedenie, prirodna atmosfera a teplo rodiny', badge: 'OBLUBENE' },
-        { icon: 'đź“·', name: 'Foto a Spomienky', desc: 'Candid fotograf a polaroidova kniha podpisov hosti', badge: 'MEMORY' },
-        { icon: 'đźŽ‚', name: 'Torta Sou', desc: 'Krajaci ritual s hudbou, svetlami a prekvapenim', badge: 'SWEET' }
+        { icon: '🌿', name: 'Zahradna Svadoba', desc: 'Vonkajsie posedenie, prirodna atmosfera a teplo rodiny', badge: 'OBLUBENE' },
+        { icon: '📷', name: 'Foto a Spomienky', desc: 'Candid fotograf a polaroidova kniha podpisov hosti', badge: 'MEMORY' },
+        { icon: '🎂', name: 'Torta Sou', desc: 'Krajaci ritual s hudbou, svetlami a prekvapenim', badge: 'SWEET' }
       ]
     },
     narozeniny: {
       energia: [
-        { icon: 'đźŽ‰', name: 'Party Blast', desc: 'DJ, stroboskopy a tanecny floor', badge: 'PARTY HARD' },
-        { icon: 'đźŽ¤', name: 'Karaoke VIP', desc: 'Profesionalna karaoke zona s LED obrazovkou', badge: 'FUN' },
-        { icon: 'đźŽ†', name: 'Surprise Show', desc: 'Surprise moment so specialnymi efektmi a tortou', badge: 'WOW' }
+        { icon: '🎉', name: 'Party Blast', desc: 'DJ, stroboskopy a tanecny floor', badge: 'PARTY HARD' },
+        { icon: '🎤', name: 'Karaoke VIP', desc: 'Profesionalna karaoke zona s LED obrazovkou', badge: 'FUN' },
+        { icon: '🎆', name: 'Surprise Show', desc: 'Surprise moment so specialnymi efektmi a tortou', badge: 'WOW' }
       ],
       elegancia: [
-        { icon: 'đź’Ž', name: 'VIP Dinner', desc: 'Exkluzivna vecera s premium menu a obsluhou', badge: 'LUXUS' },
-        { icon: 'đźŤľ', name: 'Bubble Bar', desc: 'Sampansky bar s vyberom premium vin', badge: 'PREMIUM' },
-        { icon: 'đźŚź', name: 'Star Setup', desc: 'Hviezdicovy dekor s personalizovanymi detailmi', badge: 'PERSONAL' }
+        { icon: '💎', name: 'VIP Dinner', desc: 'Exkluzivna vecera s premium menu a obsluhou', badge: 'LUXUS' },
+        { icon: '🍾', name: 'Bubble Bar', desc: 'Sampansky bar s vyberom premium vin', badge: 'PREMIUM' },
+        { icon: '🌟', name: 'Star Setup', desc: 'Hviezdicovy dekor s personalizovanymi detailmi', badge: 'PERSONAL' }
       ],
       pohoda: [
-        { icon: 'đźŹˇ', name: 'Garden Party', desc: 'Zahradna oslava v uvolnenej atmosfere s grilom', badge: 'RELAXED' },
-        { icon: 'đźŽµ', name: 'Playlist Live', desc: 'Curated playlist a akusticka kapela', badge: 'VIBES' },
-        { icon: 'đź“¸', name: 'Photo Booth', desc: 'Fotokabinka s rekvizitami a okamzitou tlacou', badge: 'MEMORIES' }
+        { icon: '🏡', name: 'Garden Party', desc: 'Zahradna oslava v uvolnenej atmosfere s grilom', badge: 'RELAXED' },
+        { icon: '🎵', name: 'Playlist Live', desc: 'Curated playlist a akusticka kapela', badge: 'VIBES' },
+        { icon: '📸', name: 'Photo Booth', desc: 'Fotokabinka s rekvizitami a okamzitou tlacou', badge: 'MEMORIES' }
       ]
     },
     teambuilding: {
       energia: [
-        { icon: 'đźŹ†', name: 'Olympiada Timu', desc: 'Sutazne discipliny v teamoch: rychlost, sila a kreativita', badge: 'SUTAZ' },
-        { icon: 'âšˇ', name: 'Escape Room XXL', desc: 'Velkoformatovy escape room priamo na mieste', badge: 'MIND GAME' },
-        { icon: 'đźŽŻ', name: 'Target Challenge', desc: 'Lukostrelba, axe throwing a paintball', badge: 'ADRENALIN' }
+        { icon: '🏆', name: 'Olympiada Timu', desc: 'Sutazne discipliny v teamoch: rychlost, sila a kreativita', badge: 'SUTAZ' },
+        { icon: '⚡', name: 'Escape Room XXL', desc: 'Velkoformatovy escape room priamo na mieste', badge: 'MIND GAME' },
+        { icon: '🎯', name: 'Target Challenge', desc: 'Lukostrelba, axe throwing a paintball', badge: 'ADRENALIN' }
       ],
       elegancia: [
-        { icon: 'đźŤł', name: 'Cooking Battle', desc: 'Timove varenie pod vedenim sefkuchara', badge: 'KREATIVITA' },
-        { icon: 'đźŽ¨', name: 'Art Workshop', desc: 'Malovanie, sculpting a dizajn v teamoch', badge: 'TVORIVOST' },
-        { icon: 'đźŤ·', name: 'Wine Tasting', desc: 'Profesionalna degustacia vin so sommelierom', badge: 'KULTURA' }
+        { icon: '🍳', name: 'Cooking Battle', desc: 'Timove varenie pod vedenim sefkuchara', badge: 'KREATIVITA' },
+        { icon: '🎨', name: 'Art Workshop', desc: 'Malovanie, sculpting a dizajn v teamoch', badge: 'TVORIVOST' },
+        { icon: '🍷', name: 'Wine Tasting', desc: 'Profesionalna degustacia vin so sommelierom', badge: 'KULTURA' }
       ],
       pohoda: [
-        { icon: 'đźŚż', name: 'Outdoor Relax', desc: 'Turistika, piknik a hry v prirode', badge: 'PRIRODA' },
-        { icon: 'đźŽ˛', name: 'Board Game Arena', desc: 'Zbierka spolocenskych hier', badge: 'FUN' },
-        { icon: 'đź§', name: 'Wellness Reset', desc: 'Cvicenie, mindfulness a relaxacna zona', badge: 'WELL-BEING' }
+        { icon: '🌿', name: 'Outdoor Relax', desc: 'Turistika, piknik a hry v prirode', badge: 'PRIRODA' },
+        { icon: '🎲', name: 'Board Game Arena', desc: 'Zbierka spolocenskych hier', badge: 'FUN' },
+        { icon: '🧘', name: 'Wellness Reset', desc: 'Cvicenie, mindfulness a relaxacna zona', badge: 'WELL-BEING' }
       ]
     },
     gala: {
       energia: [
-        { icon: 'đźŽ­', name: 'Grand Sou', desc: 'Sou s tanecnikmi, artistami a ohnostrojom', badge: 'SPEKTAKL' },
-        { icon: 'đź’', name: 'Tanecni Soliste', desc: 'Profesionalni tanecnici s choreografiou', badge: 'PREMIUM' },
-        { icon: 'đźŽ™ď¸Ź', name: 'Celebrity MC', desc: 'Renomovany moderator s charizmatickym prejavom', badge: 'HVIEZDA' }
+        { icon: '🎭', name: 'Grand Sou', desc: 'Sou s tanecnikmi, artistami a ohnostrojom', badge: 'SPEKTAKL' },
+        { icon: '💃', name: 'Tanecni Soliste', desc: 'Profesionalni tanecnici s choreografiou', badge: 'PREMIUM' },
+        { icon: '🎙️', name: 'Celebrity MC', desc: 'Renomovany moderator s charizmatickym prejavom', badge: 'HVIEZDA' }
       ],
       elegancia: [
-        { icon: 'đź‘‘', name: 'Royal Setup', desc: 'Kralovska vyzdoba s kristalovymi detailmi a zlatom', badge: 'ROYAL' },
-        { icon: 'đźŽ»', name: 'Orchester Live', desc: 'Zivy komorny orchester pocas vecere', badge: 'KLASIKA' },
-        { icon: 'đźŤ˝ď¸Ź', name: 'Gourmet Menu', desc: 'Patchodove menu s wine pairingom', badge: 'GOURMET' }
+        { icon: '👑', name: 'Royal Setup', desc: 'Kralovska vyzdoba s kristalovymi detailmi a zlatom', badge: 'ROYAL' },
+        { icon: '🎻', name: 'Orchester Live', desc: 'Zivy komorny orchester pocas vecere', badge: 'KLASIKA' },
+        { icon: '🍽️', name: 'Gourmet Menu', desc: 'Patchodove menu s wine pairingom', badge: 'GOURMET' }
       ],
       pohoda: [
-        { icon: 'đźŚź', name: 'Stars and Stories', desc: 'Pribehy, videa a prezentacia uspechov', badge: 'EMOTIVNE' },
-        { icon: 'đź“¸', name: 'Photo Memories', desc: 'Fotograf a video highlight reels', badge: 'SPOMIENKY' },
-        { icon: 'đźĄ‚', name: 'Cocktail Lounge', desc: 'Premium kokteilovy bar s barmanom', badge: 'LOUNGE' }
+        { icon: '🌟', name: 'Stars and Stories', desc: 'Pribehy, videa a prezentacia uspechov', badge: 'EMOTIVNE' },
+        { icon: '📸', name: 'Photo Memories', desc: 'Fotograf a video highlight reels', badge: 'SPOMIENKY' },
+        { icon: '🥂', name: 'Cocktail Lounge', desc: 'Premium kokteilovy bar s barmanom', badge: 'LOUNGE' }
       ]
     }
   };
 
   const defaultPlan = {
     energia: [
-      { icon: 'âšˇ', name: 'MZ Move', desc: 'Dynamicka zona so zivou hudbou', badge: 'BESTSELLER' },
-      { icon: 'đźŽ™ď¸Ź', name: 'Moderator Pro', desc: 'Profesionalny moderator s hrami', badge: 'ODPORUCAM' },
-      { icon: 'đźŽ†', name: 'Zaverecna Show', desc: 'Zaverecna sou pre maximum dojmov', badge: 'PREMIUM' }
+      { icon: '⚡', name: 'MZ Move', desc: 'Dynamicka zona so zivou hudbou', badge: 'BESTSELLER' },
+      { icon: '🎙️', name: 'Moderator Pro', desc: 'Profesionalny moderator s hrami', badge: 'ODPORUCAM' },
+      { icon: '🎆', name: 'Zaverecna Show', desc: 'Zaverecna sou pre maximum dojmov', badge: 'PREMIUM' }
     ],
     elegancia: [
-      { icon: 'đź’Ž', name: 'Premium Setup', desc: 'Luxusna vyzdoba a elegantna atmosfera', badge: 'LUXUS' },
-      { icon: 'đźŽ­', name: 'Artisticke Vystupenie', desc: 'Profesionalni umelci pre WOW zazitok', badge: 'WOW' },
-      { icon: 'đźŤ·', name: 'VIP Lounge', desc: 'Exkluzivna VIP zona s premium servisom', badge: 'VIP' }
+      { icon: '💎', name: 'Premium Setup', desc: 'Luxusna vyzdoba a elegantna atmosfera', badge: 'LUXUS' },
+      { icon: '🎭', name: 'Artisticke Vystupenie', desc: 'Profesionalni umelci pre WOW zazitok', badge: 'WOW' },
+      { icon: '🍷', name: 'VIP Lounge', desc: 'Exkluzivna VIP zona s premium servisom', badge: 'VIP' }
     ],
     pohoda: [
-      { icon: 'đźŽ‰', name: 'Fun Zone', desc: 'Aktivity pre vsetkych hosti', badge: 'FAMILY' },
-      { icon: 'đźŤ•', name: 'Food Station', desc: 'Catering pre kazdy vkus', badge: 'KOMFORT' },
-      { icon: 'đźŽµ', name: 'Live Music', desc: 'Ziva hudba - tepla atmosfera', badge: 'VIBES' }
+      { icon: '🎉', name: 'Fun Zone', desc: 'Aktivity pre vsetkych hosti', badge: 'FAMILY' },
+      { icon: '🍕', name: 'Food Station', desc: 'Catering pre kazdy vkus', badge: 'KOMFORT' },
+      { icon: '🎵', name: 'Live Music', desc: 'Ziva hudba - tepla atmosfera', badge: 'VIBES' }
     ]
   };
 
@@ -231,10 +231,10 @@
       noteCls: 'mz-tier-note--low',
       note: 'Pre komplexny program s nasim timom je potrebny vyssi rozpocet, ale tieto doplnky spravia skvelu pracu aj tak.',
       modules: [
-        { icon: 'đź¦', name: 'Maskot na mieru', desc: 'Kostymovany maskot - rozziari kazdu oslavu', badge: 'HIT U DETI' },
-        { icon: 'đź“¸', name: 'Fotostena', desc: 'Fotostena s logom alebo tematickym dizajnom', badge: 'INSTAGRAMABLE' },
-        { icon: 'đźŤ­', name: 'Cukrova vata', desc: 'Farebny stanok, ktory vzdy prinasa usmevy', badge: 'SLADKY HIT' },
-        { icon: 'đź”Š', name: 'Prenajom techniky', desc: 'Ozvucenie, mikrofony a reproduktory', badge: 'ZAKLAD' }
+        { icon: '🦁', name: 'Maskot na mieru', desc: 'Kostymovany maskot - rozziari kazdu oslavu', badge: 'HIT U DETI' },
+        { icon: '📸', name: 'Fotostena', desc: 'Fotostena s logom alebo tematickym dizajnom', badge: 'INSTAGRAMABLE' },
+        { icon: '🍭', name: 'Cukrova vata', desc: 'Farebny stanok, ktory vzdy prinasa usmevy', badge: 'SLADKY HIT' },
+        { icon: '🔊', name: 'Prenajom techniky', desc: 'Ozvucenie, mikrofony a reproduktory', badge: 'ZAKLAD' }
       ]
     },
     mid: {
@@ -250,9 +250,9 @@
       noteCls: 'mz-tier-note--high',
       note: null,
       modules: [
-        { icon: 'đźŹ™ď¸Ź', name: 'Mestske dni', desc: 'Kompletna produkcia mestskej slavnosti', badge: 'MEGA EVENT' },
-        { icon: 'đźŹ˘', name: 'Firemny event XL', desc: 'Firemny event na kluc - od konceptu po realizaciu', badge: 'ALL-IN-ONE' },
-        { icon: 'đźŽŞ', name: 'Festival Package', desc: 'Viacdenny festival s plnou produkciou', badge: 'FESTIVAL PRO' }
+        { icon: '🏙️', name: 'Mestske dni', desc: 'Kompletna produkcia mestskej slavnosti', badge: 'MEGA EVENT' },
+        { icon: '🏢', name: 'Firemny event XL', desc: 'Firemny event na kluc - od konceptu po realizaciu', badge: 'ALL-IN-ONE' },
+        { icon: '🎪', name: 'Festival Package', desc: 'Viacdenny festival s plnou produkciou', badge: 'FESTIVAL PRO' }
       ]
     }
   };
@@ -483,7 +483,7 @@
     elements.ctaRow.style.display = 'none';
     elements.modules.innerHTML = [
       '<div class="mz-ebook">',
-      '<div class="mz-ebook__icon">đź“</div>',
+      '<div class="mz-ebook__icon">📘</div>',
       '<div class="mz-ebook__title">Prakticky navod: Ako pripravit oslavu svojpomocne</div>',
       `<div class="mz-ebook__desc">Budget ${budgetLabel} je v micro zone. Pripravili sme sprievodcu, ako usporiadat skvelu oslavu vlastnymi silami - pre ${guestLabel} hosti.</div>`,
       '<div class="mz-ebook__btns">',
@@ -1113,7 +1113,7 @@
         : '<span class="mz-followup-offer__context-chip">Finalne detaily doladime spolu</span>';
       offerNote.textContent = pricing && pricing.scope === 'komplet' && pricing.discountAmount
         ? `Komplet akcia je cenovo zvyhodnena oproti samostatnemu objednaniu sluzieb. Samostatne by ta tato kombinacia vysla na ${pricing.listPriceText}, teraz ju vidis za ${pricing.exactPriceText}. Ak ti vyhovuje, mozes pokracovat v objednavke alebo s nami doladit posledne detaily.`
-        : 'Ponuka bola pripravena podla vybraneho variantu a zadaných údajov. Ak ti vyhovuje, mozes pokracovat v objednavke alebo s nami doladit posledne detaily.';
+        : 'Ponuka bola pripravena podla vybraneho variantu a zadanych udajov. Ak ti vyhovuje, mozes pokracovat v objednavke alebo s nami doladit posledne detaily.';
       orderLink.href = createMailtoHref({ selection, price }, formData, selectedEnergy);
       success.hidden = true;
       offerBox.hidden = false;
@@ -1166,4 +1166,6 @@
     });
   })();
 })();
+
+
 

@@ -95,7 +95,7 @@ function scrollPublicEventsIntoView() {
 function renderPublicCities() {
   if (publicCitySelect) {
     publicCitySelect.innerHTML = publicEventCities.map((city) => {
-      const optionLabel = city.key === 'all' ? 'Lokalita - Vsetky mesta' : city.name;
+      const optionLabel = city.key === 'all' ? 'Lokalita - Všetky mestá' : city.name;
       return `<option value="${city.key}"${city.key === activePublicCity ? ' selected' : ''}>${optionLabel}</option>`;
     }).join('');
   }
@@ -107,6 +107,7 @@ function renderPublicMonths() {
   publicMonthGrid.innerHTML = publicEventMonths.map((month) => {
     const eventCount = getPublicEventsForMonth(month.key).length;
     const isActive = month.key === activePublicMonth;
+    const eventLabel = eventCount === 1 ? 'akcia' : eventCount >= 2 && eventCount <= 4 ? 'akcie' : 'akcií';
 
     return `
       <button
@@ -114,9 +115,12 @@ function renderPublicMonths() {
         class="public-month-card${isActive ? ' is-active' : ''}"
         data-public-month="${month.key}"
       >
-        <span class="public-month-card__num" style="color:${month.accent}">${month.number}</span>
+        <span class="public-month-card__top">
+          <span class="public-month-card__num" style="color:${month.accent}">${month.number}</span>
+          <span class="public-month-card__count">${eventCount} ${eventLabel}</span>
+        </span>
         <span class="public-month-card__name">${month.name}</span>
-        <span class="public-month-card__count">${eventCount} ${eventCount === 1 ? 'akcia' : eventCount >= 2 && eventCount <= 4 ? 'akcie' : 'akcii'}</span>
+        <span class="public-month-card__hint">Pozrieť akcie</span>
       </button>
     `;
   }).join('');
@@ -125,7 +129,10 @@ function renderPublicMonths() {
 function createPublicEventCard(eventItem) {
   return `
     <article class="public-event-card">
-      <div class="public-event-card__meta">${eventItem.when} &bull; ${eventItem.where}</div>
+      <div class="public-event-card__meta-row">
+        <div class="public-event-card__date">${eventItem.when}</div>
+        <div class="public-event-card__city">${eventItem.where}</div>
+      </div>
       <h4 class="public-event-card__title">${eventItem.title}</h4>
       <div class="public-event-card__actions">
         <button type="button" class="public-event-card__action" data-public-event-open="${eventItem.id}">Viac info</button>
@@ -149,14 +156,14 @@ function renderPublicEventList() {
   publicEventListTitle.textContent = monthEvents.length
     ? `Akcie pre ${decodeHtmlEntities(month.name)}`
     : activePublicCity === 'all'
-      ? 'Zatial bez zverejnenych akcii'
-      : `Zatial bez akcii pre mesto ${city.name}`;
+      ? 'Zatiaľ bez zverejnených akcií'
+      : `Zatiaľ bez akcií pre mesto ${city.name}`;
 
   if (!monthEvents.length) {
     publicEventList.innerHTML = `
       <div class="public-event-card public-event-card--empty">
-        <div class="public-event-card__empty-title">Tento vyber je pripraveny na doplnenie.</div>
-        <div class="public-event-card__empty-copy">Po doplneni akcie pre ${decodeHtmlEntities(month.name)}${activePublicCity === 'all' ? '' : ` v meste ${city.name}`} sa sem automaticky prida prehlad s tlacidlami Viac info a Zdie&#318;a&#357;.</div>
+        <div class="public-event-card__empty-title">Tento výber je pripravený na doplnenie.</div>
+        <div class="public-event-card__empty-copy">Po doplnení akcie pre ${decodeHtmlEntities(month.name)}${activePublicCity === 'all' ? '' : ` v meste ${city.name}`} sa sem automaticky pridá prehľad s tlačidlami Viac info a Zdieľať.</div>
       </div>
     `;
     return;

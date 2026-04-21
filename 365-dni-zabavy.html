@@ -1,25 +1,25 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="sk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Majstri Zabavy | 365 dni zabavy</title>
+  <title>Majstri zábavy | 365 dni zabavy</title>
   <meta name="description" content="365 dni zabavy od Majstrov Zabavy. Naplanuj si akciu alebo si pozri aktualne podujatia po celom Slovensku.">
-  <meta property="og:title" content="Majstri Zabavy | 365 dni zabavy">
+  <meta property="og:title" content="Majstri zábavy | 365 dni zabavy">
   <meta property="og:description" content="Naplanuj si akciu alebo si pozri aktualne podujatia po celom Slovensku.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Majstri Zabavy | 365 dni zabavy">
+  <meta name="twitter:title" content="Majstri zábavy | 365 dni zabavy">
   <meta name="twitter:description" content="Naplanuj si akciu alebo si pozri aktualne podujatia po celom Slovensku.">
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260404-jun-filter-8">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=20260419-type-1">
 </head>
 <body>
   <div id="cursor"></div>
   <div id="cursor-ring"></div>
 
   <nav id="navbar">
-    <a href="index.html" class="nav-logo" data-nav="home">MAJSTRI ZABAVY</a>
+    <a href="index.html" class="nav-logo" data-nav="home"><span class="nav-logo__main">MAJSTRI</span> <span class="nav-logo__accent">ZÁBAVY</span></a>
     <ul class="nav-links">
       <li><a href="index.html" data-nav="home">Domov</a></li>
       <li><a href="svet-zabavy.html" data-nav="orbit-section">Svet Zabavy</a></li>
@@ -45,7 +45,7 @@
   <main class="page-shell">
     <section id="rok">
       <div class="section-header reveal">
-        <div class="section-label-orbit">// PLANOVAC ZABAVY //</div>
+        <div class="section-label-orbit">Dve cesty k zábave. Vyberte si.</div>
         <h2 class="section-title">365 DNI ZABAVY</h2>
         <div class="section-line"></div>
       </div>
@@ -72,10 +72,10 @@
         <!-- REZIM 2: KAM ZA ZABAVOU -->
         <!-- Verejne akcie su oddelene v samostatnych suboroch js/kam-za-zabavou-data.js a js/kam-za-zabavou.js -->
         <section class="year-mode-panel is-hidden" data-year-mode-panel="public">
-          <div class="year-mode-head">
+          <div class="year-mode-head year-mode-head--public">
             <div>
-              <div class="year-mode-kicker">Vyber si mesiac a otvor konkretne akcie</div>
-              <h3 class="year-mode-title">Najprv mesiac, potom akcia a nakoniec detail s plagatom.</h3>
+              <div class="year-mode-kicker">Akcie, ktoré organizujeme alebo odporúčame</div>
+              <h3 class="year-mode-title">Vyberte si mesiac a objavte, kam sa oplatí ísť.</h3>
             </div>
           </div>
 
@@ -104,12 +104,16 @@
   </main>
 
   <footer>
-    <div class="footer-logo">MAJSTRI ZABAVY</div>
-    <div class="footer-copy">&copy; 2026 MAJSTRI ZABAVY</div>
+    <div class="footer-logo">MAJSTRI ZÁBAVY</div>
+    <div class="footer-copy">&copy; 2026 MAJSTRI ZÁBAVY</div>
     <ul class="footer-links">
       <li><a href="index.html">Domov</a></li>
-      <li><a href="inspiracia.html">Inspiracia</a></li>
+      <li><a href="svet-zabavy.html">Svet zábavy</a></li>
+      <li><a href="365-dni-zabavy.html">365 dní zábavy</a></li>
+      <li><a href="inspiracia.html">Inšpirácia</a></li>
+      <li><a href="projekty.html">Projekty</a></li>
       <li><a href="kontakt.html">Kontakt</a></li>
+      <li><a href="navrhni-si-akciu.html">Navrhni si akciu</a></li>
     </ul>
   </footer>
 
@@ -158,11 +162,14 @@
   </div>
 
   <script src="js/main.js?v=20260406-site-core-1"></script>
-  <script src="js/365-dni-zabavy-data.js?v=20260406-planner-cleanup-1"></script>
+  <script src="js/365-dni-zabavy-data.js?v=20260419-encoding-fix-1"></script>
   <script src="js/365-dni-zabavy-offers.js?v=20260406-planner-cleanup-1"></script>
-  <script src="js/365-dni-zabavy.js?v=20260406-planner-cleanup-1"></script>
+  <script src="js/365-dni-zabavy.js?v=20260419-encoding-fix-1"></script>
   <script src="js/kam-za-zabavou-data.js?v=20260406-public-events-1"></script>
   <script src="js/kam-za-zabavou.js?v=20260406-public-events-1"></script>
 </body>
 </html>
+
+
+
 

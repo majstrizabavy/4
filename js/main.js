@@ -1,4 +1,4 @@
-/* Shared behavior for all static pages. */
+﻿/* Shared behavior for all static pages. */
 
 const pageRoutes = {
   home: 'index.html',
@@ -13,44 +13,201 @@ const pageRoutes = {
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
 const customCursorEnabled = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-let mx = 0;
-let my = 0;
-let rx = 0;
-let ry = 0;
+const cursorInteractiveSelector = 'a, button, .planet, .mz-planet, .reel-card, .project-card, .month-card, .command-item, .contact-channel, .priority-btn, .mz-priority-btn, .mz-activate-btn, .mz-generate-btn, .mz-cta-approve, .mz-cta-reset, .mz-ebook__btn, .page-card, .page-card-link';
+const cursorCtaSelector = '.btn-primary, .nav-cta, .core-cta, .activate-navrh-btn, .mz-activate-btn, .mz-generate-btn, .mz-cta-approve, .contact-choice-card__btn--primary, .planner-offer-modal__custom, .mz-followup-submit';
+const confettiColors = ['#c7ff2e', '#efff97', '#f5f5ef', '#f0d68a'];
+const confettiShapes = ['circle', 'diamond'];
+const confettiPoolSize = 10;
+const cursorState = {
+  targetX: 0,
+  targetY: 0,
+  dotX: 0,
+  dotY: 0,
+  ringX: 0,
+  ringY: 0,
+  prevX: 0,
+  prevY: 0,
+  speed: 0,
+  hoverBoost: 0,
+  hasStarted: false,
+  lastEmitTime: 0
+};
+const confettiPool = [];
+
+function setCursorMode(mode = '') {
+  if (!cursor || !ring) return;
+
+  cursor.classList.remove('is-hover', 'is-cta');
+  ring.classList.remove('is-hover', 'is-cta');
+
+  if (mode === 'hover' || mode === 'cta') {
+    cursor.classList.add('is-hover');
+    ring.classList.add('is-hover');
+  }
+
+  if (mode === 'cta') {
+    cursor.classList.add('is-cta');
+    ring.classList.add('is-cta');
+  }
+}
+
+function buildConfettiPool() {
+  for (let index = 0; index < confettiPoolSize; index += 1) {
+    const node = document.createElement('span');
+    node.className = 'cursor-confetti';
+    node.hidden = true;
+    document.body.appendChild(node);
+    confettiPool.push({
+      node,
+      active: false,
+      life: 0,
+      ttl: 0,
+      x: 0,
+      y: 0,
+      vx: 0,
+      vy: 0,
+      rotation: 0,
+      rotationSpeed: 0,
+      scale: 1
+    });
+  }
+}
+
+function getConfettiParticle() {
+  return confettiPool.find((particle) => !particle.active) || null;
+}
+
+function emitConfetti(now, intensity) {
+  const emitEvery = intensity > 1.08 ? 48 : 72;
+
+  if (now - cursorState.lastEmitTime < emitEvery || cursorState.speed < 1.3) {
+    return;
+  }
+
+  cursorState.lastEmitTime = now;
+
+  const particleCount = 1;
+
+  for (let index = 0; index < particleCount; index += 1) {
+    const particle = getConfettiParticle();
+    if (!particle) break;
+
+    const shape = confettiShapes[(Math.random() * confettiShapes.length) | 0];
+    const size = 3 + Math.random() * 2;
+    const angle = Math.random() * Math.PI * 2;
+    const spread = 0.22 + Math.random() * 0.42;
+
+    particle.active = true;
+    particle.life = 0;
+    particle.ttl = 12 + Math.random() * 6;
+    particle.x = cursorState.ringX + (Math.random() - 0.5) * 5;
+    particle.y = cursorState.ringY + (Math.random() - 0.5) * 5;
+    particle.vx = Math.cos(angle) * spread - (cursorState.targetX - cursorState.prevX) * 0.01;
+    particle.vy = Math.sin(angle) * spread - (cursorState.targetY - cursorState.prevY) * 0.01;
+    particle.rotation = Math.random() * 180;
+    particle.rotationSpeed = (Math.random() - 0.5) * 7;
+    particle.scale = 0.75 + Math.random() * 0.35;
+
+    particle.node.hidden = false;
+    particle.node.className = `cursor-confetti cursor-confetti--${shape}`;
+    particle.node.style.width = `${size}px`;
+    particle.node.style.height = shape === 'bar' ? `${Math.max(3, size - 2)}px` : `${size}px`;
+    particle.node.style.background = confettiColors[(Math.random() * confettiColors.length) | 0];
+    particle.node.style.opacity = '0.75';
+  }
+}
+
+function updateConfetti() {
+  confettiPool.forEach((particle) => {
+    if (!particle.active) return;
+
+    particle.life += 1;
+    if (particle.life >= particle.ttl) {
+      particle.active = false;
+      particle.node.hidden = true;
+      particle.node.style.opacity = '0';
+      return;
+    }
+
+    particle.x += particle.vx;
+    particle.y += particle.vy;
+    particle.vy += 0.008;
+    particle.rotation += particle.rotationSpeed;
+
+    const progress = particle.life / particle.ttl;
+    const opacity = 1 - progress;
+    const scale = particle.scale * (0.94 + progress * 0.22);
+
+    particle.node.style.opacity = `${opacity}`;
+    particle.node.style.transform = `translate3d(${particle.x}px, ${particle.y}px, 0) rotate(${particle.rotation}deg) scale(${scale})`;
+  });
+}
 
 if (cursor && ring && customCursorEnabled) {
+  buildConfettiPool();
+
   document.addEventListener('mousemove', (event) => {
-    mx = event.clientX;
-    my = event.clientY;
-    cursor.style.left = `${mx}px`;
-    cursor.style.top = `${my}px`;
+    const { clientX, clientY } = event;
+
+    if (!cursorState.hasStarted) {
+      cursorState.targetX = clientX;
+      cursorState.targetY = clientY;
+      cursorState.dotX = clientX;
+      cursorState.dotY = clientY;
+      cursorState.ringX = clientX;
+      cursorState.ringY = clientY;
+      cursorState.prevX = clientX;
+      cursorState.prevY = clientY;
+      cursorState.hasStarted = true;
+      document.body.classList.add('cursor-active');
+    }
+
+    cursorState.prevX = cursorState.targetX;
+    cursorState.prevY = cursorState.targetY;
+    cursorState.targetX = clientX;
+    cursorState.targetY = clientY;
+    cursorState.speed = Math.hypot(cursorState.targetX - cursorState.prevX, cursorState.targetY - cursorState.prevY);
   });
 
-  (function animateRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.left = `${rx}px`;
-    ring.style.top = `${ry}px`;
-    requestAnimationFrame(animateRing);
+  document.addEventListener('mouseleave', () => {
+    document.body.classList.remove('cursor-active');
+  });
+
+  document.addEventListener('mouseenter', () => {
+    if (cursorState.hasStarted) {
+      document.body.classList.add('cursor-active');
+    }
+  });
+
+  (function animateCursor(now = 0) {
+    cursorState.dotX += (cursorState.targetX - cursorState.dotX) * 0.22;
+    cursorState.dotY += (cursorState.targetY - cursorState.dotY) * 0.22;
+    cursorState.ringX += (cursorState.targetX - cursorState.ringX) * 0.12;
+    cursorState.ringY += (cursorState.targetY - cursorState.ringY) * 0.12;
+    cursorState.hoverBoost *= 0.88;
+
+    cursor.style.left = `${cursorState.dotX}px`;
+    cursor.style.top = `${cursorState.dotY}px`;
+    ring.style.left = `${cursorState.ringX}px`;
+    ring.style.top = `${cursorState.ringY}px`;
+
+    if (cursorState.hasStarted) {
+      emitConfetti(now, 1 + cursorState.hoverBoost);
+      updateConfetti();
+    }
+
+    requestAnimationFrame(animateCursor);
   })();
 
-  document.querySelectorAll('a, button, .planet, .mz-planet, .reel-card, .project-card, .month-card, .command-item, .contact-channel, .priority-btn, .mz-priority-btn, .mz-activate-btn, .mz-generate-btn, .mz-cta-approve, .mz-cta-reset, .mz-ebook__btn, .page-card, .page-card-link').forEach((element) => {
+  document.querySelectorAll(cursorInteractiveSelector).forEach((element) => {
     element.addEventListener('mouseenter', () => {
-      cursor.style.width = '20px';
-      cursor.style.height = '20px';
-      cursor.style.background = 'var(--cyan)';
-      ring.style.width = '60px';
-      ring.style.height = '60px';
-      ring.style.borderColor = 'rgba(0,212,255,0.5)';
+      const isCta = element.matches(cursorCtaSelector);
+      setCursorMode(isCta ? 'cta' : 'hover');
+      cursorState.hoverBoost = isCta ? 0.45 : 0.22;
     });
 
     element.addEventListener('mouseleave', () => {
-      cursor.style.width = '12px';
-      cursor.style.height = '12px';
-      cursor.style.background = 'var(--violet)';
-      ring.style.width = '36px';
-      ring.style.height = '36px';
-      ring.style.borderColor = 'rgba(123,47,255,0.5)';
+      setCursorMode();
     });
   });
 } else if (cursor && ring) {
@@ -232,3 +389,4 @@ document.querySelectorAll('[data-inspiration-filter-group]').forEach((group) => 
     });
   });
 });
+
