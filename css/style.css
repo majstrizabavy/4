@@ -274,12 +274,31 @@ nav {
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
-  font-family: var(--font-display); font-size: 18px;
-  color: var(--white); text-decoration: none; letter-spacing: 0.06em;
-  text-transform: uppercase; transition: color 0.2s;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--brand-primary-bright);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 0 0 14px rgba(var(--accent-rgb), 0.22);
+  transition: color 0.2s, text-shadow 0.2s, transform 0.2s;
 }
-.mobile-menu a:hover { color: var(--brand-primary); }
-.mobile-menu a.active { color: var(--brand-primary); }
+.mobile-menu a:hover {
+  color: var(--brand-highlight);
+  text-shadow: 0 0 18px rgba(var(--accent-rgb), 0.34), 0 0 34px rgba(var(--accent-deep-rgb), 0.18);
+  transform: translateY(-1px);
+}
+.mobile-menu a.active {
+  color: var(--brand-highlight);
+  text-shadow: 0 0 18px rgba(var(--accent-rgb), 0.32), 0 0 32px rgba(var(--accent-deep-rgb), 0.16);
+}
+.mobile-menu a.mobile-nav-cta:hover,
+.mobile-menu a.mobile-nav-cta.active {
+  color: #0d0f04;
+  text-shadow: none;
+}
 
 
 /* ===== 5. HERO SEKCIA (ĂšvodnĂˇ strĂˇnka) ===== */
