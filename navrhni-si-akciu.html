@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Majstri zábavy | Navrhni si akciu</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260419-type-1">
-  <link rel="stylesheet" href="css/navrhni-si-akciu.css?v=20260421-orbit-1">
+  <link rel="stylesheet" href="css/style.css?v=20260421-planner-cleanup-1">
+  <link rel="stylesheet" href="css/navrhni-si-akciu.css?v=20260421-wizard-1">
   <link rel="stylesheet" href="css/navrhni-si-akciu-followup.css?v=20260421-dark-1">
 </head>
 <body>
@@ -52,9 +52,8 @@
       <!-- HERO + ORBIT -->
       <div class="mz-orbit-wrap">
         <div class="section-label-orbit">Výhody spolupráce</div>
-        <div class="mz-orbit-title">Čo získavaš navyše s Majstrami zábavy</div>
+        <div class="mz-orbit-title">BONUS OD NÁS</div>
         <div class="section-line mz-section-line"></div>
-        <div class="mz-orbit-sub">Nejde len o program na akciu. Pozri sa, aké extra výhody vieme pripojiť k tvojej spolupráci s Majstrami zábavy.</div>
 
         <div class="mz-orbit-stage">
           <div class="mz-orbit-sideword mz-orbit-sideword--left" aria-hidden="true">MAJSTRI</div>
@@ -69,12 +68,6 @@
             <div class="mz-core__logo" id="mz-core-logo">MZ</div>
             <div class="mz-core__meta">Benefity</div>
             <div class="mz-core__desc" id="mz-core-desc"></div>
-            <div class="mz-core__btn-wrap">
-              <button type="button" class="mz-activate-btn" id="mz-activate-btn">
-                <span class="mz-activate-btn__dot"></span>
-                Navrhni si akciu
-              </button>
-            </div>
           </div>
 
           <div class="mz-planets" id="mz-planets"></div>
@@ -86,172 +79,152 @@
         <div class="mz-divider__label">rýchly návrh</div>
       </div>
 
-      <!-- FORMULAR NAVRHU -->
-      <div class="mz-card-wrap">
-        <div class="mz-card" id="mz-card">
-          <div class="mz-card__border">
-            <div class="mz-card__inner">
-              <div class="mz-card__topbar">
-                <div class="mz-card__logo-row">
-                  <svg class="mz-card__brain" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-                    <path d="M20 6C13.4 6 8 11.4 8 18c0 3.5 1.4 6.7 3.7 9l-.7 5 4.5-1.5C16.9 31.5 18.4 32 20 32c6.6 0 12-5.4 12-12S26.6 6 20 6z" fill="url(#mz-bg1)" opacity="0.9"></path>
-                    <path d="M14 17c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm8 0c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z" fill="rgba(255,255,255,0.9)"></path>
-                    <path d="M15 24c1.3 1.2 3 2 5 2s3.7-.8 5-2" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" stroke-linecap="round"></path>
-                    <defs>
-                      <linearGradient id="mz-bg1" x1="8" y1="6" x2="32" y2="32">
-                        <stop offset="0%" stop-color="#7b4dff"></stop>
-                        <stop offset="100%" stop-color="#4c8dff"></stop>
-                      </linearGradient>
-                    </defs>
-                  </svg>
+      <!-- KROKOVA KALKULACKA -->
+      <div class="mz-wizard" id="mz-wizard">
+        <div class="mz-wizard__head">
+          <h2 class="mz-wizard__title">NAVRHNI SI AKCIU</h2>
+          <p class="mz-wizard__sub">5 klikov → 3 ponuky na mieru</p>
+        </div>
 
-                  <div>
-                    <div class="mz-card__name">MAJSTRI ZÁBAVY</div>
-                    <div class="mz-card__sub">Navrh akcie na mieru</div>
-                  </div>
-                </div>
+        <div class="mz-wizard__progress" id="mz-wizard-progress" aria-label="Postup kalkulacky">
+          <button type="button" class="mz-wizard__dot is-active" data-step-dot="0"><span>Pre koho</span></button>
+          <button type="button" class="mz-wizard__dot" data-step-dot="1"><span>Čo riešiť</span></button>
+          <button type="button" class="mz-wizard__dot" data-step-dot="2"><span>Ľudia</span></button>
+          <button type="button" class="mz-wizard__dot" data-step-dot="3"><span>Vibe</span></button>
+          <button type="button" class="mz-wizard__dot" data-step-dot="4"><span>Rozpočet</span></button>
+          <button type="button" class="mz-wizard__dot" data-step-dot="5"><span>Promo</span></button>
+        </div>
+
+        <div class="mz-wizard__card">
+          <div class="mz-wizard__panel is-active" data-wizard-step="0">
+            <h3 class="mz-wizard__question">Pre koho je akcia?</h3>
+            <div class="mz-choice-grid mz-choice-grid--audience">
+              <button type="button" class="mz-choice" data-field="audience" data-value="Rodiny / verejnosť">
+                <span class="mz-choice__icon">👨‍👩‍👧</span>
+                <span class="mz-choice__label">Rodiny / verejnosť</span>
+              </button>
+              <button type="button" class="mz-choice" data-field="audience" data-value="Školy / deti">
+                <span class="mz-choice__icon">🎓</span>
+                <span class="mz-choice__label">Školy / deti</span>
+              </button>
+              <button type="button" class="mz-choice" data-field="audience" data-value="Mesto / obec">
+                <span class="mz-choice__icon">🏛️</span>
+                <span class="mz-choice__label">Mesto / obec</span>
+              </button>
+              <button type="button" class="mz-choice" data-field="audience" data-value="Firma / hotel">
+                <span class="mz-choice__icon">🏢</span>
+                <span class="mz-choice__label">Firma / hotel</span>
+              </button>
+              <button type="button" class="mz-choice" data-field="audience" data-value="Iné">
+                <span class="mz-choice__icon">✨</span>
+                <span class="mz-choice__label">Iné</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="mz-wizard__panel" data-wizard-step="1">
+            <h3 class="mz-wizard__question">Čo chceš riešiť?</h3>
+            <div class="mz-choice-list">
+              <button type="button" class="mz-choice mz-choice--row" data-field="need" data-value="Program">
+                <span class="mz-choice__icon">🎤</span>
+                <span class="mz-choice__text"><span class="mz-choice__label">Program</span></span>
+              </button>
+              <button type="button" class="mz-choice mz-choice--row" data-field="need" data-value="Atrakcie">
+                <span class="mz-choice__icon">🎪</span>
+                <span class="mz-choice__text"><span class="mz-choice__label">Atrakcie</span></span>
+              </button>
+              <button type="button" class="mz-choice mz-choice--row" data-field="need" data-value="Program + atrakcie">
+                <span class="mz-choice__icon">🎉</span>
+                <span class="mz-choice__text"><span class="mz-choice__label">Program + atrakcie</span></span>
+              </button>
+              <button type="button" class="mz-choice mz-choice--row" data-field="need" data-value="Kompletnú akciu">
+                <span class="mz-choice__icon">🏆</span>
+                <span class="mz-choice__text"><span class="mz-choice__label">Kompletnú akciu</span></span>
+              </button>
+            </div>
+            <button type="button" class="mz-wizard__back" data-wizard-back>← Späť</button>
+          </div>
+
+          <div class="mz-wizard__panel" data-wizard-step="2">
+            <h3 class="mz-wizard__question">Koľko ľudí očakávaš?</h3>
+            <div class="mz-choice-grid mz-choice-grid--guests">
+              <button type="button" class="mz-choice" data-field="guests" data-value="do 50">
+                <span class="mz-choice__label">do 50</span>
+              </button>
+              <button type="button" class="mz-choice" data-field="guests" data-value="50 – 100">
+                <span class="mz-choice__label">50 – 100</span>
+              </button>
+              <button type="button" class="mz-choice" data-field="guests" data-value="100 – 200">
+                <span class="mz-choice__label">100 – 200</span>
+              </button>
+              <button type="button" class="mz-choice" data-field="guests" data-value="200+">
+                <span class="mz-choice__label">200+</span>
+              </button>
+            </div>
+            <button type="button" class="mz-wizard__back" data-wizard-back>← Späť</button>
+          </div>
+
+          <div class="mz-wizard__panel" data-wizard-step="3">
+            <h3 class="mz-wizard__question">Aký vibe chceš?</h3>
+            <div class="mz-choice-list">
+              <button type="button" class="mz-choice mz-choice--row" data-field="vibe" data-value="Pohoda">
+                <span class="mz-choice__icon">🌿</span>
+                <span class="mz-choice__text"><span class="mz-choice__label">Pohoda</span></span>
+              </button>
+              <button type="button" class="mz-choice mz-choice--row" data-field="vibe" data-value="Zábava">
+                <span class="mz-choice__icon">🎉</span>
+                <span class="mz-choice__text"><span class="mz-choice__label">Zábava</span></span>
+              </button>
+              <button type="button" class="mz-choice mz-choice--row" data-field="vibe" data-value="Show">
+                <span class="mz-choice__icon">🔥</span>
+                <span class="mz-choice__text"><span class="mz-choice__label">Show</span></span>
+              </button>
+            </div>
+            <button type="button" class="mz-wizard__back" data-wizard-back>← Späť</button>
+          </div>
+
+          <div class="mz-wizard__panel" data-wizard-step="4">
+            <h3 class="mz-wizard__question">Rozpočet</h3>
+            <div class="mz-wizard-budget">
+              <div class="mz-wizard-budget__value" id="mz-wizard-budget-value">800 €</div>
+              <input type="range" class="mz-wizard-budget__slider" id="mz-wizard-budget" min="200" max="5000" step="50" value="800">
+              <div class="mz-wizard-budget__range">
+                <span>200 €</span>
+                <span>5 000+ €</span>
               </div>
+            </div>
+            <div class="mz-wizard__nav">
+              <button type="button" class="mz-wizard__nav-btn mz-wizard__nav-btn--ghost" data-wizard-back>← Späť</button>
+              <button type="button" class="mz-wizard__nav-btn" data-wizard-next>Ďalej →</button>
+            </div>
+          </div>
 
-              <div class="mz-card__intro">
-                <div class="mz-card__headline">Navrhni si svoju akciu</div>
+          <div class="mz-wizard__panel" data-wizard-step="5">
+            <h3 class="mz-wizard__question">Chceš aj promo a prilákať ľudí?</h3>
+            <div class="mz-choice-grid mz-choice-grid--promo">
+              <button type="button" class="mz-choice" data-field="promo" data-value="Áno">
+                <span class="mz-choice__icon">📣</span>
+                <span class="mz-choice__label">Áno</span>
+              </button>
+              <button type="button" class="mz-choice" data-field="promo" data-value="Nie">
+                <span class="mz-choice__icon">✓</span>
+                <span class="mz-choice__label">Nie</span>
+              </button>
+            </div>
+            <button type="button" class="mz-wizard__back" data-wizard-back>← Späť</button>
+          </div>
+
+          <div class="mz-wizard__panel" data-wizard-step="6">
+            <div class="mz-wizard-result">
+              <div class="mz-wizard-result__eyebrow">Tvoje ponuky</div>
+              <h3 class="mz-wizard-result__title">3 varianty na mieru</h3>
+              <p class="mz-wizard-result__intro" id="mz-wizard-result-intro">Vybrali sme smer podľa tvojich odpovedí. Detailnú ponuku doladíme spolu.</p>
+              <div class="mz-wizard-summary" id="mz-wizard-summary"></div>
+              <div class="mz-wizard-offers" id="mz-wizard-offers"></div>
+              <div class="mz-wizard-result__actions">
+                <button type="button" class="mz-wizard__nav-btn mz-wizard__nav-btn--ghost" id="mz-wizard-reset">Zmeniť</button>
+                <a href="kontakt.html#kontakt" class="mz-wizard__nav-btn mz-wizard__nav-btn--link">Poradiť sa</a>
               </div>
-
-              <div class="mz-planner" id="mz-planner">
-                <div class="mz-label-line">Zakladne info o akcii</div>
-
-                <div class="mz-form-grid">
-                  <div class="mz-form-group mz-form-group--full">
-                    <label class="mz-form-label">Co chces riesit?</label>
-                    <div class="mz-need-grid" id="mz-need-grid">
-                      <button type="button" class="mz-need-btn" data-value="program">Program</button>
-                      <button type="button" class="mz-need-btn" data-value="atrakcie">Atrakcie</button>
-                      <button type="button" class="mz-need-btn" data-value="komplet">Komplet akcia</button>
-                    </div>
-                  </div>
-
-                  <div class="mz-form-group">
-                    <label class="mz-form-label" for="mz-event-type">Typ akcie</label>
-                    <select class="mz-select" id="mz-event-type">
-                      <option value="">Vyber typ akcie...</option>
-                      <option value="firemny">Firemny event</option>
-                      <option value="svadba">Svadba / oslava</option>
-                      <option value="narozeniny">Narodeninova party</option>
-                      <option value="teambuilding">Teambuilding</option>
-                      <option value="koncert">Koncert / show</option>
-                      <option value="detsky">Detsky event</option>
-                      <option value="gala">Galavecer</option>
-                    </select>
-                  </div>
-
-                  <div class="mz-form-group">
-                    <label class="mz-form-label" for="mz-budget-slider">Rozpocet (EUR)</label>
-                    <div class="mz-budget">
-                      <div class="mz-budget__top">
-                        <span class="mz-budget__amount" id="mz-budget-amount">500 EUR</span>
-                        <span class="mz-budget__pill zone-mid" id="mz-budget-pill">Zlaty stred</span>
-                      </div>
-                      <input type="range" class="mz-budget__slider" id="mz-budget-slider" min="0" max="3000" value="500" step="25">
-                      <div class="mz-budget__bar">
-                        <div class="mz-bz mz-bz--low">DOPLNKY</div>
-                        <div class="mz-bz mz-bz--mid mz-bz--active">PROGRAM</div>
-                        <div class="mz-bz mz-bz--high">KOMPLET AKCIA</div>
-                      </div>
-                      <div class="mz-budget__tip" id="mz-budget-tip">Zlaty stred - program na mieru</div>
-                    </div>
-                  </div>
-
-                  <div class="mz-form-group mz-form-group--full">
-                    <label class="mz-form-label" for="mz-guest-slider">Pocet hosti</label>
-                    <div class="mz-range-wrap">
-                      <span class="mz-range-val" id="mz-guest-val">50 osob</span>
-                      <input type="range" class="mz-range" id="mz-guest-slider" min="10" max="1000" value="50" step="10">
-                      <div class="mz-range-labels">
-                        <span>10</span>
-                        <span>250</span>
-                        <span>500</span>
-                        <span>750</span>
-                        <span>1000+</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="mz-form-group mz-form-group--full">
-                    <label class="mz-form-label">Priorita atmosfery</label>
-                    <div class="mz-priority-grid">
-                      <button type="button" class="mz-priority-btn" data-value="energia">
-                        <span class="mz-priority-btn__emoji">⚡</span>
-                        <span class="mz-priority-btn__label">SHOW &amp; ENERGIA 🔥</span>
-                        <span class="mz-priority-btn__desc">Chcem, aby to zilo, malo tempo a wow efekt.</span>
-                      </button>
-                      <button type="button" class="mz-priority-btn" data-value="elegancia">
-                        <span class="mz-priority-btn__emoji">😌</span>
-                        <span class="mz-priority-btn__label">POHODA</span>
-                        <span class="mz-priority-btn__desc">Chcem prijemnu, uvolnenu atmosferu bez tlaku.</span>
-                      </button>
-                      <button type="button" class="mz-priority-btn" data-value="pohoda">
-                        <span class="mz-priority-btn__emoji">🎉</span>
-                        <span class="mz-priority-btn__label">ZABAVA</span>
-                        <span class="mz-priority-btn__desc">Chcem, aby sa hostia zapajali a zazili nieco navyse.</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="mz-generate-wrap">
-                  <button type="button" class="mz-generate-btn" id="mz-generate-btn">
-                    <span>ZISKAT NAVRH A CENU</span>
-                    <span class="mz-generate-btn__arrow">></span>
-                  </button>
-                  <div class="mz-error-hint" id="mz-error-hint">Vyber typ akcie a atmosferu.</div>
-                </div>
-              </div>
-
-              <div class="mz-thinking" id="mz-thinking">
-                <div class="mz-thinking__dots">
-                  <div class="mz-thinking__dot"></div>
-                  <div class="mz-thinking__dot"></div>
-                  <div class="mz-thinking__dot"></div>
-                </div>
-                <div class="mz-thinking__label" id="mz-thinking-label">Analyzujem poziadavky...</div>
-                <div class="mz-thinking__bar"><div class="mz-thinking__fill"></div></div>
-              </div>
-
-              <div class="mz-result" id="mz-result">
-                <div class="mz-result__label">Moj navrh pre vas</div>
-                <div class="mz-result__msg" id="mz-result-msg">
-                  <span id="mz-ai-text"></span>
-                  <span class="mz-cursor" id="mz-cursor" style="display:none"></span>
-                </div>
-
-                <section class="mz-followup-offer mz-quick-offer" id="mz-quick-offer" hidden aria-live="polite">
-                  <div class="mz-followup-offer__eyebrow">Tvoja predbezna ponuka</div>
-
-                  <div class="mz-followup-offer__top">
-                    <div class="mz-followup-offer__intro">
-                      <h3 class="mz-followup-offer__title" id="mz-quick-selection">Program / Detsky event</h3>
-                      <p class="mz-followup-offer__description" id="mz-quick-description">Vyber si variant, ktory je najblizsie tvojej predstave a rozpoctu.</p>
-                    </div>
-                  </div>
-
-                  <div class="mz-followup-offer__context mz-quick-offer__context" id="mz-quick-context"></div>
-                  <div class="mz-quick-offer__cards" id="mz-quick-cards"></div>
-
-                  <p class="mz-followup-offer__note" id="mz-quick-note">Ak ti tento smer sedi, dopln posledne detaily a pripravime presnejsiu ponuku pre tvoju akciu.</p>
-
-                  <div class="mz-followup-offer__actions">
-                    <button type="button" class="btn-ghost mz-followup-offer__action" id="mz-quick-edit">Upravit zadanie</button>
-                    <a href="kontakt.html#kontakt" class="btn-ghost mz-followup-offer__action" id="mz-quick-contact">Spoj sa s nami</a>
-                  </div>
-                </section>
-
-                <div class="mz-modules" id="mz-modules" hidden></div>
-                <div class="mz-summary" id="mz-summary" hidden></div>
-                <div class="mz-cta-row" id="mz-cta-row" style="display:none" hidden>
-                  <button type="button" class="mz-cta-approve" id="mz-approve-btn">Poslat dopyt a dohodnut sa</button>
-                  <button type="button" class="mz-cta-reset" id="mz-reset-btn">Upravit zadanie</button>
-                </div>
-              </div>
-
             </div>
           </div>
         </div>
@@ -402,7 +375,7 @@
   </footer>
 
   <script src="js/mz-cennik.js?v=20260405-komplet-discount-1"></script>
-  <script src="js/navrhni-si-akciu.js?v=20260419-encoding-fix-2"></script>
+  <script src="js/navrhni-si-akciu.js?v=20260421-wizard-2"></script>
   <script src="js/main.js?v=20260324-orbit-labels-1"></script>
 </body>
 </html>
