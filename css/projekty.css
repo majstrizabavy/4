@@ -1025,6 +1025,63 @@
   }
 }
 
+/* Svet zábavy uses the Projects rhythm, but services should read as equal choices. */
+#svet-zabavy {
+  padding-top: 88px;
+}
+
+#svet-zabavy .projects-hero__content {
+  max-width: 760px;
+}
+
+#svet-zabavy .projects-hero__title {
+  max-width: 760px;
+}
+
+#svet-zabavy .world-service-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+#svet-zabavy .projects-showcase__card {
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#svet-zabavy .projects-showcase__top {
+  margin-bottom: 16px;
+}
+
+#svet-zabavy .projects-showcase__media {
+  aspect-ratio: 16 / 9;
+}
+
+#svet-zabavy .projects-showcase__link {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+@media (max-width: 900px) {
+  #svet-zabavy .world-service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  #svet-zabavy {
+    padding-top: 78px;
+  }
+
+  #svet-zabavy .projects-hero__title {
+    font-size: 38px;
+    line-height: 1;
+  }
+
+  #svet-zabavy .world-service-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 
 
