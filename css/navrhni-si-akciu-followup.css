@@ -1,37 +1,18 @@
 ﻿.mz-followup-section {
   position: relative;
-  padding: 64px 20px 72px;
+  padding: 58px 20px 72px;
   background:
-    radial-gradient(circle at 14% 18%, rgba(236,255,131,  0.1), transparent 28%),
-    radial-gradient(circle at 86% 8%, rgba(var(--accent-deep-rgb),  0.08), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 112px),
+    radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.035), transparent 28%),
+    radial-gradient(circle at 86% 8%, rgba(var(--accent-deep-rgb),  0.045), transparent 30%),
     #050508;
   overflow: hidden;
 }
 
 .mz-followup-section::before,
 .mz-followup-section::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  pointer-events: none;
-}
-
-.mz-followup-section::before {
-  top: 0;
-  width: 2px;
-  height: 58px;
-  transform: translateX(-50%);
-  background: linear-gradient(180deg, transparent, rgba(var(--accent-rgb), 0.88), rgba(var(--accent-rgb), 0.08));
-  box-shadow: 0 0 22px rgba(var(--accent-rgb), 0.22);
-}
-
-.mz-followup-section::after {
-  top: 42px;
-  width: min(520px, calc(100vw - 48px));
-  height: 1px;
-  transform: translateX(-50%);
-  background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), 0.42), rgba(236,255,131, 0.62), rgba(var(--accent-rgb), 0.42), transparent);
-  box-shadow: 0 0 26px rgba(var(--accent-rgb), 0.12);
+  display: none;
+  content: none;
 }
 
 .mz-followup-shell {
@@ -49,8 +30,25 @@
   text-align: center;
 }
 
+.mz-followup-kicker {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(216, 255, 90, 0.9);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
 .mz-followup-title {
-  margin-top: 8px;
+  margin-top: 12px;
   font-family: var(--font-body);
   font-size: clamp(24px, 3vw, 34px);
   font-weight: 800;
@@ -61,6 +59,9 @@
 
 .mz-followup-text {
   margin-top: 12px;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
   color: #a3a68f;
   font-size: 15px;
   line-height: 1.7;
@@ -294,10 +295,11 @@
 
 /* Navrhni si akciu followup refresh */
 .mz-followup-section {
-  padding-top: 68px;
+  padding-top: 58px;
   background:
-    radial-gradient(circle at 14% 18%, rgba(var(--accent-rgb), 0.05), transparent 28%),
-    radial-gradient(ellipse at 50% 0%, rgba(var(--accent-rgb), 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 112px),
+    radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.03), transparent 28%),
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.035), transparent 34%),
     radial-gradient(circle at 86% 8%, rgba(var(--accent-deep-rgb), 0.04), transparent 30%),
     #050505;
 }

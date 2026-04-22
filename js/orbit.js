@@ -6,7 +6,7 @@ const planets = [
   {
     icon: '',
     core: 'MZ',
-    label: 'SVET\nZABAVY',
+    label: 'SVET\nZÁBAVY',
     desc: 'Objednaj si program, atrakcie a služby od Majstrov Zábavy.',
     cta: 'Objaviť svet',
     target: 'svet-zabavy.html',
@@ -15,7 +15,7 @@ const planets = [
   {
     icon: '',
     core: 'MZ',
-    label: 'INSPIRACIA',
+    label: 'INŠPIRÁCIA',
     desc: 'Hľadáš nápad na akciu? Inšpiruj sa.',
     cta: 'Pozrieť inšpiráciu',
     target: 'inspiracia',
@@ -24,7 +24,7 @@ const planets = [
   {
     icon: '',
     core: '365',
-    label: '365 DNI',
+    label: '365 DNÍ',
     desc: 'Hľadáš zábavu? Objav ju tu.',
     cta: 'Objaviť 365 dní',
     target: 'rok',
