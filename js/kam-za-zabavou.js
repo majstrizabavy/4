@@ -21,11 +21,18 @@ const eventModalShare = document.getElementById('eventModalShare');
 let activePublicMonth = null;
 let activePublicEventId = null;
 let activePublicCity = '';
+let approvedPublicEvents = [];
+let publicEventsLoaded = false;
+let publicEventsError = '';
 
 function decodeHtmlEntities(value) {
   const parser = document.createElement('textarea');
   parser.innerHTML = value;
   return parser.value;
+}
+
+function getAllPublicEvents() {
+  return approvedPublicEvents;
 }
 
 function getPublicMonth(monthKey) {
@@ -41,7 +48,7 @@ function hasSelectedPublicCity(cityKey = activePublicCity) {
 }
 
 function getPublicEvent(eventId) {
-  return publicEvents.find((eventItem) => eventItem.id === eventId) || null;
+  return getAllPublicEvents().find((eventItem) => eventItem.id === eventId) || null;
 }
 
 function parsePublicEventDate(eventItem) {
@@ -57,13 +64,16 @@ function matchesActiveCity(eventItem, cityKey = activePublicCity) {
 
 function getPublicEventsForMonth(monthKey, cityKey = activePublicCity) {
   if (!cityKey) return [];
-  return publicEvents.filter((eventItem) => eventItem.month === monthKey && matchesActiveCity(eventItem, cityKey));
+
+  return getAllPublicEvents().filter((eventItem) => (
+    eventItem.month === monthKey && matchesActiveCity(eventItem, cityKey)
+  ));
 }
 
 function getFirstMonthWithEvents(cityKey = activePublicCity) {
   if (!cityKey) return publicEventMonths[0].key;
 
-  const firstEvent = publicEvents.find((eventItem) => matchesActiveCity(eventItem, cityKey));
+  const firstEvent = getAllPublicEvents().find((eventItem) => matchesActiveCity(eventItem, cityKey));
   return firstEvent?.month || publicEventMonths[0].key;
 }
 
@@ -71,11 +81,13 @@ function buildPublicEventUrl(eventItem) {
   const url = new URL(window.location.href);
   url.searchParams.set('mode', 'public');
   url.searchParams.set('month', eventItem.month);
+
   if (eventItem.cityKey) {
     url.searchParams.set('city', eventItem.cityKey);
   } else {
     url.searchParams.delete('city');
   }
+
   url.searchParams.set('event', eventItem.id);
   url.hash = 'rok';
   return `${url.pathname}${url.search}${url.hash}`;
@@ -119,7 +131,9 @@ function renderPublicCities() {
 
   publicCitySelect.innerHTML = [
     `<option value=""${!activePublicCity ? ' selected' : ''}>Vyber si mesto a okolie</option>`,
-    ...publicEventCities.map((city) => `<option value="${city.key}"${city.key === activePublicCity ? ' selected' : ''}>${city.name}</option>`)
+    ...publicEventCities.map((city) => (
+      `<option value="${city.key}"${city.key === activePublicCity ? ' selected' : ''}>${city.name}</option>`
+    ))
   ].join('');
 }
 
@@ -137,7 +151,7 @@ function renderPublicMonths() {
   publicMonthGrid.innerHTML = publicEventMonths.map((month) => {
     const eventCount = getPublicEventsForMonth(month.key).length;
     const isActive = month.key === activePublicMonth;
-    const eventLabel = eventCount === 1 ? 'akcia' : eventCount >= 2 && eventCount <= 4 ? 'akcie' : 'akcii';
+    const eventLabel = eventCount === 1 ? 'akcia' : eventCount >= 2 && eventCount <= 4 ? 'akcie' : 'akcií';
 
     return `
       <button
@@ -177,7 +191,7 @@ function getWeekendRange(baseDate = new Date()) {
   reference.setHours(0, 0, 0, 0);
 
   const day = reference.getDay();
-  let start = new Date(reference);
+  const start = new Date(reference);
 
   if (day === 6) {
     start.setDate(reference.getDate() - 1);
@@ -210,7 +224,7 @@ function formatWeekendRangeLabel(start, end) {
 
 function getWeekendEvents(cityKey = activePublicCity) {
   const { start, end } = getWeekendRange();
-  const events = publicEvents
+  const events = getAllPublicEvents()
     .filter((eventItem) => {
       if (!matchesActiveCity(eventItem, cityKey)) return false;
 
@@ -256,7 +270,7 @@ function renderWeekendSpotlight() {
     weekendSpotlightList.innerHTML = `
       <article class="weekend-event-card weekend-event-card--empty">
         <div class="weekend-event-card__empty-title">Na tento víkend tu zatiaľ nič nie je.</div>
-        <div class="weekend-event-card__empty-copy">Po doplnení akcií sa sem automaticky vytiahnu najbližšie podujatia pre lokalitu ${city.name}. Kalendár ostáva hlavný, tento blok je len rýchly výber.</div>
+        <div class="weekend-event-card__empty-copy">Po schválení nových akcií sa sem automaticky vytiahnu najbližšie podujatia pre lokalitu ${city.name}. Kalendár ostáva hlavný, tento blok je len rýchly výber.</div>
       </article>
     `;
     return;
@@ -285,14 +299,14 @@ function renderPublicEventList() {
   publicEventMonthLabel.innerHTML = `Mesiac ${month.name} &bull; ${city.name}`;
 
   publicEventListTitle.textContent = monthEvents.length
-    ? `Akcie pre ${decodeHtmlEntities(month.name)}`
-    : `Zatiaľ bez akcií pre lokalitu ${city.name}`;
+    ? `Schválené akcie pre ${decodeHtmlEntities(month.name)}`
+    : `Zatiaľ bez schválených akcií pre lokalitu ${city.name}`;
 
   if (!monthEvents.length) {
     publicEventList.innerHTML = `
       <div class="public-event-card public-event-card--empty">
-        <div class="public-event-card__empty-title">Tento výber je pripravený na doplnenie.</div>
-        <div class="public-event-card__empty-copy">Po doplnení akcie pre ${decodeHtmlEntities(month.name)} v lokalite ${city.name} sa sem automaticky pridá prehľad s tlačidlami Viac info a Zdieľať.</div>
+        <div class="public-event-card__empty-title">Tento výber je zatiaľ prázdny.</div>
+        <div class="public-event-card__empty-copy">Keď pre ${decodeHtmlEntities(month.name)} v lokalite ${city.name} schválime nové akcie, automaticky sa zobrazia práve tu.</div>
       </div>
     `;
     return;
@@ -303,11 +317,19 @@ function renderPublicEventList() {
 
 function renderPublicEventBrowser() {
   renderPublicCities();
+
   if (publicCityNote) {
-    publicCityNote.textContent = hasSelectedPublicCity()
-      ? `Zobrazujeme akcie pre lokalitu ${getPublicCity(activePublicCity).name}.`
-      : 'Najprv si zvoľ mesto a okolie, potom uvidíš akcie.';
+    if (publicEventsError) {
+      publicCityNote.textContent = publicEventsError;
+    } else if (!publicEventsLoaded) {
+      publicCityNote.textContent = 'Načítavam schválené akcie zo Supabase...';
+    } else if (hasSelectedPublicCity()) {
+      publicCityNote.textContent = `Zobrazujeme schválené akcie pre lokalitu ${getPublicCity(activePublicCity).name}.`;
+    } else {
+      publicCityNote.textContent = 'Najprv si zvoľ mesto a okolie, potom uvidíš akcie.';
+    }
   }
+
   renderPublicMonths();
   renderPublicEventList();
   renderWeekendSpotlight();
@@ -334,14 +356,14 @@ function setModalMoreInfoState(eventItem) {
 function populateEventModal(eventItem) {
   if (!eventModalTitle || !eventModalMeta || !eventModalPoster || !eventModalPosterImage || !eventModalPosterFallback) return;
 
-    eventModalTitle.innerHTML = eventItem.title;
+  eventModalTitle.innerHTML = eventItem.title;
   eventModalMeta.innerHTML = `${eventItem.when} &bull; ${eventItem.where}`;
   if (eventModalShare) eventModalShare.textContent = 'Zdieľať';
 
   if (eventItem.poster) {
     eventModalPoster.href = eventItem.moreInfoUrl || eventItem.poster;
     eventModalPosterImage.src = eventItem.poster;
-    eventModalPosterImage.alt = `${decodeHtmlEntities(eventItem.title)} plagat`;
+    eventModalPosterImage.alt = `${decodeHtmlEntities(eventItem.title)} plagát`;
     eventModalPosterImage.hidden = false;
     eventModalPosterFallback.hidden = true;
     eventModalPoster.classList.remove('is-placeholder');
@@ -367,8 +389,8 @@ function openEventModal(eventId, options = {}) {
   if (!preserveFilters) {
     activePublicCity = eventItem.cityKey || '';
   }
-  renderPublicEventBrowser();
 
+  renderPublicEventBrowser();
   populateEventModal(eventItem);
   eventModal.classList.add('is-open');
   eventModal.setAttribute('aria-hidden', 'false');
@@ -446,11 +468,47 @@ async function sharePublicEvent(eventId) {
       }, 1800);
     }
   } catch (error) {
-    // Ak pouzivatel zavrie zdielanie, nechceme hlasit chybu.
+    // Ak používateľ zavrie zdieľanie, nechceme hlásiť chybu.
   }
 }
 
-function initPublicEventBrowser() {
+async function loadApprovedPublicEvents() {
+  if (!window.MZSupabase) {
+    publicEventsError = 'Supabase konfigurácia sa nenačítala.';
+    publicEventsLoaded = true;
+    renderPublicEventBrowser();
+    return;
+  }
+
+  try {
+    const supabaseClient = window.MZSupabase.getClient();
+    const { data, error } = await supabaseClient
+      .from('events')
+      .select('id, title, status, event_date, city_key, city_label, venue_name, region_label, description, audience, category, poster_path, more_info_url')
+      .eq('status', 'approved')
+      .order('event_date', { ascending: true });
+
+    if (error) {
+      throw error;
+    }
+
+    approvedPublicEvents = (data || []).map((row) => window.MZSupabase.mapEventRowToPublicEvent(row));
+    publicEventsError = '';
+  } catch (error) {
+    approvedPublicEvents = [];
+    publicEventsError = 'Schválené akcie sa teraz nepodarilo načítať. Skús to prosím znova o chvíľu.';
+  } finally {
+    publicEventsLoaded = true;
+
+    if (activePublicCity && !getPublicEventsForMonth(activePublicMonth, activePublicCity).length) {
+      activePublicMonth = getFirstMonthWithEvents(activePublicCity);
+    }
+
+    renderPublicEventBrowser();
+  }
+}
+
+async function initPublicEventBrowser() {
   if (!publicMonthGrid || !publicEventList || !publicCitySelect) return;
 
   const requestedParams = new URLSearchParams(window.location.search);
@@ -464,6 +522,9 @@ function initPublicEventBrowser() {
         ? getPublicMonth(requestedMonth).key
         : getFirstMonthWithEvents(activePublicCity))
     : null;
+
+  renderPublicEventBrowser();
+  await loadApprovedPublicEvents();
 
   if (activePublicCity && !getPublicEventsForMonth(activePublicMonth, activePublicCity).length) {
     activePublicMonth = getFirstMonthWithEvents(activePublicCity);

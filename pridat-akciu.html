@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Majstri zábavy | Pridať akciu</title>
+  <meta name="description" content="Pošli nám akciu do kalendára Majstrov zábavy. Po kontrole ju schválime a následne sa zobrazí na webe.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=20260424-supabase-events-1">
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo" data-nav="home"><span class="nav-logo__main">MAJSTRI</span> <span class="nav-logo__accent">ZÁBAVY</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Domov</a></li>
+      <li><a href="svet-zabavy.html" data-nav="orbit-section">Svet Zabavy</a></li>
+      <li><a href="inspiracia.html" data-nav="inspiracia">Inspiracia</a></li>
+      <li><a href="365-dni-zabavy.html" data-nav="rok">365 dní zábavy</a></li>
+      <li><a href="projekty.html" data-nav="projekty">Projekty MZ</a></li>
+      <li><a href="kontakt.html" data-nav="kontakt">Kontakt</a></li>
+      <li class="nav-cta-item"><a href="navrhni-si-akciu.html" class="nav-cta" data-nav="navrhni-akciu">Navrhni si akciu</a></li>
+    </ul>
+    <div class="nav-ham" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" data-nav="home" onclick="closeMobile()">Domov</a>
+    <a href="svet-zabavy.html" data-nav="orbit-section" onclick="closeMobile()">Svet Zabavy</a>
+    <a href="inspiracia.html" data-nav="inspiracia" onclick="closeMobile()">Inspiracia</a>
+    <a href="365-dni-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dní zábavy</a>
+    <a href="projekty.html" data-nav="projekty" onclick="closeMobile()">Projekty MZ</a>
+    <a href="kontakt.html" data-nav="kontakt" onclick="closeMobile()">Kontakt</a>
+    <a href="navrhni-si-akciu.html" class="mobile-nav-cta" data-nav="navrhni-akciu" onclick="closeMobile()">Navrhni si akciu</a>
+  </div>
+
+  <main class="page-shell">
+    <section class="partner-submit-page">
+      <div class="section-header reveal">
+        <div class="section-label-orbit">Partneri a organizátori</div>
+        <h2 class="section-title">PRIDAŤ AKCIU</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="partner-submit-hero reveal">
+        <div class="partner-submit-hero__copy">
+          <div class="partner-submit-hero__eyebrow">Kalendár Majstrov zábavy</div>
+          <h1 class="partner-submit-hero__title">Pošli nám akciu a my ju pred zverejnením skontrolujeme.</h1>
+          <p class="partner-submit-hero__text">Toto je jednoduchá partner stránka. Akciu nám odošleš raz, my ju skontrolujeme a až po schválení sa zobrazí vo verejnom kalendári na webe.</p>
+        </div>
+
+        <div class="partner-submit-hero__steps">
+          <article class="partner-step-card">
+            <span class="partner-step-card__num">01</span>
+            <h3>Vyplníš základné údaje</h3>
+            <p>Názov, dátum, lokalita, plagát a kontakt na organizátora.</p>
+          </article>
+          <article class="partner-step-card">
+            <span class="partner-step-card__num">02</span>
+            <h3>Akciu skontrolujeme</h3>
+            <p>Najprv zostane v stave čaká na schválenie a na verejný web sa ešte nedostane.</p>
+          </article>
+          <article class="partner-step-card">
+            <span class="partner-step-card__num">03</span>
+            <h3>Po schválení ide do kalendára</h3>
+            <p>Až potom sa objaví v sekcii Kam za zábavou medzi schválenými akciami.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="partner-submit-layout reveal">
+        <form class="partner-form" id="partnerEventForm" novalidate>
+          <div class="partner-form__section">
+            <div class="partner-form__section-head">
+              <div class="partner-form__eyebrow">O akú akciu ide</div>
+              <h3 class="partner-form__title">Základné údaje</h3>
+            </div>
+
+            <div class="partner-form__grid">
+              <label class="partner-form__field partner-form__field--full">
+                <span>Názov akcie *</span>
+                <input type="text" name="title" placeholder="Napr. Rodinný deň pri jazere" required>
+              </label>
+
+              <label class="partner-form__field">
+                <span>Dátum akcie *</span>
+                <input type="date" name="event_date" required>
+              </label>
+
+              <label class="partner-form__field">
+                <span>Mesto a okolie *</span>
+                <select name="city_key" id="partnerCityKey" required></select>
+              </label>
+
+              <label class="partner-form__field">
+                <span>Presné miesto</span>
+                <input type="text" name="venue_name" placeholder="Napr. Mestský park alebo kultúrny dom">
+              </label>
+
+              <label class="partner-form__field">
+                <span>Obec / lokalita</span>
+                <input type="text" name="region_label" placeholder="Napr. Hrochoť alebo Zvolen">
+              </label>
+
+              <label class="partner-form__field">
+                <span>Typ akcie</span>
+                <select name="category">
+                  <option value="">Vyber typ</option>
+                  <option value="Rodinná akcia">Rodinná akcia</option>
+                  <option value="Detská akcia">Detská akcia</option>
+                  <option value="Hudobné podujatie">Hudobné podujatie</option>
+                  <option value="Festival">Festival</option>
+                  <option value="Firemná akcia">Firemná akcia</option>
+                  <option value="Komunitná akcia">Komunitná akcia</option>
+                  <option value="Iné">Iné</option>
+                </select>
+              </label>
+
+              <label class="partner-form__field">
+                <span>Pre koho</span>
+                <select name="audience">
+                  <option value="">Vyber publikum</option>
+                  <option value="Rodiny s deťmi">Rodiny s deťmi</option>
+                  <option value="Mládež">Mládež</option>
+                  <option value="Dospelí">Dospelí</option>
+                  <option value="Firmy">Firmy</option>
+                  <option value="Školy">Školy</option>
+                  <option value="Všetci">Všetci</option>
+                </select>
+              </label>
+
+              <label class="partner-form__field partner-form__field--full">
+                <span>Krátky popis</span>
+                <textarea name="description" rows="5" placeholder="Napíš stručne, čo sa na akcii deje a pre koho je určená."></textarea>
+              </label>
+
+              <label class="partner-form__field partner-form__field--full">
+                <span>Link na viac info</span>
+                <input type="url" name="more_info_url" placeholder="https://...">
+              </label>
+
+              <label class="partner-form__field partner-form__field--full partner-form__upload">
+                <span>Plagát / obrázok akcie</span>
+                <input type="file" id="partnerPoster" name="poster" accept=".png,.jpg,.jpeg,.webp,image/png,image/jpeg,image/webp">
+                <small id="partnerPosterName">PNG, JPG alebo WEBP do 5 MB.</small>
+              </label>
+            </div>
+          </div>
+
+          <div class="partner-form__section">
+            <div class="partner-form__section-head">
+              <div class="partner-form__eyebrow">Kto akciu posiela</div>
+              <h3 class="partner-form__title">Kontakt na partnera</h3>
+            </div>
+
+            <div class="partner-form__grid">
+              <label class="partner-form__field">
+                <span>Názov partnera / organizátora *</span>
+                <input type="text" name="partner_name" placeholder="Napr. Obec Hrochoť" required>
+              </label>
+
+              <label class="partner-form__field">
+                <span>Meno kontaktnej osoby *</span>
+                <input type="text" name="submitter_name" placeholder="Napr. Jana Nováková" required>
+              </label>
+
+              <label class="partner-form__field">
+                <span>Email *</span>
+                <input type="email" name="submitter_email" placeholder="meno@email.sk" required>
+              </label>
+
+              <label class="partner-form__field">
+                <span>Telefón</span>
+                <input type="tel" name="submitter_phone" placeholder="+421 900 000 000">
+              </label>
+            </div>
+          </div>
+
+          <div class="partner-form__footer">
+            <p class="partner-form__status" id="partnerFormStatus" aria-live="polite"></p>
+            <button type="submit" class="btn-primary partner-form__submit" id="partnerSubmitButton">Poslať akciu na schválenie</button>
+          </div>
+        </form>
+
+        <aside class="partner-submit-side">
+          <div class="partner-submit-side__card">
+            <div class="partner-submit-side__eyebrow">Dôležité</div>
+            <h3>Akcia sa nezverejní hneď.</h3>
+            <p>Najprv ju uvidíme v admin časti, skontrolujeme údaje a až potom ju schválime alebo zamietneme.</p>
+          </div>
+
+          <div class="partner-submit-side__card partner-submit-side__card--soft">
+            <div class="partner-submit-side__eyebrow">Odporúčanie</div>
+            <p>Ak chceš, aby sa akcia na webe zobrazila profesionálne, vyplň presné miesto, krátky popis a pridaj kvalitný plagát.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <div class="footer-logo">MAJSTRI ZÁBAVY</div>
+      <p class="footer-statement">Zábava, ktorá má energiu.</p>
+      <a href="navrhni-si-akciu.html" class="footer-cta">Navrhni si akciu</a>
+    </div>
+
+    <div class="footer-social">
+      <p class="footer-social__title">Pozri si našu energiu v praxi</p>
+      <div class="footer-social__links">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><span>IG</span>Instagram</a>
+        <a href="#" aria-label="Facebook Majstri zábavy"><span>FB</span>Facebook</a>
+        <a href="https://www.youtube.com/@christian_alex_official" target="_blank" rel="noopener noreferrer"><span>YT</span>YouTube</a>
+        <a href="#" aria-label="TikTok Majstri zábavy"><span>TT</span>TikTok</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Majstri zábavy</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Domov</a></li>
+        <li><a href="svet-zabavy.html">Svet zábavy</a></li>
+        <li><a href="365-dni-zabavy.html">365 dní zábavy</a></li>
+        <li><a href="inspiracia.html">Inšpirácia</a></li>
+        <li><a href="projekty.html">Projekty</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/main.js?v=20260406-site-core-1"></script>
+  <script src="js/supabase-config.js?v=20260424-supabase-events-1"></script>
+  <script src="js/pridat-akciu.js?v=20260424-supabase-events-1"></script>
+</body>
+</html>
