@@ -12,7 +12,7 @@
   <meta name="twitter:title" content="Majstri zábavy | 365 dni zabavy">
   <meta name="twitter:description" content="Naplanuj si akciu alebo si pozri aktualne podujatia po celom Slovensku.">
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260421-footer-upgrade-1">
+  <link rel="stylesheet" href="css/style.css?v=20260424-weekend-spotlight-1">
 </head>
 <body>
   <div id="cursor"></div>
@@ -72,25 +72,31 @@
         <!-- REZIM 2: KAM ZA ZABAVOU -->
         <!-- Verejne akcie su oddelene v samostatnych suboroch js/kam-za-zabavou-data.js a js/kam-za-zabavou.js -->
         <section class="year-mode-panel is-hidden" data-year-mode-panel="public">
-          <div class="year-mode-head year-mode-head--public">
-            <div>
-              <div class="year-mode-kicker">Akcie, ktoré organizujeme alebo odporúčame</div>
-              <h3 class="year-mode-title">Vyberte si mesiac a objavte, kam sa oplatí ísť.</h3>
-            </div>
+          <div class="year-mode-inline year-mode-inline--public">
+            <div class="year-mode-inline__eyebrow">Kam za zábavou</div>
+            <h3 class="year-mode-inline__title">Vyber si lokalitu a objav, čo sa deje v okolí.</h3>
           </div>
 
           <div class="event-browser">
-            <div class="event-browser__controls">
-              <div class="event-browser__filter-shell">
-                <div class="event-browser__select-shell">
-                  <select class="event-browser__select" id="publicCitySelect" aria-label="Vyber si lokalitu"></select>
+            <div class="event-browser__filter-shell">
+              <div class="event-browser__filter-head">
+                <span class="event-browser__filter-icon" aria-hidden="true"></span>
+                <div class="event-browser__filter-copy">
+                  <div class="event-browser__filter-eyebrow">Výber lokality</div>
+                  <label class="event-browser__filter-label" for="publicCitySelect">Vyber si mesto a okolie</label>
                 </div>
               </div>
-
-              <div class="event-browser__months" id="publicMonthGrid"></div>
+              <div class="event-browser__select-shell">
+                <select class="event-browser__select" id="publicCitySelect" aria-label="Vyber si lokalitu"></select>
+              </div>
+              <p class="event-browser__filter-note" id="publicCityNote">Najprv si zvoľ mesto a okolie, potom uvidíš akcie.</p>
             </div>
 
-            <div class="event-browser__list-shell">
+            <div class="event-browser__controls">
+              <div class="event-browser__months" id="publicMonthGrid" hidden></div>
+            </div>
+
+            <div class="event-browser__list-shell" id="publicEventListShell" hidden>
               <div class="event-browser__summary">
                 <div class="event-browser__eyebrow" id="publicEventMonthLabel">Mesiac</div>
                 <h4 class="event-browser__title" id="publicEventListTitle">Akcie</h4>
@@ -98,6 +104,17 @@
               <div class="event-browser__list" id="publicEventList"></div>
             </div>
           </div>
+
+          <section class="weekend-spotlight" id="weekendSpotlight" aria-labelledby="weekendSpotlightTitle" hidden>
+            <div class="weekend-spotlight__head">
+              <div class="weekend-spotlight__copy">
+                <div class="weekend-spotlight__eyebrow">Automaticky z najbližších akcií</div>
+                <h4 class="weekend-spotlight__title" id="weekendSpotlightTitle">Kam tento víkend</h4>
+              </div>
+              <div class="weekend-spotlight__range" id="weekendSpotlightRange">Najbližšie podujatia</div>
+            </div>
+            <div class="weekend-spotlight__list" id="weekendSpotlightList"></div>
+          </section>
         </section>
       </div>
     </section>
@@ -181,8 +198,8 @@
   <script src="js/365-dni-zabavy-data.js?v=20260419-encoding-fix-1"></script>
   <script src="js/365-dni-zabavy-offers.js?v=20260406-planner-cleanup-1"></script>
   <script src="js/365-dni-zabavy.js?v=20260419-encoding-fix-1"></script>
-  <script src="js/kam-za-zabavou-data.js?v=20260406-public-events-1"></script>
-  <script src="js/kam-za-zabavou.js?v=20260406-public-events-1"></script>
+  <script src="js/kam-za-zabavou-data.js?v=20260424-weekend-spotlight-1"></script>
+  <script src="js/kam-za-zabavou.js?v=20260424-weekend-spotlight-1"></script>
 </body>
 </html>
 

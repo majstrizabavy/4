@@ -21,22 +21,22 @@ const publicEventMonths = [
 ];
 
 const publicEventCities = [
-  { key: 'all', name: 'Vsetky mesta' },
-  { key: 'bratislava', name: 'Bratislava' },
-  { key: 'trnava', name: 'Trnava' },
-  { key: 'trencin', name: 'Trencin' },
-  { key: 'nitra', name: 'Nitra' },
-  { key: 'nove-zamky', name: 'Nove Zamky' },
-  { key: 'zilina', name: 'Zilina' },
-  { key: 'banska-bystrica', name: 'Banska Bystrica' },
-  { key: 'presov', name: 'Presov' },
-  { key: 'kosice', name: 'Kosice' }
+  { key: 'bratislava', name: 'Bratislava a okolie' },
+  { key: 'trnava', name: 'Trnava a okolie' },
+  { key: 'trencin', name: 'Trenčín a okolie' },
+  { key: 'nitra', name: 'Nitra a okolie' },
+  { key: 'nove-zamky', name: 'Nové Zámky a okolie' },
+  { key: 'zilina', name: 'Žilina a okolie' },
+  { key: 'banska-bystrica', name: 'Banská Bystrica a okolie' },
+  { key: 'presov', name: 'Prešov a okolie' },
+  { key: 'kosice', name: 'Košice a okolie' }
 ];
 
 const publicEvents = [
   {
     id: 'bratislava-novorocny-mestsky-karneval',
     month: '01',
+    isoDate: '2026-01-18',
     cityKey: 'bratislava',
     title: 'Novoro&#269;n&yacute; mestsk&yacute; karneval',
     when: '18. janu&aacute;r 2026',
@@ -47,6 +47,7 @@ const publicEvents = [
   {
     id: 'trnava-zimny-vecer-na-namesti',
     month: '02',
+    isoDate: '2026-02-14',
     cityKey: 'trnava',
     title: 'Zimn&yacute; ve&#269;er na n&aacute;mest&iacute;',
     when: '14. febru&aacute;r 2026',
@@ -57,6 +58,7 @@ const publicEvents = [
   {
     id: 'nitra-jarne-afterwork-stretnutie',
     month: '03',
+    isoDate: '2026-03-22',
     cityKey: 'nitra',
     title: 'Jarn&eacute; afterwork stretnutie',
     when: '22. marec 2026',
@@ -67,6 +69,7 @@ const publicEvents = [
   {
     id: 'nove-zamky-den-otvorenych-dveri',
     month: '04',
+    isoDate: '2026-04-12',
     cityKey: 'nove-zamky',
     title: 'De&#328; otvoren&yacute;ch dver&iacute; s programom pre rodiny',
     when: '12. apr&iacute;l 2026',
@@ -77,6 +80,7 @@ const publicEvents = [
   {
     id: 'banska-bystrica-christianalex-live',
     month: '04',
+    isoDate: '2026-04-26',
     cityKey: 'banska-bystrica',
     title: 'Christian Alex live session',
     when: '26. apr&iacute;l 2026',
@@ -87,6 +91,7 @@ const publicEvents = [
   {
     id: 'presov-stretnime-sa-v-uliciach',
     month: '05',
+    isoDate: '2026-05-17',
     cityKey: 'presov',
     title: 'Stretnime sa v uliciach',
     when: '17. m&aacute;j 2026',
@@ -97,6 +102,7 @@ const publicEvents = [
   {
     id: 'zilina-den-deti-pod-holym-nebom',
     month: '06',
+    isoDate: '2026-06-01',
     cityKey: 'zilina',
     title: 'De&#328; det&iacute; pod hol&yacute;m nebom',
     when: '1. j&uacute;n 2026',
@@ -107,6 +113,7 @@ const publicEvents = [
   {
     id: 'bratislava-letny-open-air-vecer',
     month: '07',
+    isoDate: '2026-07-11',
     cityKey: 'bratislava',
     title: 'Letn&yacute; open air ve&#269;er',
     when: '11. j&uacute;l 2026',
@@ -117,6 +124,7 @@ const publicEvents = [
   {
     id: 'kosice-hudba-na-namesti',
     month: '08',
+    isoDate: '2026-08-09',
     cityKey: 'kosice',
     title: 'Hudba na n&aacute;mest&iacute;',
     when: '9. august 2026',
@@ -127,6 +135,7 @@ const publicEvents = [
   {
     id: 'trnava-jesenny-mestsky-social',
     month: '09',
+    isoDate: '2026-09-20',
     cityKey: 'trnava',
     title: 'Jesenn&yacute; mestsk&yacute; social',
     when: '20. september 2026',
@@ -137,6 +146,7 @@ const publicEvents = [
   {
     id: 'nitra-halloween-night-special',
     month: '10',
+    isoDate: '2026-10-31',
     cityKey: 'nitra',
     title: 'Halloween night special',
     when: '31. okt&oacute;ber 2026',
@@ -147,6 +157,7 @@ const publicEvents = [
   {
     id: 'presov-indoor-community-night',
     month: '11',
+    isoDate: '2026-11-15',
     cityKey: 'presov',
     title: 'Indoor community night',
     when: '15. november 2026',
@@ -157,6 +168,7 @@ const publicEvents = [
   {
     id: 'zilina-vianocny-vecer-v-meste',
     month: '12',
+    isoDate: '2026-12-13',
     cityKey: 'zilina',
     title: 'Viano&#269;n&yacute; ve&#269;er v meste',
     when: '13. december 2026',
