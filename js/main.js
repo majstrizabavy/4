@@ -33,6 +33,7 @@ const cursorState = {
   lastEmitTime: 0
 };
 const confettiPool = [];
+let activeCursorElement = null;
 
 function setCursorMode(mode = '') {
   if (!cursor || !ring) return;
@@ -49,6 +50,26 @@ function setCursorMode(mode = '') {
     cursor.classList.add('is-cta');
     ring.classList.add('is-cta');
   }
+}
+
+function getInteractiveCursorElement(target) {
+  return target instanceof Element ? target.closest(cursorInteractiveSelector) : null;
+}
+
+function syncCursorHoverState(target) {
+  const hoveredElement = getInteractiveCursorElement(target);
+  if (hoveredElement === activeCursorElement) return;
+
+  activeCursorElement = hoveredElement;
+
+  if (!hoveredElement) {
+    setCursorMode();
+    return;
+  }
+
+  const isCta = hoveredElement.matches(cursorCtaSelector);
+  setCursorMode(isCta ? 'cta' : 'hover');
+  cursorState.hoverBoost = isCta ? 0.45 : 0.22;
 }
 
 function buildConfettiPool() {
@@ -167,10 +188,13 @@ if (cursor && ring && customCursorEnabled) {
     cursorState.targetX = clientX;
     cursorState.targetY = clientY;
     cursorState.speed = Math.hypot(cursorState.targetX - cursorState.prevX, cursorState.targetY - cursorState.prevY);
+    syncCursorHoverState(event.target);
   });
 
   document.addEventListener('mouseleave', () => {
     document.body.classList.remove('cursor-active');
+    activeCursorElement = null;
+    setCursorMode();
   });
 
   document.addEventListener('mouseenter', () => {
@@ -198,18 +222,6 @@ if (cursor && ring && customCursorEnabled) {
 
     requestAnimationFrame(animateCursor);
   })();
-
-  document.querySelectorAll(cursorInteractiveSelector).forEach((element) => {
-    element.addEventListener('mouseenter', () => {
-      const isCta = element.matches(cursorCtaSelector);
-      setCursorMode(isCta ? 'cta' : 'hover');
-      cursorState.hoverBoost = isCta ? 0.45 : 0.22;
-    });
-
-    element.addEventListener('mouseleave', () => {
-      setCursorMode();
-    });
-  });
 } else if (cursor && ring) {
   cursor.style.display = 'none';
   ring.style.display = 'none';
@@ -338,6 +350,23 @@ function closeMobile() {
   const menu = document.getElementById('mobileMenu');
   if (menu) menu.classList.remove('open');
 }
+
+document.addEventListener('click', (event) => {
+  const target = event.target instanceof Element ? event.target : null;
+  if (!target) return;
+
+  const toggleTrigger = target.closest('[data-mobile-toggle]');
+  if (toggleTrigger) {
+    event.preventDefault();
+    toggleMobile();
+    return;
+  }
+
+  const closeTrigger = target.closest('[data-mobile-close]');
+  if (closeTrigger) {
+    closeMobile();
+  }
+});
 
 document.querySelectorAll('[data-nav]').forEach((link) => {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';

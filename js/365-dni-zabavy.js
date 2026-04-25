@@ -1,6 +1,6 @@
 ﻿/* 365 dni zabavy
-   Tento subor drzi len stabilnu logiku plannera pre rezim "Naplanuj si akciu".
-   Verejne akcie pre "Kam za zabavou" maju oddelene data aj logiku.
+   Tento súbor drží len stabilnú logiku planneru pre režim "Naplánuj si akciu".
+   Verejné akcie pre "Kam za zábavou" majú oddelené dáta aj logiku.
 */
 
 const yearPlannerData = window.yearPlannerData;
@@ -18,12 +18,12 @@ function createCustomMonthCard(item) {
           </button>
         `).join('')}
       </div>
-      <a href="navrhni-si-akciu.html" class="month-card__alt-link">Ina akcia</a>
+      <a href="navrhni-si-akciu.html" class="month-card__alt-link">Iná akcia</a>
     `
     : `
-      <div class="month-card__offer-label">MZ odporucaju:</div>
+      <div class="month-card__offer-label">MZ odporúčajú:</div>
       <div class="month-card__offer">${item.hint}</div>
-      <a href="#yearPlannerContact" class="month-card__cta">Cenov&aacute; ponuka</a>
+      <a href="#yearPlannerContact" class="month-card__cta">Cenová ponuka</a>
     `;
 
   return `
@@ -97,8 +97,8 @@ function initYearPlannerModes() {
 function createPlannerOfferPreview(offer, offerGroup) {
   const theme = offer.previewTheme || offerGroup.previewTheme || 'default';
   const posterTag = offer.previewTag || offerGroup.previewTag || 'MZ';
-  const posterKicker = offer.previewKicker || offerGroup.previewKicker || 'Naplanuj si akciu';
-  const posterNote = offer.posterNote || offer.posterLabel || 'Vizualny nahlad bez fotky';
+  const posterKicker = offer.previewKicker || offerGroup.previewKicker || 'Naplánuj si akciu';
+  const posterNote = offer.posterNote || offer.posterLabel || 'Vizuálny náhľad bez fotky';
 
   return `
     <div class="planner-offer-card__poster-art planner-offer-card__poster-art--${theme}">
@@ -286,6 +286,7 @@ const requestedMode = new URLSearchParams(window.location.search).get('mode');
 if (requestedMode === 'public' || requestedMode === 'custom') {
   setYearPlannerMode(requestedMode, { syncUrl: false });
 }
+
 
 
 

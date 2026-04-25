@@ -2,8 +2,15 @@ const partnerEventForm = document.getElementById('partnerEventForm');
 const partnerCitySelect = document.getElementById('partnerCityKey');
 const partnerPosterInput = document.getElementById('partnerPoster');
 const partnerPosterName = document.getElementById('partnerPosterName');
+const partnerPosterPreview = document.getElementById('partnerPosterPreview');
+const partnerPosterPreviewImage = document.getElementById('partnerPosterPreviewImage');
 const partnerFormStatus = document.getElementById('partnerFormStatus');
 const partnerSubmitButton = document.getElementById('partnerSubmitButton');
+const partnerFormSuccess = document.getElementById('partnerFormSuccess');
+const partnerFormSuccessText = document.getElementById('partnerFormSuccessText');
+const partnerFormSuccessSummary = document.getElementById('partnerFormSuccessSummary');
+const partnerFormAnother = document.getElementById('partnerFormAnother');
+let partnerPosterPreviewUrl = '';
 
 function setPartnerFormStatus(type, message) {
   if (!partnerFormStatus) return;
@@ -34,11 +41,68 @@ function updatePosterLabel() {
     : 'PNG, JPG alebo WEBP do 5 MB.';
 }
 
+function updatePosterPreview() {
+  if (!partnerPosterInput || !partnerPosterPreview || !partnerPosterPreviewImage) return;
+
+  if (partnerPosterPreviewUrl) {
+    URL.revokeObjectURL(partnerPosterPreviewUrl);
+    partnerPosterPreviewUrl = '';
+  }
+
+  const selectedFile = partnerPosterInput.files?.[0];
+  if (!selectedFile || !selectedFile.type.startsWith('image/')) {
+    partnerPosterPreview.hidden = true;
+    partnerPosterPreviewImage.hidden = true;
+    partnerPosterPreviewImage.removeAttribute('src');
+    return;
+  }
+
+  partnerPosterPreviewUrl = URL.createObjectURL(selectedFile);
+  partnerPosterPreviewImage.src = partnerPosterPreviewUrl;
+  partnerPosterPreviewImage.hidden = false;
+  partnerPosterPreview.hidden = false;
+}
+
 function setPartnerSubmittingState(isSubmitting) {
   if (!partnerSubmitButton) return;
 
   partnerSubmitButton.disabled = isSubmitting;
   partnerSubmitButton.textContent = isSubmitting ? 'Odosielam akciu...' : 'Poslať akciu na schválenie';
+}
+
+function hidePartnerSuccessState() {
+  if (partnerFormSuccess) partnerFormSuccess.hidden = true;
+  if (partnerFormSuccessSummary) {
+    partnerFormSuccessSummary.hidden = true;
+    partnerFormSuccessSummary.innerHTML = '';
+  }
+}
+
+function showPartnerSuccessState(successData = {}) {
+  if (!partnerFormSuccess || !partnerFormSuccessText || !partnerFormSuccessSummary) return;
+
+  const summaryItems = [
+    successData.title,
+    successData.when,
+    successData.city,
+    successData.partner
+  ].filter(Boolean);
+
+  partnerFormSuccessText.textContent = 'Najprv ju skontrolujeme a po schválení ju zaradíme do verejného kalendára.';
+  partnerFormSuccessSummary.innerHTML = summaryItems
+    .map((item) => `<span>${window.MZSupabase.escapeHtml(item)}</span>`)
+    .join('');
+  partnerFormSuccessSummary.hidden = !summaryItems.length;
+  partnerFormSuccess.hidden = false;
+  partnerFormSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+async function removePosterFile(supabaseClient, posterPath) {
+  if (!posterPath) return;
+
+  await supabaseClient.storage
+    .from(window.MZSupabase.posterBucket)
+    .remove([posterPath]);
 }
 
 async function uploadPosterFile(supabaseClient, file, slug, eventDate) {
@@ -95,6 +159,9 @@ async function handlePartnerEventSubmit(event) {
     const submitterPhone = String(formData.get('submitter_phone') || '').trim();
     const selectedCity = window.MZSupabase.getCityByKey(cityKey);
     const posterFile = partnerPosterInput?.files?.[0] || null;
+    let posterPath = '';
+
+    hidePartnerSuccessState();
 
     if (!title || !eventDate || !selectedCity || !partnerName || !submitterName || !submitterEmail) {
       throw new Error('Prosím vyplň názov akcie, dátum, lokalitu, partnera, meno a email kontaktu.');
@@ -102,7 +169,7 @@ async function handlePartnerEventSubmit(event) {
 
     const slugBase = window.MZSupabase.slugify(title) || 'nova-akcia';
     const slug = `${slugBase}-${Date.now().toString(36)}`;
-    const posterPath = await uploadPosterFile(supabaseClient, posterFile, slug, eventDate);
+    posterPath = await uploadPosterFile(supabaseClient, posterFile, slug, eventDate);
 
     const { error } = await supabaseClient
       .from('events')
@@ -127,13 +194,23 @@ async function handlePartnerEventSubmit(event) {
       });
 
     if (error) {
+      await removePosterFile(supabaseClient, posterPath);
       throw new Error('Akciu sa nepodarilo uložiť. Skús to prosím ešte raz.');
     }
 
+    const successData = {
+      title,
+      when: window.MZSupabase.formatEventDate(eventDate),
+      city: selectedCity.name,
+      partner: partnerName
+    };
+
     partnerEventForm.reset();
     updatePosterLabel();
+    updatePosterPreview();
     renderPartnerCities();
-    setPartnerFormStatus('success', 'Akcia je odoslaná. Najprv ju skontrolujeme a až potom ju zverejníme v kalendári.');
+    setPartnerFormStatus('', '');
+    showPartnerSuccessState(successData);
   } catch (error) {
     setPartnerFormStatus('error', error.message || 'Niečo sa nepodarilo. Skús to prosím ešte raz.');
   } finally {
@@ -146,11 +223,26 @@ function initPartnerEventForm() {
 
   renderPartnerCities();
   updatePosterLabel();
+  updatePosterPreview();
+  hidePartnerSuccessState();
   setPartnerFormStatus('', 'Vyplň základné údaje o akcii. Po odoslaní ju najprv schválime.');
 
   partnerEventForm.addEventListener('submit', handlePartnerEventSubmit);
+  partnerEventForm.addEventListener('input', hidePartnerSuccessState);
   if (partnerPosterInput) {
-    partnerPosterInput.addEventListener('change', updatePosterLabel);
+    partnerPosterInput.addEventListener('change', () => {
+      updatePosterLabel();
+      updatePosterPreview();
+    });
+  }
+
+  if (partnerFormAnother) {
+    partnerFormAnother.addEventListener('click', () => {
+      hidePartnerSuccessState();
+      setPartnerFormStatus('', 'Vyplň ďalšiu akciu. Po odoslaní ju najprv schválime.');
+      partnerEventForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      partnerEventForm.querySelector('input, select, textarea')?.focus();
+    });
   }
 }
 

@@ -32,6 +32,15 @@ function jsonResponse(body: Record<string, unknown>, status = 200) {
   })
 }
 
+function escapeHtml(value: string | null) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 function formatEventDate(value: string | null) {
   if (!value) return 'Dátum nebol vyplnený'
 
@@ -43,12 +52,12 @@ function formatEventDate(value: string | null) {
 }
 
 function buildEmailHtml(record: EventRecord) {
-  const title = record.title || 'Bez názvu'
-  const eventDate = formatEventDate(record.event_date)
-  const location = [record.venue_name, record.city_label].filter(Boolean).join(', ') || 'Lokalita nebola vyplnená'
-  const partner = record.partner_name || 'Partner nebol vyplnený'
-  const submitter = record.submitter_name || 'Kontakt nebol vyplnený'
-  const submitterEmail = record.submitter_email || 'Email nebol vyplnený'
+  const title = escapeHtml(record.title || 'Bez názvu')
+  const eventDate = escapeHtml(formatEventDate(record.event_date))
+  const location = escapeHtml([record.venue_name, record.city_label].filter(Boolean).join(', ') || 'Lokalita nebola vyplnená')
+  const partner = escapeHtml(record.partner_name || 'Partner nebol vyplnený')
+  const submitter = escapeHtml(record.submitter_name || 'Kontakt nebol vyplnený')
+  const submitterEmail = escapeHtml(record.submitter_email || 'Email nebol vyplnený')
 
   return `
     <div style="font-family:Arial,sans-serif;padding:24px;color:#111;">

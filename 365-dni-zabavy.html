@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sk">
 <head>
   <meta charset="UTF-8">
@@ -29,17 +29,17 @@
       <li><a href="kontakt.html" data-nav="kontakt">Kontakt</a></li>
       <li class="nav-cta-item"><a href="navrhni-si-akciu.html" class="nav-cta" data-nav="navrhni-akciu">Navrhni si akciu</a></li>
     </ul>
-    <div class="nav-ham" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+    <div class="nav-ham" data-mobile-toggle><span></span><span></span><span></span></div>
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html" data-nav="home" onclick="closeMobile()">Domov</a>
-    <a href="svet-zabavy.html" data-nav="orbit-section" onclick="closeMobile()">Svet Zabavy</a>
-    <a href="inspiracia.html" data-nav="inspiracia" onclick="closeMobile()">Inspiracia</a>
-    <a href="365-dni-zabavy.html" data-nav="rok" onclick="closeMobile()">365 dn&iacute; z&aacute;bavy</a>
-    <a href="projekty.html" data-nav="projekty" onclick="closeMobile()">Projekty MZ</a>
-    <a href="kontakt.html" data-nav="kontakt" onclick="closeMobile()">Kontakt</a>
-    <a href="navrhni-si-akciu.html" class="mobile-nav-cta" data-nav="navrhni-akciu" onclick="closeMobile()">Navrhni si akciu</a>
+    <a href="index.html" data-nav="home" data-mobile-close>Domov</a>
+    <a href="svet-zabavy.html" data-nav="orbit-section" data-mobile-close>Svet Zabavy</a>
+    <a href="inspiracia.html" data-nav="inspiracia" data-mobile-close>Inspiracia</a>
+    <a href="365-dni-zabavy.html" data-nav="rok" data-mobile-close>365 dn&iacute; z&aacute;bavy</a>
+    <a href="projekty.html" data-nav="projekty" data-mobile-close>Projekty MZ</a>
+    <a href="kontakt.html" data-nav="kontakt" data-mobile-close>Kontakt</a>
+    <a href="navrhni-si-akciu.html" class="mobile-nav-cta" data-nav="navrhni-akciu" data-mobile-close>Navrhni si akciu</a>
   </div>
 
   <main class="page-shell">
@@ -64,8 +64,8 @@
           <div class="planner-grid" id="yearGridCustom"></div>
 
           <div class="year-mode-cta" id="yearPlannerContact">
-            <a href="svet-zabavy.html" class="btn-ghost">Otvorit Svet Zabavy</a>
-            <a href="kontakt.html" class="btn-primary">Nezavazne objednat</a>
+            <a href="svet-zabavy.html" class="btn-ghost">Otvoriť Svet zábavy</a>
+            <a href="kontakt.html" class="btn-primary">Nezáväzne objednať</a>
           </div>
         </section>
 
@@ -74,9 +74,9 @@
         <section class="year-mode-panel is-hidden" data-year-mode-panel="public">
           <div class="year-mode-inline year-mode-inline--public">
             <div class="year-mode-inline__eyebrow">Kam za zábavou</div>
-            <h3 class="year-mode-inline__title">Vyber si lokalitu a objav, čo sa deje v okolí.</h3>
+            <h3 class="year-mode-inline__title">Vyber lokalitu a pozri si aktuálne akcie v okolí.</h3>
             <div class="year-mode-inline__actions">
-              <a href="pridat-akciu.html" class="btn-ghost year-mode-inline__cta">Som partner / Pridať akciu</a>
+              <a href="pridat-akciu.html" class="btn-primary year-mode-inline__cta">Som partner / Pridať akciu</a>
             </div>
           </div>
 
@@ -92,7 +92,7 @@
               <div class="event-browser__select-shell">
                 <select class="event-browser__select" id="publicCitySelect" aria-label="Vyber si lokalitu"></select>
               </div>
-              <p class="event-browser__filter-note" id="publicCityNote">Najprv si zvoľ mesto a okolie, potom uvidíš akcie.</p>
+              <p class="event-browser__filter-note" id="publicCityNote">Vyber mesto a zobrazia sa schválené akcie.</p>
             </div>
 
             <div class="event-browser__controls">
@@ -156,22 +156,20 @@
   <div class="event-modal" id="eventModal" aria-hidden="true">
     <div class="event-modal__backdrop" data-event-close></div>
     <div class="event-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="eventModalTitle">
-      <button type="button" class="event-modal__close" data-event-close aria-label="Zavriet detail akcie">&times;</button>
+      <button type="button" class="event-modal__close" data-event-close aria-label="Zavrieť detail akcie">&times;</button>
       <div class="event-modal__content">
         <h3 class="event-modal__title" id="eventModalTitle">Akcia</h3>
-        <p class="event-modal__meta" id="eventModalMeta">Datum a miesto</p>
+        <p class="event-modal__meta" id="eventModalMeta">Dátum a miesto</p>
 
         <div class="event-modal__info-block">
-          <div class="event-modal__label">Viac info</div>
           <a class="event-modal__poster is-placeholder" id="eventModalPoster" href="#" target="_blank" rel="noreferrer">
             <img id="eventModalPosterImage" alt="" hidden>
-            <div class="event-modal__poster-fallback" id="eventModalPosterFallback">Sem neskor doplnis oficialny plagat akcie.</div>
+            <div class="event-modal__poster-fallback" id="eventModalPosterFallback">Sem neskôr doplníš oficiálny plagát akcie.</div>
           </a>
         </div>
 
         <div class="event-modal__actions">
-          <a class="event-modal__action" id="eventModalMoreInfo" href="#" target="_blank" rel="noreferrer">Viac info</a>
-          <button type="button" class="event-modal__action event-modal__action--primary" id="eventModalShare">Zdielat</button>
+          <button type="button" class="event-modal__action event-modal__action--primary" id="eventModalShare">Zdieľať akciu</button>
         </div>
       </div>
     </div>
@@ -180,11 +178,11 @@
   <div class="planner-offer-modal" id="plannerOfferModal" aria-hidden="true">
     <div class="planner-offer-modal__backdrop" data-planner-offer-close></div>
     <div class="planner-offer-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="plannerOfferTitle">
-      <button type="button" class="planner-offer-modal__close" data-planner-offer-close aria-label="Zavriet ponuku">&times;</button>
+      <button type="button" class="planner-offer-modal__close" data-planner-offer-close aria-label="Zavrieť ponuku">&times;</button>
       <div class="planner-offer-modal__content">
         <div class="planner-offer-modal__eyebrow" id="plannerOfferEyebrow">JÚN</div>
         <h3 class="planner-offer-modal__title" id="plannerOfferTitle">Deň detí</h3>
-        <p class="planner-offer-modal__sub" id="plannerOfferSubtitle">3 odporucane varianty od Majstrov Zabavy</p>
+        <p class="planner-offer-modal__sub" id="plannerOfferSubtitle">3 odporúčané varianty od Majstrov zábavy</p>
 
         <div class="planner-offer-modal__filters" id="plannerOfferFilters" hidden></div>
         <p class="planner-offer-modal__note" id="plannerOfferNote" hidden></p>

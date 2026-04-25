@@ -1,17 +1,17 @@
-/* 365 dni zabavy offers
+﻿/* 365 dni zabavy offers
    Tento subor drzi iba ponuky akcii pre planner modal.
 */
 window.plannerOfferData = {
   'karnevaly': {
-    eyebrow: 'JANUAR',
+    eyebrow: 'JANUÁR',
     title: 'Karnevaly',
-    subtitle: 'Vyber si, ci chces program, atrakcie alebo komplet akciu.',
+    subtitle: 'Vyber si, či chceš program, atrakcie alebo komplet akciu.',
     previewTheme: 'kids',
     customLabel: 'Mám inú predstavu',
     offerFilters: {
       program: {
         label: 'Program',
-        subtitle: '3 orientacne varianty programu pre karnevaly',
+        subtitle: '3 orientačné varianty programu pre karnevaly',
         note: 'Finálna ponuka závisí od veľkosti akcie, lokality a rozsahu programu.',
         previewTag: 'PROGRAM',
         previewKicker: 'Program',
@@ -19,33 +19,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Zakladny karnevalovy program pre mensi priestor alebo kratky cas.',
+            lead: 'Základný karnevalový program pre menší priestor alebo krátky čas.',
             price: 'od 350 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['moderovanie a sutaze', 'karnevalova atmosfera', 'vhodne pre mensiu skupinu deti'],
+            bullets: ['moderovanie a súťaže', 'karnevalová atmosféra', 'vhodné pre menšiu skupinu deti'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Karnevaly&scope=program&variant=MZ%20Start&price=od%20350%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Silnejsi karnevalovy blok s viacerymi vstupmi a vacsou energiou.',
+            lead: 'Silnejší karnevalový blok s viacerými vstupmi a väčšou energiou.',
             price: 'od 500 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['hudba, sutaze a zapojenie deti', 'silnejsi flow celeho programu', 'odporucany variant pre bezny karneval'],
+            bullets: ['hudba, súťaže a zapojenie deti', 'silnejší flow celého programu', 'odporúčaný variant pre bežný karneval'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Karnevaly&scope=program&variant=MZ%20Show&price=od%20500%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Vacsi karnevalovy program pre vacsi pocet deti alebo vacsi priestor.',
+            lead: 'Väčší karnevalový program pre väčší počet deti alebo väčší priestor.',
             price: 'od 750 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['vacsi rozsah programu', 'viac vstupov a silnejsi zazitok', 'vhodne pre vacsi skolsky alebo obecny karneval'],
+            bullets: ['väčší rozsah programu', 'viac vstupov a silnejší zážitok', 'vhodné pre väčší školský alebo obecný karneval'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Karnevaly&scope=program&variant=MZ%20Majster&price=od%20750%20EUR#planner-form'
           }
         ]
       },
       attractions: {
         label: 'Atrakcie',
-        subtitle: '3 orientacne varianty atrakcii a doplnkov pre karnevaly',
+        subtitle: '3 orientačné varianty atrakcií a doplnkov pre karnevaly',
         note: 'Máte už program? Atrakcie si môžete jednoducho doobjednať ako doplnok k vašej akcii.',
         previewTag: 'ATRAKCIE',
         previewKicker: 'Atrakcie',
@@ -53,33 +53,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Mensi doplnok, ktory rychlo oivi karnevalovu akciu.',
+            lead: 'Menší doplnok, ktorý rýchlo oživí karnevalovú akciu.',
             price: 'od 150 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['mensia atrakcia alebo doplnok', 'vhodne do triedy alebo saly', 'rychle nasadenie na miesto'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['menšia atrakcia alebo doplnok', 'vhodné do triedy alebo sály', 'rýchle nasadenie na miesto'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Karnevaly&scope=atrakcie&variant=MZ%20Start&price=od%20150%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Vacsia atrakcia s viditelnejsim efektom pre deti aj rodicov.',
+            lead: 'Väčšia atrakcia s viditeľnejším efektom pre deti aj rodičov.',
             price: 'od 250 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['vacsia atrakcia alebo show doplnok', 'silnejsi efekt pocas akcie', 'vhodne pre stredne velky karneval'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['väčšia atrakcia alebo show doplnok', 'silnejší efekt počas akcie', 'vhodné pre stredne veľký karneval'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Karnevaly&scope=atrakcie&variant=MZ%20Show&price=od%20250%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Karnevalova zona alebo vacsi balik atrakcii pre silnejsi zazitok.',
+            lead: 'Karnevalová zóna alebo väčší balík atrakcií pre silnejší zážitok.',
             price: 'od 899 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['zona alebo kombinacia viacerych atrakcii', 'vacsia kapacita a vacsi efekt', 'vhodne pre vacsie podujatie'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['zóna alebo kombinácia viacerých atrakcií', 'väčšia kapacita a väčší efekt', 'vhodné pre väčšie podujatie'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Karnevaly&scope=atrakcie&variant=MZ%20Majster&price=od%20899%20EUR#planner-form'
           }
         ]
       },
       full: {
         label: 'Komplet',
-        subtitle: '3 orientacne varianty kompletnej karnevalovej akcie',
+        subtitle: '3 orientačné varianty kompletnej karnevalovej akcie',
         note: 'Kompletný balík zahŕňa program aj atrakcie v jednom, bez starostí s organizáciou.',
         previewTag: 'KOMPLET',
         previewKicker: 'Komplet akcia',
@@ -87,26 +87,26 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Zakladna kombinacia programu a atrakcii pre mensi karneval.',
+            lead: 'Základná kombinácia programu a atrakcií pre menší karneval.',
             price: 'od 690 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program aj atrakcie v jednom', 'zakladna koordinacia', 'vhodne pre mensi rozpocet'],
+            bullets: ['program aj atrakcie v jednom', 'základná koordinácia', 'vhodné pre menší rozpočet'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Karnevaly&scope=komplet&variant=MZ%20Start&price=od%20690%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Najcastejsi komplet variant s vyvazenym zazitkom pre vacsinu karnevalov.',
+            lead: 'Najčastejší komplet variant s vyváženým zážitkom pre väčšinu karnevalov.',
             price: 'od 990 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program, atrakcie a plynuly flow', 'balikove zvyhodnenie oproti samostatnym sluzbam', 'odporucana volba pre vacsinu klientov'],
+            bullets: ['program, atrakcie a plynulý flow', 'balíkové zvýhodnenie oproti samostatným službám', 'odporúčaná voľba pre väčšinu klientov'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Karnevaly&scope=komplet&variant=MZ%20Show&price=od%20990%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Najsilnejsi komplet pre vacsi priestor, vacsi pocet deti a vyssi efekt.',
+            lead: 'Najsilnejší komplet pre väčší priestor, väčší počet deti a vyšší efekt.',
             price: 'od 1 450 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['vacsi rozsah programu aj atrakcii', 'silnejsi wow efekt a vacsia kapacita', 'riesenie pre silny termin alebo vacsie podujatie'],
+            bullets: ['väčší rozsah programu aj atrakcií', 'silnejší wow efekt a väčšia kapacita', 'riešenie pre silný termín alebo väčšie podujatie'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Karnevaly&scope=komplet&variant=MZ%20Majster&price=od%201450%20EUR#planner-form'
           }
         ]
@@ -114,15 +114,15 @@ window.plannerOfferData = {
     }
   },
   'novorocne-akcie': {
-    eyebrow: 'JANUAR',
+    eyebrow: 'JANUÁR',
     title: 'Novoročné akcie',
-    subtitle: 'Vyber si, ci chces program, atrakcie alebo komplet akciu.',
+    subtitle: 'Vyber si, či chceš program, atrakcie alebo komplet akciu.',
     previewTheme: 'goodbye',
     customLabel: 'Mám inú predstavu',
     offerFilters: {
       program: {
         label: 'Program',
-        subtitle: '3 orientacne varianty programu pre novorocne akcie',
+        subtitle: '3 orientačné varianty programu pre novoročné akcie',
         note: 'Finálna ponuka závisí od veľkosti akcie, lokality a rozsahu programu.',
         previewTag: 'PROGRAM',
         previewKicker: 'Program',
@@ -130,33 +130,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Jednoduchy novorocny program pre mensiu komunitnu alebo rodinnu akciu.',
+            lead: 'Jednoduchý novoročný program pre menšiu komunitnú alebo rodinnú akciu.',
             price: 'od 250 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['moderovany blok', 'lahky rozbeh akcie', 'vhodne pre mensi rozpocet'],
+            bullets: ['moderovaný blok', 'ľahký rozbeh akcie', 'vhodné pre menší rozpočet'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Novorocne%20akcie&scope=program&variant=MZ%20Start&price=od%20250%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Silnejsi novorocny program s vacsou energiou a vacsim zazitkom.',
+            lead: 'Silnejší novoročný program s väčšou energiou a väčším zážitkom.',
             price: 'od 450 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['moderovanie a aktivacie', 'dobry pomer medzi cenou a efektom', 'odporucany variant pre vacsinu akcii'],
+            bullets: ['moderovanie a aktivácie', 'dobrý pomer medzi cenou a efektom', 'odporúčaný variant pre väčšinu akcii'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Novorocne%20akcie&scope=program&variant=MZ%20Show&price=od%20450%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Vacsi programovy variant pre vacsi priestor alebo vacsie publikum.',
+            lead: 'Väčší programový variant pre väčší priestor alebo väčšie publikum.',
             price: 'od 750 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['vacsi rozsah programu', 'silnejsi wow efekt', 'vhodne pre vacsie verejne alebo firemne akcie'],
+            bullets: ['väčší rozsah programu', 'silnejší wow efekt', 'vhodné pre väčšie verejné alebo firemné akcie'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Novorocne%20akcie&scope=program&variant=MZ%20Majster&price=od%20750%20EUR#planner-form'
           }
         ]
       },
       attractions: {
         label: 'Atrakcie',
-        subtitle: '3 orientacne varianty atrakcii a doplnkov pre novorocne akcie',
+        subtitle: '3 orientačné varianty atrakcií a doplnkov pre novoročné akcie',
         note: 'Máte už program? Atrakcie si môžete jednoducho doobjednať ako doplnok k vašej akcii.',
         previewTag: 'ATRAKCIE',
         previewKicker: 'Atrakcie',
@@ -164,33 +164,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Mensi doplnok, ktory rychlo oivi novorocnu akciu.',
+            lead: 'Menší doplnok, ktorý rýchlo oživí novoročnú akciu.',
             price: 'od 150 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['mensia atrakcia alebo doplnok', 'vhodne pre mensi priestor', 'rychle ozivenie programu'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['menšia atrakcia alebo doplnok', 'vhodné pre menší priestor', 'rýchle oživenie programu'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Novorocne%20akcie&scope=atrakcie&variant=MZ%20Start&price=od%20150%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Vacsia atrakcia pre viditelnejsi zazitok hosti.',
+            lead: 'Väčšia atrakcia pre viditeľnejší zážitok hostí.',
             price: 'od 250 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['vacsia atrakcia alebo interaktivny prvok', 'silnejsi efekt pocas akcie', 'vhodne pre vacsiu skupinu hosti'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['väčšia atrakcia alebo interaktívny prvok', 'silnejší efekt počas akcie', 'vhodné pre väčšiu skupinu hostí'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Novorocne%20akcie&scope=atrakcie&variant=MZ%20Show&price=od%20250%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Zona alebo balik atrakcii pre vyraznejsi novorocny event.',
+            lead: 'Zóna alebo balík atrakcií pre výražnejší novoročný event.',
             price: 'od 899 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['viac atrakcii alebo eventova zona', 'vacsia kapacita a vacsi vizualny efekt', 'vhodne pre vacsi termin alebo silnejsie podujatie'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['viac atrakcií alebo eventová zóna', 'väčšia kapacita a väčší vizuálny efekt', 'vhodné pre väčší termín alebo silnejšie podujatie'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Novorocne%20akcie&scope=atrakcie&variant=MZ%20Majster&price=od%20899%20EUR#planner-form'
           }
         ]
       },
       full: {
         label: 'Komplet',
-        subtitle: '3 orientacne varianty kompletnej novorocnej akcie',
+        subtitle: '3 orientačné varianty kompletnej novoročnej akcie',
         note: 'Kompletný balík zahŕňa program aj atrakcie v jednom, bez starostí s organizáciou.',
         previewTag: 'KOMPLET',
         previewKicker: 'Komplet akcia',
@@ -198,26 +198,26 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Zakladny komplet pre mensiu novorocnu akciu alebo komunitne stretnutie.',
+            lead: 'Základný komplet pre menšiu novoročnú akciu alebo komunitné stretnutie.',
             price: 'od 690 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program aj atrakcie v jednom', 'jednoduchsia koordinacia', 'vhodne pre mensi rozpocet'],
+            bullets: ['program aj atrakcie v jednom', 'jednoduchšia koordinácia', 'vhodné pre menší rozpočet'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Novorocne%20akcie&scope=komplet&variant=MZ%20Start&price=od%20690%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Vyvazeny komplet variant s dobrym pomerom cena a zazitok.',
+            lead: 'Vyvážený komplet variant s dobrým pomerom cena a zážitok.',
             price: 'od 990 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program, atrakcie a vyvazene tempo', 'balikove zvyhodnenie oproti samostatnym sluzbam', 'odporucana volba pre vacsinu klientov'],
+            bullets: ['program, atrakcie a vyvážené tempo', 'balíkové zvýhodnenie oproti samostatným službám', 'odporúčaná voľba pre väčšinu klientov'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Novorocne%20akcie&scope=komplet&variant=MZ%20Show&price=od%20990%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Najsilnejsi komplet s vacsim rozsahom a vacsim efektom pre hosti.',
+            lead: 'Najsilnejší komplet s väčším rozsahom a väčším efektom pre hostí.',
             price: 'od 1 450 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['vacsi rozsah programu aj atrakcii', 'vacsia kapacita a vacsi wow efekt', 'riesenie pre vyssie naroky a vacsie akcie'],
+            bullets: ['väčší rozsah programu aj atrakcií', 'väčšia kapacita a väčší wow efekt', 'riešenie pre vyššíe nároky a väčšie akcie'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Novorocne%20akcie&scope=komplet&variant=MZ%20Majster&price=od%201450%20EUR#planner-form'
           }
         ]
@@ -225,15 +225,15 @@ window.plannerOfferData = {
     }
   },
   'zimne-programy': {
-    eyebrow: 'JANUAR',
+    eyebrow: 'JANUÁR',
     title: 'Zimné programy',
-    subtitle: 'Vyber si, ci chces program, atrakcie alebo komplet akciu.',
+    subtitle: 'Vyber si, či chceš program, atrakcie alebo komplet akciu.',
     previewTheme: 'school',
     customLabel: 'Mám inú predstavu',
     offerFilters: {
       program: {
         label: 'Program',
-        subtitle: '3 orientacne varianty zimneho programu',
+        subtitle: '3 orientačné varianty zimného programu',
         note: 'Finálna ponuka závisí od veľkosti akcie, lokality a rozsahu programu.',
         previewTag: 'PROGRAM',
         previewKicker: 'Program',
@@ -241,33 +241,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Zakladny zimny program pre deti, rodiny alebo mensi priestor.',
+            lead: 'Základný zimný program pre deti, rodiny alebo menší priestor.',
             price: 'od 250 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['zimny zabavny blok', 'zapojenie deti a rodin', 'vhodne pre mensiu akciu'],
+            bullets: ['zimný zábavný blok', 'zapojenie deti a rodín', 'vhodné pre menšiu akciu'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Zimne%20programy&scope=program&variant=MZ%20Start&price=od%20250%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Silnejsi zimny program s vacsou energiou a vacsim flow akcie.',
+            lead: 'Silnejší zimný program s väčšou energiou a väčším flow akcie.',
             price: 'od 450 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['moderovanie a aktivacie', 'vyvazeny zimny program', 'odporucany variant pre vacsinu klientov'],
+            bullets: ['moderovanie a aktivácie', 'vyvážený zimný program', 'odporúčaný variant pre väčšinu klientov'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Zimne%20programy&scope=program&variant=MZ%20Show&price=od%20450%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Najsilnejsi zimny program pre vacsi event, podium alebo vacsiu skupinu hosti.',
+            lead: 'Najsilnejší zimný program pre väčší event, pódium alebo väčšiu skupinu hostí.',
             price: 'od 750 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['vacsi rozsah a dramaturgia', 'silnejsi wow efekt', 'vhodne pre vacsi priestor a vacsiu akciu'],
+            bullets: ['väčší rozsah a dramaturgia', 'silnejší wow efekt', 'vhodné pre väčší priestor a väčšiu akciu'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Zimne%20programy&scope=program&variant=MZ%20Majster&price=od%20750%20EUR#planner-form'
           }
         ]
       },
       attractions: {
         label: 'Atrakcie',
-        subtitle: '3 orientacne varianty atrakcii a doplnkov pre zimne programy',
+        subtitle: '3 orientačné varianty atrakcií a doplnkov pre zimné programy',
         note: 'Máte už program? Atrakcie si môžete jednoducho doobjednať ako doplnok k vašej akcii.',
         previewTag: 'ATRAKCIE',
         previewKicker: 'Atrakcie',
@@ -275,33 +275,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Mensi doplnok alebo atrakcia pre zimny event.',
+            lead: 'Menší doplnok alebo atrakcia pre zimný event.',
             price: 'od 150 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['mensia atrakcia alebo doplnok', 'rychle nasadenie na miesto', 'vhodne ako oivenie programu'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['menšia atrakcia alebo doplnok', 'rýchle nasadenie na miesto', 'vhodné ako oživenie programu'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Zimne%20programy&scope=atrakcie&variant=MZ%20Start&price=od%20150%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Vacsia atrakcia s viditelnejsim efektom pre zimnu akciu.',
+            lead: 'Väčšia atrakcia s viditeľnejším efektom pre zimnú akciu.',
             price: 'od 250 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['vacsia atrakcia alebo interaktivny prvok', 'silnejsi efekt pre hosti', 'vhodne pre stredne velku akciu'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['väčšia atrakcia alebo interaktívny prvok', 'silnejší efekt pre hostí', 'vhodné pre stredne velku akciu'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Zimne%20programy&scope=atrakcie&variant=MZ%20Show&price=od%20250%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Zona alebo balik atrakcii pre vyrazny zimny zazitok.',
+            lead: 'Zóna alebo balík atrakcií pre výražný zimný zážitok.',
             price: 'od 899 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['zona alebo balik viacerych atrakcii', 'vacsia kapacita a silnejsi efekt', 'vhodne pre vacsie podujatie alebo den v meste'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['zóna alebo balík viacerých atrakcií', 'väčšia kapacita a silnejší efekt', 'vhodné pre väčšie podujatie alebo den v meste'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Zimne%20programy&scope=atrakcie&variant=MZ%20Majster&price=od%20899%20EUR#planner-form'
           }
         ]
       },
       full: {
         label: 'Komplet',
-        subtitle: '3 orientacne varianty kompletneho zimneho programu',
+        subtitle: '3 orientačné varianty kompletného zimného programu',
         note: 'Kompletný balík zahŕňa program aj atrakcie v jednom, bez starostí s organizáciou.',
         previewTag: 'KOMPLET',
         previewKicker: 'Komplet akcia',
@@ -309,26 +309,26 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Zakladna kombinacia programu a atrakcii pre mensiu zimnu akciu.',
+            lead: 'Základná kombinácia programu a atrakcií pre menšiu zimnú akciu.',
             price: 'od 690 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program aj atrakcie v jednom', 'jednoduchsia organizacia', 'vhodne pre mensi rozpocet'],
+            bullets: ['program aj atrakcie v jednom', 'jednoduchšia organizácia', 'vhodné pre menší rozpočet'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Zimne%20programy&scope=komplet&variant=MZ%20Start&price=od%20690%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Najcastejsi komplet variant s vyvazenym zazitkom a dobrou cenou.',
+            lead: 'Najčastejší komplet variant s vyváženým zážitkom a dobrou cenou.',
             price: 'od 990 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program, atrakcie a plynuly flow', 'balikove zvyhodnenie oproti samostatnym sluzbam', 'odporucana volba pre vacsinu klientov'],
+            bullets: ['program, atrakcie a plynulý flow', 'balíkové zvýhodnenie oproti samostatným službám', 'odporúčaná voľba pre väčšinu klientov'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Zimne%20programy&scope=komplet&variant=MZ%20Show&price=od%20990%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Najsilnejsi komplet pre vacsi zimny event s vacsim rozsahom a vacsim efektom.',
+            lead: 'Najsilnejší komplet pre väčší zimný event s väčším rozsahom a väčším efektom.',
             price: 'od 1 450 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['vacsi rozsah programu aj atrakcii', 'vacsia kapacita a vacsi wow efekt', 'vhodne pre vacsiu akciu alebo vacsi priestor'],
+            bullets: ['väčší rozsah programu aj atrakcií', 'väčšia kapacita a väčší wow efekt', 'vhodné pre väčšiu akciu alebo väčší priestor'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Zimne%20programy&scope=komplet&variant=MZ%20Majster&price=od%201450%20EUR#planner-form'
           }
         ]
@@ -336,15 +336,15 @@ window.plannerOfferData = {
     }
   },
   'firemne-vecierky': {
-    eyebrow: 'JANUAR',
+    eyebrow: 'JANUÁR',
     title: 'Firemné večierky',
-    subtitle: 'Vyber si, ci chces program, atrakcie alebo komplet akciu.',
+    subtitle: 'Vyber si, či chceš program, atrakcie alebo komplet akciu.',
     previewTheme: 'summer',
     customLabel: 'Mám inú predstavu',
     offerFilters: {
       program: {
         label: 'Program',
-        subtitle: '3 orientacne varianty programu pre firemne vecierky',
+        subtitle: '3 orientačné varianty programu pre firemné večierky',
         note: 'Finálna ponuka závisí od veľkosti akcie, lokality a rozsahu programu.',
         previewTag: 'PROGRAM',
         previewKicker: 'Program',
@@ -352,33 +352,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Zakladny programovy variant pre mensi firemny vecierok alebo internu akciu.',
+            lead: 'Základný programový variant pre menší firemny večierok alebo internú akciu.',
             price: 'od 500 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['moderovanie alebo zabavny blok', 'vhodne pre mensiu firemnu skupinu', 'rychly format bez zbytocnych komplikacii'],
+            bullets: ['moderovanie alebo zábavný blok', 'vhodné pre menšiu firemnú skupinu', 'rychly format bez zbytocnych komplikacii'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Firemne%20vecierky&scope=program&variant=MZ%20Start&price=od%20500%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Najcastejsi programovy variant pre vacsinu firemnych vecierkov.',
+            lead: 'Najčastejší programový variant pre väčšinu firemnych vecierkov.',
             price: 'od 850 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['silnejsi zazitok a vacsi flow akcie', 'dobry pomer medzi cenou a efektom', 'odporucana volba pre vacsinu klientov'],
+            bullets: ['silnejší zážitok a väčší flow akcie', 'dobrý pomer medzi cenou a efektom', 'odporúčaná voľba pre väčšinu klientov'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Firemne%20vecierky&scope=program&variant=MZ%20Show&price=od%20850%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Najsilnejsi programovy variant pre vacsi priestor, podium alebo vacsiu firmu.',
+            lead: 'Najsilnejší programový variant pre väčší priestor, pódium alebo väčšiu firmu.',
             price: 'od 1 400 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['vacsi rozsah a silnejsi wow efekt', 'vacsia energia pre publikum', 'vhodne pre silny firemny termin'],
+            bullets: ['väčší rozsah a silnejší wow efekt', 'väčšia energia pre publikum', 'vhodné pre silný firemny termín'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Firemne%20vecierky&scope=program&variant=MZ%20Majster&price=od%201400%20EUR#planner-form'
           }
         ]
       },
       attractions: {
         label: 'Atrakcie',
-        subtitle: '3 orientacne varianty atrakcii a doplnkov pre firemne vecierky',
+        subtitle: '3 orientačné varianty atrakcií a doplnkov pre firemné večierky',
         note: 'Máte už program? Atrakcie si môžete jednoducho doobjednať ako doplnok k vašej akcii.',
         previewTag: 'ATRAKCIE',
         previewKicker: 'Atrakcie',
@@ -386,33 +386,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Mensi interaktivny prvok alebo doplnok pre firemnu akciu.',
+            lead: 'Menší interaktívny prvok alebo doplnok pre firemnú akciu.',
             price: 'od 250 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['doplnok alebo mensia atrakcia', 'vhodne pre mensi priestor', 'rychle oivenie programu'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['doplnok alebo menšia atrakcia', 'vhodné pre menší priestor', 'rýchle oživenie programu'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Firemne%20vecierky&scope=atrakcie&variant=MZ%20Start&price=od%20250%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Vacsia atrakcia pre silnejsi zazitok hosti a vacsi event vibe.',
+            lead: 'Väčšia atrakcia pre silnejší zážitok hostí a väčší event vibe.',
             price: 'od 400 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['vacsia atrakcia alebo interaktivny prvok', 'silnejsi efekt pre hosti', 'vhodne pre vacsinu firemnych akcii'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['väčšia atrakcia alebo interaktívny prvok', 'silnejší efekt pre hostí', 'vhodné pre väčšinu firemnych akcii'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Firemne%20vecierky&scope=atrakcie&variant=MZ%20Show&price=od%20400%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Zona alebo balik atrakcii pre vacsi firemny event a vyssi zazitok.',
+            lead: 'Zóna alebo balík atrakcií pre väčší firemny event a vyšší zážitok.',
             price: 'od 1 190 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['zona alebo kombinacia atrakcii', 'vacsia kapacita a vacsi efekt', 'vhodne pre vacsi event alebo firemny vecierok'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['zóna alebo kombinácia atrakcií', 'väčšia kapacita a väčší efekt', 'vhodné pre väčší event alebo firemny večierok'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Firemne%20vecierky&scope=atrakcie&variant=MZ%20Majster&price=od%201190%20EUR#planner-form'
           }
         ]
       },
       full: {
         label: 'Komplet',
-        subtitle: '3 orientacne varianty kompletneho riesenia pre firemne vecierky',
+        subtitle: '3 orientačné varianty kompletného riešenia pre firemné večierky',
         note: 'Kompletný balík zahŕňa program aj atrakcie v jednom, bez starostí s organizáciou.',
         previewTag: 'KOMPLET',
         previewKicker: 'Komplet akcia',
@@ -420,26 +420,26 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Zakladny komplet pre mensi firemny vecierok alebo internu akciu.',
+            lead: 'Základný komplet pre menší firemny večierok alebo internú akciu.',
             price: 'od 1 290 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program aj atrakcie v jednom', 'jednoduchsia koordinacia', 'vhodne pre mensi firemny rozpocet'],
+            bullets: ['program aj atrakcie v jednom', 'jednoduchšia koordinácia', 'vhodné pre menší firemny rozpočet'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Firemne%20vecierky&scope=komplet&variant=MZ%20Start&price=od%201290%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Najcastejsi komplet variant s vyvazenym zazitkom a dobrym event flow.',
+            lead: 'Najčastejší komplet variant s vyváženým zážitkom a dobrým event flow.',
             price: 'od 1 550 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program, atrakcie a organizacia v jednom', 'balikove zvyhodnenie oproti samostatnym sluzbam', 'odporucana volba pre vacsinu klientov'],
+            bullets: ['program, atrakcie a organizácia v jednom', 'balíkové zvýhodnenie oproti samostatným službám', 'odporúčaná voľba pre väčšinu klientov'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Firemne%20vecierky&scope=komplet&variant=MZ%20Show&price=od%201550%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Najsilnejsi komplet s vacsim rozsahom, vacsim timom a vacsim efektom.',
+            lead: 'Najsilnejší komplet s väčším rozsahom, väčším timom a väčším efektom.',
             price: 'od 2 190 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['vacsi rozsah programu aj atrakcii', 'vacsia kapacita a vacsi wow efekt', 'riesenie pre silny firemny termin alebo vacsi event'],
+            bullets: ['väčší rozsah programu aj atrakcií', 'väčšia kapacita a väčší wow efekt', 'riešenie pre silný firemny termín alebo väčší event'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jan&event=Firemne%20vecierky&scope=komplet&variant=MZ%20Majster&price=od%202190%20EUR#planner-form'
           }
         ]
@@ -449,13 +449,13 @@ window.plannerOfferData = {
   'valentinske-akcie': {
     eyebrow: 'FEBRUAR',
     title: 'Valentínske akcie',
-    subtitle: 'Vyber si, ci chces program, atrakcie alebo komplet akciu.',
+    subtitle: 'Vyber si, či chceš program, atrakcie alebo komplet akciu.',
     previewTheme: 'goodbye',
     customLabel: 'Mám inú predstavu',
     offerFilters: {
       program: {
         label: 'Program',
-        subtitle: '3 orientacne varianty programu pre valentínske akcie',
+        subtitle: '3 orientačné varianty programu pre valentínske akcie',
         note: 'Finálna ponuka závisí od veľkosti akcie, lokality a rozsahu programu.',
         previewTag: 'PROGRAM',
         previewKicker: 'Program',
@@ -463,33 +463,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Jemny programovy blok pre mensiu valentinsku akciu alebo prevadzku.',
+            lead: 'Jemný programový blok pre menšiu valentínsku akciu alebo prevádzku.',
             price: 'od 250 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['moderovany alebo hudobny blok', 'prijemna atmosfera', 'vhodne pre mensi priestor'],
+            bullets: ['moderovaný alebo hudobný blok', 'príjemná atmosféra', 'vhodné pre menší priestor'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Valentinske%20akcie&scope=program&variant=MZ%20Start&price=od%20250%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Silnejsi valentinsky program s vacsou atmosferou a vacsim zazitkom.',
+            lead: 'Silnejší valentinsky program s väčšou atmosferou a väčším zážitkom.',
             price: 'od 450 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['vyvazeny zazitok a tempo akcie', 'silnejsi emotivny efekt', 'odporucana volba pre vacsinu klientov'],
+            bullets: ['vyvážený zážitok a tempo akcie', 'silnejší emotivny efekt', 'odporúčaná voľba pre väčšinu klientov'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Valentinske%20akcie&scope=program&variant=MZ%20Show&price=od%20450%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Vyraznejsi stage alebo eventovy program pre vacsi priestor a vacsie publikum.',
+            lead: 'Vyražnejsi stage alebo eventový program pre väčší priestor a väčšie publikum.',
             price: 'od 750 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['vacsi rozsah programu', 'vacsi wow efekt a dramaturgia', 'vhodne pre vacsie valentinske podujatie'],
+            bullets: ['väčší rozsah programu', 'väčší wow efekt a dramaturgia', 'vhodné pre väčšie valentínske podujatie'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Valentinske%20akcie&scope=program&variant=MZ%20Majster&price=od%20750%20EUR#planner-form'
           }
         ]
       },
       attractions: {
         label: 'Atrakcie',
-        subtitle: '3 orientacne varianty atrakcii a doplnkov pre valentínske akcie',
+        subtitle: '3 orientačné varianty atrakcií a doplnkov pre valentínske akcie',
         note: 'Máte už program? Atrakcie si môžete jednoducho doobjednať ako doplnok k vašej akcii.',
         previewTag: 'ATRAKCIE',
         previewKicker: 'Atrakcie',
@@ -497,33 +497,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Mensi doplnok alebo atrakcia na oivenie valentinskej akcie.',
+            lead: 'Menší doplnok alebo atrakcia na oživenie valentínskej akcie.',
             price: 'od 150 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['mensi doplnok alebo interaktivny prvok', 'rychle nasadenie na miesto', 'vhodne pre komornejsi format'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['menší doplnok alebo interaktívny prvok', 'rýchle nasadenie na miesto', 'vhodné pre komornejsi format'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Valentinske%20akcie&scope=atrakcie&variant=MZ%20Start&price=od%20150%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Vacsia atrakcia pre silnejsi zazitok hosti a vacsi event vibe.',
+            lead: 'Väčšia atrakcia pre silnejší zážitok hostí a väčší event vibe.',
             price: 'od 250 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['vacsia atrakcia alebo zazitkovy prvok', 'silnejsi efekt pre hosti', 'vhodne pre vacsinu akcii'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['väčšia atrakcia alebo zažitkovy prvok', 'silnejší efekt pre hostí', 'vhodné pre väčšinu akcii'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Valentinske%20akcie&scope=atrakcie&variant=MZ%20Show&price=od%20250%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Balik atrakcii alebo zona pre silnejsie valentinske podujatie.',
+            lead: 'Balik atrakcií alebo zóna pre silnejšie valentínske podujatie.',
             price: 'od 899 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['zona alebo kombinacia viacerych prvkov', 'vacsi vizualny efekt', 'vhodne pre vacsi event alebo prevadzku'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['zóna alebo kombinácia viacerých prvkov', 'väčší vizuálny efekt', 'vhodné pre väčší event alebo prevádzku'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Valentinske%20akcie&scope=atrakcie&variant=MZ%20Majster&price=od%20899%20EUR#planner-form'
           }
         ]
       },
       full: {
         label: 'Komplet',
-        subtitle: '3 orientacne varianty kompletnej valentínskej akcie',
+        subtitle: '3 orientačné varianty kompletnej valentínskej akcie',
         note: 'Kompletný balík zahŕňa program aj atrakcie v jednom, bez starostí s organizáciou.',
         previewTag: 'KOMPLET',
         previewKicker: 'Komplet akcia',
@@ -531,26 +531,26 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Zakladna kombinacia programu a atrakcii pre komornejsiu akciu.',
+            lead: 'Základná kombinácia programu a atrakcií pre komornejsiu akciu.',
             price: 'od 690 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program aj atrakcie v jednom', 'jednoduchsia koordinacia', 'vhodne pre mensi rozpocet'],
+            bullets: ['program aj atrakcie v jednom', 'jednoduchšia koordinácia', 'vhodné pre menší rozpočet'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Valentinske%20akcie&scope=komplet&variant=MZ%20Start&price=od%20690%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Najcastejsi komplet variant s vyvazenym zazitkom a dobrou cenou.',
+            lead: 'Najčastejší komplet variant s vyváženým zážitkom a dobrou cenou.',
             price: 'od 990 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program, atrakcie a plynuly flow', 'balikove zvyhodnenie oproti samostatnym sluzbam', 'odporucana volba pre vacsinu klientov'],
+            bullets: ['program, atrakcie a plynulý flow', 'balíkové zvýhodnenie oproti samostatným službám', 'odporúčaná voľba pre väčšinu klientov'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Valentinske%20akcie&scope=komplet&variant=MZ%20Show&price=od%20990%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Najsilnejsi komplet pre vacsi event, vacsi priestor alebo vyssi wow efekt.',
+            lead: 'Najsilnejší komplet pre väčší event, väčší priestor alebo vyšší wow efekt.',
             price: 'od 1 450 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['vacsi rozsah programu aj atrakcii', 'vacsia kapacita a vacsi zazitok', 'riesenie pre silnejsie podujatie'],
+            bullets: ['väčší rozsah programu aj atrakcií', 'väčšia kapacita a väčší zážitok', 'riešenie pre silnejšie podujatie'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Valentinske%20akcie&scope=komplet&variant=MZ%20Majster&price=od%201450%20EUR#planner-form'
           }
         ]
@@ -560,13 +560,13 @@ window.plannerOfferData = {
   'plesy': {
     eyebrow: 'FEBRUAR',
     title: 'Plesy',
-    subtitle: 'Vyber si, ci chces program, atrakcie alebo komplet akciu.',
+    subtitle: 'Vyber si, či chceš program, atrakcie alebo komplet akciu.',
     previewTheme: 'summer',
     customLabel: 'Mám inú predstavu',
     offerFilters: {
       program: {
         label: 'Program',
-        subtitle: '3 orientacne varianty programu pre plesy',
+        subtitle: '3 orientačné varianty programu pre plesy',
         note: 'Finálna ponuka závisí od veľkosti akcie, lokality a rozsahu programu.',
         previewTag: 'PROGRAM',
         previewKicker: 'Program',
@@ -574,33 +574,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Zakladny programovy variant pre mensi ples alebo spolocensky vecer.',
+            lead: 'Základný programový variant pre menší ples alebo spoločenský vecer.',
             price: 'od 500 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['moderovanie alebo sprievodny blok', 'prijemny spolocensky format', 'vhodne pre mensi rozpocet'],
+            bullets: ['moderovanie alebo sprievodny blok', 'prijemny spoločenský format', 'vhodné pre menší rozpočet'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Plesy&scope=program&variant=MZ%20Start&price=od%20500%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Silnejsi programovy variant pre vacsinu plesov a spolocenskych akcii.',
+            lead: 'Silnejší programový variant pre väčšinu plesov a spoločenských akcii.',
             price: 'od 850 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['vyvazene tempo vecera', 'silnejsi zazitok pre hosti', 'odporucana volba pre vacsinu klientov'],
+            bullets: ['vyvážené tempo večera', 'silnejší zážitok pre hostí', 'odporúčaná voľba pre väčšinu klientov'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Plesy&scope=program&variant=MZ%20Show&price=od%20850%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Najsilnejsi programovy variant pre vacsi ples, podium alebo vacsie publikum.',
+            lead: 'Najsilnejší programový variant pre väčší ples, pódium alebo väčšie publikum.',
             price: 'od 1 400 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['vacsi rozsah a silnejsi wow efekt', 'vacsia dramaturgia vecera', 'vhodne pre vacsi ples alebo gala format'],
+            bullets: ['väčší rozsah a silnejší wow efekt', 'väčšia dramaturgia večera', 'vhodné pre väčší ples alebo gala format'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Plesy&scope=program&variant=MZ%20Majster&price=od%201400%20EUR#planner-form'
           }
         ]
       },
       attractions: {
         label: 'Atrakcie',
-        subtitle: '3 orientacne varianty atrakcii a doplnkov pre plesy',
+        subtitle: '3 orientačné varianty atrakcií a doplnkov pre plesy',
         note: 'Máte už program? Atrakcie si môžete jednoducho doobjednať ako doplnok k vašej akcii.',
         previewTag: 'ATRAKCIE',
         previewKicker: 'Atrakcie',
@@ -608,33 +608,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Mensi doplnok alebo atrakcia, ktora doplni plesovy vecer.',
+            lead: 'Menší doplnok alebo atrakcia, ktora doplni plesovy vecer.',
             price: 'od 250 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['mensi interaktivny prvok', 'vhodne pre spolocensky format', 'rychle ozivenie vecera'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['menší interaktívny prvok', 'vhodné pre spoločenský format', 'rýchle oživenie večera'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Plesy&scope=atrakcie&variant=MZ%20Start&price=od%20250%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Vacsia atrakcia pre silnejsi zazitok a vacsi eventovy efekt.',
+            lead: 'Väčšia atrakcia pre silnejší zážitok a väčší eventový efekt.',
             price: 'od 400 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['vacsia atrakcia alebo show doplnok', 'silnejsi efekt pre hosti', 'vhodne pre vacsinu plesov'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['väčšia atrakcia alebo show doplnok', 'silnejší efekt pre hostí', 'vhodné pre väčšinu plesov'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Plesy&scope=atrakcie&variant=MZ%20Show&price=od%20400%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Balik atrakcii alebo vacsia eventova zona pre silny spolocensky zazitok.',
+            lead: 'Balik atrakcií alebo väčšia eventová zóna pre silný spoločenský zážitok.',
             price: 'od 1 190 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['zona alebo viac atrakcii', 'vacsi efekt a vacsia kapacita', 'vhodne pre vacsi ples alebo gala vecer'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['zóna alebo viac atrakcií', 'väčší efekt a väčšia kapacita', 'vhodné pre väčší ples alebo gala vecer'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Plesy&scope=atrakcie&variant=MZ%20Majster&price=od%201190%20EUR#planner-form'
           }
         ]
       },
       full: {
         label: 'Komplet',
-        subtitle: '3 orientacne varianty kompletneho riesenia pre plesy',
+        subtitle: '3 orientačné varianty kompletného riešenia pre plesy',
         note: 'Kompletný balík zahŕňa program aj atrakcie v jednom, bez starostí s organizáciou.',
         previewTag: 'KOMPLET',
         previewKicker: 'Komplet akcia',
@@ -642,26 +642,26 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Zakladny komplet pre mensi ples alebo spolocensky vecer.',
+            lead: 'Základný komplet pre menší ples alebo spoločenský vecer.',
             price: 'od 1 290 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program aj atrakcie v jednom', 'jednoduchsia koordinacia', 'vhodne pre mensi rozpocet'],
+            bullets: ['program aj atrakcie v jednom', 'jednoduchšia koordinácia', 'vhodné pre menší rozpočet'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Plesy&scope=komplet&variant=MZ%20Start&price=od%201290%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Najcastejsi komplet variant s vyvazenym zazitkom a plynulym flow vecera.',
+            lead: 'Najčastejší komplet variant s vyváženým zážitkom a plynulým flow večera.',
             price: 'od 1 550 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program, atrakcie a organizacia v jednom', 'balikove zvyhodnenie oproti samostatnym sluzbam', 'odporucana volba pre vacsinu klientov'],
+            bullets: ['program, atrakcie a organizácia v jednom', 'balíkové zvýhodnenie oproti samostatným službám', 'odporúčaná voľba pre väčšinu klientov'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Plesy&scope=komplet&variant=MZ%20Show&price=od%201550%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Najsilnejsi komplet s vacsim rozsahom, vacsim timom a vacsim efektom.',
+            lead: 'Najsilnejší komplet s väčším rozsahom, väčším timom a väčším efektom.',
             price: 'od 2 190 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['vacsi rozsah programu aj atrakcii', 'vacsia kapacita a vacsi wow efekt', 'riesenie pre vacsi ples alebo gala format'],
+            bullets: ['väčší rozsah programu aj atrakcií', 'väčšia kapacita a väčší wow efekt', 'riešenie pre väčší ples alebo gala format'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Plesy&scope=komplet&variant=MZ%20Majster&price=od%202190%20EUR#planner-form'
           }
         ]
@@ -671,13 +671,13 @@ window.plannerOfferData = {
   'firemne-eventy': {
     eyebrow: 'FEBRUAR',
     title: 'Firemné eventy',
-    subtitle: 'Vyber si, ci chces program, atrakcie alebo komplet akciu.',
+    subtitle: 'Vyber si, či chceš program, atrakcie alebo komplet akciu.',
     previewTheme: 'summer',
     customLabel: 'Mám inú predstavu',
     offerFilters: {
       program: {
         label: 'Program',
-        subtitle: '3 orientacne varianty programu pre firemne eventy',
+        subtitle: '3 orientačné varianty programu pre firemné eventy',
         note: 'Finálna ponuka závisí od veľkosti akcie, lokality a rozsahu programu.',
         previewTag: 'PROGRAM',
         previewKicker: 'Program',
@@ -685,33 +685,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Zakladny programovy variant pre mensi firemny event alebo internu akciu.',
+            lead: 'Základný programový variant pre menší firemny event alebo internú akciu.',
             price: 'od 500 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['moderovanie alebo zabavny blok', 'vhodne pre mensiu firemnu skupinu', 'rychly format bez zbytocnych komplikacii'],
+            bullets: ['moderovanie alebo zábavný blok', 'vhodné pre menšiu firemnú skupinu', 'rychly format bez zbytocnych komplikacii'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Firemne%20eventy&scope=program&variant=MZ%20Start&price=od%20500%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Najcastejsi programovy variant pre vacsinu firemnych eventov.',
+            lead: 'Najčastejší programový variant pre väčšinu firemnych eventov.',
             price: 'od 850 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['silnejsi zazitok a vacsi flow akcie', 'dobry pomer medzi cenou a efektom', 'odporucana volba pre vacsinu klientov'],
+            bullets: ['silnejší zážitok a väčší flow akcie', 'dobrý pomer medzi cenou a efektom', 'odporúčaná voľba pre väčšinu klientov'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Firemne%20eventy&scope=program&variant=MZ%20Show&price=od%20850%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Najsilnejsi programovy variant pre vacsi priestor, podium alebo vacsiu firmu.',
+            lead: 'Najsilnejší programový variant pre väčší priestor, pódium alebo väčšiu firmu.',
             price: 'od 1 400 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['vacsi rozsah a silnejsi wow efekt', 'vacsia energia pre publikum', 'vhodne pre silny firemny termin'],
+            bullets: ['väčší rozsah a silnejší wow efekt', 'väčšia energia pre publikum', 'vhodné pre silný firemny termín'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Firemne%20eventy&scope=program&variant=MZ%20Majster&price=od%201400%20EUR#planner-form'
           }
         ]
       },
       attractions: {
         label: 'Atrakcie',
-        subtitle: '3 orientacne varianty atrakcii a doplnkov pre firemne eventy',
+        subtitle: '3 orientačné varianty atrakcií a doplnkov pre firemné eventy',
         note: 'Máte už program? Atrakcie si môžete jednoducho doobjednať ako doplnok k vašej akcii.',
         previewTag: 'ATRAKCIE',
         previewKicker: 'Atrakcie',
@@ -719,33 +719,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Mensi interaktivny prvok alebo doplnok pre firemnu akciu.',
+            lead: 'Menší interaktívny prvok alebo doplnok pre firemnú akciu.',
             price: 'od 250 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['doplnok alebo mensia atrakcia', 'vhodne pre mensi priestor', 'rychle oivenie programu'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['doplnok alebo menšia atrakcia', 'vhodné pre menší priestor', 'rýchle oživenie programu'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Firemne%20eventy&scope=atrakcie&variant=MZ%20Start&price=od%20250%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Vacsia atrakcia pre silnejsi zazitok hosti a vacsi event vibe.',
+            lead: 'Väčšia atrakcia pre silnejší zážitok hostí a väčší event vibe.',
             price: 'od 400 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['vacsia atrakcia alebo interaktivny prvok', 'silnejsi efekt pre hosti', 'vhodne pre vacsinu firemnych akcii'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['väčšia atrakcia alebo interaktívny prvok', 'silnejší efekt pre hostí', 'vhodné pre väčšinu firemnych akcii'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Firemne%20eventy&scope=atrakcie&variant=MZ%20Show&price=od%20400%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Zona alebo balik atrakcii pre vacsi firemny event a vyssi zazitok.',
+            lead: 'Zóna alebo balík atrakcií pre väčší firemny event a vyšší zážitok.',
             price: 'od 1 190 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['zona alebo kombinacia atrakcii', 'vacsia kapacita a vacsi efekt', 'vhodne pre vacsi event alebo firemny format'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['zóna alebo kombinácia atrakcií', 'väčšia kapacita a väčší efekt', 'vhodné pre väčší event alebo firemny format'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Firemne%20eventy&scope=atrakcie&variant=MZ%20Majster&price=od%201190%20EUR#planner-form'
           }
         ]
       },
       full: {
         label: 'Komplet',
-        subtitle: '3 orientacne varianty kompletneho riesenia pre firemne eventy',
+        subtitle: '3 orientačné varianty kompletného riešenia pre firemné eventy',
         note: 'Kompletný balík zahŕňa program aj atrakcie v jednom, bez starostí s organizáciou.',
         previewTag: 'KOMPLET',
         previewKicker: 'Komplet akcia',
@@ -753,26 +753,26 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Zakladny komplet pre mensi firemny event alebo internu akciu.',
+            lead: 'Základný komplet pre menší firemny event alebo internú akciu.',
             price: 'od 1 290 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program aj atrakcie v jednom', 'jednoduchsia koordinacia', 'vhodne pre mensi firemny rozpocet'],
+            bullets: ['program aj atrakcie v jednom', 'jednoduchšia koordinácia', 'vhodné pre menší firemny rozpočet'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Firemne%20eventy&scope=komplet&variant=MZ%20Start&price=od%201290%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Najcastejsi komplet variant s vyvazenym zazitkom a dobrym event flow.',
+            lead: 'Najčastejší komplet variant s vyváženým zážitkom a dobrým event flow.',
             price: 'od 1 550 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program, atrakcie a organizacia v jednom', 'balikove zvyhodnenie oproti samostatnym sluzbam', 'odporucana volba pre vacsinu klientov'],
+            bullets: ['program, atrakcie a organizácia v jednom', 'balíkové zvýhodnenie oproti samostatným službám', 'odporúčaná voľba pre väčšinu klientov'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Firemne%20eventy&scope=komplet&variant=MZ%20Show&price=od%201550%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Najsilnejsi komplet s vacsim rozsahom, vacsim timom a vacsim efektom.',
+            lead: 'Najsilnejší komplet s väčším rozsahom, väčším timom a väčším efektom.',
             price: 'od 2 190 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['vacsi rozsah programu aj atrakcii', 'vacsia kapacita a vacsi wow efekt', 'riesenie pre silny firemny termin alebo vacsi event'],
+            bullets: ['väčší rozsah programu aj atrakcií', 'väčšia kapacita a väčší wow efekt', 'riešenie pre silný firemny termín alebo väčší event'],
             orderHref: 'navrhni-si-akciu.html?source=planner-feb&event=Firemne%20eventy&scope=komplet&variant=MZ%20Majster&price=od%202190%20EUR#planner-form'
           }
         ]
@@ -812,7 +812,7 @@ window.plannerOfferData = {
           },
           {
             name: 'MZ Majster',
-            lead: 'Silnejší program pre väčší priestor, silnejšiu návštevnosť alebo výraznejší wow efekt.',
+            lead: 'Silnejší program pre väčší priestor, silnejšiu návštevnosť alebo výražnejší wow efekt.',
             price: 'od 750 EUR',
             posterLabel: 'Variant programu',
             bullets: ['väčší rozsah a dramaturgia', 'silnejší wow efekt pre hostí', 'vhodné pre silnejší eventový formát'],
@@ -923,7 +923,7 @@ window.plannerOfferData = {
           },
           {
             name: 'MZ Majster',
-            lead: 'Výraznejší eventový program pre väčší priestor alebo väčšie publikum.',
+            lead: 'Výražnejší eventový program pre väčší priestor alebo väčšie publikum.',
             price: 'od 750 EUR',
             posterLabel: 'Variant programu',
             bullets: ['väčší rozsah programu', 'silnejšia dramaturgia a wow efekt', 'vhodné pre väčšie podujatie'],
@@ -1171,7 +1171,7 @@ window.plannerOfferData = {
           },
           {
             name: 'MZ Show',
-            lead: 'Väčšia atrakcia pre silnejší zážitok návštevníkov a výraznejší event vibe.',
+            lead: 'Väčšia atrakcia pre silnejší zážitok návštevníkov a výražnejší event vibe.',
             price: 'od 400 EUR',
             posterLabel: 'Variant atrakcií',
             bullets: ['väčšia atrakcia alebo zóna', 'silnejší efekt pre hostí', 'vhodné pre väčšinu verejných akcií'],
@@ -1256,7 +1256,7 @@ window.plannerOfferData = {
           },
           {
             name: 'MZ Majster',
-            lead: 'Silnejší program pre väčší priestor, silnejšiu návštevnosť alebo výraznejší wow efekt.',
+            lead: 'Silnejší program pre väčší priestor, silnejšiu návštevnosť alebo výražnejší wow efekt.',
             price: 'od 750 EUR',
             posterLabel: 'Variant programu',
             bullets: ['väčší rozsah a dramaturgia', 'silnejší wow efekt pre hostí', 'vhodné pre silnejší eventový formát'],
@@ -1811,7 +1811,7 @@ window.plannerOfferData = {
           },
           {
             name: 'MZ Majster',
-            lead: 'Výraznejší eventový program pre väčší priestor alebo väčšie publikum.',
+            lead: 'Výražnejší eventový program pre väčší priestor alebo väčšie publikum.',
             price: 'od 750 EUR',
             posterLabel: 'Variant programu',
             bullets: ['väčší rozsah programu', 'silnejšia dramaturgia a wow efekt', 'vhodné pre väčšie podujatie'],
@@ -1948,7 +1948,7 @@ window.plannerOfferData = {
           },
           {
             name: 'MZ Show',
-            lead: 'Väčšia atrakcia pre silnejší zážitok návštevníkov a výraznejší event vibe.',
+            lead: 'Väčšia atrakcia pre silnejší zážitok návštevníkov a výražnejší event vibe.',
             price: 'od 400 EUR',
             posterLabel: 'Variant atrakcií',
             bullets: ['väčšia atrakcia alebo zóna', 'silnejší efekt pre hostí', 'vhodné pre väčšinu verejných akcií'],
@@ -2281,7 +2281,7 @@ window.plannerOfferData = {
           },
           {
             name: 'MZ Show',
-            lead: 'Väčšia atrakcia pre silnejší zážitok návštevníkov a výraznejší event vibe.',
+            lead: 'Väčšia atrakcia pre silnejší zážitok návštevníkov a výražnejší event vibe.',
             price: 'od 400 EUR',
             posterLabel: 'Variant atrakcií',
             bullets: ['väčšia atrakcia alebo zóna', 'silnejší efekt pre hostí', 'vhodné pre väčšinu verejných akcií'],
@@ -2503,7 +2503,7 @@ window.plannerOfferData = {
           },
           {
             name: 'MZ Show',
-            lead: 'Väčšia atrakcia pre silnejší zážitok návštevníkov a výraznejší event vibe.',
+            lead: 'Väčšia atrakcia pre silnejší zážitok návštevníkov a výražnejší event vibe.',
             price: 'od 400 EUR',
             posterLabel: 'Variant atrakcií',
             bullets: ['väčšia atrakcia alebo zóna', 'silnejší efekt pre hostí', 'vhodné pre väčšinu verejných akcií'],
@@ -2614,7 +2614,7 @@ window.plannerOfferData = {
           },
           {
             name: 'MZ Show',
-            lead: 'Väčšia atrakcia pre silnejší zážitok návštevníkov a výraznejší event vibe.',
+            lead: 'Väčšia atrakcia pre silnejší zážitok návštevníkov a výražnejší event vibe.',
             price: 'od 400 EUR',
             posterLabel: 'Variant atrakcií',
             bullets: ['väčšia atrakcia alebo zóna', 'silnejší efekt pre hostí', 'vhodné pre väčšinu verejných akcií'],
@@ -2836,7 +2836,7 @@ window.plannerOfferData = {
           },
           {
             name: 'MZ Show',
-            lead: 'Väčšia atrakcia pre silnejší zážitok návštevníkov a výraznejší event vibe.',
+            lead: 'Väčšia atrakcia pre silnejší zážitok návštevníkov a výražnejší event vibe.',
             price: 'od 400 EUR',
             posterLabel: 'Variant atrakcií',
             bullets: ['väčšia atrakcia alebo zóna', 'silnejší efekt pre hostí', 'vhodné pre väčšinu verejných akcií'],
@@ -2981,7 +2981,7 @@ window.plannerOfferData = {
           },
           {
             name: 'MZ Show',
-            lead: 'Najčastejší variant kompletnej letnej akcie s dobrým flow a atmosférou.',
+            lead: 'Najčastejší variant kompletnej letnéj akcie s dobrým flow a atmosférou.',
             price: 'od 1 950 EUR',
             posterLabel: 'Variant kompletnej akcie',
             bullets: ['moderovanie, program aj atrakcie', 'vyvážený letný zážitok pre publikum', 'silná voľba pre väčšinu klientov'],
@@ -3280,7 +3280,7 @@ window.plannerOfferData = {
           },
           {
             name: 'MZ Show',
-            lead: 'Väčšia atrakcia pre silnejší zážitok návštevníkov a výraznejší event vibe.',
+            lead: 'Väčšia atrakcia pre silnejší zážitok návštevníkov a výražnejší event vibe.',
             price: 'od 400 EUR',
             posterLabel: 'Variant atrakcií',
             bullets: ['väčšia atrakcia alebo zóna', 'silnejší efekt pre hostí', 'vhodné pre väčšinu verejných akcií'],
@@ -3502,7 +3502,7 @@ window.plannerOfferData = {
           },
           {
             name: 'MZ Show',
-            lead: 'Väčšia atrakcia pre silnejší zážitok hostí a výraznejší halloween efekt.',
+            lead: 'Väčšia atrakcia pre silnejší zážitok hostí a výražnejší halloween efekt.',
             price: 'od 250 EUR',
             posterLabel: 'Variant atrakcií',
             bullets: ['väčšia atrakcia alebo zóna', 'silnejší efekt pre hostí', 'vhodné pre väčšinu akcií'],
@@ -3613,7 +3613,7 @@ window.plannerOfferData = {
           },
           {
             name: 'MZ Show',
-            lead: 'Väčšia atrakcia pre silnejší zážitok hostí a výraznejší tematický efekt.',
+            lead: 'Väčšia atrakcia pre silnejší zážitok hostí a výražnejší tematický efekt.',
             price: 'od 250 EUR',
             posterLabel: 'Variant atrakcií',
             bullets: ['väčšia atrakcia alebo zóna', 'silnejší efekt pre hostí', 'vhodné pre väčšinu akcií'],
@@ -4142,7 +4142,7 @@ window.plannerOfferData = {
           },
           {
             name: 'MZ Majster',
-            lead: 'Silnejší program pre väčší priestor, väčšie publikum alebo výraznejší wow efekt.',
+            lead: 'Silnejší program pre väčší priestor, väčšie publikum alebo výražnejší wow efekt.',
             price: 'od 750 EUR',
             posterLabel: 'Variant programu',
             bullets: ['väčší rozsah programu', 'silnejšia dramaturgia a wow efekt', 'vhodné pre silnejší eventový formát'],
@@ -4612,7 +4612,7 @@ window.plannerOfferData = {
           },
           {
             name: 'MZ Show',
-            lead: 'Väčšia atrakcia pre silnejší zážitok návštevníkov a výraznejší event vibe.',
+            lead: 'Väčšia atrakcia pre silnejší zážitok návštevníkov a výražnejší event vibe.',
             price: 'od 400 EUR',
             posterLabel: 'Variant atrakcií',
             bullets: ['väčšia atrakcia alebo zóna', 'silnejší efekt pre hostí', 'vhodné pre väčšinu verejných akcií'],
@@ -4778,13 +4778,13 @@ window.plannerOfferData = {
   'den-deti': {
     eyebrow: 'JUN',
     title: 'Den deti',
-    subtitle: 'Vyber si, ci chces program, atrakcie alebo komplet akciu.',
+    subtitle: 'Vyber si, či chceš program, atrakcie alebo komplet akciu.',
     previewTheme: 'kids',
     customLabel: 'Mám inú predstavu',
     offerFilters: {
       program: {
         label: 'Program',
-        subtitle: '3 orientacne varianty programu pre Den deti',
+        subtitle: '3 orientačné varianty programu pre Den deti',
         note: 'Finálna ponuka závisí od veľkosti akcie, lokality a rozsahu programu.',
         previewTag: 'PROGRAM',
         previewKicker: 'Program',
@@ -4792,33 +4792,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Jednoduchy zabavny blok pre mensiu akciu alebo kratsi cas.',
+            lead: 'Jednoduchý zábavný blok pre menšiu akciu alebo kratší čas.',
             price: 'od 450 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['animator alebo moderator', 'sutaze a zapojenie deti', 'rychly format bez velkej produkcie'],
+            bullets: ['animator alebo moderátor', 'súťaže a zapojenie deti', 'rychly format bez veľkéj produkcie'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Den%20deti&scope=program&variant=Start%20programu&price=od%20450%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Silnejsi program s vacsou energiou a jasnym flow akcie.',
+            lead: 'Silnejší program s väčšou energiou a jasnym flow akcie.',
             price: 'od 850 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['moderovanie a sutaze', 'programove vstupy pocas akcie', 'vyvazeny variant pre vacsinu klientov'],
+            bullets: ['moderovanie a súťaže', 'programové vstupy počas akcie', 'vyvážený variant pre väčšinu klientov'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Den%20deti&scope=program&variant=Moderovany%20program&price=od%20850%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Len program pre vacsi priestor, podium alebo viac vstupov.',
+            lead: 'Len program pre väčší priestor, pódium alebo viac vstupov.',
             price: 'od 1 400 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['vacsi rozsah a dramaturgia', 'viac casti programu pocas dna', 'silnejsi zazitok pre vacsie publikum'],
+            bullets: ['väčší rozsah a dramaturgia', 'viac časti programu počas dňa', 'silnejší zážitok pre väčšie publikum'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Den%20deti&scope=program&variant=Stage%20program&price=od%201400%20EUR#planner-form'
           }
         ]
       },
       attractions: {
         label: 'Atrakcie',
-        subtitle: '3 orientacne varianty atrakcii a doplnkov pre Den deti',
+        subtitle: '3 orientačné varianty atrakcií a doplnkov pre Den deti',
         note: 'Máte už program? Atrakcie si môžete jednoducho doobjednať ako doplnok k vašej akcii.',
         previewTag: 'ATRAKCIE',
         previewKicker: 'Atrakcie',
@@ -4826,33 +4826,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Zakladne doplnky pre klienta, ktory uz program ma a chce ho len ozivit.',
+            lead: 'Základné doplnky pre klienta, ktorý už program má a chce ho len ozivit.',
             price: 'od 350 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['malovanie na tvar alebo tvorivy kutik', 'jedna mensia atrakcia', 'jednoduche nasadenie na miesto'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['malovanie na tvar alebo tvorivý kútik', 'jedna menšia atrakcia', 'jednoduché nasadenie na miesto'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Den%20deti&scope=atrakcie&variant=Mini%20zabava&price=od%20350%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Oblubeny variant s viacerymi prvkami pre deti aj rodicov.',
+            lead: 'Oblubeny variant s viacerými prvkami pre deti aj rodičov.',
             price: 'od 900 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['kombinacia 2 az 3 atrakcii', 'maskot, kreativna aktivita alebo nafukovadlo', 'vyssi efekt bez kompletnej produkcie'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['kombinácia 2 až 3 atrakcií', 'maskot, kreativna aktivita alebo nafukovadlo', 'vyšší efekt bez kompletnej produkcie'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Den%20deti&scope=atrakcie&variant=Rodinna%20zona&price=od%20900%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Silnejsi mix atrakcii pre vacsie terminy a vacsi pocet deti.',
+            lead: 'Silnejší mix atrakcií pre väčšie termíny a väčší počet deti.',
             price: 'od 1 700 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['viac stanovist a atrakcii', 'vacsia kapacita pre priechodnost', 'silny vizualny efekt pocas celej akcie'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['viac stanovíšť a atrakcií', 'väčšia kapacita pre priechodnosť', 'silný vizuálny efekt počas celej akcie'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Den%20deti&scope=atrakcie&variant=Velka%20atrakciova%20zona&price=od%201700%20EUR#planner-form'
           }
         ]
       },
       full: {
         label: 'Komplet',
-        subtitle: '3 orientacne varianty kompletnej akcie pre Den deti',
+        subtitle: '3 orientačné varianty kompletnej akcie pre Den deti',
         note: 'Kompletný balík zahŕňa program aj atrakcie v jednom, bez starostí s organizáciou.',
         previewTag: 'KOMPLET',
         previewKicker: 'Komplet akcia',
@@ -4860,26 +4860,26 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Program a zakladne doplnky pre mensiu alebo jednoduchsie nastavenu akciu.',
+            lead: 'Program a zakladne doplnky pre menšiu alebo jednoduchšie nastavenú akciu.',
             price: 'od 900 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['programovy blok aj doplnky', 'zakladna koordinacia na mieste', 'vhodne pre mensi rozpocet'],
+            bullets: ['programový blok aj doplnky', 'základná koordinácia na mieste', 'vhodné pre menší rozpočet'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Den%20deti&scope=komplet&variant=Easy%20event&price=od%20900%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Najcastejsi variant pre klienta, ktory chce viditelny zazitok bez chaosu.',
+            lead: 'Najčastejší variant pre klienta, ktorý chce viditelny zážitok bez chaosu.',
             price: 'od 1 800 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['moderovanie, program aj atrakcie', 'vyvazeny flow pocas celeho dna', 'silna volba pre vacsinu junovych akcii'],
+            bullets: ['moderovanie, program aj atrakcie', 'vyvážený flow počas celého dňa', 'silná voľba pre väčšinu junovych akcii'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Den%20deti&scope=komplet&variant=Event%20Plus&price=od%201800%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Kompletne riesenie od konceptu po realizaciu pre vacsi termin.',
+            lead: 'Kompletné riešenie od konceptu po realizáciu pre väčší termín.',
             price: 'od 3 200 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program, atrakcie, animatori aj koordinacia', 'vacsi rozsah a viac stanovist', 'riesenie pre akciu, na ktorej zalezi'],
+            bullets: ['program, atrakcie, animátori aj koordinácia', 'väčší rozsah a viac stanovíšť', 'riešenie pre akciu, na ktorej zalezi'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Den%20deti&scope=komplet&variant=Den%20deti%20na%20mieru&price=od%203200%20EUR#planner-form'
           }
         ]
@@ -4889,13 +4889,13 @@ window.plannerOfferData = {
   'skolske-akcie': {
     eyebrow: 'JUN',
     title: 'Skolske akcie',
-    subtitle: 'Vyber si, ci chces program, atrakcie alebo komplet akciu.',
+    subtitle: 'Vyber si, či chceš program, atrakcie alebo komplet akciu.',
     previewTheme: 'school',
     customLabel: 'Mám inú predstavu',
     offerFilters: {
       program: {
         label: 'Program',
-        subtitle: '3 orientacne varianty programu pre skolske akcie',
+        subtitle: '3 orientačné varianty programu pre skolske akcie',
         note: 'Finálna ponuka závisí od veľkosti akcie, lokality a rozsahu programu.',
         previewTag: 'PROGRAM',
         previewKicker: 'Program',
@@ -4903,33 +4903,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Jednoduchy format pre kratky skolsky den alebo jednu cast programu.',
+            lead: 'Jednoduchý format pre krátky školský den alebo jednu čast programu.',
             price: 'od 400 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['moderovany blok', 'sutaze a aktivacia', 'lahka organizacia pre skolu'],
+            bullets: ['moderovaný blok', 'súťaže a aktivacia', 'lahka organizácia pre školu'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Skolske%20akcie&scope=program&variant=Skolsky%20blok&price=od%20400%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Silnejsi skolsky program s vacsou interakciou a energiou.',
+            lead: 'Silnejší školský program s väčšou interakciou a energiou.',
             price: 'od 850 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['viac vstupov pocas dna', 'moderovanie a zapojenie publika', 'vhodne pre bezny skolsky event'],
+            bullets: ['viac vstupov počas dňa', 'moderovanie a zapojenie publika', 'vhodné pre bežný školský event'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Skolske%20akcie&scope=program&variant=Program%20Plus&price=od%20850%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Len program pre vacsi priestor, podium alebo vacsi rocnik.',
+            lead: 'Len program pre väčší priestor, pódium alebo väčší ročník.',
             price: 'od 1 350 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['vacsi rozsah programu', 'rezia a tempo celeho bloku', 'silnejsi wow efekt pre vacsi event'],
+            bullets: ['väčší rozsah programu', 'rezia a tempo celého bloku', 'silnejší wow efekt pre väčší event'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Skolske%20akcie&scope=program&variant=Stage%20skola&price=od%201350%20EUR#planner-form'
           }
         ]
       },
       attractions: {
         label: 'Atrakcie',
-        subtitle: '3 orientacne varianty atrakcii a doplnkov pre skoly',
+        subtitle: '3 orientačné varianty atrakcií a doplnkov pre školy',
         note: 'Máte už program? Atrakcie si môžete jednoducho doobjednať ako doplnok k vašej akcii.',
         previewTag: 'ATRAKCIE',
         previewKicker: 'Atrakcie',
@@ -4937,33 +4937,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Jedna az dve jednoduche aktivity na doplnenie skolskeho programu.',
+            lead: 'Jedna až dve jednoduché aktivity na doplnenie školského programu.',
             price: 'od 320 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['tvoriva alebo pohybova aktivita', 'rychle rozlozenie na mieste', 'vhodne aj do mensieho priestoru'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['tvoriva alebo pohybova aktivita', 'rýchle rozlozenie na mieste', 'vhodné aj do menšíeho priestoru'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Skolske%20akcie&scope=atrakcie&variant=Aktivna%20stanica&price=od%20320%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Vyvazeny set atrakcii pre beznu skolsku akciu alebo den deti v skole.',
+            lead: 'Vyvážený set atrakcií pre beznu skolsku akciu alebo den deti v skole.',
             price: 'od 780 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['2 az 3 doplnky alebo atrakcie', 'lepsi pohyb deti medzi stanovistami', 'viditelnejsi efekt pocas celeho dna'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['2 až 3 doplnky alebo atrakcie', 'lepší pohyb deti medzi stanovíšťami', 'viditeľnejší efekt počas celého dňa'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Skolske%20akcie&scope=atrakcie&variant=Skolska%20fun%20zona&price=od%20780%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Silnejsi Len atrakcie pre vacsie skoly alebo spolocne akcie.',
+            lead: 'Silnejší Len atrakcie pre väčšie školy alebo spolocne akcie.',
             price: 'od 1 450 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['vacsi rozsah a viac stanovist', 'vacsia kapacita pre viac tried', 'vhodne pre vacsie dvory a arealy'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['väčší rozsah a viac stanovíšť', 'väčšia kapacita pre viac tried', 'vhodné pre väčšie dvory a arealy'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Skolske%20akcie&scope=atrakcie&variant=Velka%20skolska%20zona&price=od%201450%20EUR#planner-form'
           }
         ]
       },
       full: {
         label: 'Komplet',
-        subtitle: '3 orientacne varianty kompletnej skolskej akcie',
+        subtitle: '3 orientačné varianty kompletnej skolskej akcie',
         note: 'Kompletný balík zahŕňa program aj atrakcie v jednom, bez starostí s organizáciou.',
         previewTag: 'KOMPLET',
         previewKicker: 'Komplet akcia',
@@ -4974,23 +4974,23 @@ window.plannerOfferData = {
             lead: 'Jednoduchsia skolska akcia s programom a niekolkymi doplnkami.',
             price: 'od 850 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['programovy blok a doplnky', 'zakladna koordinacia', 'vhodne pre mensi rozpocet'],
+            bullets: ['programový blok a doplnky', 'základná koordinácia', 'vhodné pre menší rozpočet'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Skolske%20akcie&scope=komplet&variant=Skola%20Easy&price=od%20850%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Najcastejsi skolsky variant s programom, atrakciami a dobrym tempom.',
+            lead: 'Najčastejší školský variant s programom, atrakciami a dobrým tempom.',
             price: 'od 1 650 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program, atrakcie aj moderovanie', 'vyvazena organizacia dna', 'silny zazitok pre vacsinu skol'],
+            bullets: ['program, atrakcie aj moderovanie', 'vyvažena organizácia dňa', 'silný zážitok pre väčšinu skol'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Skolske%20akcie&scope=komplet&variant=Skola%20Plus&price=od%201650%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Kompletne riesenie pre vacsi skolsky event alebo vacsi areal.',
+            lead: 'Kompletné riešenie pre väčší školský event alebo väčší areal.',
             price: 'od 2 900 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program, atrakcie a rezia dna', 'vacsi rozsah a viac ludi v time', 'individualne riesenie podla zadania'],
+            bullets: ['program, atrakcie a rezia dňa', 'väčší rozsah a viac ludi v time', 'individualne riešenie podľa zadania'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Skolske%20akcie&scope=komplet&variant=Skola%20na%20mieru&price=od%202900%20EUR#planner-form'
           }
         ]
@@ -4999,14 +4999,14 @@ window.plannerOfferData = {
   },
   'rozlucky-so-skolou': {
     eyebrow: 'JUN',
-    title: 'Rozlucky so skolou',
-    subtitle: 'Vyber si, ci chces program, atrakcie alebo komplet akciu.',
+    title: 'Rozlúčky so školou',
+    subtitle: 'Vyber si, či chceš program, atrakcie alebo komplet akciu.',
     previewTheme: 'goodbye',
     customLabel: 'Mám inú predstavu',
     offerFilters: {
       program: {
         label: 'Program',
-        subtitle: '3 orientacne varianty programu pre rozlucku so skolou',
+        subtitle: '3 orientačné varianty programu pre rozlucku so skolou',
         note: 'Finálna ponuka závisí od veľkosti akcie, lokality a rozsahu programu.',
         previewTag: 'PROGRAM',
         previewKicker: 'Program',
@@ -5014,33 +5014,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Kratsi zabavny blok pre triedu, rocnik alebo mensi skolsky priestor.',
+            lead: 'Kratší zábavný blok pre triedu, ročník alebo menší školský priestor.',
             price: 'od 390 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['moderovanie a zabava', 'zapojenie deti do diania', 'jednoduchy format bez velkej techniky'],
+            bullets: ['moderovanie a zabava', 'zapojenie deti do diania', 'jednoduchy format bez veľkéj techniky'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Rozlucky%20so%20skolou&scope=program&variant=Easy%20rozlucka&price=od%20390%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Zabavnejsi program s vacsou energiou, hudbou a interakciou.',
+            lead: 'Zabavnejsi program s väčšou energiou, hudbou a interakciou.',
             price: 'od 760 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['sutaze, hudba a moderator', 'vacsie tempo pocas celeho bloku', 'oblubena volba pre junove rozlucky'],
+            bullets: ['súťaže, hudba a moderátor', 'väčšie tempo počas celého bloku', 'obľúbená voľba pre junove rozlúčky'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Rozlucky%20so%20skolou&scope=program&variant=Party%20blok&price=od%20760%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Silnejsi programovy zaver roka pre vacsi priestor alebo viac tried.',
+            lead: 'Silnejší programový zaver roka pre väčší priestor alebo viac tried.',
             price: 'od 1 250 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['vacsi rozsah a viac vstupov', 'silnejsia dramaturgia dna', 'vacsia eventova nalada a efekt'],
+            bullets: ['väčší rozsah a viac vstupov', 'silnejšia dramaturgia dňa', 'väčšia eventová nálada a efekt'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Rozlucky%20so%20skolou&scope=program&variant=Finale%20show&price=od%201250%20EUR#planner-form'
           }
         ]
       },
       attractions: {
         label: 'Atrakcie',
-        subtitle: '3 orientacne varianty atrakcii a doplnkov pre rozlucku',
+        subtitle: '3 orientačné varianty atrakcií a doplnkov pre rozlucku',
         note: 'Máte už program? Atrakcie si môžete jednoducho doobjednať ako doplnok k vašej akcii.',
         previewTag: 'ATRAKCIE',
         previewKicker: 'Atrakcie',
@@ -5048,33 +5048,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Jednoduche oivenie rozlucky jednou aktivitou alebo jednym stanovistom.',
+            lead: 'Jednoduché oživenie rozlúčky jednou aktivitou alebo jedným stanovišťom.',
             price: 'od 290 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['jeden doplnok alebo atrakcia', 'rychle nasadenie na miesto', 'vhodne ako doplnenie hotoveho programu'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['jeden doplnok alebo atrakcia', 'rýchle nasadenie na miesto', 'vhodné ako doplnenie hotoveho programu'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Rozlucky%20so%20skolou&scope=atrakcie&variant=Fun%20doplnok&price=od%20290%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Vyvazeny mix atrakcii pre zabavnejsiu rozlucku s vacsim pohybom deti.',
+            lead: 'Vyvážený mix atrakcií pre zabavnejsiu rozlucku s väčším pohybom deti.',
             price: 'od 690 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['2 az 3 prvky alebo stanovistia', 'kombinacia pohybu a zabavy', 'dobry efekt bez kompletnej produkcie'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['2 až 3 prvky alebo stanovíšťia', 'kombinácia pohybu a zabavy', 'dobrý efekt bez kompletnej produkcie'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Rozlucky%20so%20skolou&scope=atrakcie&variant=Party%20zona&price=od%20690%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Silnejsia atrakciova zona pre vacsi rocnik, skolu alebo vacsi dvor.',
+            lead: 'Silnejšia atrakciová zóna pre väčší ročník, školu alebo väčší dvor.',
             price: 'od 1 300 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['vacsi rozsah atrakcii', 'lepsia priechodnost a viac zabavy naraz', 'vhodne pre silny junovy termin'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['väčší rozsah atrakcií', 'lepšia priechodnosť a viac zábavy naraz', 'vhodné pre silný junovy termín'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Rozlucky%20so%20skolou&scope=atrakcie&variant=Rozluckova%20arena&price=od%201300%20EUR#planner-form'
           }
         ]
       },
       full: {
         label: 'Komplet',
-        subtitle: '3 orientacne varianty kompletnej rozlucky so skolou',
+        subtitle: '3 orientačné varianty kompletnej rozlúčky so skolou',
         note: 'Kompletný balík zahŕňa program aj atrakcie v jednom, bez starostí s organizáciou.',
         previewTag: 'KOMPLET',
         previewKicker: 'Komplet akcia',
@@ -5085,23 +5085,23 @@ window.plannerOfferData = {
             lead: 'Program a doplnky pre jednoduchu, ale pekne uchopenu rozlucku.',
             price: 'od 790 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['programovy blok aj doplnky', 'zakladna koordinacia', 'vhodne pre mensiu rozlucku'],
+            bullets: ['programový blok aj doplnky', 'základná koordinácia', 'vhodné pre menšiu rozlucku'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Rozlucky%20so%20skolou&scope=komplet&variant=Rozlucka%20Easy&price=od%20790%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Najcastejsi komplet variant s programom, hudbou a atrakciami.',
+            lead: 'Najčastejší komplet variant s programom, hudbou a atrakciami.',
             price: 'od 1 450 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program, atrakcie a moderovanie', 'vyvazene tempo celej akcie', 'silna volba pre vacsinu skol'],
+            bullets: ['program, atrakcie a moderovanie', 'vyvážené tempo celej akcie', 'silná voľba pre väčšinu skol'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Rozlucky%20so%20skolou&scope=komplet&variant=Rozlucka%20Plus&price=od%201450%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Kompletna eventova rozlucka s vacsim rozsahom a silnejsim efektom.',
+            lead: 'Kompletna eventová rozlucka s väčším rozsahom a silnejším efektom.',
             price: 'od 2 500 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['kompletna organizacia, program aj atrakcie', 'vacsi tim a vacsi rozsah', 'riesenie pre akciu, ktoru si maju pamatat'],
+            bullets: ['kompletna organizácia, program aj atrakcie', 'väčší tim a väčší rozsah', 'riešenie pre akciu, ktoru si maju pamatat'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Rozlucky%20so%20skolou&scope=komplet&variant=Rozlucka%20na%20mieru&price=od%202500%20EUR#planner-form'
           }
         ]
@@ -5111,13 +5111,13 @@ window.plannerOfferData = {
   'vitaj-leto': {
     eyebrow: 'JUN',
     title: 'Vitaj leto',
-    subtitle: 'Vyber si, ci chces program, atrakcie alebo komplet akciu.',
+    subtitle: 'Vyber si, či chceš program, atrakcie alebo komplet akciu.',
     previewTheme: 'summer',
     customLabel: 'Mám inú predstavu',
     offerFilters: {
       program: {
         label: 'Program',
-        subtitle: '3 orientacne varianty programu pre Vitaj leto',
+        subtitle: '3 orientačné varianty programu pre Vitaj leto',
         note: 'Finálna ponuka závisí od veľkosti akcie, lokality a rozsahu programu.',
         previewTag: 'PROGRAM',
         previewKicker: 'Program',
@@ -5125,33 +5125,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Jednoduchy letny blok na otvorenie sezony alebo mensiu obecnu akciu.',
+            lead: 'Jednoduchý letný blok na otvorenie sezony alebo menšiu obecnú akciu.',
             price: 'od 450 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['moderovany vstup', 'lahka letna atmosfera', 'rychle ozivenie podujatia'],
+            bullets: ['moderovaný vstup', 'lahka letna atmosféra', 'rýchle oživenie podujatia'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Vitaj%20leto&scope=program&variant=Warm%20up%20program&price=od%20450%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Vyvazeny letny program pre publikum, rodiny alebo den obce.',
+            lead: 'Vyvážený letný program pre publikum, rodiny alebo den obce.',
             price: 'od 920 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['moderovanie a aktivacie', 'viac vstupov pocas akcie', 'dobry pomer medzi efektom a rozpocetom'],
+            bullets: ['moderovanie a aktivácie', 'viac vstupov počas akcie', 'dobrý pomer medzi efektom a rozpočetom'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Vitaj%20leto&scope=program&variant=Open%20air%20program&price=od%20920%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Silnejsi stage variant pre vacsi letny termin alebo vacsie publikum.',
+            lead: 'Silnejší stage variant pre väčší letný termín alebo väčšie publikum.',
             price: 'od 1 550 EUR',
             posterLabel: 'Variant programu',
-            bullets: ['vacsi rozsah a podium energia', 'silnejsi letny wow efekt', 'vhodne pre vacsi priestor a vacsi pocet ludi'],
+            bullets: ['väčší rozsah a pódium energia', 'silnejší letný wow efekt', 'vhodné pre väčší priestor a väčší počet ludi'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Vitaj%20leto&scope=program&variant=Summer%20show&price=od%201550%20EUR#planner-form'
           }
         ]
       },
       attractions: {
         label: 'Atrakcie',
-        subtitle: '3 orientacne varianty atrakcii a doplnkov pre Vitaj leto',
+        subtitle: '3 orientačné varianty atrakcií a doplnkov pre Vitaj leto',
         note: 'Máte už program? Atrakcie si môžete jednoducho doobjednať ako doplnok k vašej akcii.',
         previewTag: 'ATRAKCIE',
         previewKicker: 'Atrakcie',
@@ -5159,33 +5159,33 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Jedna alebo dve letne atrakcie pre klienta, ktory uz program ma.',
+            lead: 'Jedna alebo dve letné atrakcie pre klienta, ktorý už program má.',
             price: 'od 350 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['jedna atrakcia alebo stanok', 'lahke rozlozenie na mieste', 'vhodne na rychle oivenie akcie'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['jedna atrakcia alebo stánok', 'ľahké rozloženie na mieste', 'vhodné na rýchle oživenie akcie'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Vitaj%20leto&scope=atrakcie&variant=Letny%20doplnok&price=od%20350%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Oblubeny mix atrakcii pre rodiny, deti alebo obecne podujatie.',
+            lead: 'Oblubeny mix atrakcií pre rodiny, deti alebo obecne podujatie.',
             price: 'od 880 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['2 az 3 letne prvky alebo atrakcie', 'vyssi pohyb ludi v zone', 'vhodne pre bezny letny event'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['2 až 3 letné prvky alebo atrakcie', 'vyšší pohyb ludi v zone', 'vhodné pre bežný letný event'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Vitaj%20leto&scope=atrakcie&variant=Letna%20fun%20zona&price=od%20880%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Vacsia atrakciova zona pre silny letny termin a vacsi priestor.',
+            lead: 'Väčšia atrakciová zóna pre silný letný termín a väčší priestor.',
             price: 'od 1 650 EUR',
-            posterLabel: 'Variant atrakcii',
-            bullets: ['vacsi rozsah a viac stanovist', 'silny vizual a vacsia kapacita', 'vhodne pre vacsi letny event'],
+            posterLabel: 'Variant atrakcií',
+            bullets: ['väčší rozsah a viac stanovíšť', 'silný vizuál a väčšia kapacita', 'vhodné pre väčší letný event'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Vitaj%20leto&scope=atrakcie&variant=Open%20air%20zona&price=od%201650%20EUR#planner-form'
           }
         ]
       },
       full: {
         label: 'Komplet',
-        subtitle: '3 orientacne varianty kompletnej akcie Vitaj leto',
+        subtitle: '3 orientačné varianty kompletnej akcie Vitaj leto',
         note: 'Kompletný balík zahŕňa program aj atrakcie v jednom, bez starostí s organizáciou.',
         previewTag: 'KOMPLET',
         previewKicker: 'Komplet akcia',
@@ -5193,26 +5193,26 @@ window.plannerOfferData = {
         offers: [
           {
             name: 'MZ Start',
-            lead: 'Program a doplnky pre jednoduchsie otvorenie leta alebo mensiu akciu.',
+            lead: 'Program a doplnky pre jednoduchšie otvorenie leta alebo menšiu akciu.',
             price: 'od 950 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['program a atrakcie v zakladnom rozsahu', 'jednoducha koordinacia na mieste', 'vhodne pre mensi rozpocet'],
+            bullets: ['program a atrakcie v zakladnom rozsahu', 'jednoducha koordinácia na mieste', 'vhodné pre menší rozpočet'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Vitaj%20leto&scope=komplet&variant=Leto%20Easy&price=od%20950%20EUR#planner-form'
           },
           {
             name: 'MZ Show',
-            lead: 'Najcastejsi variant kompletnej letnej akcie s dobrym flow a atmosferou.',
+            lead: 'Najčastejší variant kompletnej letnéj akcie s dobrým flow a atmosferou.',
             price: 'od 1 950 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['moderovanie, program aj atrakcie', 'vyvazeny letny zazitok pre publikum', 'silna volba pre vacsinu klientov'],
+            bullets: ['moderovanie, program aj atrakcie', 'vyvážený letný zážitok pre publikum', 'silná voľba pre väčšinu klientov'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Vitaj%20leto&scope=komplet&variant=Leto%20Plus&price=od%201950%20EUR#planner-form'
           },
           {
             name: 'MZ Majster',
-            lead: 'Kompletna letna produkcia s vacsim rozsahom, vacsim timom a vacsim efektom.',
+            lead: 'Kompletna letna produkcia s väčším rozsahom, väčším timom a väčším efektom.',
             price: 'od 3 400 EUR',
             posterLabel: 'Variant kompletnej akcie',
-            bullets: ['Komplet akcia od navrhu po realizaciu', 'vacsi rozsah programu a atrakcii', 'riesenie pre silny termin a vacsi event'],
+            bullets: ['Komplet akcia od návrhu po realizáciu', 'väčší rozsah programu a atrakcií', 'riešenie pre silný termín a väčší event'],
             orderHref: 'navrhni-si-akciu.html?source=planner-jun&event=Vitaj%20leto&scope=komplet&variant=Leto%20na%20mieru&price=od%203400%20EUR#planner-form'
           }
         ]
@@ -5220,4 +5220,8 @@ window.plannerOfferData = {
     }
   }
 };
+
+
+
+
 

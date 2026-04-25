@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   'use strict';
 
   const root = document.getElementById('navrhni-akciu-section');
@@ -44,10 +44,10 @@
   if (!required) return;
 
   const orbitPlanets = [
-    { label: 'Kalendar', desc: 'Tvoja akcia bude v našom kalendári', color: '#c7ff2e' },
-    { label: 'Reels\npromo', desc: 'Po akcii vytvorime kratke video, ktore ukaze atmosferu a oslovi dalsich ludi.', color: '#9edb1f' },
-    { label: 'Video\npozvanka', desc: 'Pripravime putave video, ktore pritiahne ludi na tvoju akciu.', color: '#d8ff5a' },
-    { label: 'Socialne\nsiete', desc: 'Dostaneme tvoju akciu medzi ľudí', color: '#efff97' },
+    { label: 'Kalendár', desc: 'Tvoja akcia bude v našom kalendári', color: '#c7ff2e' },
+    { label: 'Reels\npromo', desc: 'Po akcii vytvoríme krátke video, ktoré ukáže atmosféru a osloví ďalších ľudí.', color: '#9edb1f' },
+    { label: 'Video\npozvánka', desc: 'Pripravíme pútavé video, ktoré pritiahne ľudí na tvoju akciu.', color: '#d8ff5a' },
+    { label: 'Sociálne\nsiete', desc: 'Dostaneme tvoju akciu medzi ľudí', color: '#efff97' },
     { label: 'Podpora', desc: 'Sme pri tebe pred aj po akcii', color: '#c7ff2e' },
     { label: 'Garancia\nkvality', desc: 'Ideme na 125 %. Menej u nás nečakaj.', color: '#9edb1f' }
   ];
@@ -107,7 +107,7 @@
 
     return [
       `samostatne ${pricing.listPriceText}`,
-      `usetrite ${pricing.discountAmountText}`,
+      `ušetríte ${pricing.discountAmountText}`,
       pricing.discountLabel || 'balikove zvyhodnenie'
     ];
   }
@@ -723,29 +723,29 @@
     }
 
     function createMailtoHref(offerData, formData) {
-      const subject = `Objednavka / ${offerData.selection}`;
+      const subject = `Objednávka / ${offerData.selection}`;
       const bodyLines = [
-        'Dobry den,',
+        'Dobrý deň,',
         '',
-        'mam zaujem o tuto ponuku od Majstrov Zabavy:',
+        'mám záujem o túto ponuku od Majstrov zábavy:',
         `${offerData.selection}`,
-        `Predbezna cena: ${offerData.price}`,
+        `Predbežná cena: ${offerData.price}`,
         '',
-        'Zakladne udaje:',
-        formData.date ? `Datum akcie: ${formatDate(formData.date)}` : '',
+        'Základné údaje:',
+        formData.date ? `Dátum akcie: ${formatDate(formData.date)}` : '',
         formData.address ? `Miesto akcie: ${formData.address}` : '',
-        formData.guests ? `Pocet ludi: ${formData.guests}` : '',
+        formData.guests ? `Počet ľudí: ${formData.guests}` : '',
         formData.audience ? `Pre koho je akcia: ${formatAudience(formData.audience)}` : '',
-        formData.energy ? `Styl energie: ${formatEnergy(formData.energy).replace('styl: ', '')}` : '',
-        formData.budget ? `Rozpocet: ${formData.budget}` : '',
+        formData.energy ? `Štýl energie: ${formatEnergy(formData.energy).replace('styl: ', '')}` : '',
+        formData.budget ? `Rozpočet: ${formData.budget}` : '',
         formData.promo ? `Promo: ${formData.promo}` : '',
         formData.name ? `Meno: ${formData.name}` : '',
         formData.contact ? `Kontakt: ${formData.contact}` : '',
-        formData.note ? `Poznamka: ${formData.note}` : '',
+        formData.note ? `Poznámka: ${formData.note}` : '',
         '',
-        'Prosim o doladenie detailov.',
+        'Prosím o doladenie detailov.',
         '',
-        'Dakujem.'
+        'Ďakujem.'
       ].filter(Boolean);
 
       return `mailto:info@majstrizabavy.sk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
@@ -803,16 +803,16 @@
 
       offerSelection.textContent = selection;
       offerDescription.textContent = selected.lead
-        ? `${selected.lead} Ponuku sme pripravili podla tvojho vyberu a zadanych udajov.`
-        : 'Ponuku sme pripravili podla tvojho vyberu a zadanych udajov.';
+        ? `${selected.lead} Ponuku sme pripravili podľa tvojho výberu a zadaných údajov.`
+        : 'Ponuku sme pripravili podľa tvojho výberu a zadaných údajov.';
       offerPrice.textContent = price;
       offerIncludes.innerHTML = bullets.map((item) => `<li>${item}</li>`).join('');
       offerContext.innerHTML = contextItems.length
         ? contextItems.map((item) => `<span class="mz-followup-offer__context-chip">${item}</span>`).join('')
-        : '<span class="mz-followup-offer__context-chip">Finalne detaily doladime spolu</span>';
+        : '<span class="mz-followup-offer__context-chip">Finálne detaily doladíme spolu</span>';
       offerNote.textContent = pricing && pricing.scope === 'komplet' && pricing.discountAmount
-        ? `Komplet akcia je cenovo zvyhodnena oproti samostatnemu objednaniu sluzieb. Samostatne by ta tato kombinacia vysla na ${pricing.listPriceText}, teraz ju vidis za ${pricing.exactPriceText}. Ak ti vyhovuje, mozes pokracovat v objednavke alebo s nami doladit posledne detaily.`
-        : 'Ponuka bola pripravena podla vybraneho variantu a zadanych udajov. Ak ti vyhovuje, mozes pokracovat v objednavke alebo s nami doladit posledne detaily.';
+        ? `Komplet akcia je cenovo zvýhodnená oproti samostatnému objednaniu služieb. Samostatne by ťa táto kombinácia vyšla na ${pricing.listPriceText}, teraz ju vidíš za ${pricing.exactPriceText}. Ak ti vyhovuje, môžeš pokračovať v objednávke alebo s nami doladiť posledné detaily.`
+        : 'Ponuka bola pripravená podľa vybraného variantu a zadaných údajov. Ak ti vyhovuje, môžeš pokračovať v objednávke alebo s nami doladiť posledné detaily.';
       orderLink.href = createMailtoHref({ selection, price }, formData);
       success.hidden = true;
       offerBox.hidden = false;
@@ -837,7 +837,7 @@
     followup.addEventListener('submit', (event) => {
       event.preventDefault();
       if (!followup.reportValidity()) {
-        showToast('Dopln prosim vsetky dolezite udaje.');
+        showToast('Dopln prosím všetky dôležité údaje.');
         return;
       }
       hiddenEnergy.value = selected.energy || selectedEnergy || '';
@@ -845,7 +845,7 @@
       window.setTimeout(() => {
         hideOverlay();
         renderOfferResult();
-        showToast('Predbezna ponuka je pripravena.');
+        showToast('Predbežná ponuka je pripravená.');
       }, 2200);
     });
 
@@ -857,11 +857,12 @@
 
     orderLink.addEventListener('click', () => {
       success.hidden = false;
-      showToast('Otvarame predvyplneny email s objednavkou.');
+      showToast('Otvárame predvyplnený email s objednávkou.');
     });
 
     contactLink.addEventListener('click', () => {
-      showToast('Otvarame kontakt na Majstrov Zabavy.');
+      showToast('Otvárame kontakt na Majstrov zábavy.');
     });
   })();
 })();
+

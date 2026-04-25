@@ -15,7 +15,6 @@ const eventModalMeta = document.getElementById('eventModalMeta');
 const eventModalPoster = document.getElementById('eventModalPoster');
 const eventModalPosterImage = document.getElementById('eventModalPosterImage');
 const eventModalPosterFallback = document.getElementById('eventModalPosterFallback');
-const eventModalMoreInfo = document.getElementById('eventModalMoreInfo');
 const eventModalShare = document.getElementById('eventModalShare');
 
 let activePublicMonth = null;
@@ -35,12 +34,20 @@ function getAllPublicEvents() {
   return approvedPublicEvents;
 }
 
+function getPublicCityOptions() {
+  if (window.MZSupabase?.getCityOptions) {
+    return window.MZSupabase.getCityOptions();
+  }
+
+  return [];
+}
+
 function getPublicMonth(monthKey) {
   return publicEventMonths.find((month) => month.key === monthKey) || publicEventMonths[0];
 }
 
 function getPublicCity(cityKey) {
-  return publicEventCities.find((city) => city.key === cityKey) || null;
+  return getPublicCityOptions().find((city) => city.key === cityKey) || null;
 }
 
 function hasSelectedPublicCity(cityKey = activePublicCity) {
@@ -131,7 +138,7 @@ function renderPublicCities() {
 
   publicCitySelect.innerHTML = [
     `<option value=""${!activePublicCity ? ' selected' : ''}>Vyber si mesto a okolie</option>`,
-    ...publicEventCities.map((city) => (
+    ...getPublicCityOptions().map((city) => (
       `<option value="${city.key}"${city.key === activePublicCity ? ' selected' : ''}>${city.name}</option>`
     ))
   ].join('');
@@ -322,11 +329,11 @@ function renderPublicEventBrowser() {
     if (publicEventsError) {
       publicCityNote.textContent = publicEventsError;
     } else if (!publicEventsLoaded) {
-      publicCityNote.textContent = 'Načítavam schválené akcie zo Supabase...';
+      publicCityNote.textContent = 'Načítavam schválené akcie...';
     } else if (hasSelectedPublicCity()) {
-      publicCityNote.textContent = `Zobrazujeme schválené akcie pre lokalitu ${getPublicCity(activePublicCity).name}.`;
+      publicCityNote.textContent = `Zobrazujeme akcie pre lokalitu ${getPublicCity(activePublicCity).name}.`;
     } else {
-      publicCityNote.textContent = 'Najprv si zvoľ mesto a okolie, potom uvidíš akcie.';
+      publicCityNote.textContent = 'Vyber mesto a zobrazia sa schválené akcie.';
     }
   }
 
@@ -335,30 +342,12 @@ function renderPublicEventBrowser() {
   renderWeekendSpotlight();
 }
 
-function setModalMoreInfoState(eventItem) {
-  const hasMoreInfo = Boolean(eventItem.moreInfoUrl || eventItem.poster);
-  const moreInfoHref = eventItem.moreInfoUrl || eventItem.poster || '';
-
-  if (!eventModalMoreInfo) return;
-
-  if (hasMoreInfo) {
-    eventModalMoreInfo.href = moreInfoHref;
-    eventModalMoreInfo.removeAttribute('aria-disabled');
-    eventModalMoreInfo.classList.remove('is-disabled');
-    return;
-  }
-
-  eventModalMoreInfo.removeAttribute('href');
-  eventModalMoreInfo.setAttribute('aria-disabled', 'true');
-  eventModalMoreInfo.classList.add('is-disabled');
-}
-
 function populateEventModal(eventItem) {
   if (!eventModalTitle || !eventModalMeta || !eventModalPoster || !eventModalPosterImage || !eventModalPosterFallback) return;
 
   eventModalTitle.innerHTML = eventItem.title;
   eventModalMeta.innerHTML = `${eventItem.when} &bull; ${eventItem.where}`;
-  if (eventModalShare) eventModalShare.textContent = 'Zdieľať';
+  if (eventModalShare) eventModalShare.textContent = 'Zdieľať akciu';
 
   if (eventItem.poster) {
     eventModalPoster.href = eventItem.moreInfoUrl || eventItem.poster;
@@ -374,8 +363,6 @@ function populateEventModal(eventItem) {
     eventModalPosterFallback.hidden = false;
     eventModalPoster.classList.add('is-placeholder');
   }
-
-  setModalMoreInfoState(eventItem);
 }
 
 function openEventModal(eventId, options = {}) {
@@ -525,12 +512,6 @@ async function initPublicEventBrowser() {
 
   renderPublicEventBrowser();
   await loadApprovedPublicEvents();
-
-  if (activePublicCity && !getPublicEventsForMonth(activePublicMonth, activePublicCity).length) {
-    activePublicMonth = getFirstMonthWithEvents(activePublicCity);
-  }
-
-  renderPublicEventBrowser();
 
   publicCitySelect.addEventListener('change', () => {
     closeEventModal({ syncUrl: false });

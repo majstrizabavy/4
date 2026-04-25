@@ -17,6 +17,26 @@ let adminSession = null;
 let adminEvents = [];
 let adminFilter = 'pending';
 let adminAutoRefreshTimer = null;
+const ADMIN_EVENT_SELECT = [
+  'id',
+  'title',
+  'status',
+  'event_date',
+  'city_label',
+  'venue_name',
+  'region_label',
+  'category',
+  'audience',
+  'description',
+  'poster_path',
+  'more_info_url',
+  'submitter_name',
+  'submitter_email',
+  'submitter_phone',
+  'partner_name',
+  'admin_note',
+  'created_at'
+].join(', ');
 
 function setAdminLoginStatus(type, message) {
   if (!adminLoginStatus) return;
@@ -58,7 +78,7 @@ function renderAdminSummary() {
 
   if (adminFilterGroup) {
     adminFilterGroup.querySelectorAll('[data-admin-filter]').forEach((button) => {
-      const baseLabel = button.dataset.adminLabel || button.textContent || '';
+      const baseLabel = button.dataset.adminLabel || '';
       const filterKey = button.dataset.adminFilter;
       let countValue = adminEvents.length;
 
@@ -88,6 +108,7 @@ function createAdminEventCard(row) {
   const safeCategory = window.MZSupabase.escapeHtml(row.category || 'Nie je zadané');
   const safeAudience = window.MZSupabase.escapeHtml(row.audience || 'Nie je zadané');
   const safeDescription = formatAdminDescription(row.description);
+  const safeAdminNote = window.MZSupabase.escapeHtml(row.admin_note || '');
   const statusLabel = window.MZSupabase.formatStatusLabel(row.status);
   const eventDate = window.MZSupabase.formatEventDate(row.event_date);
 
@@ -118,9 +139,22 @@ function createAdminEventCard(row) {
           <p>${safeDescription || 'Popis nebol vyplnený.'}</p>
         </div>
 
+        <div class="admin-event-card__note">
+          <div class="admin-event-card__label">Interná poznámka</div>
+          <textarea
+            class="admin-event-card__note-input"
+            data-admin-note="${row.id}"
+            rows="3"
+            placeholder="Krátka interná poznámka k akcii."
+          >${safeAdminNote}</textarea>
+          <div class="admin-event-card__note-actions">
+            <button type="button" class="btn-ghost admin-note-save" data-admin-note-save="${row.id}">Uložiť poznámku</button>
+          </div>
+        </div>
+
         ${moreInfoUrl ? `
           <div class="admin-event-card__links">
-            <a href="${moreInfoUrl}" target="_blank" rel="noreferrer noopener">Otvoriť link na viac info</a>
+            <a href="${moreInfoUrl}" target="_blank" rel="noreferrer noopener">Viac info</a>
           </div>
         ` : ''}
       </div>
@@ -176,7 +210,7 @@ async function loadAdminEvents() {
   const supabaseClient = window.MZSupabase.getClient();
   const { data, error } = await supabaseClient
     .from('events')
-    .select('*')
+    .select(ADMIN_EVENT_SELECT)
     .order('created_at', { ascending: false });
 
   if (error) {
@@ -185,6 +219,39 @@ async function loadAdminEvents() {
 
   adminEvents = data || [];
   renderAdminEvents();
+}
+
+async function refreshAdminEventsSafely(options = {}) {
+  const { silent = false } = options;
+
+  try {
+    await loadAdminEvents();
+  } catch (error) {
+    if (!silent) {
+      setAdminLoginStatus('error', error.message || 'Akcie sa nepodarilo načítať zo Supabase.');
+    }
+  }
+}
+
+function getAdminNoteValue(eventId) {
+  const noteField = document.querySelector(`[data-admin-note="${eventId}"]`);
+  return noteField instanceof HTMLTextAreaElement ? noteField.value.trim() : '';
+}
+
+async function saveAdminNote(eventId, adminNote) {
+  if (!window.MZSupabase) return;
+
+  const supabaseClient = window.MZSupabase.getClient();
+  const { error } = await supabaseClient
+    .from('events')
+    .update({
+      admin_note: adminNote || null
+    })
+    .eq('id', eventId);
+
+  if (error) {
+    throw new Error('Poznámku sa nepodarilo uložiť.');
+  }
 }
 
 async function updateEventStatus(eventId, nextStatus) {
@@ -199,9 +266,11 @@ async function updateEventStatus(eventId, nextStatus) {
     throw new Error('Admin session vypršala. Prihlás sa prosím znova.');
   }
 
+  const adminNote = getAdminNoteValue(eventId);
   const payload = nextStatus === 'approved'
     ? {
         status: 'approved',
+        admin_note: adminNote || null,
         approved_at: new Date().toISOString(),
         approved_by: user.id,
         rejected_at: null,
@@ -209,6 +278,7 @@ async function updateEventStatus(eventId, nextStatus) {
       }
     : {
         status: 'rejected',
+        admin_note: adminNote || null,
         rejected_at: new Date().toISOString(),
         rejected_by: user.id,
         approved_at: null,
@@ -260,7 +330,7 @@ function startAdminAutoRefresh() {
 
   adminAutoRefreshTimer = window.setInterval(async () => {
     if (!adminSession?.user || document.hidden) return;
-    await loadAdminEvents();
+    await refreshAdminEventsSafely({ silent: true });
   }, 30000);
 }
 
@@ -282,7 +352,7 @@ async function syncAdminSession(session) {
 
   showAdminDashboard(session.user.email);
   startAdminAutoRefresh();
-  await loadAdminEvents();
+  await refreshAdminEventsSafely();
 }
 
 function bindAdminEvents() {
@@ -296,7 +366,7 @@ function bindAdminEvents() {
 
   if (adminRefreshButton) {
     adminRefreshButton.addEventListener('click', async () => {
-      await loadAdminEvents();
+      await refreshAdminEventsSafely();
     });
   }
 
@@ -312,16 +382,27 @@ function bindAdminEvents() {
 
   if (adminEventsList) {
     adminEventsList.addEventListener('click', async (event) => {
+      const saveNoteButton = event.target.closest('[data-admin-note-save]');
       const approveButton = event.target.closest('[data-admin-approve]');
       const rejectButton = event.target.closest('[data-admin-reject]');
 
       try {
+        if (saveNoteButton) {
+          await saveAdminNote(saveNoteButton.dataset.adminNoteSave, getAdminNoteValue(saveNoteButton.dataset.adminNoteSave));
+          await loadAdminEvents();
+          setAdminLoginStatus('success', 'Poznámka je uložená.');
+          return;
+        }
+
         if (approveButton) {
           await updateEventStatus(approveButton.dataset.adminApprove, 'approved');
+          setAdminLoginStatus('success', 'Akcia je schválená.');
+          return;
         }
 
         if (rejectButton) {
           await updateEventStatus(rejectButton.dataset.adminReject, 'rejected');
+          setAdminLoginStatus('success', 'Akcia je zamietnutá.');
         }
       } catch (error) {
         setAdminLoginStatus('error', error.message || 'Zmena stavu zlyhala.');
@@ -331,7 +412,7 @@ function bindAdminEvents() {
 
   window.addEventListener('focus', async () => {
     if (!adminSession?.user) return;
-    await loadAdminEvents();
+    await refreshAdminEventsSafely({ silent: true });
   });
 }
 
