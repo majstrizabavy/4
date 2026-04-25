@@ -8873,10 +8873,37 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .partner-submit-hero--green {
-  padding: clamp(24px, 3vw, 34px);
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+  min-height: 320px;
+  padding: clamp(34px, 5vw, 58px);
   border-radius: 30px;
-  background: linear-gradient(135deg, #e8ff89 0%, #d8ff5a 42%, #a9e12d 100%);
-  box-shadow: 0 22px 48px rgba(var(--accent-rgb), 0.34), 0 0 24px rgba(var(--accent-rgb), 0.14);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 14% 8%, rgba(255, 255, 255, 0.48), transparent 24%),
+    radial-gradient(circle at 84% 18%, rgba(16, 21, 4, 0.12), transparent 28%),
+    linear-gradient(135deg, #f0ff74 0%, #c8ff18 46%, #98d91b 100%);
+  box-shadow: 0 30px 80px rgba(4, 6, 2, 0.34), 0 0 44px rgba(var(--accent-rgb), 0.14);
+}
+
+.partner-submit-hero--green::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(16, 21, 4, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 21, 4, 0.055) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+}
+
+.partner-submit-hero--green .partner-submit-hero__copy,
+.partner-submit-hero--green .partner-submit-hero__points {
+  position: relative;
+  z-index: 1;
 }
 
 .partner-submit-hero__copy--green {
@@ -8907,23 +8934,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .partner-submit-hero__points {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: grid;
+  gap: 12px;
 }
 
 .partner-submit-hero__points span {
   display: inline-flex;
   align-items: center;
-  min-height: 36px;
-  padding: 0 14px;
-  border: 1px solid rgba(17, 19, 13, 0.12);
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid rgba(16, 21, 4, 0.15);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.28);
-  color: rgba(17, 19, 13, 0.86);
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(16, 21, 4, 0.82);
+  font-family: var(--font-ui);
   font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -9584,8 +9613,15 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .partner-submit-hero--green {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    min-height: 0;
     padding: 22px 18px;
     border-radius: 24px;
+  }
+
+  .partner-submit-hero__points {
+    gap: 8px;
   }
 
   .partner-submit-hero__title--green {

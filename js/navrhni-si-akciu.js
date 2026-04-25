@@ -18,6 +18,9 @@
     wizard: document.getElementById('mz-wizard'),
     budgetInput: document.getElementById('mz-wizard-budget'),
     budgetValue: document.getElementById('mz-wizard-budget-value'),
+    budgetInsight: document.getElementById('mz-wizard-budget-insight'),
+    budgetBadge: document.getElementById('mz-wizard-budget-badge'),
+    budgetText: document.getElementById('mz-wizard-budget-text'),
     summary: document.getElementById('mz-wizard-summary'),
     offers: document.getElementById('mz-wizard-offers'),
     resultIntro: document.getElementById('mz-wizard-result-intro'),
@@ -36,6 +39,9 @@
     elements.wizard,
     elements.budgetInput,
     elements.budgetValue,
+    elements.budgetInsight,
+    elements.budgetBadge,
+    elements.budgetText,
     elements.summary,
     elements.offers,
     elements.resultIntro,
@@ -230,9 +236,45 @@
     updateWizardProgress();
   }
 
+  function getBudgetInsight(value) {
+    if (value < 500) {
+      return {
+        badge: 'Základ',
+        text: 'Menší program pre jednoduchú akciu',
+        recommended: false
+      };
+    }
+
+    if (value < 1000) {
+      return {
+        badge: 'Najčastejšia voľba ⭐',
+        text: 'Plnohodnotná zábava a lepšia atmosféra',
+        recommended: true
+      };
+    }
+
+    if (value < 2000) {
+      return {
+        badge: 'Silný zážitok',
+        text: 'Viac programu, viac energie, väčší efekt',
+        recommended: false
+      };
+    }
+
+    return {
+      badge: 'Prémiový event',
+      text: 'WOW zážitok, na ktorý sa nezabúda',
+      recommended: false
+    };
+  }
+
   function updateBudgetValue() {
     wizardState.budget = Number(elements.budgetInput.value);
     elements.budgetValue.textContent = wizardState.budget >= 5000 ? '5 000+ €' : formatEuro(wizardState.budget);
+    const insight = getBudgetInsight(wizardState.budget);
+    elements.budgetBadge.textContent = insight.badge;
+    elements.budgetText.textContent = insight.text;
+    elements.budgetInsight.classList.toggle('is-recommended', insight.recommended);
     const percent = ((wizardState.budget - 200) / (5000 - 200)) * 100;
     elements.budgetInput.style.background = `linear-gradient(90deg, var(--brand-primary) ${percent}%, #1e1e2e ${percent}%)`;
   }
@@ -574,6 +616,10 @@
       return [selected.event, getScopeDisplayLabel(), selected.packageName || selected.variant].filter(Boolean).join(' / ') || 'Akcia na mieru';
     }
 
+    function shouldShowBudgetAsDetail() {
+      return Boolean(selected.budget && !selected.price);
+    }
+
     let selectedEnergy = '';
 
     function applySelection(nextSelected, options = {}) {
@@ -607,7 +653,7 @@
         selected.audience ? `<span class="mz-followup-chip">${selected.audience}</span>` : '',
         selected.guests ? `<span class="mz-followup-chip">${selected.guests} ľudí</span>` : '',
         selected.energy ? `<span class="mz-followup-chip">${selected.energy}</span>` : '',
-        selected.budget ? `<span class="mz-followup-chip">rozpočet ${selected.budget}</span>` : '',
+        shouldShowBudgetAsDetail() ? `<span class="mz-followup-chip">rozpočet ${selected.budget}</span>` : '',
         selected.promo ? `<span class="mz-followup-chip">promo: ${selected.promo}</span>` : ''
       ].join('');
       hiddenEvent.value = selected.event;
@@ -715,7 +761,7 @@
       if (formData.address) items.push(formData.address);
       if (formData.audience) items.push(formatAudience(formData.audience));
       if (formData.energy) items.push(formatEnergy(formData.energy));
-      if (formData.budget) items.push(`rozpočet ${formData.budget}`);
+      if (formData.budget && shouldShowBudgetAsDetail()) items.push(`rozpočet ${formData.budget}`);
       if (formData.promo) items.push(`promo: ${formData.promo}`);
       if (formData.date) items.push(`termin ${formatDate(formData.date)}`);
 
@@ -737,7 +783,7 @@
         formData.guests ? `Počet ľudí: ${formData.guests}` : '',
         formData.audience ? `Pre koho je akcia: ${formatAudience(formData.audience)}` : '',
         formData.energy ? `Štýl energie: ${formatEnergy(formData.energy).replace('styl: ', '')}` : '',
-        formData.budget ? `Rozpočet: ${formData.budget}` : '',
+        formData.budget && shouldShowBudgetAsDetail() ? `Rozpočet: ${formData.budget}` : '',
         formData.promo ? `Promo: ${formData.promo}` : '',
         formData.name ? `Meno: ${formData.name}` : '',
         formData.contact ? `Kontakt: ${formData.contact}` : '',
@@ -794,11 +840,12 @@
             price: selected.price
           })
         : null;
-      const price = pricing ? pricing.priceText : (selected.price || 'Cena na vyziadanie');
+      const price = selected.price || (pricing ? pricing.priceText : 'Cena na vyziadanie');
+      const showPricingBreakdown = Boolean(pricing && !selected.price);
       const bullets = getOfferBullets();
       const contextItems = buildOfferContext(formData).concat(
         pricing ? pricing.reasons.slice(0, 3) : [],
-        ...getKompletSavingsContext(pricing)
+        ...(showPricingBreakdown ? getKompletSavingsContext(pricing) : [])
       );
 
       offerSelection.textContent = selection;
@@ -810,7 +857,7 @@
       offerContext.innerHTML = contextItems.length
         ? contextItems.map((item) => `<span class="mz-followup-offer__context-chip">${item}</span>`).join('')
         : '<span class="mz-followup-offer__context-chip">Finálne detaily doladíme spolu</span>';
-      offerNote.textContent = pricing && pricing.scope === 'komplet' && pricing.discountAmount
+      offerNote.textContent = showPricingBreakdown && pricing.scope === 'komplet' && pricing.discountAmount
         ? `Komplet akcia je cenovo zvýhodnená oproti samostatnému objednaniu služieb. Samostatne by ťa táto kombinácia vyšla na ${pricing.listPriceText}, teraz ju vidíš za ${pricing.exactPriceText}. Ak ti vyhovuje, môžeš pokračovať v objednávke alebo s nami doladiť posledné detaily.`
         : 'Ponuka bola pripravená podľa vybraného variantu a zadaných údajov. Ak ti vyhovuje, môžeš pokračovať v objednávke alebo s nami doladiť posledné detaily.';
       orderLink.href = createMailtoHref({ selection, price }, formData);
