@@ -62,9 +62,7 @@ function setAdminOrderFormStatus(type, message) {
 }
 
 function getAdminOrdersSupabase() {
-  const supabaseClient = window.MZSupabase?.getClient();
-  console.log('[admin-objednavky] supabase client exists', Boolean(supabaseClient), supabaseClient);
-  return supabaseClient;
+  return window.MZSupabase?.getClient();
 }
 
 function formatAdminOrderDate(value) {
@@ -253,9 +251,6 @@ async function saveAdminOrder(event) {
     const payload = getAdminOrderPayload();
     const orderId = adminOrderId?.value || '';
     setAdminOrderFormStatus('', 'Ukladám objednávku...');
-    console.log('[admin-objednavky] save payload', { orderId, payload });
-    console.log('supabaseClient', supabaseClient);
-    console.log('[admin-objednavky] rpc function name', 'create_client_order_for_email');
 
     const request = orderId
       ? supabaseClient.from('client_orders').update(payload).eq('id', orderId)
@@ -270,24 +265,7 @@ async function saveAdminOrder(event) {
         p_notes: payload.notes
       });
 
-    let data = null;
-    let error = null;
-
-    try {
-      const response = await request;
-      data = response.data;
-      error = response.error;
-    } catch (requestError) {
-      console.error('[admin-objednavky] request await failed', requestError);
-      throw requestError;
-    }
-
-    console.log('[admin-objednavky] save response', {
-      mode: orderId ? 'update' : 'rpc:create_client_order_for_email',
-      data,
-      error
-    });
-
+    const { error } = await request;
     if (error) throw new Error(error.message || 'Objednávku sa nepodarilo uložiť.');
 
     resetAdminOrderForm();

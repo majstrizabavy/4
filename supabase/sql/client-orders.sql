@@ -95,6 +95,86 @@ to authenticated
 using (public.is_admin())
 with check (public.is_admin());
 
+create or replace function public.create_client_order_for_email(
+  p_client_email text,
+  p_title text,
+  p_event_date date,
+  p_location text,
+  p_status text,
+  p_price numeric,
+  p_services text,
+  p_notes text
+)
+returns uuid
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_client_email text;
+  v_user_id uuid;
+  v_order_id uuid;
+begin
+  if not public.is_admin() then
+    raise exception 'Nemas opravnenie vytvarat klientske objednavky.';
+  end if;
+
+  v_client_email := lower(trim(p_client_email));
+
+  if v_client_email is null or v_client_email = '' then
+    raise exception 'Email klienta je povinny.';
+  end if;
+
+  select auth_user.id
+  into v_user_id
+  from auth.users as auth_user
+  where lower(auth_user.email) = v_client_email
+  limit 1;
+
+  if v_user_id is null then
+    raise exception 'Klient s emailom % este nie je registrovany.', p_client_email;
+  end if;
+
+  insert into public.client_orders (
+    user_id,
+    client_email,
+    title,
+    event_date,
+    location,
+    status,
+    price,
+    services,
+    notes
+  )
+  values (
+    v_user_id,
+    v_client_email,
+    p_title,
+    p_event_date,
+    p_location,
+    coalesce(nullif(p_status, ''), 'draft'),
+    p_price,
+    p_services,
+    p_notes
+  )
+  returning id into v_order_id;
+
+  return v_order_id;
+end;
+$$;
+
+revoke execute on function public.create_client_order_for_email(
+  text, text, date, text, text, numeric, text, text
+) from public;
+
+revoke execute on function public.create_client_order_for_email(
+  text, text, date, text, text, numeric, text, text
+) from anon;
+
+grant execute on function public.create_client_order_for_email(
+  text, text, date, text, text, numeric, text, text
+) to authenticated;
+
 -- Priklad:
 -- insert into public.admin_users(email) values ('tvoj-admin-email@example.com')
 -- on conflict (email) do nothing;
