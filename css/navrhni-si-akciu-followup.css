@@ -660,6 +660,13 @@
 }
 
 .mz-followup-input[type="date"] {
+  display: block;
+  inline-size: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
   color-scheme: dark;
   padding-right: 44px;
   background-image: url("../assets/images/ui/calendar-green.svg");
