@@ -797,7 +797,15 @@
 
     let selectedEnergy = '';
 
+    function revealFollowup() {
+      followupSection.hidden = false;
+    }
+
     function applySelection(nextSelected, options = {}) {
+      const incomingSelection = { ...(nextSelected || {}) };
+
+      revealFollowup();
+
       Object.assign(selected, {
         source: '',
         event: '',
@@ -814,7 +822,7 @@
         budget: '',
         promo: '',
         bullets: []
-      }, nextSelected || {});
+      }, incomingSelection);
 
       if (selected.event) {
         wizardState.eventName = selected.event;
