@@ -23,8 +23,13 @@
     budgetText: document.getElementById('mz-wizard-budget-text'),
     summary: document.getElementById('mz-wizard-summary'),
     offers: document.getElementById('mz-wizard-offers'),
+    eventNameInput: document.getElementById('mz-wizard-event-name'),
+    eventNameError: document.getElementById('mz-wizard-event-error'),
+    resultTitle: document.getElementById('mz-wizard-result-title'),
     resultIntro: document.getElementById('mz-wizard-result-intro'),
-    resetWizard: document.getElementById('mz-wizard-reset')
+    resetWizard: document.getElementById('mz-wizard-reset'),
+    exportCompare: document.getElementById('mz-export-compare'),
+    exportStage: document.getElementById('mz-export-stage')
   };
 
   const required = [
@@ -44,8 +49,13 @@
     elements.budgetText,
     elements.summary,
     elements.offers,
+    elements.eventNameInput,
+    elements.eventNameError,
+    elements.resultTitle,
     elements.resultIntro,
-    elements.resetWizard
+    elements.resetWizard,
+    elements.exportCompare,
+    elements.exportStage
   ].every(Boolean);
   if (!required) return;
 
@@ -61,12 +71,15 @@
   const wizardState = {
     step: 0,
     audience: '',
+    eventName: '',
     need: '',
     guests: '',
     vibe: '',
     budget: Number(elements.budgetInput.value) || 800,
     promo: ''
   };
+
+  let currentWizardOffers = [];
 
   const panels = Array.from(root.querySelectorAll('[data-wizard-step]'));
   const progressDots = Array.from(root.querySelectorAll('[data-step-dot]'));
@@ -92,6 +105,30 @@
     window.setTimeout(() => {
       elements.toast.classList.remove('mz-toast--show');
     }, 3000);
+  }
+
+  function sanitizeText(value) {
+    return String(value || '').replace(/[<>&"]/g, (char) => ({
+      '<': '&lt;',
+      '>': '&gt;',
+      '&': '&amp;',
+      '"': '&quot;'
+    }[char]));
+  }
+
+  function getEventName() {
+    return wizardState.eventName.trim() || 'Akcia na mieru';
+  }
+
+  function getDownloadName(prefix, extension) {
+    const slug = getEventName()
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .slice(0, 42) || 'akcia-na-mieru';
+    return `${prefix}-${slug}.${extension}`;
   }
 
   function showOverlay(brand, message) {
@@ -228,12 +265,25 @@
   }
 
   function showWizardStep(step) {
-    wizardState.step = Math.max(0, Math.min(step, 6));
+    wizardState.step = Math.max(0, Math.min(step, 7));
     panels.forEach((panel) => {
       panel.classList.toggle('is-active', Number(panel.dataset.wizardStep) === wizardState.step);
     });
-    elements.wizard.classList.toggle('mz-wizard--result', wizardState.step === 6);
+    elements.wizard.classList.toggle('mz-wizard--result', wizardState.step === 7);
     updateWizardProgress();
+  }
+
+  function validateEventName() {
+    const value = elements.eventNameInput.value.trim();
+    wizardState.eventName = value;
+    elements.eventNameInput.classList.toggle('is-invalid', !value);
+    elements.eventNameError.textContent = value ? '' : 'Prosím vyplňte názov akcie.';
+    if (!value) {
+      elements.eventNameInput.focus();
+      showToast('Prosím vyplňte názov akcie.');
+      return false;
+    }
+    return true;
   }
 
   function getBudgetInsight(value) {
@@ -312,6 +362,7 @@
   function renderWizardSummary() {
     const items = [
       wizardState.audience,
+      getEventName(),
       wizardState.need,
       wizardState.guests,
       wizardState.vibe,
@@ -356,6 +407,7 @@
         recommended: false
       }
     ];
+    currentWizardOffers = offers;
 
     elements.offers.innerHTML = offers.map((offer) => `
       <article class="mz-wizard-offer${offer.recommended ? ' is-recommended' : ''}">
@@ -384,10 +436,11 @@
   }
 
   function renderWizardResult() {
+    elements.resultTitle.textContent = getEventName();
     elements.resultIntro.textContent = 'Vybrali sme smer podľa tvojich odpovedí. Detailnú ponuku doladíme spolu.';
     renderWizardSummary();
     renderWizardOffers();
-    showWizardStep(6);
+    showWizardStep(7);
   }
 
   function finishWizard() {
@@ -419,7 +472,22 @@
   });
 
   nextButtons.forEach((button) => {
-    button.addEventListener('click', () => showWizardStep(wizardState.step + 1));
+    button.addEventListener('click', () => {
+      if (wizardState.step === 1 && !validateEventName()) return;
+      showWizardStep(wizardState.step + 1);
+    });
+  });
+
+  elements.eventNameInput.addEventListener('input', () => {
+    wizardState.eventName = elements.eventNameInput.value.trim();
+    elements.eventNameInput.classList.remove('is-invalid');
+    elements.eventNameError.textContent = '';
+  });
+
+  elements.eventNameInput.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter') return;
+    event.preventDefault();
+    if (validateEventName()) showWizardStep(2);
   });
 
   elements.budgetInput.addEventListener('input', updateBudgetValue);
@@ -427,6 +495,7 @@
     Object.assign(wizardState, {
       step: 0,
       audience: '',
+      eventName: '',
       need: '',
       guests: '',
       vibe: '',
@@ -434,6 +503,9 @@
       promo: ''
     });
     elements.budgetInput.value = '800';
+    elements.eventNameInput.value = '';
+    elements.eventNameError.textContent = '';
+    elements.eventNameInput.classList.remove('is-invalid');
     choiceButtons.forEach((button) => button.classList.remove('is-active'));
     updateBudgetValue();
     showWizardStep(0);
@@ -452,7 +524,7 @@
 
     if (typeof window.MZApplyFollowupSelection === 'function') {
       window.MZApplyFollowupSelection({
-        event: 'Akcia na mieru',
+        event: getEventName(),
         scope: wizardState.need,
         scopeLabel: wizardState.need,
         packageName,
@@ -470,6 +542,106 @@
     }
 
     showToast('Vybrany variant si mozeme doladit cez kontakt.');
+  });
+
+  function buildExportShell(modifier, innerHtml) {
+    return `
+      <section class="mz-export-card ${modifier}">
+        <header class="mz-export-card__header">
+          <div>
+            <div class="mz-export-card__brand">MAJSTRI ZÁBAVY</div>
+            <h1>${sanitizeText(getEventName())}</h1>
+          </div>
+          <div class="mz-export-card__stamp">orientačná ponuka</div>
+        </header>
+        ${innerHtml}
+        <footer class="mz-export-card__footer">
+          <strong>majstrizabavy.sk</strong>
+          <span>info@majstrizabavy.sk</span>
+          <span>Finálne detaily, termín a rozsah spolu doladíme osobne.</span>
+        </footer>
+      </section>
+    `;
+  }
+
+  function renderCompareExport() {
+    const summary = [
+      wizardState.audience,
+      wizardState.need,
+      wizardState.guests ? `${wizardState.guests} ľudí` : '',
+      wizardState.vibe,
+      `rozpočet ${formatEuro(wizardState.budget)}`,
+      wizardState.promo ? `promo: ${wizardState.promo}` : ''
+    ].filter(Boolean);
+
+    const offersHtml = currentWizardOffers.map((offer) => `
+      <article class="mz-export-offer${offer.recommended ? ' is-featured' : ''}">
+        <div class="mz-export-offer__tier">${sanitizeText(offer.tier)}</div>
+        <h2>${sanitizeText(offer.headline)}</h2>
+        <div class="mz-export-offer__price">${sanitizeText(offer.price)}</div>
+        <p>${sanitizeText(offer.desc)}</p>
+        <ul>
+          ${offer.bullets.map((item) => `<li>${sanitizeText(item)}</li>`).join('')}
+        </ul>
+      </article>
+    `).join('');
+
+    elements.exportStage.innerHTML = buildExportShell('mz-export-card--compare', `
+      <p class="mz-export-card__lead">3 varianty programu na mieru podľa tvojho zadania.</p>
+      <div class="mz-export-tags">${summary.map((item) => `<span>${sanitizeText(item)}</span>`).join('')}</div>
+      <div class="mz-export-offers">${offersHtml}</div>
+    `);
+    return elements.exportStage.firstElementChild;
+  }
+
+  async function exportElementToPdf(element, filename) {
+    if (!window.html2canvas && !window.html2pdf) {
+      showToast('Export PDF sa nepodarilo načítať. Skús to prosím ešte raz.');
+      return;
+    }
+
+    elements.exportStage.classList.add('is-rendering');
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+
+    try {
+      const JsPdfCtor = window.jspdf && window.jspdf.jsPDF;
+      if (window.html2canvas && JsPdfCtor) {
+        const canvas = await window.html2canvas(element, {
+          scale: 2,
+          backgroundColor: '#ffffff',
+          useCORS: true,
+          scrollX: 0,
+          scrollY: 0,
+          windowWidth: element.scrollWidth,
+          windowHeight: element.scrollHeight
+        });
+        const pdf = new JsPdfCtor('p', 'mm', 'a4');
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+        const imageWidth = pageWidth;
+        const imageHeight = Math.min(pageHeight, (canvas.height * imageWidth) / canvas.width);
+        const imageTop = (pageHeight - imageHeight) / 2;
+        pdf.addImage(canvas.toDataURL('image/jpeg', 0.98), 'JPEG', 0, imageTop, imageWidth, imageHeight);
+        pdf.save(filename);
+        return;
+      }
+
+      await window.html2pdf().set({
+        margin: 0,
+        filename,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, backgroundColor: '#ffffff', useCORS: true },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      }).from(element).save();
+    } finally {
+      elements.exportStage.classList.remove('is-rendering');
+    }
+  }
+
+  elements.exportCompare.addEventListener('click', async () => {
+    if (!currentWizardOffers.length) return;
+    const exportElement = renderCompareExport();
+    await exportElementToPdf(exportElement, getDownloadName('porovnanie-ponuk', 'pdf'));
   });
 
   buildOrbit();
@@ -517,6 +689,8 @@
     const orderLink = document.getElementById('mz-offer-order');
     const editButton = document.getElementById('mz-offer-edit');
     const contactLink = document.getElementById('mz-offer-contact');
+    const exportFinalPdf = document.getElementById('mz-export-final-pdf');
+    const exportFinalPng = document.getElementById('mz-export-final-png');
     const dateField = document.getElementById('mz-followup-date');
     const addressField = document.getElementById('mz-followup-address');
     const guestsField = document.getElementById('mz-followup-guests');
@@ -531,7 +705,7 @@
     };
     const params = new URLSearchParams(window.location.search);
 
-    if (!followup || !followupSection || !title || !description || !chips || !image || !hiddenEvent || !hiddenVariant || !hiddenPrice || !hiddenEnergy || !hiddenAudience || !hiddenGuests || !hiddenBudget || !hiddenPromo || !success || !offerBox || !offerSelection || !offerDescription || !offerPrice || !offerIncludes || !offerContext || !offerNote || !orderLink || !editButton || !contactLink || !dateField || !addressField || !guestsField || !audienceField || !nameField || !contactField || !noteField) return;
+    if (!followup || !followupSection || !title || !description || !chips || !image || !hiddenEvent || !hiddenVariant || !hiddenPrice || !hiddenEnergy || !hiddenAudience || !hiddenGuests || !hiddenBudget || !hiddenPromo || !success || !offerBox || !offerSelection || !offerDescription || !offerPrice || !offerIncludes || !offerContext || !offerNote || !orderLink || !editButton || !contactLink || !exportFinalPdf || !exportFinalPng || !dateField || !addressField || !guestsField || !audienceField || !nameField || !contactField || !noteField) return;
 
     const selected = {
       source: params.get('source') || '',
@@ -550,6 +724,7 @@
       promo: params.get('promo') || '',
       bullets: (params.get('bullets') || '').split('||').filter(Boolean)
     };
+    let latestFinalOffer = null;
 
     const fallbackBullets = {
       program: ['moderovanie alebo animacia', 'programovy blok podla vyberu', 'priestor na doladenie detailov'],
@@ -640,6 +815,10 @@
         promo: '',
         bullets: []
       }, nextSelected || {});
+
+      if (selected.event) {
+        wizardState.eventName = selected.event;
+      }
 
       title.textContent = getSelectionLabel();
       description.textContent = selected.source === 'quick-calc'
@@ -797,6 +976,66 @@
       return `mailto:info@majstrizabavy.sk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
     }
 
+    function renderFinalExport(offerData, formData, type) {
+      const context = buildOfferContext(formData);
+      const modifier = type === 'mobile' ? 'mz-export-card--mobile' : 'mz-export-card--final';
+      elements.exportStage.innerHTML = buildExportShell(modifier, `
+        <p class="mz-export-card__lead">${sanitizeText(offerData.selection)}</p>
+        <div class="mz-export-final-hero">
+          <div>
+            <span>Vybraná ponuka</span>
+            <strong>${sanitizeText(selected.packageName || selected.variant || 'MZ Show')}</strong>
+          </div>
+          <div>
+            <span>Predbežná cena</span>
+            <strong>${sanitizeText(offerData.price)}</strong>
+          </div>
+        </div>
+        <div class="mz-export-final-grid">
+          <section>
+            <h2>Čo je v cene</h2>
+            <ul>${offerData.bullets.map((item) => `<li>${sanitizeText(item)}</li>`).join('')}</ul>
+          </section>
+          <section>
+            <h2>Detaily zadania</h2>
+            <div class="mz-export-tags mz-export-tags--stacked">
+              ${context.map((item) => `<span>${sanitizeText(item)}</span>`).join('')}
+            </div>
+          </section>
+        </div>
+        <div class="mz-export-note">${sanitizeText(offerData.note)}</div>
+      `);
+      return elements.exportStage.firstElementChild;
+    }
+
+    async function exportElementToPng(element, filename) {
+      if (!window.html2canvas) {
+        showToast('Export PNG sa nepodarilo načítať. Skús to prosím ešte raz.');
+        return;
+      }
+
+      elements.exportStage.classList.add('is-rendering');
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+
+      try {
+        const canvas = await window.html2canvas(element, {
+          scale: 2,
+          backgroundColor: '#ffffff',
+          useCORS: true,
+          scrollX: 0,
+          scrollY: 0,
+          windowWidth: element.scrollWidth,
+          windowHeight: element.scrollHeight
+        });
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');
+        link.download = filename;
+        link.click();
+      } finally {
+        elements.exportStage.classList.remove('is-rendering');
+      }
+    }
+
     window.MZApplyFollowupSelection = function applyQuickSelection(data) {
       applySelection({
         source: 'quick-calc',
@@ -861,6 +1100,13 @@
         ? `Komplet akcia je cenovo zvýhodnená oproti samostatnému objednaniu služieb. Samostatne by ťa táto kombinácia vyšla na ${pricing.listPriceText}, teraz ju vidíš za ${pricing.exactPriceText}. Ak ti vyhovuje, môžeš pokračovať v objednávke alebo s nami doladiť posledné detaily.`
         : 'Ponuka bola pripravená podľa vybraného variantu a zadaných údajov. Ak ti vyhovuje, môžeš pokračovať v objednávke alebo s nami doladiť posledné detaily.';
       orderLink.href = createMailtoHref({ selection, price }, formData);
+      latestFinalOffer = {
+        selection,
+        price,
+        bullets,
+        note: offerNote.textContent,
+        formData
+      };
       success.hidden = true;
       offerBox.hidden = false;
 
@@ -909,6 +1155,24 @@
 
     contactLink.addEventListener('click', () => {
       showToast('Otvárame kontakt na Majstrov zábavy.');
+    });
+
+    exportFinalPdf.addEventListener('click', async () => {
+      if (!latestFinalOffer) {
+        showToast('Najprv si zobraz finálnu ponuku.');
+        return;
+      }
+      const exportElement = renderFinalExport(latestFinalOffer, latestFinalOffer.formData, 'pdf');
+      await exportElementToPdf(exportElement, getDownloadName('finalna-ponuka', 'pdf'));
+    });
+
+    exportFinalPng.addEventListener('click', async () => {
+      if (!latestFinalOffer) {
+        showToast('Najprv si zobraz finálnu ponuku.');
+        return;
+      }
+      const exportElement = renderFinalExport(latestFinalOffer, latestFinalOffer.formData, 'mobile');
+      await exportElementToPng(exportElement, getDownloadName('mobilna-ponuka', 'png'));
     });
   })();
 })();

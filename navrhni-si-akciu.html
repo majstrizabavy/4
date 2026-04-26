@@ -6,7 +6,7 @@
   <title>Majstri zábavy | Navrhni si akciu</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=20260421-footer-upgrade-1">
-  <link rel="stylesheet" href="css/navrhni-si-akciu.css?v=20260422-divider-1">
+  <link rel="stylesheet" href="css/navrhni-si-akciu.css?v=20260426-export-1">
   <link rel="stylesheet" href="css/navrhni-si-akciu-followup.css?v=20260422-followup-bridge-1">
 </head>
 <body>
@@ -85,16 +85,17 @@
       <div class="mz-wizard" id="mz-wizard">
         <div class="mz-wizard__head">
           <h2 class="mz-wizard__title"><span>NAVRHNI SI</span> AKCIU</h2>
-          <p class="mz-wizard__sub">5 klikov → 3 ponuky na mieru</p>
+          <p class="mz-wizard__sub">Prvý klik → názov akcie → 3 ponuky na mieru</p>
         </div>
 
         <div class="mz-wizard__progress" id="mz-wizard-progress" aria-label="Postup kalkulacky">
           <button type="button" class="mz-wizard__dot is-active" data-step-dot="0"><span>Pre koho</span></button>
-          <button type="button" class="mz-wizard__dot" data-step-dot="1"><span>Čo riešiť</span></button>
-          <button type="button" class="mz-wizard__dot" data-step-dot="2"><span>Ľudia</span></button>
-          <button type="button" class="mz-wizard__dot" data-step-dot="3"><span>Vibe</span></button>
-          <button type="button" class="mz-wizard__dot" data-step-dot="4"><span>Rozpočet</span></button>
-          <button type="button" class="mz-wizard__dot" data-step-dot="5"><span>Promo</span></button>
+          <button type="button" class="mz-wizard__dot" data-step-dot="1"><span>Akcia</span></button>
+          <button type="button" class="mz-wizard__dot" data-step-dot="2"><span>Čo riešiť</span></button>
+          <button type="button" class="mz-wizard__dot" data-step-dot="3"><span>Ľudia</span></button>
+          <button type="button" class="mz-wizard__dot" data-step-dot="4"><span>Vibe</span></button>
+          <button type="button" class="mz-wizard__dot" data-step-dot="5"><span>Rozpočet</span></button>
+          <button type="button" class="mz-wizard__dot" data-step-dot="6"><span>Promo</span></button>
         </div>
 
         <div class="mz-wizard__card">
@@ -121,6 +122,19 @@
           </div>
 
           <div class="mz-wizard__panel" data-wizard-step="1">
+            <h3 class="mz-wizard__question">O akú akciu ide?</h3>
+            <div class="mz-wizard-field">
+              <label class="mz-wizard-field__label" for="mz-wizard-event-name">Názov alebo typ akcie</label>
+              <input class="mz-wizard-field__input" id="mz-wizard-event-name" type="text" placeholder="napr. narodeninová akcia, Deň detí, karneval, program pre materskú školu, rozlúčka so škôlkou, Mikuláš, firemná akcia..." required>
+              <div class="mz-wizard-field__error" id="mz-wizard-event-error" aria-live="polite"></div>
+            </div>
+            <div class="mz-wizard__nav">
+              <button type="button" class="mz-wizard__nav-btn mz-wizard__nav-btn--ghost" data-wizard-back>← Späť</button>
+              <button type="button" class="mz-wizard__nav-btn" data-wizard-next>Ďalej →</button>
+            </div>
+          </div>
+
+          <div class="mz-wizard__panel" data-wizard-step="2">
             <h3 class="mz-wizard__question">Čo chceš riešiť?</h3>
             <div class="mz-choice-list">
               <button type="button" class="mz-choice mz-choice--row" data-field="need" data-value="Program">
@@ -143,7 +157,7 @@
             <button type="button" class="mz-wizard__back" data-wizard-back>← Späť</button>
           </div>
 
-          <div class="mz-wizard__panel" data-wizard-step="2">
+          <div class="mz-wizard__panel" data-wizard-step="3">
             <h3 class="mz-wizard__question">Koľko ľudí očakávaš?</h3>
             <div class="mz-choice-grid mz-choice-grid--guests">
               <button type="button" class="mz-choice" data-field="guests" data-value="do 50">
@@ -162,7 +176,7 @@
             <button type="button" class="mz-wizard__back" data-wizard-back>← Späť</button>
           </div>
 
-          <div class="mz-wizard__panel" data-wizard-step="3">
+          <div class="mz-wizard__panel" data-wizard-step="4">
             <h3 class="mz-wizard__question">Ako veľmi to chceš rozbehnúť?</h3>
             <div class="mz-choice-list">
               <button type="button" class="mz-choice mz-choice--row" data-field="vibe" data-value="Pohodová akcia">
@@ -190,7 +204,7 @@
             <button type="button" class="mz-wizard__back" data-wizard-back>← Späť</button>
           </div>
 
-          <div class="mz-wizard__panel" data-wizard-step="4">
+          <div class="mz-wizard__panel" data-wizard-step="5">
             <h3 class="mz-wizard__question">Rozpočet</h3>
             <div class="mz-wizard-budget">
               <div class="mz-wizard-budget__value" id="mz-wizard-budget-value">800 €</div>
@@ -210,7 +224,7 @@
             </div>
           </div>
 
-          <div class="mz-wizard__panel" data-wizard-step="5">
+          <div class="mz-wizard__panel" data-wizard-step="6">
             <h3 class="mz-wizard__question">Chceš aj promo k akcii?</h3>
             <div class="mz-choice-grid mz-choice-grid--promo">
               <button type="button" class="mz-choice" data-field="promo" data-value="Áno">
@@ -225,14 +239,15 @@
             <button type="button" class="mz-wizard__back" data-wizard-back>← Späť</button>
           </div>
 
-          <div class="mz-wizard__panel" data-wizard-step="6">
+          <div class="mz-wizard__panel" data-wizard-step="7">
             <div class="mz-wizard-result">
               <div class="mz-wizard-result__eyebrow">Tvoje ponuky</div>
-              <h3 class="mz-wizard-result__title">3 varianty na mieru</h3>
+              <h3 class="mz-wizard-result__title" id="mz-wizard-result-title">3 varianty na mieru</h3>
               <p class="mz-wizard-result__intro" id="mz-wizard-result-intro">Vybrali sme smer podľa tvojich odpovedí. Detailnú ponuku doladíme spolu.</p>
               <div class="mz-wizard-summary" id="mz-wizard-summary"></div>
               <div class="mz-wizard-offers" id="mz-wizard-offers"></div>
               <div class="mz-wizard-result__actions">
+                <button type="button" class="mz-wizard__nav-btn mz-wizard__nav-btn--export" id="mz-export-compare">Stiahnuť porovnanie 3 ponúk (PDF)</button>
                 <button type="button" class="mz-wizard__nav-btn mz-wizard__nav-btn--ghost" id="mz-wizard-reset">Zmeniť</button>
                 <a href="kontakt.html#kontakt" class="mz-wizard__nav-btn mz-wizard__nav-btn--link">Poradiť sa</a>
               </div>
@@ -361,6 +376,8 @@
             <p class="mz-followup-offer__note" id="mz-offer-note">Akciu si mozes objednat, alebo sa s nami spoj pre vysvetlenie detailov.</p>
 
             <div class="mz-followup-offer__actions">
+              <button type="button" class="btn-ghost mz-followup-offer__action" id="mz-export-final-pdf">Stiahnuť finálnu ponuku (PDF)</button>
+              <button type="button" class="btn-ghost mz-followup-offer__action" id="mz-export-final-png">Stiahnuť mobilnú verziu (PNG)</button>
               <a href="mailto:info@majstrizabavy.sk" class="btn-primary mz-followup-offer__action" id="mz-offer-order">Objednat</a>
               <button type="button" class="btn-ghost mz-followup-offer__action" id="mz-offer-edit">Upravit zadanie</button>
               <a href="kontakt.html#kontakt" class="btn-ghost mz-followup-offer__action" id="mz-offer-contact">Spoj sa s nami</a>
@@ -405,8 +422,13 @@
     </div>
   </footer>
 
+  <div class="mz-export-stage" id="mz-export-stage" aria-hidden="true"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="js/mz-cennik.js?v=20260405-komplet-discount-1"></script>
-  <script src="js/navrhni-si-akciu.js?v=20260422-divider-1"></script>
+  <script src="js/navrhni-si-akciu.js?v=20260426-export-1"></script>
   <script src="js/main.js?v=20260324-orbit-labels-1"></script>
 </body>
 </html>
