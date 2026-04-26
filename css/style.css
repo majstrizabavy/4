@@ -59,6 +59,16 @@ body {
   cursor: none; /* SkrytĂ˝ kurzor â€” pouĹľĂ­vame vlastnĂ˝ */
 }
 
+body.mobile-menu-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* Ĺ um na pozadĂ­ (jemnĂ˝ efekt) */
 body::before {
   content: '';

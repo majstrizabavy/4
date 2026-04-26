@@ -343,12 +343,16 @@ function navigateTo(target) {
 
 function toggleMobile() {
   const menu = document.getElementById('mobileMenu');
-  if (menu) menu.classList.toggle('open');
+  if (!menu) return;
+
+  const isOpen = menu.classList.toggle('open');
+  document.body.classList.toggle('mobile-menu-open', isOpen);
 }
 
 function closeMobile() {
   const menu = document.getElementById('mobileMenu');
   if (menu) menu.classList.remove('open');
+  document.body.classList.remove('mobile-menu-open');
 }
 
 document.addEventListener('click', (event) => {
