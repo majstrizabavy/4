@@ -924,7 +924,12 @@
 
     function formatDate(value) {
       if (!value) return '';
-      const parsed = new Date(`${value}T12:00:00`);
+      const normalizedValue = String(value).trim();
+      const skDate = normalizedValue.match(/^(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})$/);
+      const isoValue = skDate
+        ? `${skDate[3]}-${skDate[2].padStart(2, '0')}-${skDate[1].padStart(2, '0')}`
+        : normalizedValue;
+      const parsed = new Date(`${isoValue}T12:00:00`);
       if (Number.isNaN(parsed.getTime())) return value;
       return parsed.toLocaleDateString('sk-SK', {
         day: 'numeric',

@@ -659,25 +659,17 @@
   min-width: 0;
 }
 
-.mz-followup-input[type="date"] {
+.mz-followup-input--date {
   display: block;
   inline-size: 100%;
   min-inline-size: 0;
   max-inline-size: 100%;
   box-sizing: border-box;
-  appearance: none;
-  -webkit-appearance: none;
-  color-scheme: dark;
   padding-right: 44px;
   background-image: url("../assets/images/ui/calendar-green.svg");
   background-repeat: no-repeat;
   background-position: right 14px center;
   background-size: 18px 18px;
-}
-
-.mz-followup-input[type="date"]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  opacity: 0;
 }
 
 .mz-followup-offer__title,
