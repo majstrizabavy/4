@@ -665,11 +665,21 @@
   min-inline-size: 0;
   max-inline-size: 100%;
   box-sizing: border-box;
-  padding-right: 44px;
-  background-image: url("../assets/images/ui/calendar-green.svg");
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-  background-size: 18px 18px;
+  padding-right: 12px;
+  background-color: #12141f;
+  color: #ffffff;
+  color-scheme: dark;
+}
+
+.mz-followup-input--date::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.95;
+  filter: invert(1) brightness(1.35);
+}
+
+.mz-followup-input--date::-webkit-datetime-edit,
+.mz-followup-input--date::-webkit-datetime-edit-fields-wrapper {
+  color: #ffffff;
 }
 
 .mz-followup-offer__title,

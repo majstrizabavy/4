@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=20260426-mobile-overflow-1">
   <link rel="stylesheet" href="css/navrhni-si-akciu.css?v=20260426-mobile-overflow-1">
-  <link rel="stylesheet" href="css/navrhni-si-akciu-followup.css?v=20260426-date-text-1">
+  <link rel="stylesheet" href="css/navrhni-si-akciu-followup.css?v=20260427-date-picker-1">
 </head>
 <body>
   <div id="cursor"></div>
@@ -281,7 +281,7 @@
             <div class="mz-followup-grid">
               <div class="mz-followup-field">
                 <label class="mz-followup-label" for="mz-followup-date">Datum akcie</label>
-                <input class="mz-followup-input mz-followup-input--date" id="mz-followup-date" name="event_date" type="text" inputmode="numeric" autocomplete="off" placeholder="napr. 15.06.2026" required>
+                <input class="mz-followup-input mz-followup-input--date" id="mz-followup-date" name="event_date" type="date" required>
               </div>
 
               <div class="mz-followup-field">
@@ -321,8 +321,13 @@
               </div>
 
               <div class="mz-followup-field">
-                <label class="mz-followup-label" for="mz-followup-contact">Email alebo telefon</label>
-                <input class="mz-followup-input" id="mz-followup-contact" name="contact" type="text" placeholder="Email alebo telefon" required>
+                <label class="mz-followup-label" for="mz-followup-contact">Email</label>
+                <input class="mz-followup-input" id="mz-followup-contact" name="contact_email" type="email" placeholder="email@domena.sk" autocomplete="email" required>
+              </div>
+
+              <div class="mz-followup-field">
+                <label class="mz-followup-label" for="mz-followup-phone">Telefon</label>
+                <input class="mz-followup-input" id="mz-followup-phone" name="contact_phone" type="tel" placeholder="+421 900 000 000" autocomplete="tel">
               </div>
 
               <div class="mz-followup-field mz-followup-field--full">
@@ -384,7 +389,7 @@
             </div>
 
             <div class="mz-followup-success" id="mz-followup-success" hidden>
-              Otvarame predvyplneny email s ponukou. Ak sa neotvori, pouzi tlacidlo Spoj sa s nami.
+              Dopyt mame prijaty. Po kontrole ti posleme dalsi krok na email.
             </div>
           </section>
         </div>
@@ -427,8 +432,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/mz-cennik.js?v=20260405-komplet-discount-1"></script>
-  <script src="js/navrhni-si-akciu.js?v=20260426-followup-gate-1"></script>
+  <script src="js/supabase-config.js?v=20260427-client-requests-1"></script>
+  <script src="js/navrhni-si-akciu.js?v=20260427-date-input-1"></script>
   <script src="js/main.js?v=20260324-orbit-labels-1"></script>
 </body>
 </html>

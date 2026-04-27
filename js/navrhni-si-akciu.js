@@ -697,6 +697,7 @@
     const audienceField = document.getElementById('mz-followup-audience');
     const nameField = document.getElementById('mz-followup-name');
     const contactField = document.getElementById('mz-followup-contact');
+    const phoneField = document.getElementById('mz-followup-phone');
     const noteField = document.getElementById('mz-followup-note');
     const transferredFields = {
       guests: followup ? followup.querySelector('[data-followup-field="guests"]') : null,
@@ -705,7 +706,7 @@
     };
     const params = new URLSearchParams(window.location.search);
 
-    if (!followup || !followupSection || !title || !description || !chips || !image || !hiddenEvent || !hiddenVariant || !hiddenPrice || !hiddenEnergy || !hiddenAudience || !hiddenGuests || !hiddenBudget || !hiddenPromo || !success || !offerBox || !offerSelection || !offerDescription || !offerPrice || !offerIncludes || !offerContext || !offerNote || !orderLink || !editButton || !contactLink || !exportFinalPdf || !exportFinalPng || !dateField || !addressField || !guestsField || !audienceField || !nameField || !contactField || !noteField) return;
+    if (!followup || !followupSection || !title || !description || !chips || !image || !hiddenEvent || !hiddenVariant || !hiddenPrice || !hiddenEnergy || !hiddenAudience || !hiddenGuests || !hiddenBudget || !hiddenPromo || !success || !offerBox || !offerSelection || !offerDescription || !offerPrice || !offerIncludes || !offerContext || !offerNote || !orderLink || !editButton || !contactLink || !exportFinalPdf || !exportFinalPng || !dateField || !addressField || !guestsField || !audienceField || !nameField || !contactField || !phoneField || !noteField) return;
 
     const selected = {
       source: params.get('source') || '',
@@ -932,11 +933,7 @@
 
     function formatDate(value) {
       if (!value) return '';
-      const normalizedValue = String(value).trim();
-      const skDate = normalizedValue.match(/^(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})$/);
-      const isoValue = skDate
-        ? `${skDate[3]}-${skDate[2].padStart(2, '0')}-${skDate[1].padStart(2, '0')}`
-        : normalizedValue;
+      const isoValue = normalizeDateForStorage(value);
       const parsed = new Date(`${isoValue}T12:00:00`);
       if (Number.isNaN(parsed.getTime())) return value;
       return parsed.toLocaleDateString('sk-SK', {
@@ -944,6 +941,22 @@
         month: 'long',
         year: 'numeric'
       });
+    }
+
+    function normalizeDateForStorage(value) {
+      const normalizedValue = String(value || '').trim();
+      if (!normalizedValue) return '';
+
+      if (/^\d{4}-\d{2}-\d{2}$/.test(normalizedValue)) {
+        return normalizedValue;
+      }
+
+      const skDate = normalizedValue.match(/^(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})$/);
+      if (skDate) {
+        return `${skDate[3]}-${skDate[2].padStart(2, '0')}-${skDate[1].padStart(2, '0')}`;
+      }
+
+      return normalizedValue;
     }
 
     function buildOfferContext(formData) {
@@ -958,6 +971,57 @@
       if (formData.date) items.push(`termin ${formatDate(formData.date)}`);
 
       return items.filter(Boolean);
+    }
+
+    function getRequestSupabaseClient() {
+      try {
+        const client = window.MZSupabase?.getClient?.() || null;
+        if (!client) {
+          console.error('[MZ client request] Supabase client is not available. Check supabase-js and js/supabase-config.js loading order.');
+        }
+        return client;
+      } catch (error) {
+        console.error('[MZ client request] Supabase client initialization failed:', error);
+        return null;
+      }
+    }
+
+    function buildRequestPayload(offerData, formData) {
+      return {
+        status: 'pending',
+        contact_name: formData.name,
+        contact_email: formData.email.toLowerCase(),
+        contact_phone: formData.phone || null,
+        title: selected.event || getEventName(),
+        event_date: normalizeDateForStorage(formData.date) || null,
+        location: formData.address || null,
+        audience: formData.audience || null,
+        guest_count: formData.guests || null,
+        energy: formData.energy || null,
+        budget: formData.budget || null,
+        promo: formData.promo || null,
+        selected_variant: selected.packageName || selected.variant || null,
+        selected_price: offerData.price || null,
+        services: offerData.bullets.join('\n') || null,
+        notes: formData.note || null
+      };
+    }
+
+    async function submitClientRequest(offerData, formData) {
+      const supabaseClient = getRequestSupabaseClient();
+      if (!supabaseClient) {
+        throw new Error('Databazove odoslanie nie je dostupne.');
+      }
+
+      const payload = buildRequestPayload(offerData, formData);
+      const { error } = await supabaseClient
+        .from('client_requests')
+        .insert(payload);
+
+      if (error) {
+        console.error('[MZ client request] Insert into client_requests failed:', error);
+        throw new Error(error.message || 'Dopyt sa nepodarilo ulozit.');
+      }
     }
 
     function createMailtoHref(offerData, formData) {
@@ -978,7 +1042,8 @@
         formData.budget && shouldShowBudgetAsDetail() ? `Rozpočet: ${formData.budget}` : '',
         formData.promo ? `Promo: ${formData.promo}` : '',
         formData.name ? `Meno: ${formData.name}` : '',
-        formData.contact ? `Kontakt: ${formData.contact}` : '',
+        formData.email ? `Email: ${formData.email}` : '',
+        formData.phone ? `Telefon: ${formData.phone}` : '',
         formData.note ? `Poznámka: ${formData.note}` : '',
         '',
         'Prosím o doladenie detailov.',
@@ -1068,7 +1133,7 @@
 
     function renderOfferResult() {
       const formData = {
-        date: dateField.value,
+        date: normalizeDateForStorage(dateField.value),
         address: addressField.value.trim(),
         guests: selected.guests || guestsField.value.trim(),
         audience: selected.audience || audienceField.value,
@@ -1076,7 +1141,9 @@
         budget: selected.budget,
         promo: selected.promo,
         name: nameField.value.trim(),
-        contact: contactField.value.trim(),
+        email: contactField.value.trim(),
+        phone: phoneField.value.trim(),
+        contact: [contactField.value.trim(), phoneField.value.trim()].filter(Boolean).join(' / '),
         note: noteField.value.trim()
       };
 
@@ -1161,9 +1228,26 @@
       followupSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
-    orderLink.addEventListener('click', () => {
-      success.hidden = false;
-      showToast('Otvárame predvyplnený email s objednávkou.');
+    orderLink.addEventListener('click', async (event) => {
+      if (!latestFinalOffer) return;
+
+      event.preventDefault();
+      orderLink.setAttribute('aria-busy', 'true');
+      orderLink.textContent = 'Odosielam dopyt...';
+
+      try {
+        await submitClientRequest(latestFinalOffer, latestFinalOffer.formData);
+        success.hidden = false;
+        showToast('Dopyt je odoslaný. Ozveme sa po kontrole.');
+      } catch (error) {
+        console.error('[MZ client request] Falling back to email because request save failed:', error);
+        window.location.href = orderLink.href;
+        success.hidden = false;
+        showToast('Otvárame predvyplnený email s objednávkou.');
+      } finally {
+        orderLink.removeAttribute('aria-busy');
+        orderLink.textContent = 'Objednať / odoslať dopyt';
+      }
     });
 
     contactLink.addEventListener('click', () => {

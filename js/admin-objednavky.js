@@ -19,12 +19,21 @@ const adminOrderPrice = document.getElementById('adminOrderPrice');
 const adminOrderServices = document.getElementById('adminOrderServices');
 const adminOrderNotes = document.getElementById('adminOrderNotes');
 const adminOrderResetButton = document.getElementById('adminOrderResetButton');
+const adminOrderSaveButton = document.getElementById('adminOrderSaveButton');
 const adminOrdersSearch = document.getElementById('adminOrdersSearch');
 const adminOrdersList = document.getElementById('adminOrdersList');
 const adminOrdersEmpty = document.getElementById('adminOrdersEmpty');
+const adminRequestsBadge = document.getElementById('adminRequestsBadge');
+const adminRequestsList = document.getElementById('adminRequestsList');
+const adminRequestsEmpty = document.getElementById('adminRequestsEmpty');
 
 let adminOrdersSession = null;
 let adminClientOrders = [];
+let adminClientRequests = [];
+let adminPriceWasEdited = false;
+let adminManualPriceValue = '';
+const adminOrderSaveButtonLabel = adminOrderSaveButton?.textContent || 'Ulozit objednavku';
+const ADMIN_SAVE_TIMEOUT_MS = 25000;
 
 const ADMIN_CLIENT_ORDER_SELECT = [
   'id',
@@ -38,6 +47,29 @@ const ADMIN_CLIENT_ORDER_SELECT = [
   'notes',
   'created_at',
   'updated_at'
+].join(', ');
+
+const ADMIN_CLIENT_REQUEST_SELECT = [
+  'id',
+  'status',
+  'contact_name',
+  'contact_email',
+  'contact_phone',
+  'title',
+  'event_date',
+  'location',
+  'audience',
+  'guest_count',
+  'energy',
+  'budget',
+  'promo',
+  'selected_variant',
+  'selected_price',
+  'services',
+  'notes',
+  'admin_note',
+  'created_at',
+  'approved_order_id'
 ].join(', ');
 
 const ADMIN_ORDER_STATUS_LABELS = {
@@ -63,6 +95,27 @@ function setAdminOrderFormStatus(type, message) {
 
 function getAdminOrdersSupabase() {
   return window.MZSupabase?.getClient();
+}
+
+function setAdminOrderSavingState(isSaving) {
+  if (!adminOrderSaveButton) return;
+  adminOrderSaveButton.disabled = isSaving;
+  adminOrderSaveButton.textContent = isSaving ? 'Ukladam objednavku...' : adminOrderSaveButtonLabel;
+}
+
+async function withAdminSaveTimeout(requestPromise, contextLabel) {
+  let timeoutId = null;
+  const timeoutPromise = new Promise((_, reject) => {
+    timeoutId = window.setTimeout(() => {
+      reject(new Error(`${contextLabel} trva prilis dlho. Skontroluj konzolu a Supabase RPC/policies.`));
+    }, ADMIN_SAVE_TIMEOUT_MS);
+  });
+
+  try {
+    return await Promise.race([requestPromise, timeoutPromise]);
+  } finally {
+    if (timeoutId) window.clearTimeout(timeoutId);
+  }
 }
 
 function formatAdminOrderDate(value) {
@@ -96,6 +149,9 @@ function resetAdminOrderForm() {
   if (!adminOrderForm) return;
 
   adminOrderForm.reset();
+  adminOrderForm.removeAttribute('data-source-request-id');
+  adminPriceWasEdited = false;
+  adminManualPriceValue = '';
   if (adminOrderId) adminOrderId.value = '';
   if (adminOrderStatus) adminOrderStatus.value = 'draft';
   if (adminOrderFormMode) adminOrderFormMode.textContent = 'Nová objednávka';
@@ -108,6 +164,7 @@ function renderClientEmailOptions() {
   const emails = Array.from(new Set(
     adminClientOrders
       .map((order) => String(order.client_email || '').trim().toLowerCase())
+      .concat(adminClientRequests.map((request) => String(request.contact_email || '').trim().toLowerCase()))
       .filter(Boolean)
   )).sort();
 
@@ -172,6 +229,111 @@ function renderAdminOrderCard(order) {
   `;
 }
 
+function formatRequestCreatedAt(value) {
+  if (!value) return 'Bez dátumu';
+  const parsedDate = new Date(value);
+  if (Number.isNaN(parsedDate.getTime())) return String(value).slice(0, 10);
+
+  return new Intl.DateTimeFormat('sk-SK', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  }).format(parsedDate);
+}
+
+function buildRequestServices(request) {
+  return [
+    request.selected_variant ? `Variant: ${request.selected_variant}` : '',
+    request.selected_price ? `Predbezna cena: ${request.selected_price}` : '',
+    request.services || ''
+  ].filter(Boolean).join('\n');
+}
+
+function buildRequestNotes(request) {
+  return [
+    request.notes ? `Poznamka klienta: ${request.notes}` : '',
+    request.audience ? `Pre koho: ${request.audience}` : '',
+    request.guest_count ? `Pocet ludi: ${request.guest_count}` : '',
+    request.energy ? `Energia: ${request.energy}` : '',
+    request.budget ? `Rozpocet: ${request.budget}` : '',
+    request.promo ? `Promo: ${request.promo}` : '',
+    request.contact_phone ? `Telefon: ${request.contact_phone}` : ''
+  ].filter(Boolean).join('\n');
+}
+
+function renderAdminRequestCard(request) {
+  const safeTitle = window.MZSupabase.escapeHtml(request.title || 'Bez nazvu');
+  const safeEmail = window.MZSupabase.escapeHtml(request.contact_email || '');
+  const safeName = window.MZSupabase.escapeHtml(request.contact_name || 'Bez mena');
+  const safePhone = window.MZSupabase.escapeHtml(request.contact_phone || 'Telefon nie je zadany');
+  const safeLocation = window.MZSupabase.escapeHtml(request.location || 'Miesto nie je zadane');
+  const safeVariant = window.MZSupabase.escapeHtml(request.selected_variant || 'Variant nie je zadany');
+  const safePrice = window.MZSupabase.escapeHtml(request.selected_price || 'Cena nie je zadana');
+  const safeNotes = window.MZSupabase.escapeHtml(buildRequestNotes(request) || 'Bez poznamky').replace(/\n/g, '<br>');
+  const safeServices = window.MZSupabase.escapeHtml(buildRequestServices(request) || 'Sluzby nie su zadane').replace(/\n/g, '<br>');
+  const statusLabel = request.status === 'approved' ? 'Schvalene' : request.status === 'rejected' ? 'Zamietnute' : 'Caka';
+
+  return `
+    <article class="admin-event-card admin-request-card">
+      <div class="admin-event-card__main">
+        <div class="admin-event-card__top">
+          <div>
+            <div class="admin-event-card__eyebrow">${window.MZSupabase.escapeHtml(formatRequestCreatedAt(request.created_at))} · ${safeEmail}</div>
+            <h3 class="admin-event-card__title">${safeTitle}</h3>
+          </div>
+          <span class="admin-status-pill is-${window.MZSupabase.escapeHtml(request.status || 'pending')}">${statusLabel}</span>
+        </div>
+
+        <div class="admin-event-card__meta-grid">
+          <div><strong>Klient:</strong> ${safeName}</div>
+          <div><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></div>
+          <div><strong>Telefon:</strong> ${safePhone}</div>
+          <div><strong>Datum:</strong> ${window.MZSupabase.escapeHtml(formatAdminOrderDate(request.event_date))}</div>
+          <div><strong>Miesto:</strong> ${safeLocation}</div>
+          <div><strong>Variant:</strong> ${safeVariant}</div>
+          <div><strong>Predbezna cena:</strong> ${safePrice}</div>
+        </div>
+
+        <div class="admin-order-card__text-grid">
+          <div class="admin-event-card__description">
+            <div class="admin-event-card__label">Sluzby</div>
+            <p>${safeServices}</p>
+          </div>
+          <div class="admin-event-card__description">
+            <div class="admin-event-card__label">Detaily</div>
+            <p>${safeNotes}</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="admin-event-card__side admin-order-card__side">
+        <button type="button" class="btn-primary admin-action-btn" data-admin-request-prepare="${request.id}">Pripravit objednavku</button>
+        <button type="button" class="btn-ghost admin-action-btn admin-action-btn--danger" data-admin-request-reject="${request.id}">Zamietnut</button>
+      </aside>
+    </article>
+  `;
+}
+
+function renderAdminRequests() {
+  if (!adminRequestsList || !adminRequestsEmpty) return;
+
+  const pendingRequests = adminClientRequests.filter((request) => request.status === 'pending');
+  if (adminRequestsBadge) adminRequestsBadge.textContent = `${pendingRequests.length} caka`;
+  renderClientEmailOptions();
+
+  if (!pendingRequests.length) {
+    adminRequestsList.innerHTML = '';
+    adminRequestsEmpty.hidden = false;
+    adminRequestsEmpty.textContent = 'Zatial tu nie su ziadne nove dopyty.';
+    return;
+  }
+
+  adminRequestsEmpty.hidden = true;
+  adminRequestsList.innerHTML = pendingRequests.map((request) => renderAdminRequestCard(request)).join('');
+}
+
 function renderAdminOrders() {
   if (!adminOrdersList || !adminOrdersEmpty) return;
 
@@ -193,7 +355,11 @@ function renderAdminOrders() {
 
 async function loadAdminOrders() {
   const supabaseClient = getAdminOrdersSupabase();
-  if (!supabaseClient) return;
+  if (!supabaseClient) {
+    console.error('[MZ admin orders] Supabase client is not available.');
+    setAdminOrderFormStatus('error', 'Supabase klient sa nepodarilo nacitat. Obnov stranku a skus znova.');
+    return;
+  }
 
   const { data, error } = await supabaseClient
     .from('client_orders')
@@ -208,27 +374,67 @@ async function loadAdminOrders() {
   renderAdminOrders();
 }
 
+async function loadAdminRequests() {
+  const supabaseClient = getAdminOrdersSupabase();
+  if (!supabaseClient || !adminRequestsList) return;
+
+  const { data, error } = await supabaseClient
+    .from('client_requests')
+    .select(ADMIN_CLIENT_REQUEST_SELECT)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    adminClientRequests = [];
+    renderAdminRequests();
+    setAdminOrdersStatus('error', 'Dopyty sa nepodarilo nacitat. Skontroluj, ci je spusteny SQL skript client-requests.sql.');
+    return;
+  }
+
+  adminClientRequests = data || [];
+  renderAdminRequests();
+}
+
 async function refreshAdminOrdersSafely() {
   try {
     await loadAdminOrders();
+    await loadAdminRequests();
   } catch (error) {
+    console.error('[MZ admin orders] Refresh failed:', error);
     setAdminOrdersStatus('error', error.message || 'Objednávky sa nepodarilo načítať.');
   }
 }
 
-function getAdminOrderPayload() {
+function getAdminOrderPriceValue({ requireFinalPrice = false } = {}) {
   const clientEmail = String(adminOrderClientEmail?.value || '').trim().toLowerCase();
   const title = String(adminOrderTitle?.value || '').trim();
   const rawPrice = String(adminOrderPrice?.value || '').trim();
-  const priceValue = rawPrice ? Number(rawPrice) : null;
 
   if (!clientEmail || !title) {
     throw new Error('Vyplň email klienta a názov akcie.');
   }
 
+  if (!rawPrice) {
+    if (requireFinalPrice) {
+      throw new Error('Zadaj finálnu cenu.');
+    }
+
+    return null;
+  }
+
+  const normalizedPrice = rawPrice.replace(',', '.');
+  const priceValue = Number(normalizedPrice);
+
   if (rawPrice && !Number.isFinite(priceValue)) {
     throw new Error('Cena musí byť číslo.');
   }
+
+  return priceValue;
+}
+
+function getAdminOrderPayload({ requireFinalPrice = false } = {}) {
+  const clientEmail = String(adminOrderClientEmail?.value || '').trim().toLowerCase();
+  const title = String(adminOrderTitle?.value || '').trim();
+  const priceValue = getAdminOrderPriceValue({ requireFinalPrice });
 
   return {
     client_email: clientEmail,
@@ -245,16 +451,44 @@ function getAdminOrderPayload() {
 async function saveAdminOrder(event) {
   event.preventDefault();
   const supabaseClient = getAdminOrdersSupabase();
-  if (!supabaseClient) return;
+  if (!supabaseClient) {
+    console.error('[MZ admin orders] Supabase client is not available.');
+    setAdminOrderFormStatus('error', 'Supabase klient sa nepodarilo nacitat. Obnov stranku a skus znova.');
+    return;
+  }
+
+  setAdminOrderSavingState(true);
 
   try {
-    const payload = getAdminOrderPayload();
     const orderId = adminOrderId?.value || '';
-    setAdminOrderFormStatus('', 'Ukladám objednávku...');
+    const sourceRequestId = adminOrderForm?.dataset.sourceRequestId || '';
+    const isApprovingRequest = Boolean(sourceRequestId && !orderId);
+    const payload = getAdminOrderPayload({ requireFinalPrice: isApprovingRequest });
+    const saveMode = sourceRequestId && !orderId
+      ? 'approve_client_request'
+      : orderId
+        ? 'update_client_order'
+        : 'create_client_order_for_email';
 
-    const request = orderId
-      ? supabaseClient.from('client_orders').update(payload).eq('id', orderId)
-      : supabaseClient.rpc('create_client_order_for_email', {
+    setAdminOrderFormStatus('', 'Ukladam objednavku...');
+
+    let request;
+    if (sourceRequestId && !orderId) {
+      request = supabaseClient.rpc('approve_client_request', {
+        p_request_id: sourceRequestId,
+        p_title: payload.title,
+        p_event_date: payload.event_date,
+        p_location: payload.location,
+        p_status: payload.status,
+        p_price: payload.price,
+        p_services: payload.services,
+        p_notes: payload.notes,
+        p_admin_note: null
+      });
+    } else if (orderId) {
+      request = supabaseClient.from('client_orders').update(payload).eq('id', orderId);
+    } else {
+      request = supabaseClient.rpc('create_client_order_for_email', {
         p_client_email: payload.client_email,
         p_title: payload.title,
         p_event_date: payload.event_date,
@@ -264,18 +498,37 @@ async function saveAdminOrder(event) {
         p_services: payload.services,
         p_notes: payload.notes
       });
+    }
 
-    const { error } = await request;
-    if (error) throw new Error(error.message || 'Objednávku sa nepodarilo uložiť.');
+    const { data, error } = await withAdminSaveTimeout(request, saveMode);
+
+    if (error) {
+      console.error('[MZ admin orders] Supabase save failed:', {
+        mode: saveMode,
+        error,
+        sourceRequestId,
+        orderId,
+        clientEmail: payload.client_email
+      });
+
+      if (String(error.message || '').toLowerCase().includes('este nie je registrovany')) {
+        throw new Error('Objednavku blokuje stara databazova funkcia create_client_order_for_email: klient este nema ucet. Spusti prosim aktualny supabase/sql/client-requests.sql.');
+      }
+
+      throw new Error(error.message || 'Objednavku sa nepodarilo ulozit.');
+    }
 
     resetAdminOrderForm();
-    setAdminOrderFormStatus('success', 'Objednávka je uložená.');
+    setAdminOrderFormStatus('success', 'Objednavka je ulozena.');
     await loadAdminOrders();
+    await loadAdminRequests();
   } catch (error) {
-    setAdminOrderFormStatus('error', error.message || 'Objednávku sa nepodarilo uložiť.');
+    console.error('[MZ admin orders] Save flow failed:', error);
+    setAdminOrderFormStatus('error', error.message || 'Objednavku sa nepodarilo ulozit. Pozri konzolu pre detail.');
+  } finally {
+    setAdminOrderSavingState(false);
   }
 }
-
 function fillAdminOrderForm(orderId) {
   const order = adminClientOrders.find((item) => item.id === orderId);
   if (!order) return;
@@ -287,12 +540,57 @@ function fillAdminOrderForm(orderId) {
   if (adminOrderDate) adminOrderDate.value = order.event_date || '';
   if (adminOrderLocation) adminOrderLocation.value = order.location || '';
   if (adminOrderPrice) adminOrderPrice.value = order.price ?? '';
+  adminPriceWasEdited = false;
+  adminManualPriceValue = adminOrderPrice?.value || '';
   if (adminOrderServices) adminOrderServices.value = order.services || '';
   if (adminOrderNotes) adminOrderNotes.value = order.notes || '';
   if (adminOrderFormMode) adminOrderFormMode.textContent = 'Úprava objednávky';
 
   setAdminOrderFormStatus('', 'Uprav objednávku a ulož zmeny.');
   adminOrderForm?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function fillAdminOrderFormFromRequest(requestId) {
+  const request = adminClientRequests.find((item) => item.id === requestId);
+  if (!request) return;
+
+  if (adminOrderId) adminOrderId.value = '';
+  if (adminOrderClientEmail) adminOrderClientEmail.value = request.contact_email || '';
+  if (adminOrderStatus) adminOrderStatus.value = 'sent';
+  if (adminOrderTitle) adminOrderTitle.value = request.title || '';
+  if (adminOrderDate) adminOrderDate.value = request.event_date || '';
+  if (adminOrderLocation) adminOrderLocation.value = request.location || '';
+  if (adminOrderPrice) adminOrderPrice.value = '';
+  adminPriceWasEdited = false;
+  adminManualPriceValue = '';
+  if (adminOrderServices) adminOrderServices.value = buildRequestServices(request);
+  if (adminOrderNotes) adminOrderNotes.value = buildRequestNotes(request);
+  if (adminOrderFormMode) adminOrderFormMode.textContent = 'Objednavka z dopytu';
+
+  adminOrderForm?.setAttribute('data-source-request-id', request.id);
+  setAdminOrderFormStatus('', 'Dopyt je predvyplneny. Skontroluj cenu, sluzby a uloz objednavku.');
+  adminOrderForm?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+async function rejectAdminRequest(requestId) {
+  const supabaseClient = getAdminOrdersSupabase();
+  if (!supabaseClient) return;
+
+  const {
+    data: { user }
+  } = await supabaseClient.auth.getUser();
+
+  const { error } = await supabaseClient
+    .from('client_requests')
+    .update({
+      status: 'rejected',
+      rejected_at: new Date().toISOString(),
+      rejected_by: user?.id || null
+    })
+    .eq('id', requestId);
+
+  if (error) throw new Error('Dopyt sa nepodarilo zamietnut.');
+  await loadAdminRequests();
 }
 
 async function handleAdminOrdersLogin(event) {
@@ -341,12 +639,39 @@ function bindAdminOrders() {
   if (adminOrderForm) adminOrderForm.addEventListener('submit', saveAdminOrder);
   if (adminOrderResetButton) adminOrderResetButton.addEventListener('click', resetAdminOrderForm);
   if (adminOrdersSearch) adminOrdersSearch.addEventListener('input', renderAdminOrders);
+  if (adminOrderPrice) {
+    adminOrderPrice.addEventListener('input', () => {
+      adminPriceWasEdited = true;
+      adminManualPriceValue = adminOrderPrice.value;
+    });
+  }
 
   if (adminOrdersList) {
     adminOrdersList.addEventListener('click', (event) => {
       const editButton = event.target.closest('[data-admin-order-edit]');
       if (!editButton) return;
       fillAdminOrderForm(editButton.dataset.adminOrderEdit);
+    });
+  }
+
+  if (adminRequestsList) {
+    adminRequestsList.addEventListener('click', async (event) => {
+      const prepareButton = event.target.closest('[data-admin-request-prepare]');
+      const rejectButton = event.target.closest('[data-admin-request-reject]');
+
+      try {
+        if (prepareButton) {
+          fillAdminOrderFormFromRequest(prepareButton.dataset.adminRequestPrepare);
+          return;
+        }
+
+        if (rejectButton) {
+          await rejectAdminRequest(rejectButton.dataset.adminRequestReject);
+          setAdminOrdersStatus('success', 'Dopyt je zamietnuty.');
+        }
+      } catch (error) {
+        setAdminOrdersStatus('error', error.message || 'Dopyt sa nepodarilo spracovat.');
+      }
     });
   }
 }
