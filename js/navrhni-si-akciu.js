@@ -1131,6 +1131,19 @@
       field.style.height = `${field.scrollHeight}px`;
     }
 
+    function openDatePicker() {
+      if (typeof dateField.showPicker === 'function') {
+        try {
+          dateField.showPicker();
+          return;
+        } catch (error) {
+          // Some mobile browsers allow only their native focus behavior.
+        }
+      }
+
+      dateField.focus({ preventScroll: true });
+    }
+
     function renderOfferResult() {
       const formData = {
         date: normalizeDateForStorage(dateField.value),
@@ -1206,6 +1219,8 @@
 
     autoResizeTextarea(noteField);
     noteField.addEventListener('input', () => autoResizeTextarea(noteField));
+    dateField.addEventListener('click', openDatePicker);
+    dateField.addEventListener('touchend', openDatePicker, { passive: true });
 
     followup.addEventListener('submit', (event) => {
       event.preventDefault();

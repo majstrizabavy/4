@@ -669,6 +669,8 @@
   background-color: #12141f;
   color: #ffffff;
   color-scheme: dark;
+  cursor: pointer;
+  touch-action: manipulation;
 }
 
 .mz-followup-input--date::-webkit-calendar-picker-indicator {
