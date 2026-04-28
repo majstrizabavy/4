@@ -1767,6 +1767,23 @@ body.mz-overlay-open {
   border-color: rgba(var(--accent-rgb), 0.06);
 }
 
+@media (max-width: 600px) {
+  .mz-ring--1 {
+    width: 128px;
+    height: 128px;
+  }
+
+  .mz-ring--2 {
+    width: 208px;
+    height: 208px;
+  }
+
+  .mz-ring--3 {
+    width: 285px;
+    height: 285px;
+  }
+}
+
 .mz-core {
   width: 136px;
   height: 136px;
