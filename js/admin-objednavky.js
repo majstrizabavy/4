@@ -32,6 +32,7 @@ let adminClientOrders = [];
 let adminClientRequests = [];
 let adminPriceWasEdited = false;
 let adminManualPriceValue = '';
+let adminOrderSaveInProgress = false;
 const adminOrderSaveButtonLabel = adminOrderSaveButton?.textContent || 'Ulozit objednavku';
 const ADMIN_SAVE_TIMEOUT_MS = 25000;
 
@@ -107,12 +108,21 @@ async function withAdminSaveTimeout(requestPromise, contextLabel) {
   let timeoutId = null;
   const timeoutPromise = new Promise((_, reject) => {
     timeoutId = window.setTimeout(() => {
+      console.warn('[MZ admin orders] Save timeout fired:', {
+        mode: contextLabel,
+        timeoutMs: ADMIN_SAVE_TIMEOUT_MS
+      });
       reject(new Error(`${contextLabel} trva prilis dlho. Skontroluj konzolu a Supabase RPC/policies.`));
     }, ADMIN_SAVE_TIMEOUT_MS);
   });
 
   try {
-    return await Promise.race([requestPromise, timeoutPromise]);
+    const result = await Promise.race([requestPromise, timeoutPromise]);
+    console.log('[MZ admin orders] Save request resolved:', {
+      mode: contextLabel,
+      result
+    });
+    return result;
   } finally {
     if (timeoutId) window.clearTimeout(timeoutId);
   }
@@ -408,6 +418,7 @@ function getAdminOrderPriceValue({ requireFinalPrice = false } = {}) {
   const clientEmail = String(adminOrderClientEmail?.value || '').trim().toLowerCase();
   const title = String(adminOrderTitle?.value || '').trim();
   const rawPrice = String(adminOrderPrice?.value || '').trim();
+  const normalizedPrice = rawPrice.replace(',', '.');
 
   if (!clientEmail || !title) {
     throw new Error('Vyplň email klienta a názov akcie.');
@@ -421,12 +432,23 @@ function getAdminOrderPriceValue({ requireFinalPrice = false } = {}) {
     return null;
   }
 
-  const normalizedPrice = rawPrice.replace(',', '.');
   const priceValue = Number(normalizedPrice);
 
   if (rawPrice && !Number.isFinite(priceValue)) {
     throw new Error('Cena musí byť číslo.');
   }
+
+  if (priceValue < 0) {
+    throw new Error('Cena nemôže byť záporná.');
+  }
+
+  console.log('[MZ admin orders] Parsed admin price:', {
+    rawPrice,
+    normalizedPrice,
+    priceValue,
+    priceType: typeof priceValue,
+    isFinite: Number.isFinite(priceValue)
+  });
 
   return priceValue;
 }
@@ -450,6 +472,11 @@ function getAdminOrderPayload({ requireFinalPrice = false } = {}) {
 
 async function saveAdminOrder(event) {
   event.preventDefault();
+  if (adminOrderSaveInProgress) {
+    console.warn('[MZ admin orders] Duplicate save submit ignored while previous save is still running.');
+    return;
+  }
+
   const supabaseClient = getAdminOrdersSupabase();
   if (!supabaseClient) {
     console.error('[MZ admin orders] Supabase client is not available.');
@@ -457,6 +484,7 @@ async function saveAdminOrder(event) {
     return;
   }
 
+  adminOrderSaveInProgress = true;
   setAdminOrderSavingState(true);
 
   try {
@@ -474,7 +502,7 @@ async function saveAdminOrder(event) {
 
     let request;
     if (sourceRequestId && !orderId) {
-      request = supabaseClient.rpc('approve_client_request', {
+      const rpcPayload = {
         p_request_id: sourceRequestId,
         p_title: payload.title,
         p_event_date: payload.event_date,
@@ -484,7 +512,17 @@ async function saveAdminOrder(event) {
         p_services: payload.services,
         p_notes: payload.notes,
         p_admin_note: null
+      };
+
+      console.log('[MZ admin orders] approve_client_request payload:', {
+        requestId: sourceRequestId,
+        parsedPrice: payload.price,
+        parsedPriceType: typeof payload.price,
+        rpcPayload
       });
+      console.log('[MZ admin orders] Starting approve_client_request RPC.');
+
+      request = supabaseClient.rpc('approve_client_request', rpcPayload);
     } else if (orderId) {
       request = supabaseClient.from('client_orders').update(payload).eq('id', orderId);
     } else {
@@ -501,6 +539,11 @@ async function saveAdminOrder(event) {
     }
 
     const { data, error } = await withAdminSaveTimeout(request, saveMode);
+    console.log('[MZ admin orders] Save response payload:', {
+      mode: saveMode,
+      data,
+      error
+    });
 
     if (error) {
       console.error('[MZ admin orders] Supabase save failed:', {
@@ -526,6 +569,7 @@ async function saveAdminOrder(event) {
     console.error('[MZ admin orders] Save flow failed:', error);
     setAdminOrderFormStatus('error', error.message || 'Objednavku sa nepodarilo ulozit. Pozri konzolu pre detail.');
   } finally {
+    adminOrderSaveInProgress = false;
     setAdminOrderSavingState(false);
   }
 }

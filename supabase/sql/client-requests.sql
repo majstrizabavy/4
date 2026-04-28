@@ -173,6 +173,8 @@ returns uuid
 language plpgsql
 security definer
 set search_path = public
+set lock_timeout = '5s'
+set statement_timeout = '15s'
 as $$
 declare
   v_request public.client_requests%rowtype;
@@ -190,7 +192,7 @@ begin
   into v_request
   from public.client_requests
   where id = p_request_id
-  for update;
+  for update nowait;
 
   if v_request.id is null then
     raise exception 'Dopyt neexistuje.';

@@ -129,7 +129,7 @@
 
               <label class="partner-form__field">
                 <span>Cena</span>
-                <input type="number" name="final_price" id="adminOrderPrice" min="0" step="0.01" placeholder="Napr. 980" autocomplete="off">
+                <input type="text" name="final_price" id="adminOrderPrice" inputmode="decimal" pattern="[0-9]+([,.][0-9]{1,2})?" placeholder="Napr. 980" autocomplete="off">
               </label>
 
               <label class="partner-form__field partner-form__field--full">
@@ -165,6 +165,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/main.js?v=20260406-site-core-1"></script>
   <script src="js/supabase-config.js?v=20260424-supabase-events-1"></script>
-  <script src="js/admin-objednavky.js?v=20260427-admin-final-price-2"></script>
+  <script src="js/admin-objednavky.js?v=20260428-admin-price-rpc-debug-1"></script>
 </body>
 </html>
