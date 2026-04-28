@@ -3659,6 +3659,12 @@ body.mz-overlay-open {
 }
 
 @media (max-width: 600px) {
+  .mz-section input,
+  .mz-section textarea,
+  .mz-section select {
+    font-size: 16px;
+  }
+
   .mz-overlay__panel {
     width: calc(100vw - 24px);
     max-width: calc(100vw - 24px);

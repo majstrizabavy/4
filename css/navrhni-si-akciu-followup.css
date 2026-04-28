@@ -519,7 +519,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .mzv2-section {
     padding: 0 12px 48px;
   }
@@ -809,7 +809,7 @@
     align-items: stretch;
   }
 
-  /* Prevent mobile browsers from auto-zooming focused form fields. */
+  /* Prevent iPhone Safari from auto-zooming focused form fields. */
   .mz-followup-input,
   .mz-followup-select,
   .mz-followup-textarea {
