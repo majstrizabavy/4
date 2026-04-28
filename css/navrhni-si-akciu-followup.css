@@ -219,6 +219,7 @@
 .mz-followup-input,
 .mz-followup-select,
 .mz-followup-textarea {
+  box-sizing: border-box;
   width: 100%;
   min-height: 44px;
   padding: 10px 12px;
