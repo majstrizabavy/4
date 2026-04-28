@@ -280,7 +280,6 @@
     elements.eventNameError.textContent = value ? '' : 'Prosím vyplňte názov akcie.';
     if (!value) {
       elements.eventNameInput.focus();
-      showToast('Prosím vyplňte názov akcie.');
       return false;
     }
     return true;

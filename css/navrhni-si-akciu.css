@@ -1672,9 +1672,9 @@ body.mz-overlay-open {
 
 /* ===== CLEAN VISUAL RESET: menej farieb, viac prehladu a dovery ===== */
 .mz-section {
-  --mz-primary: #7b4dff;
-  --mz-primary-soft: #9673ff;
-  --mz-secondary: #4c8dff;
+  --mz-primary: #c7ff2e;
+  --mz-primary-soft: #d8ff5a;
+  --mz-secondary: #9edb1f;
   --mz-bg: #090b11;
   --mz-surface: #11141c;
   --mz-surface-soft: #171b25;
@@ -1692,6 +1692,7 @@ body.mz-overlay-open {
 
 .mz-toast {
   background: linear-gradient(135deg, var(--mz-primary), var(--mz-secondary));
+  color: #111303;
   border-radius: 14px;
   padding: 14px 26px;
   font-family: var(--font-body);
