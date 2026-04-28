@@ -30,8 +30,6 @@ const adminRequestsEmpty = document.getElementById('adminRequestsEmpty');
 let adminOrdersSession = null;
 let adminClientOrders = [];
 let adminClientRequests = [];
-let adminPriceWasEdited = false;
-let adminManualPriceValue = '';
 let adminOrderSaveInProgress = false;
 const adminOrderSaveButtonLabel = adminOrderSaveButton?.textContent || 'Ulozit objednavku';
 const ADMIN_SAVE_TIMEOUT_MS = 25000;
@@ -108,21 +106,12 @@ async function withAdminSaveTimeout(requestPromise, contextLabel) {
   let timeoutId = null;
   const timeoutPromise = new Promise((_, reject) => {
     timeoutId = window.setTimeout(() => {
-      console.warn('[MZ admin orders] Save timeout fired:', {
-        mode: contextLabel,
-        timeoutMs: ADMIN_SAVE_TIMEOUT_MS
-      });
       reject(new Error(`${contextLabel} trva prilis dlho. Skontroluj konzolu a Supabase RPC/policies.`));
     }, ADMIN_SAVE_TIMEOUT_MS);
   });
 
   try {
-    const result = await Promise.race([requestPromise, timeoutPromise]);
-    console.log('[MZ admin orders] Save request resolved:', {
-      mode: contextLabel,
-      result
-    });
-    return result;
+    return await Promise.race([requestPromise, timeoutPromise]);
   } finally {
     if (timeoutId) window.clearTimeout(timeoutId);
   }
@@ -160,8 +149,6 @@ function resetAdminOrderForm() {
 
   adminOrderForm.reset();
   adminOrderForm.removeAttribute('data-source-request-id');
-  adminPriceWasEdited = false;
-  adminManualPriceValue = '';
   if (adminOrderId) adminOrderId.value = '';
   if (adminOrderStatus) adminOrderStatus.value = 'draft';
   if (adminOrderFormMode) adminOrderFormMode.textContent = 'Nová objednávka';
@@ -442,14 +429,6 @@ function getAdminOrderPriceValue({ requireFinalPrice = false } = {}) {
     throw new Error('Cena nemôže byť záporná.');
   }
 
-  console.log('[MZ admin orders] Parsed admin price:', {
-    rawPrice,
-    normalizedPrice,
-    priceValue,
-    priceType: typeof priceValue,
-    isFinite: Number.isFinite(priceValue)
-  });
-
   return priceValue;
 }
 
@@ -473,7 +452,6 @@ function getAdminOrderPayload({ requireFinalPrice = false } = {}) {
 async function saveAdminOrder(event) {
   event.preventDefault();
   if (adminOrderSaveInProgress) {
-    console.warn('[MZ admin orders] Duplicate save submit ignored while previous save is still running.');
     return;
   }
 
@@ -514,14 +492,6 @@ async function saveAdminOrder(event) {
         p_admin_note: null
       };
 
-      console.log('[MZ admin orders] approve_client_request payload:', {
-        requestId: sourceRequestId,
-        parsedPrice: payload.price,
-        parsedPriceType: typeof payload.price,
-        rpcPayload
-      });
-      console.log('[MZ admin orders] Starting approve_client_request RPC.');
-
       request = supabaseClient.rpc('approve_client_request', rpcPayload);
     } else if (orderId) {
       request = supabaseClient.from('client_orders').update(payload).eq('id', orderId);
@@ -539,11 +509,6 @@ async function saveAdminOrder(event) {
     }
 
     const { data, error } = await withAdminSaveTimeout(request, saveMode);
-    console.log('[MZ admin orders] Save response payload:', {
-      mode: saveMode,
-      data,
-      error
-    });
 
     if (error) {
       console.error('[MZ admin orders] Supabase save failed:', {
@@ -584,8 +549,6 @@ function fillAdminOrderForm(orderId) {
   if (adminOrderDate) adminOrderDate.value = order.event_date || '';
   if (adminOrderLocation) adminOrderLocation.value = order.location || '';
   if (adminOrderPrice) adminOrderPrice.value = order.price ?? '';
-  adminPriceWasEdited = false;
-  adminManualPriceValue = adminOrderPrice?.value || '';
   if (adminOrderServices) adminOrderServices.value = order.services || '';
   if (adminOrderNotes) adminOrderNotes.value = order.notes || '';
   if (adminOrderFormMode) adminOrderFormMode.textContent = 'Úprava objednávky';
@@ -605,8 +568,6 @@ function fillAdminOrderFormFromRequest(requestId) {
   if (adminOrderDate) adminOrderDate.value = request.event_date || '';
   if (adminOrderLocation) adminOrderLocation.value = request.location || '';
   if (adminOrderPrice) adminOrderPrice.value = '';
-  adminPriceWasEdited = false;
-  adminManualPriceValue = '';
   if (adminOrderServices) adminOrderServices.value = buildRequestServices(request);
   if (adminOrderNotes) adminOrderNotes.value = buildRequestNotes(request);
   if (adminOrderFormMode) adminOrderFormMode.textContent = 'Objednavka z dopytu';
@@ -683,12 +644,6 @@ function bindAdminOrders() {
   if (adminOrderForm) adminOrderForm.addEventListener('submit', saveAdminOrder);
   if (adminOrderResetButton) adminOrderResetButton.addEventListener('click', resetAdminOrderForm);
   if (adminOrdersSearch) adminOrdersSearch.addEventListener('input', renderAdminOrders);
-  if (adminOrderPrice) {
-    adminOrderPrice.addEventListener('input', () => {
-      adminPriceWasEdited = true;
-      adminManualPriceValue = adminOrderPrice.value;
-    });
-  }
 
   if (adminOrdersList) {
     adminOrdersList.addEventListener('click', (event) => {

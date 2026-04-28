@@ -1131,124 +1131,14 @@
       field.style.height = `${field.scrollHeight}px`;
     }
 
-    let datePicker = null;
-    let datePickerMonth = null;
-
-    function getDatePickerBaseDate() {
-      if (/^\d{4}-\d{2}-\d{2}$/.test(dateField.value)) {
-        const [year, month, day] = dateField.value.split('-').map((item) => Number(item));
-        return new Date(year, month - 1, day);
-      }
-
-      return new Date();
-    }
-
-    function getDatePickerIso(date) {
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const day = String(date.getDate()).padStart(2, '0');
-      return `${year}-${month}-${day}`;
-    }
-
-    function closeCustomDatePicker() {
-      if (!datePicker) return;
-      datePicker.remove();
-      datePicker = null;
-    }
-
-    function renderCustomDatePicker() {
-      if (!datePicker || !datePickerMonth) return;
-
-      const selectedValue = dateField.value;
-      const todayValue = getDatePickerIso(new Date());
-      const monthStart = new Date(datePickerMonth.getFullYear(), datePickerMonth.getMonth(), 1);
-      const monthEnd = new Date(datePickerMonth.getFullYear(), datePickerMonth.getMonth() + 1, 0);
-      const leadingDays = (monthStart.getDay() + 6) % 7;
-      const monthLabel = new Intl.DateTimeFormat('sk-SK', {
-        month: 'long',
-        year: 'numeric'
-      }).format(monthStart);
-      const dayButtons = [];
-
-      for (let index = 0; index < leadingDays; index += 1) {
-        dayButtons.push('<span class="mz-date-picker__empty"></span>');
-      }
-
-      for (let day = 1; day <= monthEnd.getDate(); day += 1) {
-        const date = new Date(datePickerMonth.getFullYear(), datePickerMonth.getMonth(), day);
-        const isoValue = getDatePickerIso(date);
-        const classes = [
-          'mz-date-picker__day',
-          isoValue === selectedValue ? 'is-selected' : '',
-          isoValue === todayValue ? 'is-today' : ''
-        ].filter(Boolean).join(' ');
-
-        dayButtons.push(`<button type="button" class="${classes}" data-date-value="${isoValue}">${day}</button>`);
-      }
-
-      datePicker.innerHTML = `
-        <div class="mz-date-picker__header">
-          <button type="button" class="mz-date-picker__nav" data-date-picker-prev aria-label="Predchadzajuci mesiac">‹</button>
-          <strong>${monthLabel}</strong>
-          <button type="button" class="mz-date-picker__nav" data-date-picker-next aria-label="Dalsi mesiac">›</button>
-        </div>
-        <div class="mz-date-picker__weekdays" aria-hidden="true">
-          <span>Po</span><span>Ut</span><span>St</span><span>Stv</span><span>Pi</span><span>So</span><span>Ne</span>
-        </div>
-        <div class="mz-date-picker__days">${dayButtons.join('')}</div>
-      `;
-    }
-
-    function showCustomDatePicker() {
-      if (!datePicker) {
-        datePicker = document.createElement('div');
-        datePicker.className = 'mz-date-picker';
-        datePicker.setAttribute('role', 'dialog');
-        datePicker.setAttribute('aria-label', 'Vyber datumu akcie');
-        dateField.parentElement.appendChild(datePicker);
-
-        datePicker.addEventListener('click', (event) => {
-          const target = event.target;
-          if (!(target instanceof HTMLElement)) return;
-
-          if (target.closest('[data-date-picker-prev]')) {
-            datePickerMonth = new Date(datePickerMonth.getFullYear(), datePickerMonth.getMonth() - 1, 1);
-            renderCustomDatePicker();
-            return;
-          }
-
-          if (target.closest('[data-date-picker-next]')) {
-            datePickerMonth = new Date(datePickerMonth.getFullYear(), datePickerMonth.getMonth() + 1, 1);
-            renderCustomDatePicker();
-            return;
-          }
-
-          const dayButton = target.closest('[data-date-value]');
-          if (dayButton) {
-            dateField.value = dayButton.dataset.dateValue || '';
-            dateField.dispatchEvent(new Event('input', { bubbles: true }));
-            dateField.dispatchEvent(new Event('change', { bubbles: true }));
-            closeCustomDatePicker();
-          }
-        });
-      }
-
-      const baseDate = getDatePickerBaseDate();
-      datePickerMonth = new Date(baseDate.getFullYear(), baseDate.getMonth(), 1);
-      renderCustomDatePicker();
-    }
-
-    function openDatePicker() {
+    function openNativeDatePicker() {
       if (typeof dateField.showPicker === 'function') {
         try {
           dateField.showPicker();
-          return;
         } catch (error) {
           // Some mobile browsers allow only their native focus behavior.
         }
       }
-
-      showCustomDatePicker();
     }
 
     function renderOfferResult() {
@@ -1326,21 +1216,10 @@
 
     autoResizeTextarea(noteField);
     noteField.addEventListener('input', () => autoResizeTextarea(noteField));
-    dateField.addEventListener('pointerdown', (event) => {
-      event.preventDefault();
-      openDatePicker();
-    });
+    dateField.addEventListener('click', openNativeDatePicker);
     dateField.addEventListener('keydown', (event) => {
       if (event.key !== 'Enter' && event.key !== ' ') return;
-      event.preventDefault();
-      openDatePicker();
-    });
-    document.addEventListener('pointerdown', (event) => {
-      if (!datePicker) return;
-      const target = event.target;
-      if (!(target instanceof Node)) return;
-      if (dateField.contains(target) || datePicker.contains(target)) return;
-      closeCustomDatePicker();
+      openNativeDatePicker();
     });
 
     followup.addEventListener('submit', (event) => {

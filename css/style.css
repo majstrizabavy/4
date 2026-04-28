@@ -9147,6 +9147,7 @@ h1, h2, h3, h4, h5, h6 {
 .partner-form__field {
   display: grid;
   gap: 8px;
+  min-width: 0;
 }
 
 .partner-form__field--full {
@@ -9165,7 +9166,10 @@ h1, h2, h3, h4, h5, h6 {
 .partner-form__field select,
 .partner-form__field textarea,
 .admin-auth__form input {
+  box-sizing: border-box;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   min-height: 52px;
   padding: 14px 16px;
   border-radius: 16px;
@@ -9174,6 +9178,20 @@ h1, h2, h3, h4, h5, h6 {
   color: #f5f5ef;
   font: inherit;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.partner-form__field input[type="date"] {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  line-height: 1.2;
+  color-scheme: dark;
+  cursor: pointer;
+}
+
+.partner-form__field input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
 }
 
 .partner-form__field textarea {
