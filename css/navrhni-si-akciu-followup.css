@@ -673,9 +673,8 @@
   max-width: 100%;
   max-inline-size: 100%;
   box-sizing: border-box;
+  height: calc(1.55em + 22px);
   padding-right: 12px;
-  line-height: 1.2;
-  background-color: #12141f;
   color: #ffffff;
   color-scheme: dark;
   cursor: pointer;
