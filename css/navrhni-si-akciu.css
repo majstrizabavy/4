@@ -374,6 +374,18 @@ body.mz-overlay-open {
   }
 }
 
+@media (max-width: 860px) {
+  .mz-orbit-stage {
+    overflow: clip;
+  }
+
+  .mz-orbit {
+    left: 50%;
+    margin: 0;
+    transform: translateX(-50%);
+  }
+}
+
 @keyframes mz-blink {
   0%,
   100% {
