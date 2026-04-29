@@ -16,6 +16,7 @@ const eventModalPoster = document.getElementById('eventModalPoster');
 const eventModalPosterImage = document.getElementById('eventModalPosterImage');
 const eventModalPosterFallback = document.getElementById('eventModalPosterFallback');
 const eventModalShare = document.getElementById('eventModalShare');
+const transparentImageSrc = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
 
 let activePublicMonth = null;
 let activePublicEventId = null;
@@ -358,7 +359,7 @@ function populateEventModal(eventItem) {
     eventModalPoster.classList.remove('is-placeholder');
   } else {
     eventModalPoster.removeAttribute('href');
-    eventModalPosterImage.removeAttribute('src');
+    eventModalPosterImage.src = transparentImageSrc;
     eventModalPosterImage.hidden = true;
     eventModalPosterFallback.hidden = false;
     eventModalPoster.classList.add('is-placeholder');

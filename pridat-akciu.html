@@ -46,7 +46,7 @@
           <h1 class="partner-submit-hero__title partner-submit-hero__title--green">Pridaj svoju akciu do nášho kalendára.</h1>
           <p class="partner-submit-hero__subtitle">Získaj lokálny dosah a ukáž svoje podujatie ľuďom, ktorí aktívne hľadajú akcie vo svojom meste.</p>
         </div>
-        <div class="partner-submit-hero__points" aria-label="Výhody partner kalendára">
+        <div class="partner-submit-hero__points" role="group" aria-label="Výhody partner kalendára">
           <span>Lokálny dosah</span>
           <span>Schválený kalendár</span>
           <span>Jednoduché pridanie</span>
@@ -56,17 +56,17 @@
       <div class="partner-submit-steps reveal">
         <article class="partner-step-card">
           <span class="partner-step-card__num">01</span>
-          <h3>Vyplň krátky formulár</h3>
+          <h2>Vyplň krátky formulár</h2>
           <p>Názov, dátum, miesto, plagát a kontakt na organizátora.</p>
         </article>
         <article class="partner-step-card">
           <span class="partner-step-card__num">02</span>
-          <h3>Skontrolujeme údaje</h3>
+          <h2>Skontrolujeme údaje</h2>
           <p>Akciu najprv overíme, aby bol kalendár kvalitný a prehľadný.</p>
         </article>
         <article class="partner-step-card">
           <span class="partner-step-card__num">03</span>
-          <h3>Po schválení ide von</h3>
+          <h2>Po schválení ide von</h2>
           <p>Zobrazí sa vo verejnom kalendári pre ľudí, ktorí hľadajú akcie v okolí.</p>
         </article>
       </div>
@@ -97,7 +97,9 @@
 
               <label class="partner-form__field">
                 <span>Mesto a okolie *</span>
-                <select name="city_key" id="partnerCityKey" required></select>
+                <select name="city_key" id="partnerCityKey" required>
+                  <option value="" selected disabled>Vyberte možnosť</option>
+                </select>
               </label>
 
               <label class="partner-form__field">
@@ -147,18 +149,18 @@
                 <input type="url" name="more_info_url" placeholder="https://...">
               </label>
 
-              <label class="partner-form__field partner-form__field--full partner-form__upload">
-                <span>Plagát / obrázok akcie</span>
+              <div class="partner-form__field partner-form__field--full partner-form__upload">
+                <label for="partnerPoster"><span>Plagát / obrázok akcie</span></label>
                 <input type="file" id="partnerPoster" name="poster" accept=".png,.jpg,.jpeg,.webp,image/png,image/jpeg,image/webp">
                 <small id="partnerPosterName">PNG, JPG alebo WEBP do 5 MB.</small>
                 <div class="partner-form__upload-preview" id="partnerPosterPreview" hidden>
-                  <img id="partnerPosterPreviewImage" alt="Náhľad plagátu akcie" hidden>
+                  <img id="partnerPosterPreviewImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Náhľad plagátu akcie" hidden>
                   <div class="partner-form__upload-preview-copy">
                     <div class="partner-form__upload-preview-title">Náhľad plagátu</div>
                     <div class="partner-form__upload-preview-text">Skontroluj, či je plagát čitateľný a dobre viditeľný aj v menšom formáte.</div>
                   </div>
                 </div>
-              </label>
+              </div>
             </div>
           </div>
 

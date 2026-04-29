@@ -5,6 +5,7 @@
   if (!root) return;
 
   const pricingApi = window.MZPricing || null;
+  const transparentImageSrc = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
 
   const elements = {
     orbit: document.getElementById('mz-orbit'),
@@ -891,7 +892,7 @@
         image.hidden = false;
       } else {
         image.hidden = true;
-        image.removeAttribute('src');
+        image.src = transparentImageSrc;
       }
 
       if (options.scroll) {

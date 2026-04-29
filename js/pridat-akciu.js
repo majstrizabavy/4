@@ -10,6 +10,7 @@ const partnerFormSuccess = document.getElementById('partnerFormSuccess');
 const partnerFormSuccessText = document.getElementById('partnerFormSuccessText');
 const partnerFormSuccessSummary = document.getElementById('partnerFormSuccessSummary');
 const partnerFormAnother = document.getElementById('partnerFormAnother');
+const transparentImageSrc = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
 let partnerPosterPreviewUrl = '';
 
 function setPartnerFormStatus(type, message) {
@@ -23,7 +24,7 @@ function renderPartnerCities() {
   if (!partnerCitySelect || !window.MZSupabase) return;
 
   const options = [
-    '<option value="">Vyber si mesto a okolie</option>',
+    '<option value="" selected disabled>Vyberte možnosť</option>',
     ...window.MZSupabase.getCityOptions().map((city) => (
       `<option value="${city.key}">${window.MZSupabase.escapeHtml(city.name)}</option>`
     ))
@@ -53,7 +54,7 @@ function updatePosterPreview() {
   if (!selectedFile || !selectedFile.type.startsWith('image/')) {
     partnerPosterPreview.hidden = true;
     partnerPosterPreviewImage.hidden = true;
-    partnerPosterPreviewImage.removeAttribute('src');
+    partnerPosterPreviewImage.src = transparentImageSrc;
     return;
   }
 
