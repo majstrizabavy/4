@@ -75,11 +75,11 @@ function showClientLogin() {
 function showClientDashboard(userEmail) {
   if (clientAuthShell) clientAuthShell.hidden = true;
   if (clientDashboardShell) clientDashboardShell.hidden = false;
-  if (clientCurrentUser) clientCurrentUser.textContent = userEmail || 'Moja akcia';
+  if (clientCurrentUser) clientCurrentUser.textContent = userEmail || 'Môj účet';
 }
 
 function renderClientOrderCard(order) {
-  const safeTitle = window.MZSupabase.escapeHtml(order.title || 'Moja akcia');
+  const safeTitle = window.MZSupabase.escapeHtml(order.title || 'Môj účet');
   const safeLocation = window.MZSupabase.escapeHtml(order.location || 'Miesto doplníme');
   const safeStatus = window.MZSupabase.escapeHtml(CLIENT_STATUS_LABELS[order.status] || order.status || 'Rozpracované');
   const safeNotes = window.MZSupabase.escapeHtml(order.notes || 'Pokyny doplníme podľa dohody.').replace(/\n/g, '<br>');
@@ -87,8 +87,8 @@ function renderClientOrderCard(order) {
   const serviceMarkup = services.length
     ? services.map((item) => `<li>${window.MZSupabase.escapeHtml(item)}</li>`).join('')
     : '<li>Služby doplníme podľa dohody.</li>';
-  const contactSubject = encodeURIComponent(`Úprava objednávky / ${order.title || 'Moja akcia'}`);
-  const contactBody = encodeURIComponent(`Dobrý deň,\n\nchcem upraviť objednávku: ${order.title || 'Moja akcia'}.\n\nĎakujem.`);
+  const contactSubject = encodeURIComponent(`Úprava objednávky / ${order.title || 'Môj účet'}`);
+  const contactBody = encodeURIComponent(`Dobrý deň,\n\nchcem upraviť objednávku: ${order.title || 'Môj účet'}.\n\nĎakujem.`);
 
   return `
     <article class="client-order-card">

@@ -152,7 +152,7 @@ function resetAdminOrderForm() {
   if (adminOrderId) adminOrderId.value = '';
   if (adminOrderStatus) adminOrderStatus.value = 'draft';
   if (adminOrderFormMode) adminOrderFormMode.textContent = 'Nová objednávka';
-  setAdminOrderFormStatus('', 'Vyplň objednávku a ulož ju klientovi do zóny Moja akcia.');
+  setAdminOrderFormStatus('', 'Vyplň objednávku a ulož ju klientovi do jeho účtu.');
 }
 
 function renderClientEmailOptions() {

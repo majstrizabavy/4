@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Majstri zábavy | Admin objednávky</title>
-  <meta name="description" content="Interná admin časť pre klientsku zónu Moja akcia.">
+  <meta name="description" content="Interná admin časť pre klientsky účet.">
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260428-native-date-1">
+  <link rel="stylesheet" href="css/style.css?v=20260429-nav-tune-1">
 </head>
 <body>
   <div id="cursor"></div>
@@ -17,7 +17,7 @@
     <ul class="nav-links">
       <li><a href="index.html" data-nav="home">Domov</a></li>
       <li><a href="admin-akcie.html" data-nav="admin-akcie">Admin akcie</a></li>
-      <li><a href="moja-akcia.html" data-nav="moja-akcia">Moja akcia</a></li>
+      <li><a href="moja-akcia.html" data-nav="moja-akcia">Môj účet</a></li>
       <li class="nav-cta-item"><a href="navrhni-si-akciu.html" class="nav-cta" data-nav="navrhni-akciu">Navrhni si akciu</a></li>
     </ul>
     <div class="nav-ham" data-mobile-toggle><span></span><span></span><span></span></div>
@@ -26,7 +26,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html" data-nav="home" data-mobile-close>Domov</a>
     <a href="admin-akcie.html" data-nav="admin-akcie" data-mobile-close>Admin akcie</a>
-    <a href="moja-akcia.html" data-nav="moja-akcia" data-mobile-close>Moja akcia</a>
+    <a href="moja-akcia.html" data-nav="moja-akcia" data-mobile-close>Môj účet</a>
     <a href="navrhni-si-akciu.html" class="mobile-nav-cta" data-nav="navrhni-akciu" data-mobile-close>Navrhni si akciu</a>
   </div>
 
@@ -42,7 +42,7 @@
         <div class="admin-auth__copy">
           <div class="admin-auth__eyebrow">Len pre interný tím</div>
           <h1 class="admin-auth__title">Spravuj klientské objednávky.</h1>
-          <p class="admin-auth__text">Po prihlásení vieš vytvoriť alebo upraviť objednávku, ktorú klient uvidí v zóne Moja akcia.</p>
+          <p class="admin-auth__text">Po prihlásení vieš vytvoriť alebo upraviť objednávku, ktorú klient uvidí vo svojom účte.</p>
         </div>
 
         <form class="admin-auth__form" id="adminOrdersLoginForm">
@@ -165,6 +165,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/main.js?v=20260406-site-core-1"></script>
   <script src="js/supabase-config.js?v=20260424-supabase-events-1"></script>
-  <script src="js/admin-objednavky.js?v=20260428-admin-price-clean-1"></script>
+  <script src="js/admin-objednavky.js?v=20260429-account-nav-1"></script>
 </body>
 </html>
