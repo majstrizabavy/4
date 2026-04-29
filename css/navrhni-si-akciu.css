@@ -24,9 +24,10 @@
 
 .mz-toast {
   position: fixed;
-  top: 84px;
+  top: auto;
+  bottom: 24px;
   left: 50%;
-  transform: translateX(-50%) translateY(-120px);
+  transform: translateX(-50%) translateY(24px);
   background: linear-gradient(135deg, rgba(var(--accent-rgb),  0.96), rgba(var(--accent-deep-rgb),  0.92));
   backdrop-filter: blur(20px);
   border-radius: 12px;
@@ -37,13 +38,28 @@
   letter-spacing: 1px;
   color: #111303;
   z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease,
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
 .mz-toast.mz-toast--show {
+  opacity: 1;
+  visibility: visible;
   transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 600px) {
+  .mz-toast {
+    width: calc(100vw - 32px);
+    bottom: 16px;
+    text-align: center;
+  }
 }
 
 .mz-overlay {
