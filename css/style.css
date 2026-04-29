@@ -380,6 +380,19 @@ nav {
   position: relative;
   max-width: 720px;
   padding: 34px 36px 34px 0;
+  isolation: isolate;
+}
+.hero-copy::before {
+  content: '';
+  position: absolute;
+  inset: -18px -32px -20px -28px;
+  z-index: -1;
+  border-radius: 30px;
+  background:
+    radial-gradient(ellipse 78% 64% at 26% 50%, rgba(0,0,0,0.46), transparent 72%),
+    linear-gradient(90deg, rgba(0,0,0,0.34), rgba(0,0,0,0.16) 58%, transparent);
+  opacity: 0.9;
+  pointer-events: none;
 }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -473,44 +486,6 @@ nav {
 .hero-cta--split {
   justify-content: flex-start;
   margin-top: 28px;
-}
-
-.hero-proof-points {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 22px;
-  animation: fadeInUp 0.9s 0.5s ease both;
-}
-
-.hero-proof-point {
-  display: inline-flex;
-  align-items: center;
-  min-height: 36px;
-  padding: 0 12px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.025);
-  border: 1px solid rgba(255,255,255,0.06);
-  color: rgba(245,245,239,0.76);
-  font-family: var(--font-ui);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.hero-proof-point--link {
-  color: rgba(245,245,239,0.92);
-  text-decoration: none;
-  box-shadow: 0 0 0 rgba(0,0,0,0);
-  transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-}
-.hero-proof-point--link:hover,
-.hero-proof-point--link:focus-visible {
-  background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.16), rgba(var(--accent-deep-rgb), 0.14));
-  border-color: rgba(var(--accent-rgb), 0.38);
-  color: var(--white);
-  transform: translateY(-1px);
-  box-shadow: 0 0 10px rgba(var(--accent-deep-rgb), 0.1), 0 0 16px rgba(var(--accent-rgb), 0.08);
 }
 
 /* TlaÄŤidlĂˇ */
@@ -3674,8 +3649,7 @@ footer::after {
   .hero-sub--statement {
     max-width: 100%;
   }
-  .hero-cta--split,
-  .hero-proof-points {
+  .hero-cta--split {
     justify-content: center;
   }
   .hero-content--immersive { width: min(100%, calc(100% - 40px)); }
@@ -6701,15 +6675,8 @@ nav {
   }
 }
 
-.hero-title--statement .hero-accent,
-.hero-proof-point--link:hover,
-.hero-proof-point--link:focus-visible {
+.hero-title--statement .hero-accent {
   text-shadow: none;
-}
-
-.hero-proof-point--link:hover,
-.hero-proof-point--link:focus-visible {
-  box-shadow: none;
 }
 
 .stats-bar {
@@ -8788,10 +8755,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .hero-copy::before {
-    content: '';
-    position: absolute;
     inset: 0 -2px;
-    z-index: -1;
     border-radius: 28px;
     background:
       radial-gradient(ellipse 90% 54% at 50% 0%, rgba(var(--accent-rgb),0.035), transparent 68%),
@@ -8847,11 +8811,6 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0;
     font-size: 18px;
     line-height: 1.35;
-  }
-
-  .hero-sub-extra,
-  .hero-proof-points {
-    display: none;
   }
 
   .hero-cta--split {
@@ -9190,17 +9149,42 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .partner-form__field input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
   display: block;
   width: 100%;
+  inline-size: 100%;
   max-width: 100%;
+  max-inline-size: 100%;
   min-width: 0;
+  min-inline-size: 0;
   line-height: 1.2;
+  text-align: left;
   color-scheme: dark;
   cursor: pointer;
 }
 
 .partner-form__field input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.partner-form__field input[type="date"]::-webkit-datetime-edit,
+.partner-form__field input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  max-width: 100%;
+  min-width: 0;
+  padding: 0;
+}
+
+.partner-form__field input[type="date"]::-webkit-date-and-time-value {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: left;
 }
 
 .partner-form__field textarea {
@@ -10038,6 +10022,16 @@ h1, h2, h3, h4, h5, h6 {
   .client-dashboard__actions .btn-ghost {
     width: 100%;
     justify-content: center;
+  }
+
+  .partner-form,
+  .partner-form__section,
+  .partner-form__field,
+  .partner-form__field input,
+  .partner-form__field select,
+  .partner-form__field textarea {
+    max-width: 100%;
+    min-width: 0;
   }
 
   .partner-submit-side {
