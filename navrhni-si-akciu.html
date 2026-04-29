@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Majstri zábavy | Navrhni si akciu</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260429-nav-tune-1">
-  <link rel="stylesheet" href="css/navrhni-si-akciu.css?v=20260429-toast-bottom-1">
+  <link rel="stylesheet" href="css/style.css?v=20260429-mobile-cta-fix-1">
+  <link rel="stylesheet" href="css/navrhni-si-akciu.css?v=20260429-hidden-elements-1">
   <link rel="stylesheet" href="css/navrhni-si-akciu-followup.css?v=20260428-date-ios-inner-1">
 </head>
 <body>
@@ -49,8 +49,6 @@
 
   <main class="navrh-page-shell">
     <section class="mz-section" id="navrhni-akciu-section">
-      <div class="mz-toast" id="mz-toast" aria-live="polite">Dakujeme, ozveme sa vam co najskor.</div>
-
       <!-- HERO + ORBIT -->
       <div class="mz-orbit-wrap">
         <div class="section-label-orbit">Výhody spolupráce</div>
@@ -427,6 +425,7 @@
     </div>
   </footer>
 
+  <div class="mz-toast" id="mz-toast" aria-live="polite" hidden>Dakujeme, ozveme sa vam co najskor.</div>
   <div class="mz-export-stage" id="mz-export-stage" aria-hidden="true"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -435,7 +434,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/mz-cennik.js?v=20260405-komplet-discount-1"></script>
   <script src="js/supabase-config.js?v=20260427-client-requests-1"></script>
-  <script src="js/navrhni-si-akciu.js?v=20260428-inline-event-error-1"></script>
+  <script src="js/navrhni-si-akciu.js?v=20260429-toast-hidden-1"></script>
   <script src="js/main.js?v=20260324-orbit-labels-1"></script>
 </body>
 </html>

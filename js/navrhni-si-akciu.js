@@ -101,9 +101,11 @@
 
   function showToast(message) {
     elements.toast.textContent = message;
+    elements.toast.hidden = false;
     elements.toast.classList.add('mz-toast--show');
     window.setTimeout(() => {
       elements.toast.classList.remove('mz-toast--show');
+      elements.toast.hidden = true;
     }, 3000);
   }
 

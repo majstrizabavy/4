@@ -6614,6 +6614,13 @@ nav {
   transform: translateY(-1px);
 }
 
+.mobile-menu a.mobile-nav-cta,
+.mobile-menu a.mobile-nav-cta:hover,
+.mobile-menu a.mobile-nav-cta:focus-visible,
+.mobile-menu a.mobile-nav-cta.active {
+  color: #111303;
+}
+
 .btn-primary::before {
   display: none;
 }
