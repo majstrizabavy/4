@@ -138,7 +138,7 @@ function renderPublicCities() {
   if (!publicCitySelect) return;
 
   publicCitySelect.innerHTML = [
-    `<option value=""${!activePublicCity ? ' selected' : ''}>Vyber si mesto a okolie</option>`,
+    `<option value=""${!activePublicCity ? ' selected' : ''}>Vyber lokalitu</option>`,
     ...getPublicCityOptions().map((city) => (
       `<option value="${city.key}"${city.key === activePublicCity ? ' selected' : ''}>${city.name}</option>`
     ))
@@ -307,14 +307,14 @@ function renderPublicEventList() {
   publicEventMonthLabel.innerHTML = `Mesiac ${month.name} &bull; ${city.name}`;
 
   publicEventListTitle.textContent = monthEvents.length
-    ? `Schválené akcie pre ${decodeHtmlEntities(month.name)}`
-    : `Zatiaľ bez schválených akcií pre lokalitu ${city.name}`;
+    ? 'Akcie v okolí'
+    : 'Zatiaľ bez akcií';
 
   if (!monthEvents.length) {
     publicEventList.innerHTML = `
       <div class="public-event-card public-event-card--empty">
         <div class="public-event-card__empty-title">Tento výber je zatiaľ prázdny.</div>
-        <div class="public-event-card__empty-copy">Keď pre ${decodeHtmlEntities(month.name)} v lokalite ${city.name} schválime nové akcie, automaticky sa zobrazia práve tu.</div>
+        <div class="public-event-card__empty-copy">Pre ${decodeHtmlEntities(month.name)} v lokalite ${city.name} tu zatiaľ nič nie je. Keď pribudnú nové akcie, zobrazia sa práve tu.</div>
       </div>
     `;
     return;
@@ -327,14 +327,17 @@ function renderPublicEventBrowser() {
   renderPublicCities();
 
   if (publicCityNote) {
+    publicCityNote.hidden = false;
+
     if (publicEventsError) {
       publicCityNote.textContent = publicEventsError;
     } else if (!publicEventsLoaded) {
-      publicCityNote.textContent = 'Načítavam schválené akcie...';
+      publicCityNote.textContent = 'Načítavam akcie...';
     } else if (hasSelectedPublicCity()) {
       publicCityNote.textContent = `Zobrazujeme akcie pre lokalitu ${getPublicCity(activePublicCity).name}.`;
     } else {
-      publicCityNote.textContent = 'Vyber mesto a zobrazia sa schválené akcie.';
+      publicCityNote.textContent = '';
+      publicCityNote.hidden = true;
     }
   }
 
@@ -484,7 +487,7 @@ async function loadApprovedPublicEvents() {
     publicEventsError = '';
   } catch (error) {
     approvedPublicEvents = [];
-    publicEventsError = 'Schválené akcie sa teraz nepodarilo načítať. Skús to prosím znova o chvíľu.';
+    publicEventsError = 'Akcie sa teraz nepodarilo načítať. Skús to prosím znova o chvíľu.';
   } finally {
     publicEventsLoaded = true;
 
