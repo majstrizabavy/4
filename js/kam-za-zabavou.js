@@ -351,7 +351,13 @@ function populateEventModal(eventItem) {
 
   eventModalTitle.innerHTML = eventItem.title;
   eventModalMeta.innerHTML = `${eventItem.when} &bull; ${eventItem.where}`;
-  if (eventModalShare) eventModalShare.textContent = 'Zdieľať akciu';
+  if (eventModalShare) {
+    eventModalShare.textContent = 'Zdieľať akciu';
+    eventModalShare.dataset.shareEventId = eventItem.id;
+    eventModalShare.dataset.shareUrl = new URL(buildPublicEventUrl(eventItem), window.location.href).href;
+    eventModalShare.removeAttribute('aria-disabled');
+    eventModalShare.classList.remove('is-disabled');
+  }
 
   if (eventItem.poster) {
     eventModalPoster.href = eventItem.moreInfoUrl || eventItem.poster;
@@ -434,14 +440,41 @@ function setActivePublicCity(cityKey, options = {}) {
   if (syncUrl) syncPublicEventBrowserUrl();
 }
 
-async function sharePublicEvent(eventId) {
-  const eventItem = getPublicEvent(eventId);
-  if (!eventItem) return;
+function copyTextWithFallback(value) {
+  const textArea = document.createElement('textarea');
+  textArea.value = value;
+  textArea.setAttribute('readonly', '');
+  textArea.style.position = 'fixed';
+  textArea.style.left = '-9999px';
+  textArea.style.top = '0';
+  document.body.appendChild(textArea);
+  textArea.select();
 
-  const shareUrl = new URL(buildPublicEventUrl(eventItem), window.location.href).href;
+  try {
+    return document.execCommand('copy');
+  } finally {
+    document.body.removeChild(textArea);
+  }
+}
+
+function setShareButtonFeedback(button, message) {
+  if (!button) return;
+  const originalText = button.textContent;
+  button.textContent = message;
+  window.setTimeout(() => {
+    button.textContent = originalText || 'Zdieľať akciu';
+  }, 1800);
+}
+
+async function sharePublicEvent(eventId, triggerButton = null) {
+  const eventItem = getPublicEvent(eventId);
+  const shareUrlFromButton = triggerButton?.dataset.shareUrl || '';
+  if (!eventItem && !shareUrlFromButton) return;
+
+  const shareUrl = shareUrlFromButton || new URL(buildPublicEventUrl(eventItem), window.location.href).href;
   const shareData = {
-    title: decodeHtmlEntities(eventItem.title),
-    text: `${decodeHtmlEntities(eventItem.when)} - ${decodeHtmlEntities(eventItem.where)}`,
+    title: decodeHtmlEntities(eventItem?.title || document.title || 'Majstri zábavy'),
+    text: eventItem ? `${decodeHtmlEntities(eventItem.when)} - ${decodeHtmlEntities(eventItem.where)}` : 'Akcia v kalendári Majstrov zábavy',
     url: shareUrl
   };
 
@@ -457,10 +490,29 @@ async function sharePublicEvent(eventId) {
       window.setTimeout(() => {
         if (eventModalShare) eventModalShare.textContent = 'Zdieľať';
       }, 1800);
+      return;
     }
+
+    sharePublicEventFallback(eventItem, shareUrl, triggerButton);
+    return;
   } catch (error) {
     // Ak používateľ zavrie zdieľanie, nechceme hlásiť chybu.
   }
+  sharePublicEventFallback(eventItem, shareUrl, triggerButton);
+}
+
+function sharePublicEventFallback(eventItem, shareUrl, triggerButton = null) {
+  if (copyTextWithFallback(shareUrl)) {
+    setShareButtonFeedback(triggerButton || eventModalShare, 'Link skopírovaný');
+    return;
+  }
+
+  const subject = encodeURIComponent(decodeHtmlEntities(eventItem?.title || document.title || 'Majstri zábavy'));
+  const bodyText = eventItem
+    ? `${decodeHtmlEntities(eventItem.when)} - ${decodeHtmlEntities(eventItem.where)}\n${shareUrl}`
+    : shareUrl;
+  const body = encodeURIComponent(bodyText);
+  window.location.href = `mailto:?subject=${subject}&body=${body}`;
 }
 
 async function loadApprovedPublicEvents() {
@@ -539,7 +591,7 @@ async function initPublicEventBrowser() {
 
     const shareButton = event.target.closest('[data-public-event-share]');
     if (shareButton) {
-      sharePublicEvent(shareButton.dataset.publicEventShare);
+      sharePublicEvent(shareButton.dataset.publicEventShare, shareButton);
     }
   });
 
@@ -553,7 +605,7 @@ async function initPublicEventBrowser() {
 
       const shareButton = event.target.closest('[data-public-event-share]');
       if (shareButton) {
-        sharePublicEvent(shareButton.dataset.publicEventShare);
+        sharePublicEvent(shareButton.dataset.publicEventShare, shareButton);
       }
     });
   }
@@ -565,8 +617,10 @@ async function initPublicEventBrowser() {
   }
 
   if (eventModalShare) {
-    eventModalShare.addEventListener('click', () => {
-      if (activePublicEventId) sharePublicEvent(activePublicEventId);
+    eventModalShare.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      sharePublicEvent(eventModalShare.dataset.shareEventId || activePublicEventId, eventModalShare);
     });
   }
 
@@ -588,5 +642,14 @@ async function initPublicEventBrowser() {
     openEventModal(requestedEventId, { syncUrl: false, preserveFilters: false });
   }
 }
+
+document.addEventListener('click', (event) => {
+  const shareButton = event.target.closest('#eventModalShare');
+  if (!shareButton) return;
+
+  event.preventDefault();
+  event.stopImmediatePropagation();
+  sharePublicEvent(shareButton.dataset.shareEventId || activePublicEventId, shareButton);
+}, true);
 
 initPublicEventBrowser();

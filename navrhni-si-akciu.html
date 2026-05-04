@@ -76,7 +76,7 @@
       </div>
 
       <div class="mz-divider">
-        <div class="mz-divider__label">rýchly návrh</div>
+        <div class="mz-divider__label">r&yacute;chly n&aacute;vrh</div>
       </div>
 
       <!-- KROKOVA KALKULACKA -->
@@ -265,19 +265,39 @@
 
         <div class="mz-followup-card">
           <div class="mz-followup-summary" id="mz-followup-summary">
-            <div class="mz-followup-summary__visual" id="mz-followup-visual">
-              <img class="mz-followup-summary__image" id="mz-followup-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" hidden>
+            <div class="mz-followup-summary__visual" id="mz-followup-visual" aria-label="Prehľad vybraného programu">
+              <div class="mz-followup-ticket" aria-hidden="true">
+                <div class="mz-followup-ticket__brand">MAJSTRI ZÁBAVY</div>
+                <div class="mz-followup-ticket__event" id="mz-followup-ticket-event">AKCIA NA MIERU</div>
+                <div class="mz-followup-ticket__row">
+                  <span id="mz-followup-ticket-scope">Výber programu</span>
+                  <span id="mz-followup-ticket-price">Cena po nacenení</span>
+                </div>
+                <div class="mz-followup-ticket__package" id="mz-followup-ticket-package">Zvoľ si program v kalendári</div>
+                <div class="mz-followup-ticket__meta" id="mz-followup-ticket-meta">Názov akcie, rozsah a orientačná cena sa prenesú automaticky.</div>
+              </div>
             </div>
-            <div class="mz-followup-summary__eyebrow">Vybrany program</div>
-            <h3 class="mz-followup-summary__title" id="mz-followup-title">Zatial si si nic nevybral</h3>
-            <p class="mz-followup-summary__text" id="mz-followup-description">Pri kliknuti na program v junskom kalendari sem prenesieme nazov akcie, variant a orientacnu cenu.</p>
-            <div class="mz-followup-summary__chips" id="mz-followup-chips">
-              <a href="365-dni-zabavy.html" class="mz-followup-summary__backlink">Vybrat akciu v 365 dni zabavy</a>
-            </div>
+            <div class="mz-followup-summary__eyebrow">Obsah balíka</div>
+            <h3 class="mz-followup-summary__title" id="mz-followup-title">Čo obsahuje vybraný balík</h3>
+            <p class="mz-followup-summary__text" id="mz-followup-description">Po výbere programu tu zobrazíme hlavné veci, za ktoré klient platí.</p>
+            <ul class="mz-followup-summary__includes" id="mz-followup-includes"></ul>
           </div>
 
           <form class="mz-followup-form" id="mz-followup-form">
-            <div class="mz-followup-grid">
+            <div class="mz-followup-progress" aria-label="Kroky dokončenia ponuky">
+              <button type="button" class="mz-followup-progress__step is-active" data-followup-step-target="0">1 Termín</button>
+              <button type="button" class="mz-followup-progress__step" data-followup-step-target="1">2 Publikum</button>
+              <button type="button" class="mz-followup-progress__step" data-followup-step-target="2">3 Kontakt</button>
+              <button type="button" class="mz-followup-progress__step" data-followup-step-target="3">4 Poznámka</button>
+            </div>
+
+            <div class="mz-followup-step is-active" data-followup-step="0">
+              <div class="mz-followup-step__head">
+                <div class="mz-followup-step__kicker">Krok 1 zo 4</div>
+                <h3>Kedy a kde bude akcia?</h3>
+                <p>Stačí termín a miesto. Ostatné doladíme podľa reality priestoru.</p>
+              </div>
+              <div class="mz-followup-grid">
               <div class="mz-followup-field mz-followup-field--date">
                 <label class="mz-followup-label" for="mz-followup-date">Datum akcie</label>
                 <input class="mz-followup-input mz-followup-input--date" id="mz-followup-date" name="event_date" type="date" autocomplete="off" required>
@@ -287,6 +307,16 @@
                 <label class="mz-followup-label" for="mz-followup-address">Adresa akcie</label>
                 <input class="mz-followup-input" id="mz-followup-address" name="event_address" type="text" placeholder="Mesto, obec alebo presna adresa" required>
               </div>
+              </div>
+            </div>
+
+            <div class="mz-followup-step" data-followup-step="1" hidden>
+              <div class="mz-followup-step__head">
+                <div class="mz-followup-step__kicker">Krok 2 zo 4</div>
+                <h3>Pre koho to pripravujeme?</h3>
+                <p>Ak už tieto údaje prišli z kalkulačky, necháme ich uložené a nepýtame sa znova.</p>
+              </div>
+              <div class="mz-followup-grid">
 
               <div class="mz-followup-field" data-followup-field="guests">
                 <label class="mz-followup-label" for="mz-followup-guests">Pocet ludi cca</label>
@@ -313,6 +343,17 @@
                   <button type="button" class="mz-followup-energy__btn" data-energy="show">Show a energia</button>
                 </div>
               </div>
+              </div>
+              <div class="mz-followup-step__saved" id="mz-followup-saved-details" hidden></div>
+            </div>
+
+            <div class="mz-followup-step" data-followup-step="2" hidden>
+              <div class="mz-followup-step__head">
+                <div class="mz-followup-step__kicker">Krok 3 zo 4</div>
+                <h3>Kam pošleme ponuku?</h3>
+                <p>Daj nám kontakt, aby sme vedeli potvrdiť dostupnosť a ďalší krok.</p>
+              </div>
+              <div class="mz-followup-grid">
 
               <div class="mz-followup-field">
                 <label class="mz-followup-label" for="mz-followup-name">Tvoje meno</label>
@@ -328,11 +369,23 @@
                 <label class="mz-followup-label" for="mz-followup-phone">Telefon</label>
                 <input class="mz-followup-input" id="mz-followup-phone" name="contact_phone" type="tel" placeholder="+421 900 000 000" autocomplete="tel">
               </div>
+              </div>
+            </div>
+
+            <div class="mz-followup-step" data-followup-step="3" hidden>
+              <div class="mz-followup-step__head">
+                <div class="mz-followup-step__kicker">Krok 4 zo 4</div>
+                <h3>Ešte posledný detail</h3>
+                <p>Poznámka je dobrovoľná. Pomôže nám, ak máš špeciálnu predstavu alebo dôležitý limit.</p>
+              </div>
+              <div class="mz-followup-grid">
 
               <div class="mz-followup-field mz-followup-field--full">
                   <label class="mz-followup-label" for="mz-followup-note">Poznámka pre Majstrov Zábavy</label>
                   <textarea class="mz-followup-textarea" id="mz-followup-note" name="note" rows="2" placeholder="Ak chces, dopln sem kratku predstavu alebo dolezity detail."></textarea>
               </div>
+            </div>
+
             </div>
 
             <input type="hidden" id="mz-followup-hidden-event" name="selected_event">
@@ -345,13 +398,15 @@
             <input type="hidden" id="mz-followup-hidden-promo" name="selected_promo">
 
             <div class="mz-followup-actions">
-              <button type="submit" class="btn-primary mz-followup-submit">ZOBRAZIŤ MOJU PONUKU</button>
+              <button type="button" class="btn-ghost mz-followup-back" id="mz-followup-back" hidden>Späť</button>
+              <button type="button" class="btn-primary mz-followup-next" id="mz-followup-next">Pokračovať</button>
+              <button type="submit" class="btn-primary mz-followup-submit" id="mz-followup-submit" hidden>ZOBRAZIŤ MOJU PONUKU</button>
             </div>
 
           </form>
 
           <section class="mz-followup-offer" id="mz-followup-offer" hidden aria-live="polite">
-            <div class="mz-followup-offer__eyebrow">Vasa predbezna ponuka</div>
+            <div class="mz-followup-offer__eyebrow">Vaša predbežná ponuka</div>
 
             <div class="mz-followup-offer__top">
               <div class="mz-followup-offer__intro">
@@ -367,24 +422,23 @@
 
             <div class="mz-followup-offer__grid">
               <div class="mz-followup-offer__block">
-                <div class="mz-followup-offer__label">Co je v cene</div>
+                <div class="mz-followup-offer__label">Čo je v cene</div>
                 <ul class="mz-followup-offer__list" id="mz-offer-includes"></ul>
               </div>
 
               <div class="mz-followup-offer__block">
-                <div class="mz-followup-offer__label">Cena zohladnuje</div>
+                <div class="mz-followup-offer__label">Cena zohľadňuje</div>
                 <div class="mz-followup-offer__context" id="mz-offer-context"></div>
               </div>
             </div>
 
-            <p class="mz-followup-offer__note" id="mz-offer-note">Akciu si mozes objednat, alebo sa s nami spoj pre vysvetlenie detailov.</p>
+            <p class="mz-followup-offer__note" id="mz-offer-note">Akciu si môžeš objednať, alebo sa s nami spoj pre vysvetlenie detailov.</p>
 
             <div class="mz-followup-offer__actions">
               <button type="button" class="btn-ghost mz-followup-offer__action" id="mz-export-final-pdf">Stiahnuť finálnu ponuku (PDF)</button>
               <button type="button" class="btn-ghost mz-followup-offer__action" id="mz-export-final-png">Stiahnuť mobilnú verziu (PNG)</button>
-              <a href="mailto:info@majstrizabavy.sk" class="btn-primary mz-followup-offer__action" id="mz-offer-order">Objednat</a>
-              <button type="button" class="btn-ghost mz-followup-offer__action" id="mz-offer-edit">Upravit zadanie</button>
-              <a href="kontakt.html#kontakt" class="btn-ghost mz-followup-offer__action" id="mz-offer-contact">Spoj sa s nami</a>
+              <a href="mailto:info@majstrizabavy.sk" class="btn-primary mz-followup-offer__action" id="mz-offer-order">Objednať</a>
+              <button type="button" class="btn-ghost mz-followup-offer__action" id="mz-offer-edit">Upraviť zadanie</button>
             </div>
 
             <div class="mz-followup-success" id="mz-followup-success" hidden>

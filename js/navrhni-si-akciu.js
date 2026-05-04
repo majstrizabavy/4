@@ -5,7 +5,6 @@
   if (!root) return;
 
   const pricingApi = window.MZPricing || null;
-  const transparentImageSrc = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
 
   const elements = {
     orbit: document.getElementById('mz-orbit'),
@@ -667,10 +666,15 @@
   (function initPlannerFollowup() {
     const followup = document.getElementById('mz-followup-form');
     const followupSection = document.getElementById('planner-form');
+    const followupCard = followupSection ? followupSection.querySelector('.mz-followup-card') : null;
     const title = document.getElementById('mz-followup-title');
     const description = document.getElementById('mz-followup-description');
-    const chips = document.getElementById('mz-followup-chips');
-    const image = document.getElementById('mz-followup-image');
+    const ticketEvent = document.getElementById('mz-followup-ticket-event');
+    const ticketScope = document.getElementById('mz-followup-ticket-scope');
+    const ticketPackage = document.getElementById('mz-followup-ticket-package');
+    const ticketPrice = document.getElementById('mz-followup-ticket-price');
+    const ticketMeta = document.getElementById('mz-followup-ticket-meta');
+    const includes = document.getElementById('mz-followup-includes');
     const hiddenEvent = document.getElementById('mz-followup-hidden-event');
     const hiddenVariant = document.getElementById('mz-followup-hidden-variant');
     const hiddenPrice = document.getElementById('mz-followup-hidden-price');
@@ -690,7 +694,6 @@
     const offerNote = document.getElementById('mz-offer-note');
     const orderLink = document.getElementById('mz-offer-order');
     const editButton = document.getElementById('mz-offer-edit');
-    const contactLink = document.getElementById('mz-offer-contact');
     const exportFinalPdf = document.getElementById('mz-export-final-pdf');
     const exportFinalPng = document.getElementById('mz-export-final-png');
     const dateField = document.getElementById('mz-followup-date');
@@ -701,14 +704,21 @@
     const contactField = document.getElementById('mz-followup-contact');
     const phoneField = document.getElementById('mz-followup-phone');
     const noteField = document.getElementById('mz-followup-note');
+    const followupSteps = Array.from(document.querySelectorAll('[data-followup-step]'));
+    const followupStepButtons = Array.from(document.querySelectorAll('[data-followup-step-target]'));
+    const followupBackButton = document.getElementById('mz-followup-back');
+    const followupNextButton = document.getElementById('mz-followup-next');
+    const followupSubmitButton = document.getElementById('mz-followup-submit');
+    const savedDetails = document.getElementById('mz-followup-saved-details');
     const transferredFields = {
       guests: followup ? followup.querySelector('[data-followup-field="guests"]') : null,
       audience: followup ? followup.querySelector('[data-followup-field="audience"]') : null,
       energy: followup ? followup.querySelector('[data-followup-field="energy"]') : null
     };
     const params = new URLSearchParams(window.location.search);
+    let activeFollowupStep = 0;
 
-    if (!followup || !followupSection || !title || !description || !chips || !image || !hiddenEvent || !hiddenVariant || !hiddenPrice || !hiddenEnergy || !hiddenAudience || !hiddenGuests || !hiddenBudget || !hiddenPromo || !success || !offerBox || !offerSelection || !offerDescription || !offerPrice || !offerIncludes || !offerContext || !offerNote || !orderLink || !editButton || !contactLink || !exportFinalPdf || !exportFinalPng || !dateField || !addressField || !guestsField || !audienceField || !nameField || !contactField || !phoneField || !noteField) return;
+    if (!followup || !followupSection || !followupCard || !title || !description || !includes || !ticketEvent || !ticketScope || !ticketPackage || !ticketPrice || !ticketMeta || !savedDetails || !followupBackButton || !followupNextButton || !followupSubmitButton || !followupSteps.length || !followupStepButtons.length || !hiddenEvent || !hiddenVariant || !hiddenPrice || !hiddenEnergy || !hiddenAudience || !hiddenGuests || !hiddenBudget || !hiddenPromo || !success || !offerBox || !offerSelection || !offerDescription || !offerPrice || !offerIncludes || !offerContext || !offerNote || !orderLink || !editButton || !exportFinalPdf || !exportFinalPng || !dateField || !addressField || !guestsField || !audienceField || !nameField || !contactField || !phoneField || !noteField) return;
 
     const selected = {
       source: params.get('source') || '',
@@ -719,7 +729,6 @@
       variant: params.get('variant') || '',
       price: params.get('price') || '',
       lead: params.get('lead') || '',
-      poster: params.get('poster') || '',
       audience: params.get('audience') || '',
       guests: params.get('guests') || '',
       energy: params.get('energy') || '',
@@ -755,6 +764,69 @@
     function setTransferredField(name, isTransferred) {
       if (!transferredFields[name]) return;
       transferredFields[name].classList.toggle('is-transferred', Boolean(isTransferred));
+    }
+
+    function updateSavedDetails() {
+      const savedItems = [
+        selected.guests ? `Počet ľudí: ${selected.guests}` : '',
+        selected.audience ? `Publikum: ${selected.audience}` : '',
+        selected.energy ? `Energia: ${selected.energy}` : ''
+      ].filter(Boolean);
+
+      savedDetails.hidden = !savedItems.length;
+      savedDetails.innerHTML = savedItems.length
+        ? `<span>Máme uložené</span>${savedItems.map((item) => `<strong>${sanitizeText(item)}</strong>`).join('')}`
+        : '';
+    }
+
+    function getStepFields(stepIndex) {
+      const step = followupSteps[stepIndex];
+      if (!step) return [];
+      return Array.from(step.querySelectorAll('input, select, textarea'))
+        .filter((field) => !field.closest('.is-transferred') && field.type !== 'hidden');
+    }
+
+    function validateFollowupStep(stepIndex) {
+      const firstInvalid = getStepFields(stepIndex).find((field) => !field.checkValidity());
+      if (!firstInvalid) return true;
+      firstInvalid.reportValidity();
+      return false;
+    }
+
+    function showFollowupStep(stepIndex) {
+      activeFollowupStep = Math.max(0, Math.min(stepIndex, followupSteps.length - 1));
+
+      followupSteps.forEach((step, index) => {
+        const isActive = index === activeFollowupStep;
+        step.hidden = !isActive;
+        step.classList.toggle('is-active', isActive);
+      });
+
+      followupStepButtons.forEach((button, index) => {
+        button.classList.toggle('is-active', index === activeFollowupStep);
+        button.classList.toggle('is-complete', index < activeFollowupStep);
+      });
+
+      followupBackButton.hidden = activeFollowupStep === 0;
+      followupNextButton.hidden = activeFollowupStep === followupSteps.length - 1;
+      followupSubmitButton.hidden = activeFollowupStep !== followupSteps.length - 1;
+    }
+
+    function scrollActiveFollowupStepIntoView() {
+      const activeStep = followupSteps[activeFollowupStep];
+      if (!activeStep) return;
+      requestAnimationFrame(() => {
+        activeStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    }
+
+    function moveFollowupStep(direction) {
+      if (direction > 0 && !validateFollowupStep(activeFollowupStep)) {
+        showToast('Dopln prosím údaje v tomto kroku.');
+        return;
+      }
+      showFollowupStep(activeFollowupStep + direction);
+      scrollActiveFollowupStepIntoView();
     }
 
     function getPricingGuests(value) {
@@ -798,6 +870,19 @@
       return Boolean(selected.budget && !selected.price);
     }
 
+    function getTicketMetaLabel() {
+      const details = [
+        selected.audience,
+        selected.guests ? `${selected.guests} ľudí` : '',
+        selected.energy,
+        shouldShowBudgetAsDetail() ? `rozpočet ${selected.budget}` : ''
+      ].filter(Boolean);
+
+      return details.length
+        ? details.join(' / ')
+        : 'Výber je pripravený, doplň už len dátum, miesto a kontakt.';
+    }
+
     let selectedEnergy = '';
 
     function revealFollowup() {
@@ -818,7 +903,6 @@
         variant: '',
         price: '',
         lead: '',
-        poster: '',
         audience: '',
         guests: '',
         energy: '',
@@ -831,21 +915,18 @@
         wizardState.eventName = selected.event;
       }
 
-      title.textContent = getSelectionLabel();
-      description.textContent = selected.source === 'quick-calc'
-        ? 'Výber z kalkulačky máme uložený. Doplň už len posledné detaily.'
-        : 'Ešte pár detailov a tvoja ponuka je pripravená.';
-      chips.innerHTML = [
-        selected.event ? `<span class="mz-followup-chip">${selected.event}</span>` : '',
-        getScopeDisplayLabel() ? `<span class="mz-followup-chip">${getScopeDisplayLabel()}</span>` : '',
-        selected.packageName ? `<span class="mz-followup-chip">${selected.packageName}</span>` : (selected.variant ? `<span class="mz-followup-chip">${selected.variant}</span>` : ''),
-        selected.price ? `<span class="mz-followup-chip">${selected.price}</span>` : '',
-        selected.audience ? `<span class="mz-followup-chip">${selected.audience}</span>` : '',
-        selected.guests ? `<span class="mz-followup-chip">${selected.guests} ľudí</span>` : '',
-        selected.energy ? `<span class="mz-followup-chip">${selected.energy}</span>` : '',
-        shouldShowBudgetAsDetail() ? `<span class="mz-followup-chip">rozpočet ${selected.budget}</span>` : '',
-        selected.promo ? `<span class="mz-followup-chip">promo: ${selected.promo}</span>` : ''
-      ].join('');
+      ticketEvent.textContent = selected.event || 'Akcia na mieru';
+      ticketScope.textContent = getScopeDisplayLabel() || 'Výber programu';
+      ticketPackage.textContent = selected.packageName || selected.variant || 'Zvoľ si program v kalendári';
+      ticketPrice.textContent = selected.price || (shouldShowBudgetAsDetail() ? selected.budget : 'Cena po nacenení');
+      ticketMeta.textContent = getTicketMetaLabel();
+      title.textContent = 'Čo obsahuje vybraný balík';
+      description.textContent = selected.lead
+        ? selected.lead
+        : 'Toto je základ, z ktorého pripravíme finálnu ponuku podľa termínu, miesta a počtu ľudí.';
+      includes.innerHTML = getOfferBullets()
+        .map((item) => `<li>${sanitizeText(item)}</li>`)
+        .join('');
       hiddenEvent.value = selected.event;
       hiddenVariant.value = selected.packageName || selected.variant;
       hiddenPrice.value = selected.price;
@@ -853,6 +934,7 @@
       hiddenGuests.value = selected.guests;
       hiddenBudget.value = selected.budget;
       hiddenPromo.value = selected.promo;
+      updateSavedDetails();
 
       if (selected.audience) {
         audienceField.value = mapAudienceToFieldValue(selected.audience);
@@ -886,20 +968,12 @@
         setTransferredField('energy', false);
       }
 
-      if (selected.poster) {
-        image.src = selected.poster;
-        image.alt = title.textContent;
-        image.hidden = false;
-      } else {
-        image.hidden = true;
-        image.src = transparentImageSrc;
-      }
-
       if (options.scroll) {
         requestAnimationFrame(() => {
           followupSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
       }
+      showFollowupStep(0);
     }
 
     function getOfferBullets() {
@@ -1200,6 +1274,7 @@
         formData
       };
       success.hidden = true;
+      followupCard.classList.add('is-offer-ready');
       offerBox.hidden = false;
 
       requestAnimationFrame(() => {
@@ -1224,6 +1299,26 @@
       openNativeDatePicker();
     });
 
+    followupBackButton.addEventListener('click', () => moveFollowupStep(-1));
+    followupNextButton.addEventListener('click', () => moveFollowupStep(1));
+    followupStepButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const targetStep = Number(button.dataset.followupStepTarget || 0);
+        if (targetStep <= activeFollowupStep) {
+          showFollowupStep(targetStep);
+          return;
+        }
+
+        for (let index = activeFollowupStep; index < targetStep; index += 1) {
+          if (!validateFollowupStep(index)) return;
+        }
+        showFollowupStep(targetStep);
+        scrollActiveFollowupStepIntoView();
+      });
+    });
+
+    showFollowupStep(0);
+
     followup.addEventListener('submit', (event) => {
       event.preventDefault();
       if (!followup.reportValidity()) {
@@ -1240,6 +1335,7 @@
     });
 
     editButton.addEventListener('click', () => {
+      followupCard.classList.remove('is-offer-ready');
       offerBox.hidden = true;
       success.hidden = true;
       followupSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1265,10 +1361,6 @@
         orderLink.removeAttribute('aria-busy');
         orderLink.textContent = 'Objednať / odoslať dopyt';
       }
-    });
-
-    contactLink.addEventListener('click', () => {
-      showToast('Otvárame kontakt na Majstrov zábavy.');
     });
 
     exportFinalPdf.addEventListener('click', async () => {

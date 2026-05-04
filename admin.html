@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Majstri zabavy | Admin</title>
+  <meta name="description" content="Spolocny admin panel pre nove zakazky, navrhy klientom a akcie do kalendara.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=20260504-admin-spacing-fix-1">
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo" data-nav="home"><span class="nav-logo__main">MAJSTRI</span> <span class="nav-logo__accent">ZABAVY</span></a>
+    <ul class="nav-links">
+      <li><a href="admin.html" data-nav="admin">Admin</a></li>
+      <li><a href="https://supabase.com/dashboard/project/cuvcypjsphkcpherljrw" target="_blank" rel="noreferrer noopener">Supabase</a></li>
+      <li><a href="https://resend.com/emails" target="_blank" rel="noreferrer noopener">Resend</a></li>
+    </ul>
+    <div class="nav-ham" data-mobile-toggle><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="admin.html" data-nav="admin" data-mobile-close>Admin</a>
+    <a href="https://supabase.com/dashboard/project/cuvcypjsphkcpherljrw" target="_blank" rel="noreferrer noopener" data-mobile-close>Supabase</a>
+    <a href="https://resend.com/emails" target="_blank" rel="noreferrer noopener" data-mobile-close>Resend</a>
+  </div>
+
+  <main class="page-shell">
+    <section class="admin-events-page admin-hub-page">
+      <div class="section-header reveal">
+        <h2 class="section-title">ADMIN</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="admin-auth reveal" id="adminLoginShell">
+        <div class="admin-auth__copy">
+          <div class="admin-auth__eyebrow">Len pre interny tim</div>
+          <h1 class="admin-auth__title">Jedno miesto pre zakazky, navrhy klientom a kalendar.</h1>
+          <p class="admin-auth__text">Po prihlaseni uvidis nove zakazky, navrhy klientom aj akcie cakajuce na schvalenie.</p>
+        </div>
+
+        <form class="admin-auth__form" id="adminLoginForm">
+          <label class="partner-form__field">
+            <span>Email</span>
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+
+          <label class="partner-form__field">
+            <span>Heslo</span>
+            <input type="password" name="password" autocomplete="current-password" required>
+          </label>
+
+          <p class="admin-auth__status" id="adminStatus" aria-live="polite"></p>
+          <button type="submit" class="btn-primary admin-auth__submit">Prihlasit sa do adminu</button>
+        </form>
+      </div>
+
+      <div class="admin-dashboard reveal" id="adminDashboardShell" hidden>
+        <div class="admin-dashboard__topbar">
+          <div>
+            <div class="admin-dashboard__eyebrow">Prihlaseny admin</div>
+            <h3 class="admin-dashboard__title" id="adminCurrentUser">Admin</h3>
+          </div>
+          <div class="admin-dashboard__topbar-actions">
+            <button type="button" class="btn-ghost" id="adminRefreshButton">Obnovit</button>
+            <button type="button" class="btn-primary" id="adminLogoutButton">Odhlasit sa</button>
+          </div>
+        </div>
+
+        <div class="admin-hub-tabs" role="tablist" aria-label="Admin menu">
+          <button type="button" class="admin-hub-tab is-active" data-admin-view="overview">Prehlad</button>
+          <button type="button" class="admin-hub-tab" data-admin-view="leads">Nove zakazky</button>
+          <button type="button" class="admin-hub-tab" data-admin-view="orders">Navrhy klientom</button>
+          <button type="button" class="admin-hub-tab" data-admin-view="calendar">Akcie do kalendara</button>
+        </div>
+
+        <p class="admin-auth__status admin-hub-status" id="adminActionStatus" aria-live="polite"></p>
+
+        <section class="admin-hub-view is-active" id="adminViewOverview" data-admin-panel="overview">
+          <div class="admin-summary admin-hub-summary">
+            <article class="admin-summary__card">
+              <div class="admin-summary__label">Nove zakazky</div>
+              <div class="admin-summary__value" id="adminSummaryLeads">0</div>
+            </article>
+            <article class="admin-summary__card">
+              <div class="admin-summary__label">Navrhy klientom</div>
+              <div class="admin-summary__value" id="adminSummaryOrders">0</div>
+            </article>
+            <article class="admin-summary__card">
+              <div class="admin-summary__label">Caka klient</div>
+              <div class="admin-summary__value" id="adminSummaryWaitingClient">0</div>
+            </article>
+            <article class="admin-summary__card">
+              <div class="admin-summary__label">Akcie na schvalenie</div>
+              <div class="admin-summary__value" id="adminSummaryCalendar">0</div>
+            </article>
+          </div>
+
+          <div class="admin-hub-overview-grid">
+            <section class="admin-requests-panel">
+              <div class="admin-requests-panel__head">
+                <div>
+                  <div class="admin-dashboard__eyebrow">Najnovsie</div>
+                  <h3 class="admin-dashboard__title">Nove zakazky</h3>
+                </div>
+                <button type="button" class="btn-ghost" data-admin-jump="leads">Otvorit</button>
+              </div>
+              <div class="admin-events-list" id="adminOverviewLeads"></div>
+              <div class="admin-events-empty" id="adminOverviewLeadsEmpty" hidden></div>
+            </section>
+
+            <section class="admin-requests-panel">
+              <div class="admin-requests-panel__head">
+                <div>
+                  <div class="admin-dashboard__eyebrow">Kalendar</div>
+                  <h3 class="admin-dashboard__title">Cakajuce akcie</h3>
+                </div>
+                <button type="button" class="btn-ghost" data-admin-jump="calendar">Otvorit</button>
+              </div>
+              <div class="admin-events-list" id="adminOverviewCalendar"></div>
+              <div class="admin-events-empty" id="adminOverviewCalendarEmpty" hidden></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="admin-hub-view" id="adminViewLeads" data-admin-panel="leads" hidden>
+          <div class="admin-requests-panel">
+            <div class="admin-requests-panel__head">
+              <div>
+                <div class="admin-dashboard__eyebrow">Potencialne zakazky</div>
+                <h3 class="admin-dashboard__title">Klienti, ktori chcu akciu od nas</h3>
+              </div>
+              <span class="admin-dashboard__pending-badge" id="adminLeadsBadge">0 caka</span>
+            </div>
+            <div class="admin-events-list" id="adminLeadsList"></div>
+            <div class="admin-events-empty" id="adminLeadsEmpty" hidden></div>
+          </div>
+        </section>
+
+        <section class="admin-hub-view" id="adminViewOrders" data-admin-panel="orders" hidden>
+          <div class="admin-orders-layout">
+            <form class="partner-form admin-order-form" id="adminOrderForm">
+              <div class="partner-form__section-head">
+                <div class="partner-form__eyebrow" id="adminOrderFormMode">Novy navrh</div>
+                <h3 class="partner-form__title">Navrh pre klienta</h3>
+              </div>
+
+              <input type="hidden" id="adminOrderId">
+              <div class="partner-form__grid">
+                <label class="partner-form__field">
+                  <span>Email klienta</span>
+                  <input type="email" name="client_email" id="adminOrderClientEmail" list="adminOrderClientEmails" autocomplete="email" required>
+                  <datalist id="adminOrderClientEmails"></datalist>
+                </label>
+
+                <label class="partner-form__field">
+                  <span>Stav navrhu</span>
+                  <select name="status" id="adminOrderStatus">
+                    <option value="draft">Rozpracovany navrh</option>
+                    <option value="sent">Navrh odoslany</option>
+                    <option value="confirmed">Potvrdene</option>
+                    <option value="in_progress">V priprave</option>
+                    <option value="done">Dokoncene</option>
+                    <option value="cancelled">Zrusene</option>
+                  </select>
+                </label>
+
+                <label class="partner-form__field partner-form__field--full">
+                  <span>Nazov akcie</span>
+                  <input type="text" name="title" id="adminOrderTitle" required>
+                </label>
+
+                <label class="partner-form__field">
+                  <span>Datum</span>
+                  <input type="date" name="event_date" id="adminOrderDate">
+                </label>
+
+                <label class="partner-form__field">
+                  <span>Miesto</span>
+                  <input type="text" name="location" id="adminOrderLocation">
+                </label>
+
+                <label class="partner-form__field">
+                  <span>Cena</span>
+                  <input type="text" name="final_price" id="adminOrderPrice" inputmode="decimal" pattern="[0-9]+([,.][0-9]{1,2})?" placeholder="Napr. 980" autocomplete="off">
+                </label>
+
+                <label class="partner-form__field partner-form__field--full">
+                  <span>Navrhovane sluzby</span>
+                  <textarea name="services" id="adminOrderServices" rows="4" placeholder="Kazdu sluzbu daj na samostatny riadok."></textarea>
+                </label>
+
+                <label class="partner-form__field partner-form__field--full">
+                  <span>Poznamka / pokyny</span>
+                  <textarea name="notes" id="adminOrderNotes" rows="4"></textarea>
+                </label>
+
+                <label class="partner-form__field partner-form__field--full">
+                  <span>Program pre klienta</span>
+                  <textarea name="program" id="adminOrderProgram" rows="7" placeholder="Navrh programu, harmonogram alebo scenar akcie pre klienta."></textarea>
+                </label>
+
+                <label class="partner-form__field">
+                  <span>Stav programu</span>
+                  <select name="program_status" id="adminOrderProgramStatus">
+                    <option value="draft">Koncept</option>
+                    <option value="sent">Odoslane klientovi</option>
+                    <option value="confirmed">Potvrdene klientom</option>
+                    <option value="change_requested">Klient ziada upravu</option>
+                    <option value="rejected">Zamietnute klientom</option>
+                  </select>
+                </label>
+
+                <label class="partner-form__field">
+                  <span>Reakcia klienta</span>
+                  <input type="text" id="adminOrderClientResponse" readonly placeholder="Zatial bez reakcie">
+                </label>
+              </div>
+
+              <div class="partner-form__footer">
+                <p class="partner-form__status" id="adminOrderFormStatus" aria-live="polite"></p>
+                <button type="button" class="btn-ghost" id="adminOrderResetButton">Vycistit</button>
+                <button type="submit" class="btn-primary partner-form__submit" id="adminOrderSaveButton">Ulozit navrh</button>
+              </div>
+            </form>
+
+            <div>
+              <div class="admin-filters admin-orders-tools">
+                <input class="admin-orders-search" id="adminOrdersSearch" type="search" placeholder="Hladat podla emailu, nazvu alebo miesta">
+              </div>
+              <div class="admin-events-list" id="adminOrdersList"></div>
+              <div class="admin-events-empty" id="adminOrdersEmpty" hidden></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-hub-view" id="adminViewCalendar" data-admin-panel="calendar" hidden>
+          <div class="admin-summary">
+            <article class="admin-summary__card">
+              <div class="admin-summary__label">Caka</div>
+              <div class="admin-summary__value" id="adminCalendarPending">0</div>
+            </article>
+            <article class="admin-summary__card">
+              <div class="admin-summary__label">Schvalene</div>
+              <div class="admin-summary__value" id="adminCalendarApproved">0</div>
+            </article>
+            <article class="admin-summary__card">
+              <div class="admin-summary__label">Zamietnute</div>
+              <div class="admin-summary__value" id="adminCalendarRejected">0</div>
+            </article>
+          </div>
+
+          <div class="admin-filters" id="adminCalendarFilterGroup">
+            <button type="button" class="admin-filter is-active" data-calendar-filter="pending" data-calendar-label="Caka na schvalenie">Caka na schvalenie</button>
+            <button type="button" class="admin-filter" data-calendar-filter="approved" data-calendar-label="Schvalene">Schvalene</button>
+            <button type="button" class="admin-filter" data-calendar-filter="rejected" data-calendar-label="Zamietnute">Zamietnute</button>
+            <button type="button" class="admin-filter" data-calendar-filter="all" data-calendar-label="Vsetky">Vsetky</button>
+          </div>
+
+          <div class="admin-events-list" id="adminCalendarList"></div>
+          <div class="admin-events-empty" id="adminCalendarEmpty" hidden></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/main.js?v=20260406-site-core-1"></script>
+  <script src="js/supabase-config.js?v=20260424-supabase-events-1"></script>
+  <script src="js/admin.js?v=20260504-admin-delete-proposal-1"></script>
+</body>
+</html>

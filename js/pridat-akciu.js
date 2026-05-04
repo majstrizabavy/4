@@ -148,10 +148,6 @@ async function handlePartnerEventSubmit(event) {
     const title = String(formData.get('title') || '').trim();
     const eventDate = String(formData.get('event_date') || '').trim();
     const cityKey = String(formData.get('city_key') || '').trim();
-    const venueName = String(formData.get('venue_name') || '').trim();
-    const regionLabel = String(formData.get('region_label') || '').trim();
-    const category = String(formData.get('category') || '').trim();
-    const audience = String(formData.get('audience') || '').trim();
     const description = String(formData.get('description') || '').trim();
     const moreInfoUrl = window.MZSupabase.normalizeExternalUrl(formData.get('more_info_url'));
     const partnerName = String(formData.get('partner_name') || '').trim();
@@ -181,11 +177,11 @@ async function handlePartnerEventSubmit(event) {
         event_date: eventDate,
         city_key: selectedCity.key,
         city_label: selectedCity.name,
-        venue_name: venueName || null,
-        region_label: regionLabel || null,
+        venue_name: null,
+        region_label: null,
         description: description || null,
-        audience: audience || null,
-        category: category || null,
+        audience: null,
+        category: null,
         poster_path: posterPath || null,
         more_info_url: moreInfoUrl || null,
         submitter_name: submitterName,
