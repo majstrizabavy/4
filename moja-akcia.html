@@ -1,12 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="sk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Majstri zábavy | Môj účet</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <meta name="theme-color" content="#080a08">
+  <title>Majstri Zábavy | Môj účet</title>
   <meta name="description" content="Klientsky účet u Majstrov zábavy.">
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260504-client-green-hero-1">
+  <link rel="stylesheet" href="css/style.css?v=20260504-cursor-pro-2">
 </head>
 <body>
   <div id="cursor"></div>
@@ -42,15 +44,15 @@
     <section class="client-zone-page">
       <div class="client-zone-hero reveal">
         <div class="client-zone-hero__content">
-          <div class="client-zone-hero__eyebrow">Klientska zona</div>
-          <h1 class="client-zone-hero__title">Moj ucet u Majstrov zabavy</h1>
-          <p class="client-zone-hero__text">Prihlas sa a pozri si navrhy akcii, program, sluzby a pokyny od nasho timu.</p>
+          <div class="client-zone-hero__eyebrow">Klientská zóna</div>
+          <h1 class="client-zone-hero__title">Organizácia akcie bez stresu začína tu</h1>
+          <p class="client-zone-hero__text">Spravuj návrhy, program aj služby prehľadne na jednom mieste.</p>
         </div>
-        <div class="client-zone-hero__tags" aria-label="Obsah klientskeho uctu">
-          <span>Navrhy</span>
-          <span>Program</span>
-          <span>Sluzby</span>
-          <span>Schvalenie</span>
+        <div class="client-zone-hero__tags" aria-label="Obsah klientskeho účtu">
+          <span>Návrh a program</span>
+          <span>Klubové výhody</span>
+          <span>Služby a dodávatelia</span>
+          <span>Stav a detaily akcie</span>
         </div>
       </div>
 
@@ -92,15 +94,76 @@
           </div>
         </div>
 
+        <div class="client-insight-panel" id="clientInsightPanel" hidden></div>
+        <div class="client-offer-summary" id="clientOfferSummary" hidden></div>
+        <div class="client-orders-heading" id="clientOrdersHeading" hidden>
+          <div>
+            <span>Tvoje akcie</span>
+            <strong>Aktuálne návrhy a potvrdené programy</strong>
+          </div>
+        </div>
         <div class="client-orders-list" id="clientOrdersList"></div>
         <div class="admin-events-empty" id="clientOrdersEmpty" hidden>Zatiaľ tu nemáš priradenú žiadnu akciu.</div>
+
+        <section class="client-loyalty" aria-labelledby="clientLoyaltyTitle">
+          <div class="client-loyalty__header">
+            <div>
+              <div class="client-zone-section__eyebrow">Klub klientov</div>
+              <h3 id="clientLoyaltyTitle">Plánuj s nami celý rok a získaj viac výhod</h3>
+            </div>
+            <p>S každou ďalšou akciou sa ti otvárajú lepšie podmienky, bonusy a prednostná starostlivosť od nášho tímu.</p>
+          </div>
+
+          <div class="client-loyalty__cards" aria-label="Výhody pre pravidelných klientov">
+            <button class="client-benefit-card" type="button" aria-pressed="false">
+              <span class="client-benefit-card__front">
+                <span class="client-benefit-card__count">3</span>
+                <strong>akcie</strong>
+                <small>10 % zľava</small>
+              </span>
+              <span class="client-benefit-card__back">
+                <strong>10 % zľava</strong>
+                <small>na vybranú doplnkovú službu k ďalšej akcii</small>
+              </span>
+            </button>
+
+            <button class="client-benefit-card" type="button" aria-pressed="false">
+              <span class="client-benefit-card__front">
+                <span class="client-benefit-card__count">5</span>
+                <strong>akcií</strong>
+                <small>Bonusová služba</small>
+              </span>
+              <span class="client-benefit-card__back">
+                <strong>Bonusová služba</strong>
+                <small>napríklad mini program, extra koordinácia alebo doplnok podľa typu akcie</small>
+              </span>
+            </button>
+
+            <button class="client-benefit-card" type="button" aria-pressed="false">
+              <span class="client-benefit-card__front">
+                <span class="client-benefit-card__count">10</span>
+                <strong>akcií</strong>
+                <small>VIP priorita</small>
+              </span>
+              <span class="client-benefit-card__back">
+                <strong>Priorita a individuálna ponuka</strong>
+                <small>prednostné riešenie termínov a výhody nastavené podľa tvojich akcií</small>
+              </span>
+            </button>
+          </div>
+
+          <div class="client-loyalty__footer">
+            <span>Bonusy sa počítajú z potvrdených akcií v tvojej klientskej zóne.</span>
+            <a class="btn-primary" href="navrhni-si-akciu.html">Naplánovať ďalšiu akciu</a>
+          </div>
+        </section>
       </div>
     </section>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/main.js?v=20260406-site-core-1"></script>
+  <script src="js/main.js?v=20260504-cursor-pro-2"></script>
   <script src="js/supabase-config.js?v=20260424-supabase-events-1"></script>
-  <script src="js/moja-akcia.js?v=20260504-client-program-1"></script>
+  <script src="js/moja-akcia.js?v=20260504-client-premium-9"></script>
 </body>
 </html>
