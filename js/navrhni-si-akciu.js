@@ -161,7 +161,11 @@
   orbitGroup.id = 'mz-orbit-group';
   orbitGroup.style.cssText = 'position:absolute;top:50%;left:50%;transform-origin:0 0;width:0;height:0;';
   elements.planets.parentElement.insertBefore(orbitGroup, elements.planets);
+  const energyLayer = document.createElement('div');
+  energyLayer.className = 'mz-energy-layer';
+  elements.orbit.insertBefore(energyLayer, elements.orbit.firstChild);
   let activePlanet = null;
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function sizeOrbit() {
     const size = isMobile() ? '300px' : (isMedium() ? '340px' : '600px');
@@ -199,6 +203,7 @@
 
   function buildOrbit() {
     orbitGroup.innerHTML = '';
+    energyLayer.innerHTML = '';
     const radius = isMobile() ? 118 : (isMedium() ? 152 : 220);
     const planetSize = isMobile() ? 60 : (isMedium() ? 66 : 80);
     const labelSize = isMobile() ? '7.8px' : (isMedium() ? '8.6px' : '9.6px');
@@ -211,10 +216,21 @@
       keyframes += `@keyframes mz-fo-${index}{`;
       keyframes += `from{transform:rotate(${degrees}deg) translateX(${radius}px) rotate(${-degrees}deg);}`;
       keyframes += `to{transform:rotate(${degrees + 360}deg) translateX(${radius}px) rotate(${-(degrees + 360)}deg);}}`;
+      keyframes += `@keyframes mz-ray-${index}{`;
+      keyframes += `from{transform:translateY(-50%) rotate(${degrees}deg);}`;
+      keyframes += `to{transform:translateY(-50%) rotate(${degrees + 360}deg);}}`;
 
       const track = document.createElement('div');
       track.className = 'mz-orbit-track';
       track.style.cssText = `position:absolute;width:0;height:0;top:0;left:0;animation:mz-fo-${index} 18s linear infinite;`;
+
+      if (!reducedMotionQuery.matches) {
+        const ray = document.createElement('div');
+        ray.className = 'mz-energy-ray';
+        ray.style.cssText = `--ray-length:${Math.max(74, radius - planetSize * 0.42)}px;--ray-delay:${(index * 0.42).toFixed(2)}s;animation:mz-ray-${index} 18s linear infinite;`;
+        ray.innerHTML = '<span class="mz-energy-ray__base"></span><span class="mz-energy-ray__drop"></span>';
+        energyLayer.appendChild(ray);
+      }
 
       const planet = document.createElement('div');
       planet.className = 'mz-planet';
@@ -661,6 +677,18 @@
     buildOrbit();
     sizeOrbit();
     clearActiveOrbitPlanet();
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      energyLayer.innerHTML = '';
+    } else {
+      buildOrbit();
+    }
+  });
+
+  reducedMotionQuery.addEventListener?.('change', () => {
+    buildOrbit();
   });
 
   (function initPlannerFollowup() {

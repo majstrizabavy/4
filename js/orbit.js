@@ -72,6 +72,11 @@ orbitGroup.id = 'orbitGroup';
 orbitGroup.style.cssText = 'position:absolute;top:50%;left:50%;transform-origin:0 0;width:0;height:0;';
 planetsWrapper.parentElement.insertBefore(orbitGroup, planetsWrapper);
 
+const energyLayer = document.createElement('div');
+energyLayer.className = 'home-energy-layer';
+container.insertBefore(energyLayer, container.firstChild);
+const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 function setCoreState(planet) {
   if (!planet) {
     container.classList.remove('planet-active');
@@ -110,6 +115,7 @@ function clearActivePlanet() {
 
 function buildOrbit() {
   orbitGroup.innerHTML = '';
+  energyLayer.innerHTML = '';
 
   const radius = isMobile() ? 118 : 198;
   const size = isMobile() ? 60 : 74;
@@ -125,6 +131,10 @@ function buildOrbit() {
       from { transform: rotate(${startAngleDeg}deg) translateX(${radius}px) rotate(${-startAngleDeg}deg); }
       to   { transform: rotate(${startAngleDeg + 360}deg) translateX(${radius}px) rotate(${-(startAngleDeg + 360)}deg); }
     }`;
+    keyframes += `@keyframes home-energy-ray-${index}{
+      from { transform: translateY(-50%) rotate(${startAngleDeg}deg); }
+      to   { transform: translateY(-50%) rotate(${startAngleDeg + 360}deg); }
+    }`;
 
     const orbitTrack = document.createElement('div');
     orbitTrack.className = 'orbit-planet-track';
@@ -136,6 +146,14 @@ function buildOrbit() {
       left: 0;
       animation: full-orbit-${index} 18s linear infinite;
     `;
+
+    if (!reducedMotionQuery.matches) {
+      const ray = document.createElement('div');
+      ray.className = 'home-energy-ray';
+      ray.style.cssText = `--ray-length:${Math.max(72, radius - size * 0.42)}px;--ray-delay:${(index * 0.48).toFixed(2)}s;animation:home-energy-ray-${index} 18s linear infinite;`;
+      ray.innerHTML = '<span class="home-energy-ray__base"></span><span class="home-energy-ray__drop"></span>';
+      energyLayer.appendChild(ray);
+    }
 
     const planetDiv = document.createElement('div');
     planetDiv.className = 'planet';
@@ -227,4 +245,16 @@ window.addEventListener('resize', () => {
   sizeOrbit();
   clearActivePlanet();
   setCoreState(null);
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    energyLayer.innerHTML = '';
+  } else {
+    buildOrbit();
+  }
+});
+
+reducedMotionQuery.addEventListener?.('change', () => {
+  buildOrbit();
 });

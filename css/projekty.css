@@ -1030,7 +1030,8 @@
   padding-top: 88px;
 }
 
-#svet-zabavy .projects-hero--world-green {
+#svet-zabavy .projects-hero--world-green,
+#projekty .projects-hero--world-green {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
   align-items: center;
@@ -1046,7 +1047,8 @@
   box-shadow: 0 30px 80px rgba(4, 6, 2, 0.34), 0 0 44px rgba(var(--accent-rgb), 0.14);
 }
 
-#svet-zabavy .projects-hero--world-green::before {
+#svet-zabavy .projects-hero--world-green::before,
+#projekty .projects-hero--world-green::before {
   inset: 0;
   background:
     linear-gradient(rgba(16, 21, 4, 0.055) 1px, transparent 1px),
@@ -1058,32 +1060,41 @@
 #svet-zabavy .projects-hero--world-green .projects-hero__label,
 #svet-zabavy .projects-hero--world-green .projects-hero__title,
 #svet-zabavy .projects-hero--world-green .projects-hero__subtitle,
-#svet-zabavy .world-hero-tags {
+#svet-zabavy .world-hero-tags,
+#projekty .projects-hero--world-green .projects-hero__label,
+#projekty .projects-hero--world-green .projects-hero__title,
+#projekty .projects-hero--world-green .projects-hero__subtitle,
+#projekty .world-hero-tags {
   position: relative;
   z-index: 1;
 }
 
-#svet-zabavy .projects-hero--world-green .projects-hero__label {
+#svet-zabavy .projects-hero--world-green .projects-hero__label,
+#projekty .projects-hero--world-green .projects-hero__label {
   color: rgba(16, 21, 4, 0.72);
 }
 
-#svet-zabavy .projects-hero--world-green .projects-hero__title {
+#svet-zabavy .projects-hero--world-green .projects-hero__title,
+#projekty .projects-hero--world-green .projects-hero__title {
   color: #101504;
   text-shadow: none;
 }
 
-#svet-zabavy .projects-hero--world-green .projects-hero__subtitle {
+#svet-zabavy .projects-hero--world-green .projects-hero__subtitle,
+#projekty .projects-hero--world-green .projects-hero__subtitle {
   max-width: 760px;
   color: rgba(16, 21, 4, 0.76);
   font-weight: 700;
 }
 
-#svet-zabavy .world-hero-tags {
+#svet-zabavy .world-hero-tags,
+#projekty .world-hero-tags {
   display: grid;
   gap: 12px;
 }
 
-#svet-zabavy .world-hero-tags span {
+#svet-zabavy .world-hero-tags span,
+#projekty .world-hero-tags span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1100,11 +1111,13 @@
   text-transform: uppercase;
 }
 
-#svet-zabavy .projects-hero__content {
+#svet-zabavy .projects-hero__content,
+#projekty .projects-hero__content {
   max-width: 760px;
 }
 
-#svet-zabavy .projects-hero__title {
+#svet-zabavy .projects-hero__title,
+#projekty .projects-hero__title {
   max-width: 760px;
 }
 
@@ -1132,11 +1145,13 @@
 }
 
 @media (max-width: 900px) {
-  #svet-zabavy .projects-hero--world-green {
+  #svet-zabavy .projects-hero--world-green,
+  #projekty .projects-hero--world-green {
     grid-template-columns: 1fr;
   }
 
-  #svet-zabavy .world-hero-tags {
+  #svet-zabavy .world-hero-tags,
+  #projekty .world-hero-tags {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1150,23 +1165,27 @@
     padding-top: 78px;
   }
 
-  #svet-zabavy .projects-hero__title {
+  #svet-zabavy .projects-hero__title,
+  #projekty .projects-hero__title {
     font-size: 38px;
     line-height: 1;
   }
 
-  #svet-zabavy .projects-hero--world-green {
+  #svet-zabavy .projects-hero--world-green,
+  #projekty .projects-hero--world-green {
     min-height: auto;
     padding: 30px 22px;
     border-radius: 24px;
   }
 
-  #svet-zabavy .world-hero-tags {
+  #svet-zabavy .world-hero-tags,
+  #projekty .world-hero-tags {
     grid-template-columns: 1fr;
     gap: 8px;
   }
 
-  #svet-zabavy .world-hero-tags span {
+  #svet-zabavy .world-hero-tags span,
+  #projekty .world-hero-tags span {
     min-height: 36px;
     font-size: 10px;
   }
