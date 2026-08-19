@@ -7,7 +7,6 @@
   --leto-yellow: #fff238;
   --leto-orange: #ff8732;
   --leto-blue: #45c9ff;
-  --leto-pink: #ff4f86;
   --leto-paper: #fffaf2;
   --leto-soft: #efffe0;
   --leto-muted: #526147;
@@ -20,7 +19,7 @@
 
 .show-academy-page .leto-hero {
   background:
-    radial-gradient(circle at 82% 16%, rgba(255, 79, 134, 0.36), transparent 25%),
+    radial-gradient(circle at 82% 16%, rgba(255, 135, 50, 0.34), transparent 25%),
     radial-gradient(circle at 11% 22%, rgba(69, 201, 255, 0.34), transparent 24%),
     linear-gradient(135deg, #fffef0 0%, #f4ff9b 42%, #e7d7ff 100%);
 }
@@ -43,18 +42,18 @@
 .show-academy-page .leto-pricing {
   background:
     radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.32), transparent 24%),
-    linear-gradient(135deg, var(--leto-pink), var(--leto-orange) 48%, var(--leto-yellow));
+    linear-gradient(135deg, var(--leto-blue), var(--leto-orange) 48%, var(--leto-yellow));
 }
 
 .show-academy-page .leto-wow__cards strong,
 .show-academy-page .leto-flow strong {
-  color: var(--leto-pink);
+  color: var(--leto-orange);
 }
 
-.show-academy-page .leto-activity-card:nth-child(1) { background: linear-gradient(135deg, var(--leto-pink), #ffd4e1); }
+.show-academy-page .leto-activity-card:nth-child(1) { background: linear-gradient(135deg, var(--leto-orange), var(--leto-yellow)); }
 .show-academy-page .leto-activity-card:nth-child(2) { background: linear-gradient(135deg, var(--leto-blue), #dff7ff); }
 .show-academy-page .leto-activity-card:nth-child(3) { background: linear-gradient(135deg, var(--leto-lime), var(--leto-yellow)); }
-.show-academy-page .leto-activity-card:nth-child(4) { background: linear-gradient(135deg, var(--leto-orange), var(--leto-yellow)); }
+.show-academy-page .leto-activity-card:nth-child(4) { background: linear-gradient(135deg, var(--leto-blue), var(--leto-lime)); }
 
 .show-academy-page .leto-trust-grid article:nth-child(1) {
   background: linear-gradient(135deg, var(--leto-blue), #dff7ff);
@@ -65,7 +64,7 @@
 }
 
 .show-academy-page .leto-trust-grid article:nth-child(3) {
-  background: linear-gradient(135deg, var(--leto-pink), #ffd4e1);
+  background: linear-gradient(135deg, var(--leto-orange), var(--leto-yellow));
 }
 
 .show-academy-page .leto-final-cta .leto-btn {
@@ -152,7 +151,7 @@
 .show-social-card--alex {
   background:
     radial-gradient(circle at 85% 14%, rgba(255, 255, 255, 0.35), transparent 24%),
-    linear-gradient(135deg, var(--leto-pink), #ffd4e1);
+    linear-gradient(135deg, var(--leto-orange), var(--leto-yellow));
 }
 
 .show-social-card--mz {

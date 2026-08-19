@@ -310,8 +310,8 @@
 }
 
 .project-page--show {
-  --project-accent: #ff4f86;
-  --project-accent-soft: rgba(255, 79, 134, 0.14);
+  --project-accent: #45c9ff;
+  --project-accent-soft: rgba(69, 201, 255, 0.14);
 }
 
 /* Projekty MZ refresh */
