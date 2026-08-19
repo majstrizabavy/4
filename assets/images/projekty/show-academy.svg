@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Majstri zábavy Show Academy</title>
+  <desc id="desc">Farebný dočasný vizuál pre projekt Show Academy.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#45c9ff"/>
+      <stop offset=".48" stop-color="#c7ff2e"/>
+      <stop offset="1" stop-color="#ff4f86"/>
+    </linearGradient>
+    <linearGradient id="stage" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101707"/>
+      <stop offset="1" stop-color="#2d1338"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="28" stdDeviation="22" flood-color="#101707" flood-opacity=".28"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" rx="0" fill="url(#bg)"/>
+  <circle cx="145" cy="120" r="110" fill="#fff238" opacity=".92"/>
+  <circle cx="1010" cy="156" r="170" fill="#fff" opacity=".35"/>
+  <circle cx="1050" cy="760" r="145" fill="#fff238" opacity=".62"/>
+  <path d="M0 655c145-70 281-86 408-48 137 41 244 32 366-30 144-73 287-62 426 33v290H0z" fill="#fffdeb" opacity=".72"/>
+  <g filter="url(#shadow)">
+    <rect x="155" y="145" width="890" height="610" rx="64" fill="url(#stage)"/>
+    <path d="M155 562h890v129c0 35-29 64-64 64H219c-35 0-64-29-64-64z" fill="#080905"/>
+    <circle cx="295" cy="282" r="66" fill="#fff238"/>
+    <circle cx="905" cy="282" r="66" fill="#ff4f86"/>
+    <path d="M600 218l69 140 155 23-112 109 26 154-138-73-138 73 26-154-112-109 155-23z" fill="#c7ff2e"/>
+    <rect x="272" y="604" width="656" height="42" rx="21" fill="#45c9ff"/>
+    <rect x="392" y="668" width="416" height="28" rx="14" fill="#ff8732"/>
+  </g>
+  <g fill="#fffdeb" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="600" y="170" font-size="31" font-weight="900" letter-spacing="8">MAJSTRI ZABAVY</text>
+    <text x="600" y="510" font-size="118" font-weight="900" letter-spacing="0">SHOW</text>
+    <text x="600" y="585" font-size="62" font-weight="900" letter-spacing="6">ACADEMY</text>
+    <text x="600" y="802" font-size="35" font-weight="900">Tanec • Kamera • Mikrofon • Video • Podium</text>
+  </g>
+</svg>

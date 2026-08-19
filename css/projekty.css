@@ -309,6 +309,11 @@
   --project-accent-soft: rgba(255, 211, 107, 0.14);
 }
 
+.project-page--show {
+  --project-accent: #ff4f86;
+  --project-accent-soft: rgba(255, 79, 134, 0.14);
+}
+
 /* Projekty MZ refresh */
 .projects-hero {
   border-color: rgba(255, 255, 255, 0.07);
@@ -1944,6 +1949,15 @@ body.projects-v2 #projekty {
   transform: rotate(-1deg);
 }
 
+.projects-v2-hero-tile--show {
+  right: 7%;
+  bottom: -4%;
+  width: 42%;
+  height: 41%;
+  z-index: 4;
+  transform: rotate(2deg);
+}
+
 .projects-v2-facts {
   grid-column: 1 / -1;
   display: grid;
@@ -2174,6 +2188,10 @@ body.projects-v2 #projekty {
 
 .projects-v2-card--starcrew {
   background: linear-gradient(135deg, var(--projects-pink), #ffd4e1);
+}
+
+.projects-v2-card--show {
+  background: linear-gradient(135deg, var(--projects-blue), var(--projects-lime) 48%, var(--projects-yellow));
 }
 
 .projects-v2-card--starcrew .projects-v2-card__media {
