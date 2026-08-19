@@ -310,8 +310,8 @@
 }
 
 .project-page--show {
-  --project-accent: #45c9ff;
-  --project-accent-soft: rgba(69, 201, 255, 0.14);
+  --project-accent: #d7ff00;
+  --project-accent-soft: rgba(215, 255, 0, 0.15);
 }
 
 /* Projekty MZ refresh */
@@ -2191,7 +2191,9 @@ body.projects-v2 #projekty {
 }
 
 .projects-v2-card--show {
-  background: linear-gradient(135deg, var(--projects-blue), var(--projects-lime) 48%, var(--projects-yellow));
+  background:
+    radial-gradient(circle at 88% 12%, rgba(255, 255, 255, 0.34), transparent 24%),
+    linear-gradient(135deg, #00d9ff, #d7ff00 48%, var(--projects-yellow));
 }
 
 .projects-v2-card--starcrew .projects-v2-card__media {

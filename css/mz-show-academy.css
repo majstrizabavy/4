@@ -3,25 +3,26 @@
 .show-academy-page {
   --leto-black: #080905;
   --leto-ink: #101707;
-  --leto-lime: #c7ff2e;
-  --leto-yellow: #fff238;
-  --leto-orange: #ff8732;
-  --leto-blue: #45c9ff;
-  --leto-paper: #fffaf2;
-  --leto-soft: #efffe0;
+  --leto-lime: #d7ff00;
+  --leto-yellow: #fff200;
+  --leto-orange: #ff8a00;
+  --leto-blue: #00d9ff;
+  --leto-paper: #fffef2;
+  --leto-soft: #efffc7;
   --leto-muted: #526147;
 }
 
 .show-academy-page .leto-page {
   background:
-    linear-gradient(180deg, #fffef0 0 39rem, var(--leto-paper) 39rem 100%);
+    linear-gradient(180deg, #fbffcf 0 39rem, var(--leto-paper) 39rem 100%);
 }
 
 .show-academy-page .leto-hero {
   background:
-    radial-gradient(circle at 82% 16%, rgba(255, 135, 50, 0.34), transparent 25%),
-    radial-gradient(circle at 11% 22%, rgba(69, 201, 255, 0.34), transparent 24%),
-    linear-gradient(135deg, #fffef0 0%, #f4ff9b 42%, #e7d7ff 100%);
+    radial-gradient(circle at 83% 14%, rgba(255, 138, 0, 0.48), transparent 25%),
+    radial-gradient(circle at 12% 24%, rgba(0, 217, 255, 0.46), transparent 25%),
+    radial-gradient(circle at 50% 8%, rgba(215, 255, 0, 0.52), transparent 32%),
+    linear-gradient(135deg, #fffef0 0%, #eeff72 45%, #b7f8ff 100%);
 }
 
 .show-academy-page .leto-hero__photo {
@@ -34,15 +35,16 @@
 .show-academy-page .leto-fridays__note,
 .show-academy-page .leto-detail-list summary::after,
 .show-academy-page .leto-final-cta {
-  background: linear-gradient(135deg, var(--leto-lime), var(--leto-yellow));
+  background: linear-gradient(135deg, var(--leto-lime), var(--leto-yellow) 70%, #fffbd0);
 }
 
 .show-academy-page .leto-hero__hook,
 .show-academy-page .leto-fridays__copy,
 .show-academy-page .leto-pricing {
   background:
-    radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.32), transparent 24%),
-    linear-gradient(135deg, var(--leto-blue), var(--leto-orange) 48%, var(--leto-yellow));
+    radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.42), transparent 24%),
+    linear-gradient(135deg, var(--leto-blue), var(--leto-lime) 46%, var(--leto-yellow) 100%);
+  box-shadow: 0 24px 52px rgba(0, 217, 255, 0.16), 0 16px 36px rgba(255, 138, 0, 0.12);
 }
 
 .show-academy-page .leto-wow__cards strong,
@@ -51,12 +53,12 @@
 }
 
 .show-academy-page .leto-activity-card:nth-child(1) { background: linear-gradient(135deg, var(--leto-orange), var(--leto-yellow)); }
-.show-academy-page .leto-activity-card:nth-child(2) { background: linear-gradient(135deg, var(--leto-blue), #dff7ff); }
+.show-academy-page .leto-activity-card:nth-child(2) { background: linear-gradient(135deg, var(--leto-blue), var(--leto-lime)); }
 .show-academy-page .leto-activity-card:nth-child(3) { background: linear-gradient(135deg, var(--leto-lime), var(--leto-yellow)); }
-.show-academy-page .leto-activity-card:nth-child(4) { background: linear-gradient(135deg, var(--leto-blue), var(--leto-lime)); }
+.show-academy-page .leto-activity-card:nth-child(4) { background: linear-gradient(135deg, var(--leto-blue), #edfeff 62%, var(--leto-yellow)); }
 
 .show-academy-page .leto-trust-grid article:nth-child(1) {
-  background: linear-gradient(135deg, var(--leto-blue), #dff7ff);
+  background: linear-gradient(135deg, var(--leto-blue), #e9fbff);
 }
 
 .show-academy-page .leto-trust-grid article:nth-child(2) {
@@ -108,7 +110,7 @@
   line-height: 1.12;
   text-align: center;
   text-transform: uppercase;
-  box-shadow: 0 12px 24px rgba(33, 43, 10, 0.16);
+  box-shadow: 0 0 0 2px rgba(215, 255, 0, 0.7), 0 12px 24px rgba(33, 43, 10, 0.18);
 }
 
 .show-socials {
@@ -129,10 +131,10 @@
   flex-direction: column;
   justify-content: flex-end;
   padding: clamp(24px, 4vw, 38px);
-  border: 1px solid rgba(16, 23, 7, 0.1);
+  border: 1px solid rgba(16, 23, 7, 0.12);
   border-radius: 34px;
   color: var(--leto-ink);
-  box-shadow: 0 22px 48px rgba(33, 43, 10, 0.13);
+  box-shadow: 0 24px 52px rgba(33, 43, 10, 0.14), 0 0 0 1px rgba(215, 255, 0, 0.18);
   overflow: hidden;
   position: relative;
 }
@@ -150,14 +152,14 @@
 
 .show-social-card--alex {
   background:
-    radial-gradient(circle at 85% 14%, rgba(255, 255, 255, 0.35), transparent 24%),
-    linear-gradient(135deg, var(--leto-orange), var(--leto-yellow));
+    radial-gradient(circle at 86% 14%, rgba(255, 255, 255, 0.38), transparent 24%),
+    linear-gradient(135deg, var(--leto-orange), var(--leto-yellow) 54%, var(--leto-lime));
 }
 
 .show-social-card--mz {
   background:
-    radial-gradient(circle at 85% 14%, rgba(255, 255, 255, 0.35), transparent 24%),
-    linear-gradient(135deg, var(--leto-blue), var(--leto-lime));
+    radial-gradient(circle at 86% 14%, rgba(255, 255, 255, 0.38), transparent 24%),
+    linear-gradient(135deg, var(--leto-blue), var(--leto-lime) 56%, var(--leto-yellow));
 }
 
 .show-social-card > span,
@@ -248,7 +250,7 @@
 }
 
 .show-social-link--instagram:hover svg {
-  background: linear-gradient(135deg, #833ab4, #fd1d1d 48%, #fcb045);
+  background: linear-gradient(135deg, var(--leto-orange), var(--leto-yellow) 52%, var(--leto-lime));
 }
 
 .show-social-link--facebook:hover svg {
@@ -260,12 +262,12 @@
 }
 
 .show-social-link--tiktok:hover svg {
-  background: linear-gradient(135deg, #00f2ea, #111 48%, #ff0050);
+  background: linear-gradient(135deg, var(--leto-blue), #111 52%, var(--leto-lime));
 }
 
 @media (max-width: 640px) {
   .show-academy-page .leto-page {
-    background: linear-gradient(180deg, #fffef0 0 42rem, var(--leto-paper) 42rem 100%);
+    background: linear-gradient(180deg, #fbffcf 0 42rem, var(--leto-paper) 42rem 100%);
   }
 
   .show-socials {
