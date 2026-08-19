@@ -3,9 +3,9 @@
   <desc id="desc">Farebný dočasný vizuál pre projekt Show Academy.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#00d9ff"/>
-      <stop offset=".5" stop-color="#d7ff00"/>
-      <stop offset="1" stop-color="#ff8a00"/>
+      <stop offset="0" stop-color="#45c9ff"/>
+      <stop offset=".52" stop-color="#c7ff2e"/>
+      <stop offset="1" stop-color="#ff9f3f"/>
     </linearGradient>
     <linearGradient id="stage" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#101707"/>
@@ -24,10 +24,10 @@
     <rect x="155" y="145" width="890" height="610" rx="64" fill="url(#stage)"/>
     <path d="M155 562h890v129c0 35-29 64-64 64H219c-35 0-64-29-64-64z" fill="#080905"/>
     <circle cx="295" cy="282" r="66" fill="#fff238"/>
-    <circle cx="905" cy="282" r="66" fill="#ff8a00"/>
-    <path d="M600 218l69 140 155 23-112 109 26 154-138-73-138 73 26-154-112-109 155-23z" fill="#d7ff00"/>
-    <rect x="272" y="604" width="656" height="42" rx="21" fill="#00d9ff"/>
-    <rect x="392" y="668" width="416" height="28" rx="14" fill="#ff8a00"/>
+    <circle cx="905" cy="282" r="66" fill="#ff9f3f"/>
+    <path d="M600 218l69 140 155 23-112 109 26 154-138-73-138 73 26-154-112-109 155-23z" fill="#c7ff2e"/>
+    <rect x="272" y="604" width="656" height="42" rx="21" fill="#45c9ff"/>
+    <rect x="392" y="668" width="416" height="28" rx="14" fill="#ff9f3f"/>
   </g>
   <g fill="#fffdeb" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
     <text x="600" y="170" font-size="31" font-weight="900" letter-spacing="8">MAJSTRI ZABAVY</text>
