@@ -29,19 +29,6 @@
   background: url("../assets/images/projekty/showacademy-hero-foto.png") center / cover no-repeat;
 }
 
-.show-academy-mascot {
-  width: clamp(96px, 12vw, 154px);
-  height: auto;
-  display: block;
-  margin: 0 0 14px;
-  padding: 8px;
-  border-radius: 26px;
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(16, 23, 7, 0.1);
-  box-shadow: 0 18px 36px rgba(33, 43, 10, 0.14);
-  transform: rotate(-2deg);
-}
-
 .show-academy-page .leto-hero h1 em::after,
 .show-academy-page .leto-btn--primary,
 .show-academy-page .leto-wow__statement,
@@ -84,6 +71,45 @@
 .show-academy-page .leto-final-cta .leto-btn {
   background: var(--leto-black);
   color: #f8ffe6;
+}
+
+.show-academy-page .leto-section--program {
+  position: relative;
+}
+
+.show-program-mascot {
+  position: absolute;
+  top: 34px;
+  right: clamp(0px, 2vw, 28px);
+  z-index: 3;
+  width: clamp(118px, 12vw, 164px);
+  pointer-events: none;
+  transform: rotate(5deg);
+}
+
+.show-program-mascot img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 18px 24px rgba(33, 43, 10, 0.2));
+}
+
+.show-program-mascot span {
+  display: block;
+  width: fit-content;
+  max-width: 150px;
+  margin: -4px auto 0;
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: var(--leto-black);
+  color: #f8ffe6;
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: 0.06em;
+  line-height: 1.12;
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow: 0 12px 24px rgba(33, 43, 10, 0.16);
 }
 
 .show-socials {
@@ -248,10 +274,13 @@
     padding: 8px 0 48px;
   }
 
-  .show-academy-mascot {
-    width: 112px;
-    margin-bottom: 12px;
-    border-radius: 22px;
+  .show-program-mascot {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 118px;
+    margin: -12px 0 18px auto;
+    transform: rotate(4deg);
   }
 
   .show-socials__grid {
